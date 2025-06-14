@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { speakText } from '@/utils/speechUtils';
@@ -159,9 +160,8 @@ const FlashcardModule = ({ level, onBack, language }: FlashcardModuleProps) => {
                   {currentCard.letter}
                 </div>
                 
-                {/* Visual representation */}
-                <div className="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-purple-100 to-pink-100 rounded-xl flex items-center justify-center">
-                  <span className="text-4xl">📚</span>
+                <div className="text-8xl my-4">
+                  {currentCard.emoji}
                 </div>
                 
                 <div className="text-3xl font-bold text-gray-800 mb-4">
