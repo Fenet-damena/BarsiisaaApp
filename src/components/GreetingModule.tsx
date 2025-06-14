@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
+import { speakText } from '@/utils/speechUtils';
 
 interface GreetingModuleProps {
   onBack: () => void;
@@ -12,20 +13,20 @@ const greetingData = {
       id: 1,
       title: "First Meeting",
       conversations: [
-        { speaker: "left", english: "Hello! What's your name?", oromo: "Akkam! Maqaan kee eenyu?", avatar: "👦", name: "Alex" },
-        { speaker: "right", english: "Hi! My name is Sara.", oromo: "Nagaatti! Maqaan koo Sara.", avatar: "👧", name: "Sara" },
-        { speaker: "left", english: "Nice to meet you, Sara!", oromo: "Si arguuf natti tola, Sara!", avatar: "👦", name: "Alex" },
-        { speaker: "right", english: "Nice to meet you too!", oromo: "Anis si arguuf natti tola!", avatar: "👧", name: "Sara" },
+        { speaker: "left", english: "Hello! What's your name?", oromo: "Akkam! Maqaan kee eenyu?", avatar: "👦", name: "Alex", gender: "male" },
+        { speaker: "right", english: "Hi! My name is Sara.", oromo: "Nagaatti! Maqaan koo Sara.", avatar: "👧", name: "Sara", gender: "female" },
+        { speaker: "left", english: "Nice to meet you, Sara!", oromo: "Si arguuf natti tola, Sara!", avatar: "👦", name: "Alex", gender: "male" },
+        { speaker: "right", english: "Nice to meet you too!", oromo: "Anis si arguuf natti tola!", avatar: "👧", name: "Sara", gender: "female" },
       ]
     },
     {
       id: 2,
       title: "Morning Greetings",
       conversations: [
-        { speaker: "left", english: "Good morning!", oromo: "Nagaa ganama!", avatar: "👨", name: "John" },
-        { speaker: "right", english: "Good morning! How are you?", oromo: "Nagaa ganama! Akkam jirta?", avatar: "👩", name: "Maya" },
-        { speaker: "left", english: "I am fine, thank you.", oromo: "Ani nagaan jira, galatoomaa.", avatar: "👨", name: "John" },
-        { speaker: "right", english: "Have a great day!", oromo: "Guyyaa gaarii qabaadhu!", avatar: "👩", name: "Maya" },
+        { speaker: "left", english: "Good morning!", oromo: "Nagaa ganama!", avatar: "👨", name: "John", gender: "male" },
+        { speaker: "right", english: "Good morning! How are you?", oromo: "Nagaa ganama! Akkam jirta?", avatar: "👩", name: "Maya", gender: "female" },
+        { speaker: "left", english: "I am fine, thank you.", oromo: "Ani nagaan jira, galatoomaa.", avatar: "👨", name: "John", gender: "male" },
+        { speaker: "right", english: "Have a great day!", oromo: "Guyyaa gaarii qabaadhu!", avatar: "👩", name: "Maya", gender: "female" },
       ]
     }
   ],
@@ -34,20 +35,20 @@ const greetingData = {
       id: 1,
       title: "Wal Argannaa Jalqabaa",
       conversations: [
-        { speaker: "left", english: "Hello! What's your name?", oromo: "Akkam! Maqaan kee eenyu?", avatar: "👦", name: "Alex" },
-        { speaker: "right", english: "Hi! My name is Sara.", oromo: "Nagaatti! Maqaan koo Sara.", avatar: "👧", name: "Sara" },
-        { speaker: "left", english: "Nice to meet you, Sara!", oromo: "Si arguuf natti tola, Sara!", avatar: "👦", name: "Alex" },
-        { speaker: "right", english: "Nice to meet you too!", oromo: "Anis si arguuf natti tola!", avatar: "👧", name: "Sara" },
+        { speaker: "left", english: "Hello! What's your name?", oromo: "Akkam! Maqaan kee eenyu?", avatar: "👦", name: "Alex", gender: "male" },
+        { speaker: "right", english: "Hi! My name is Sara.", oromo: "Nagaatti! Maqaan koo Sara.", avatar: "👧", name: "Sara", gender: "female" },
+        { speaker: "left", english: "Nice to meet you, Sara!", oromo: "Si arguuf natti tola, Sara!", avatar: "👦", name: "Alex", gender: "male" },
+        { speaker: "right", english: "Nice to meet you too!", oromo: "Anis si arguuf natti tola!", avatar: "👧", name: "Sara", gender: "female" },
       ]
     },
     {
       id: 2,
       title: "Nagaa Ganama",
       conversations: [
-        { speaker: "left", english: "Good morning!", oromo: "Nagaa ganama!", avatar: "👨", name: "John" },
-        { speaker: "right", english: "Good morning! How are you?", oromo: "Nagaa ganama! Akkam jirta?", avatar: "👩", name: "Maya" },
-        { speaker: "left", english: "I am fine, thank you.", oromo: "Ani nagaan jira, galatoomaa.", avatar: "👨", name: "John" },
-        { speaker: "right", english: "Have a great day!", oromo: "Guyyaa gaarii qabaadhu!", avatar: "👩", name: "Maya" },
+        { speaker: "left", english: "Good morning!", oromo: "Nagaa ganama!", avatar: "👨", name: "John", gender: "male" },
+        { speaker: "right", english: "Good morning! How are you?", oromo: "Nagaa ganama! Akkam jirta?", avatar: "👩", name: "Maya", gender: "female" },
+        { speaker: "left", english: "I am fine, thank you.", oromo: "Ani nagaan jira, galatoomaa.", avatar: "👨", name: "John", gender: "male" },
+        { speaker: "right", english: "Have a great day!", oromo: "Guyyaa gaarii qabaadhu!", avatar: "👩", name: "Maya", gender: "female" },
       ]
     }
   ]
@@ -57,6 +58,15 @@ const GreetingModule = ({ onBack, language }: GreetingModuleProps) => {
   const [currentConversationIndex, setCurrentConversationIndex] = useState(0);
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
+
+  // Cleanup speech on component unmount
+  useEffect(() => {
+    return () => {
+      if ('speechSynthesis' in window) {
+        speechSynthesis.cancel();
+      }
+    };
+  }, []);
 
   const conversations = greetingData[language];
   const currentConversation = conversations[currentConversationIndex];
@@ -93,20 +103,13 @@ const GreetingModule = ({ onBack, language }: GreetingModuleProps) => {
 
   const ui = uiContent[language];
 
-  const speakText = (text: string) => {
-    if ('speechSynthesis' in window) {
-      const utterance = new SpeechSynthesisUtterance(text);
-      speechSynthesis.speak(utterance);
-    }
-  };
-
   const playConversation = async () => {
     setIsPlaying(true);
-    for (let i = 0; i <= currentLineIndex; i++) {
+    for (let i = 0; i < currentConversation.conversations.length; i++) {
+      setCurrentLineIndex(i);
       const line = currentConversation.conversations[i];
       const text = language === 'english' ? line.english : line.oromo;
-      speakText(text);
-      await new Promise(resolve => setTimeout(resolve, 3000));
+      await speakText(text, language, line.gender as 'female' | 'male' | undefined);
     }
     setIsPlaying(false);
   };
@@ -222,7 +225,7 @@ const GreetingModule = ({ onBack, language }: GreetingModuleProps) => {
           </Button>
           
           <Button
-            onClick={() => speakText(language === 'english' ? currentLine.english : currentLine.oromo)}
+            onClick={() => speakText(language === 'english' ? currentLine.english : currentLine.oromo, language, currentLine.gender as 'female' | 'male' | undefined)}
             className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full"
           >
             🔊 {ui.listen}

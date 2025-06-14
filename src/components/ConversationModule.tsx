@@ -109,7 +109,20 @@ const ConversationModule = ({ onBack, language }: ConversationModuleProps) => {
     const conversationsForLanguage = conversationData[language];
     setCurrentConversationIndex(Math.floor(Math.random() * conversationsForLanguage.length));
     setCurrentLineIndex(0);
+    if ('speechSynthesis' in window) {
+      speechSynthesis.cancel();
+    }
+    setIsPlaying(false);
   }, [language]);
+
+  // Cleanup speech on component unmount
+  useEffect(() => {
+    return () => {
+      if ('speechSynthesis' in window) {
+        speechSynthesis.cancel();
+      }
+    };
+  }, []);
 
   const conversations = conversationData[language];
   
@@ -157,8 +170,7 @@ const ConversationModule = ({ onBack, language }: ConversationModuleProps) => {
       setCurrentLineIndex(i);
       const line = currentConversation.conversations[i];
       const text = language === 'english' ? line.english : line.oromo;
-      speakText(text, language, line.gender as 'female' | 'male' | undefined);
-      await new Promise(resolve => setTimeout(resolve, 4000)); // Wait 4 seconds between lines
+      await speakText(text, language, line.gender as 'female' | 'male' | undefined);
     }
     setIsPlaying(false);
   };
