@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { speakText } from '@/utils/speechUtils';
@@ -28,11 +27,11 @@ const alphabetData: LetterData[] = [
   { letter: 'B', english: 'Ball', oromo: 'Bishaan', sound: 'bee', oromoSound: 'bah' },
   { letter: 'C', english: 'Cat', oromo: 'Callee', sound: 'see', oromoSound: 'chah' },
   { letter: 'D', english: 'Dog', oromo: 'Dandii', sound: 'dee', oromoSound: 'dah' },
-  { letter: 'E', english: 'Elephant', oromo: 'Eelee', sound: 'ee', oromoSound: 'ay' },
+  { letter: 'E', english: 'Elephant', oromo: 'Eelee', sound: 'ee', oromoSound: 'A' },
   { letter: 'F', english: 'Fish', oromo: 'Farda', sound: 'ef', oromoSound: 'Fah' },
   { letter: 'G', english: 'Giraffe', oromo: 'Gurraacha', sound: 'jee', oromoSound: 'gah' },
   { letter: 'H', english: 'House', oromo: 'Harree', sound: 'aitch', oromoSound: 'hah' },
-  { letter: 'I', english: 'Ice cream', oromo: 'Ilkaan', sound: 'eye', oromoSound: 'ee' },
+  { letter: 'I', english: 'Ice cream', oromo: 'Ilkaan', sound: 'eye', oromoSound: 'e' },
   { letter: 'J', english: 'Juice', oromo: 'Jaldeessa', sound: 'jay', oromoSound: 'Jah' },
   { letter: 'K', english: 'Kite', oromo: 'Kitaaba', sound: 'kay', oromoSound: 'Kah' },
   { letter: 'L', english: 'Lion', oromo: 'Loon', sound: 'el', oromoSound: 'Lah' },
