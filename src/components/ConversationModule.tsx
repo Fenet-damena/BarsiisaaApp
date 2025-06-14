@@ -12,68 +12,68 @@ const conversationData = {
   english: [
     {
       id: 1,
-      title: "Greeting",
+      title: "Saying Hello",
       conversations: [
-        { speaker: "left", english: "Hi, Bona! How are you? 😊", oromo: "Akkam, Boonaa! Akkam jirta? 😊", avatar: "👧", name: "Ayantu" },
-        { speaker: "right", english: "Hi, Ayantu! I am fine, thank you. And you?", oromo: "Akkam, Ayyaantuu! Nagaa koo, galatoomi. Atimmoo?", avatar: "👦", name: "Bona" },
-        { speaker: "left", english: "I am fine too! Nice to see you.", oromo: "Anis nagaa koo! Si arguunkoo na gammachiiseera.", avatar: "👧", name: "Ayantu" },
-        { speaker: "right", english: "Nice to see you too! Welcome.", oromo: "Anis si arguunkoo na gammachiiseera! Baga nagaan dhufe.", avatar: "👦", name: "Bona" },
+        { speaker: "left", english: "Hello!", oromo: "Hello!", avatar: "👧", name: "Ayantu" },
+        { speaker: "right", english: "Hi!", oromo: "Hi!", avatar: "👦", name: "Bona" },
       ]
     },
     {
       id: 2,
-      title: "Asking for Help",
+      title: "Morning Greeting",
       conversations: [
-        { speaker: "left", english: "Excuse me, Bona. Can you help me?", oromo: "Dhiifama, Boonaa. Na gargaaruu dandeessaa?", avatar: "👧", name: "Ayantu" },
-        { speaker: "right", english: "Of course, Ayantu. What do you need?", oromo: "Eeyyee, Ayyaantuu. Maal si barbaachisa?", avatar: "👦", name: "Bona" },
-        { speaker: "left", english: "I can't reach that book. Can you get it for me?", oromo: "Kitaaba sana dhaqqabuu dadhabe. Naaf fuudhuu dandeessaa?", avatar: "👧", name: "Ayantu" },
-        { speaker: "right", english: "Sure, here you go.", oromo: "Tole, kunoo.", avatar: "👦", name: "Bona" },
-        { speaker: "left", english: "Thank you so much!", oromo: "Hedduu galatoomi!", avatar: "👧", name: "Ayantu" },
+        { speaker: "left", english: "Good morning!", oromo: "Good morning!", avatar: "👧", name: "Ayantu" },
+        { speaker: "right", english: "Good morning!", oromo: "Good morning!", avatar: "👦", name: "Bona" },
       ]
     },
     {
       id: 3,
-      title: "Talking About School",
+      title: "How are you?",
       conversations: [
-        { speaker: "right", english: "Hi Ayantu, how was school today?", oromo: "Akkam Ayyaantuu, barnoonni har'aa akkam ture?", avatar: "👦", name: "Bona" },
-        { speaker: "left", english: "It was great! We learned about animals.", oromo: "Bareedaa ture! Bineensota baranne.", avatar: "👧", name: "Ayantu" },
-        { speaker: "right", english: "That sounds fun! What's your favorite animal?", oromo: "Sun bashannansiisaa fakkaata! Bineensa kam jaalatta?", avatar: "👦", name: "Bona" },
-        { speaker: "left", english: "I like lions. They are strong!", oromo: "Leenca nan jaaladha. Jaboodha!", avatar: "👧", name: "Ayantu" },
-        { speaker: "right", english: "Me too! See you tomorrow.", oromo: "Anis! Boru wal argina.", avatar: "👦", name: "Bona" },
+        { speaker: "left", english: "How are you?", oromo: "How are you?", avatar: "👧", name: "Ayantu" },
+        { speaker: "right", english: "I’m fine, thank you!", oromo: "I’m fine, thank you!", avatar: "👦", name: "Bona" },
+      ]
+    },
+    {
+      id: 4,
+      title: "Nice to meet you",
+      conversations: [
+        { speaker: "left", english: "Nice to meet you!", oromo: "Nice to meet you!", avatar: "👧", name: "Ayantu" },
+        { speaker: "right", english: "Nice to meet you too!", oromo: "Nice to meet you too!", avatar: "👦", name: "Bona" },
       ]
     }
   ],
   oromo: [
     {
       id: 1,
-      title: "Nagaa Gaafachuu",
+      title: "Saying Hello",
       conversations: [
-        { speaker: "left", english: "Hi, Bona! How are you? 😊", oromo: "Akkam, Boonaa! Akkam jirta? 😊", avatar: "👧", name: "Ayantu" },
-        { speaker: "right", english: "Hi, Ayantu! I am fine, thank you. And you?", oromo: "Akkam, Ayyaantuu! Nagaa koo, galatoomi. Atimmoo?", avatar: "👦", name: "Bona" },
-        { speaker: "left", english: "I am fine too! Nice to see you.", oromo: "Anis nagaa koo! Si arguunkoo na gammachiiseera.", avatar: "👧", name: "Ayantu" },
-        { speaker: "right", english: "Nice to see you too! Welcome.", oromo: "Anis si arguunkoo na gammachiiseera! Baga nagaan dhufe.", avatar: "👦", name: "Bona" },
+        { speaker: "left", english: "Hello!", oromo: "Hello!", avatar: "👧", name: "Ayantu" },
+        { speaker: "right", english: "Hi!", oromo: "Hi!", avatar: "👦", name: "Bona" },
       ]
     },
     {
       id: 2,
-      title: "Gargaarsa Gaafachuu",
+      title: "Morning Greeting",
       conversations: [
-        { speaker: "left", english: "Excuse me, Bona. Can you help me?", oromo: "Dhiifama, Boonaa. Na gargaaruu dandeessaa?", avatar: "👧", name: "Ayantu" },
-        { speaker: "right", english: "Of course, Ayantu. What do you need?", oromo: "Eeyyee, Ayyaantuu. Maal si barbaachisa?", avatar: "👦", name: "Bona" },
-        { speaker: "left", english: "I can't reach that book. Can you get it for me?", oromo: "Kitaaba sana dhaqqabuu dadhabe. Naaf fuudhuu dandeessaa?", avatar: "👧", name: "Ayantu" },
-        { speaker: "right", english: "Sure, here you go.", oromo: "Tole, kunoo.", avatar: "👦", name: "Bona" },
-        { speaker: "left", english: "Thank you so much!", oromo: "Hedduu galatoomi!", avatar: "👧", name: "Ayantu" },
+        { speaker: "left", english: "Good morning!", oromo: "Good morning!", avatar: "👧", name: "Ayantu" },
+        { speaker: "right", english: "Good morning!", oromo: "Good morning!", avatar: "👦", name: "Bona" },
       ]
     },
     {
       id: 3,
-      title: "Waa'ee Mana Barumsaa Haasawa",
+      title: "How are you?",
       conversations: [
-        { speaker: "right", english: "Hi Ayantu, how was school today?", oromo: "Akkam Ayyaantuu, barnoonni har'aa akkam ture?", avatar: "👦", name: "Bona" },
-        { speaker: "left", english: "It was great! We learned about animals.", oromo: "Bareedaa ture! Bineensota baranne.", avatar: "👧", name: "Ayantu" },
-        { speaker: "right", english: "That sounds fun! What's your favorite animal?", oromo: "Sun bashannansiisaa fakkaata! Bineensa kam jaalatta?", avatar: "👦", name: "Bona" },
-        { speaker: "left", english: "I like lions. They are strong!", oromo: "Leenca nan jaaladha. Jaboodha!", avatar: "👧", name: "Ayantu" },
-        { speaker: "right", english: "Me too! See you tomorrow.", oromo: "Anis! Boru wal argina.", avatar: "👦", name: "Bona" },
+        { speaker: "left", english: "How are you?", oromo: "How are you?", avatar: "👧", name: "Ayantu" },
+        { speaker: "right", english: "I’m fine, thank you!", oromo: "I’m fine, thank you!", avatar: "👦", name: "Bona" },
+      ]
+    },
+    {
+      id: 4,
+      title: "Nice to meet you",
+      conversations: [
+        { speaker: "left", english: "Nice to meet you!", oromo: "Nice to meet you!", avatar: "👧", name: "Ayantu" },
+        { speaker: "right", english: "Nice to meet you too!", oromo: "Nice to meet you too!", avatar: "👦", name: "Bona" },
       ]
     }
   ]
