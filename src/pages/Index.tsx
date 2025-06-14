@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import WelcomeScreen from '@/components/WelcomeScreen';
 import LevelSelection from '@/components/LevelSelection';
@@ -9,9 +10,10 @@ import AnimalSlideModule from '@/components/AnimalSlideModule';
 import CalendarModule from '@/components/CalendarModule';
 import LetterGameModule from '@/components/LetterGameModule';
 import BodyPartsModule from '@/components/BodyPartsModule';
+import FlagModule from '@/components/FlagModule';
 
 const Index = () => {
-  const [currentScreen, setCurrentScreen] = useState<'welcome' | 'levels' | 'alphabet' | 'flashcards' | 'words' | 'conversations' | 'lettergame' | 'animals' | 'calendar' | 'bodyparts'>('welcome');
+  const [currentScreen, setCurrentScreen] = useState<'welcome' | 'levels' | 'alphabet' | 'flashcards' | 'words' | 'conversations' | 'lettergame' | 'animals' | 'calendar' | 'bodyparts' | 'flags'>('welcome');
   const [selectedLevel, setSelectedLevel] = useState<number>(1);
   const [selectedLanguage, setSelectedLanguage] = useState<'english' | 'oromo'>('english');
 
@@ -59,6 +61,9 @@ const Index = () => {
         break;
       case 8:
         setCurrentScreen('bodyparts');
+        break;
+      case 9:
+        setCurrentScreen('flags');
         break;
       default:
         setCurrentScreen('alphabet');
@@ -135,6 +140,12 @@ const Index = () => {
       )}
       {currentScreen === 'bodyparts' && (
         <BodyPartsModule 
+          onBack={handleBackToLevels}
+          language={selectedLanguage}
+        />
+      )}
+      {currentScreen === 'flags' && (
+        <FlagModule 
           onBack={handleBackToLevels}
           language={selectedLanguage}
         />

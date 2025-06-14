@@ -16,6 +16,7 @@ const levelsContent = {
     { level: 6, age: 7, title: "Word Games", emoji: "🎯", color: "from-pink-400 to-red-500", description: "Guess the word from emoji" },
     { level: 7, age: 7, title: "Letter Games", emoji: "🎮", color: "from-green-400 to-yellow-500", description: "Fill missing letters" },
     { level: 8, age: 7, title: "Body Parts", emoji: "👶", color: "from-orange-400 to-red-500", description: "Learn parts of the body" },
+    { level: 9, age: 8, title: "Country Flags", emoji: "🏁", color: "from-blue-400 to-green-500", description: "Learn 100+ country flags" },
   ],
   oromo: [
     { level: 1, age: 3, title: "Qubee fi Lakkoofsota", emoji: "🔤", color: "from-red-400 to-pink-500", description: "A-Z fi 1-10 baradhu" },
@@ -26,6 +27,7 @@ const levelsContent = {
     { level: 6, age: 7, title: "Taphoota Jechaa", emoji: "🎯", color: "from-pink-400 to-red-500", description: "Emoji irraa jecha tilmaami" },
     { level: 7, age: 7, title: "Taphoota Qubee", emoji: "🎮", color: "from-green-400 to-yellow-500", description: "Qubee dhiisan guuti" },
     { level: 8, age: 7, title: "Qaamni Namaa", emoji: "👶", color: "from-orange-400 to-red-500", description: "Qaamni namaa baradhu" },
+    { level: 9, age: 8, title: "Alaabaa Biyyootaa", emoji: "🏁", color: "from-blue-400 to-green-500", description: "Alaabaa biyyoota 100+ baradhu" },
   ]
 };
 
