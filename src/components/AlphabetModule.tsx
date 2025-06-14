@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { speakText, speakLetterOnly } from '@/utils/speechUtils';
@@ -28,8 +27,8 @@ const alphabetData: LetterData[] = [
   { letter: 'B', english: 'Ball', oromo: 'Bishaan', sound: 'bee', oromoSound: 'ba' },
   { letter: 'C', english: 'Cat', oromo: 'Callee', sound: 'see', oromoSound: 'cha' },
   { letter: 'D', english: 'Dog', oromo: 'Dandii', sound: 'dee', oromoSound: 'da' },
-  { letter: 'E', english: 'Elephant', oromo: 'Eelee', sound: 'ee', oromoSound: 'ey' },
-  { letter: 'F', english: 'Fish', oromo: 'Farda', sound: 'eff', oromoSound: 'fey' },
+  { letter: 'E', english: 'Elephant', oromo: 'Eelee', sound: 'ee', oromoSound: 'ay' },
+  { letter: 'F', english: 'Fish', oromo: 'Farda', sound: 'eff', oromoSound: 'fay' },
   { letter: 'G', english: 'Giraffe', oromo: 'Gurraacha', sound: 'jee', oromoSound: 'ga' },
   { letter: 'H', english: 'House', oromo: 'Harree', sound: 'aych', oromoSound: 'ha' },
   { letter: 'I', english: 'Ice cream', oromo: 'Ilkaan', sound: 'eye', oromoSound: 'ee' },
