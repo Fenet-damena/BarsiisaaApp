@@ -28,7 +28,7 @@ const alphabetData: LetterData[] = [
   { letter: 'B', english: 'Ball', oromo: 'Bishaan', sound: 'bee', oromoSound: 'bah' },
   { letter: 'C', english: 'Cat', oromo: 'Callee', sound: 'see', oromoSound: 'chah' },
   { letter: 'D', english: 'Dog', oromo: 'Dandii', sound: 'dee', oromoSound: 'dah' },
-  { letter: 'E', english: 'Elephant', oromo: 'Eelee', sound: 'ee', oromoSound: 'eh' },
+  { letter: 'E', english: 'Elephant', oromo: 'Eelee', sound: 'ee', oromoSound: 'ay' },
   { letter: 'F', english: 'Fish', oromo: 'Farda', sound: 'ef', oromoSound: 'Fah' },
   { letter: 'G', english: 'Giraffe', oromo: 'Gurraacha', sound: 'jee', oromoSound: 'gah' },
   { letter: 'H', english: 'House', oromo: 'Harree', sound: 'aitch', oromoSound: 'hah' },
