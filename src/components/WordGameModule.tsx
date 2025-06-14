@@ -135,13 +135,6 @@ const WordGameModule = ({ onBack, language }: WordGameModuleProps) => {
 
   const currentWord = randomWords[currentWordIndex];
 
-  const speakText = (text: string) => {
-    if ('speechSynthesis' in window) {
-      const utterance = new SpeechSynthesisUtterance(text);
-      speechSynthesis.speak(utterance);
-    }
-  };
-
   const handleNext = () => {
     if (currentWordIndex < randomWords.length - 1) {
       setCurrentWordIndex(currentWordIndex + 1);

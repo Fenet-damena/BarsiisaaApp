@@ -78,13 +78,6 @@ const AnimalSlideModule = ({ onBack, language }: AnimalSlideModuleProps) => {
     return () => clearInterval(interval);
   }, [isAutoPlay, animals.length]);
 
-  const speakText = (text: string) => {
-    if ('speechSynthesis' in window) {
-      const utterance = new SpeechSynthesisUtterance(text);
-      speechSynthesis.speak(utterance);
-    }
-  };
-
   const handleNext = () => {
     setCurrentAnimalIndex((prev) => (prev + 1) % animals.length);
   };
