@@ -8,9 +8,10 @@ import ConversationModule from '@/components/ConversationModule';
 import WordGameModule from '@/components/WordGameModule';
 import AnimalSlideModule from '@/components/AnimalSlideModule';
 import CalendarModule from '@/components/CalendarModule';
+import LetterGameModule from '@/components/LetterGameModule';
 
 const Index = () => {
-  const [currentScreen, setCurrentScreen] = useState<'welcome' | 'levels' | 'alphabet' | 'flashcards' | 'words' | 'conversations' | 'games' | 'animals' | 'calendar'>('welcome');
+  const [currentScreen, setCurrentScreen] = useState<'welcome' | 'levels' | 'alphabet' | 'flashcards' | 'words' | 'conversations' | 'lettergame' | 'animals' | 'calendar'>('welcome');
   const [selectedLevel, setSelectedLevel] = useState<number>(1);
   const [selectedLanguage, setSelectedLanguage] = useState<'english' | 'oromo'>('english');
 
@@ -51,7 +52,7 @@ const Index = () => {
         setCurrentScreen('conversations');
         break;
       case 6:
-        setCurrentScreen('games');
+        setCurrentScreen('lettergame');
         break;
       case 7:
         setCurrentScreen('animals');
@@ -117,8 +118,8 @@ const Index = () => {
           level={selectedLevel}
         />
       )}
-      {currentScreen === 'games' && (
-        <WordGameModule 
+      {currentScreen === 'lettergame' && (
+        <LetterGameModule 
           onBack={handleBackToLevels}
           language={selectedLanguage}
         />
