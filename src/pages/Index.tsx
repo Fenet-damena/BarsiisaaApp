@@ -3,9 +3,11 @@ import { useState } from 'react';
 import WelcomeScreen from '@/components/WelcomeScreen';
 import LevelSelection from '@/components/LevelSelection';
 import FlashcardModule from '@/components/FlashcardModule';
+import AlphabetModule from '@/components/AlphabetModule';
+import ConversationModule from '@/components/ConversationModule';
 
 const Index = () => {
-  const [currentScreen, setCurrentScreen] = useState<'welcome' | 'levels' | 'flashcards'>('welcome');
+  const [currentScreen, setCurrentScreen] = useState<'welcome' | 'levels' | 'flashcards' | 'alphabet' | 'conversations'>('welcome');
   const [selectedLevel, setSelectedLevel] = useState<number>(1);
 
   const handleStartLearning = () => {
@@ -14,7 +16,15 @@ const Index = () => {
 
   const handleLevelSelect = (level: number) => {
     setSelectedLevel(level);
-    setCurrentScreen('flashcards');
+    
+    // Navigate to appropriate module based on level
+    if (level === 1) {
+      setCurrentScreen('alphabet');
+    } else if (level === 4) {
+      setCurrentScreen('conversations');
+    } else {
+      setCurrentScreen('flashcards');
+    }
   };
 
   const handleBackToLevels = () => {
@@ -41,6 +51,12 @@ const Index = () => {
           level={selectedLevel}
           onBack={handleBackToLevels}
         />
+      )}
+      {currentScreen === 'alphabet' && (
+        <AlphabetModule onBack={handleBackToLevels} />
+      )}
+      {currentScreen === 'conversations' && (
+        <ConversationModule onBack={handleBackToLevels} />
       )}
     </div>
   );
