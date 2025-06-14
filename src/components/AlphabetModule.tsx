@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { speakText } from '@/utils/speechUtils';
@@ -20,6 +21,8 @@ type NumberData = {
   english: string;
   oromo: string;
   emoji: string;
+  countableObject: string;
+  countableEmojis: string;
 };
 
 const alphabetData: LetterData[] = [
@@ -52,16 +55,16 @@ const alphabetData: LetterData[] = [
 ];
 
 const numberData: NumberData[] = [
-  { number: '1', english: 'One', oromo: 'Tokko', emoji: '1️⃣' },
-  { number: '2', english: 'Two', oromo: 'Lama', emoji: '2️⃣' },
-  { number: '3', english: 'Three', oromo: 'Sadii', emoji: '3️⃣' },
-  { number: '4', english: 'Four', oromo: 'Afur', emoji: '4️⃣' },
-  { number: '5', english: 'Five', oromo: 'Shan', emoji: '5️⃣' },
-  { number: '6', english: 'Six', oromo: 'Ja\'a', emoji: '6️⃣' },
-  { number: '7', english: 'Seven', oromo: 'Torba', emoji: '7️⃣' },
-  { number: '8', english: 'Eight', oromo: 'Saddeet', emoji: '8️⃣' },
-  { number: '9', english: 'Nine', oromo: 'Sagal', emoji: '9️⃣' },
-  { number: '10', english: 'Ten', oromo: 'Kudhan', emoji: '🔟' },
+  { number: '1', english: 'One', oromo: 'Tokko', emoji: '1️⃣', countableObject: 'Cat', countableEmojis: '🐱' },
+  { number: '2', english: 'Two', oromo: 'Lama', emoji: '2️⃣', countableObject: 'Dogs', countableEmojis: '🐶🐶' },
+  { number: '3', english: 'Three', oromo: 'Sadii', emoji: '3️⃣', countableObject: 'Birds', countableEmojis: '🐦🐦🐦' },
+  { number: '4', english: 'Four', oromo: 'Afur', emoji: '4️⃣', countableObject: 'Fish', countableEmojis: '🐟🐟🐟🐟' },
+  { number: '5', english: 'Five', oromo: 'Shan', emoji: '5️⃣', countableObject: 'Stars', countableEmojis: '⭐⭐⭐⭐⭐' },
+  { number: '6', english: 'Six', oromo: 'Ja\'a', emoji: '6️⃣', countableObject: 'Flowers', countableEmojis: '🌸🌸🌸🌸🌸🌸' },
+  { number: '7', english: 'Seven', oromo: 'Torba', emoji: '7️⃣', countableObject: 'Apples', countableEmojis: '🍎🍎🍎🍎🍎🍎🍎' },
+  { number: '8', english: 'Eight', oromo: 'Saddeet', emoji: '8️⃣', countableObject: 'Balls', countableEmojis: '⚽⚽⚽⚽⚽⚽⚽⚽' },
+  { number: '9', english: 'Nine', oromo: 'Sagal', emoji: '9️⃣', countableObject: 'Hearts', countableEmojis: '❤️❤️❤️❤️❤️❤️❤️❤️❤️' },
+  { number: '10', english: 'Ten', oromo: 'Kudhan', emoji: '🔟', countableObject: 'Fingers', countableEmojis: '👆👆👆👆👆👆👆👆👆👆' },
 ];
 
 const AlphabetModule = ({ onBack, language }: AlphabetModuleProps) => {
@@ -201,15 +204,23 @@ const AlphabetModule = ({ onBack, language }: AlphabetModuleProps) => {
         {/* Main Display */}
         <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-2xl mb-8">
           <div className="text-center">
-            {/* Large Letter Display */}
+            {/* Large Letter/Number Display */}
             <div className="text-[12rem] font-bold text-gray-800 mb-6 leading-none">
               {getMainCharacter()}
             </div>
             
-            {/* For numbers only, show emoji */}
+            {/* For numbers only, show emoji and countable objects */}
             {showNumbers && (
-              <div className="text-8xl mb-6 animate-bounce">
-                {(currentItem as NumberData).emoji}
+              <div className="mb-6">
+                <div className="text-8xl mb-4 animate-bounce">
+                  {(currentItem as NumberData).emoji}
+                </div>
+                <div className="text-6xl mb-4 leading-relaxed">
+                  {(currentItem as NumberData).countableEmojis}
+                </div>
+                <div className="text-2xl text-gray-600 mb-4">
+                  {(currentItem as NumberData).countableObject}
+                </div>
               </div>
             )}
             
