@@ -8,9 +8,10 @@ import WordGameModule from '@/components/WordGameModule';
 import AnimalSlideModule from '@/components/AnimalSlideModule';
 import CalendarModule from '@/components/CalendarModule';
 import LetterGameModule from '@/components/LetterGameModule';
+import BodyPartsModule from '@/components/BodyPartsModule';
 
 const Index = () => {
-  const [currentScreen, setCurrentScreen] = useState<'welcome' | 'levels' | 'alphabet' | 'flashcards' | 'words' | 'conversations' | 'lettergame' | 'animals' | 'calendar'>('welcome');
+  const [currentScreen, setCurrentScreen] = useState<'welcome' | 'levels' | 'alphabet' | 'flashcards' | 'words' | 'conversations' | 'lettergame' | 'animals' | 'calendar' | 'bodyparts'>('welcome');
   const [selectedLevel, setSelectedLevel] = useState<number>(1);
   const [selectedLanguage, setSelectedLanguage] = useState<'english' | 'oromo'>('english');
 
@@ -57,7 +58,7 @@ const Index = () => {
         setCurrentScreen('lettergame');
         break;
       case 8:
-        setCurrentScreen('animals');
+        setCurrentScreen('bodyparts');
         break;
       default:
         setCurrentScreen('alphabet');
@@ -128,6 +129,12 @@ const Index = () => {
       )}
       {currentScreen === 'animals' && (
         <AnimalSlideModule 
+          onBack={handleBackToLevels}
+          language={selectedLanguage}
+        />
+      )}
+      {currentScreen === 'bodyparts' && (
+        <BodyPartsModule 
           onBack={handleBackToLevels}
           language={selectedLanguage}
         />
