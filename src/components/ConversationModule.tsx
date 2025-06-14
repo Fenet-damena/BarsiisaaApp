@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { speakText } from '@/utils/speechUtils';
@@ -50,10 +49,10 @@ const conversationData = {
         { speaker: "right", english: "How are you?", oromo: "Akkam jirta?", avatar: "👦", name: "Bona", gender: "male", pronunciation: "Ah-kahm jeer-tah" },
         { speaker: "left", english: "I am fine! And you?", oromo: "Nagaa koo dha! Ati akkami?", avatar: "👧", name: "Ayantu", gender: "female", pronunciation: "Nah-gaah koh dah! Ah-tee ah-kah-mee" },
         { speaker: "right", english: "Fine, thanks to God.", oromo: "Nagaa, galata Gooftaa.", avatar: "👦", name: "Bona", gender: "male", pronunciation: "Nah-gaah, gah-lah-tah Gohf-tah" },
-        { speaker: "right", english: "My name is Bona. What is your name?", oromo: "Boonan jedhama. Maqaan kee hoo eenyuu?", avatar: "👦", name: "Bona", gender: "male", pronunciation: "Boh-nahn jeh-dhah-mah. Mah-qaan keh hoo een-yoo" },
-        { speaker: "left", english: "My name is Ayantu.", oromo: "Ayyaantuu jedhama.", avatar: "👧", name: "Ayantu", gender: "female", pronunciation: "Ah-yahn-too jeh-dhah-mah" },
         { speaker: "right", english: "Nice to meet you.", oromo: "Si baruu kootti gammadeera.", avatar: "👦", name: "Bona", gender: "male", pronunciation: "See bah-roo koh-tee gahm-mah-deh-rah" },
         { speaker: "left", english: "Nice to meet you too.", oromo: "Anis si baruuf kootti gammadeera.", avatar: "👧", name: "Ayantu", gender: "female", pronunciation: "Ah-nees see bah-roof koh-tee gahm-mah-deh-rah" },
+        { speaker: "right", english: "My name is Bona. What is your name?", oromo: "Boonan jedhama. Maqaan kee hoo eenyuu?", avatar: "👦", name: "Bona", gender: "male", pronunciation: "Boh-nahn jeh-dhah-mah. Mah-qaan keh hoo een-yoo" },
+        { speaker: "left", english: "My name is Ayantu.", oromo: "Ayyaantuu jedhama.", avatar: "👧", name: "Ayantu", gender: "female", pronunciation: "Ah-yahn-too jeh-dhah-mah" },
       ]
     }
   ],
@@ -97,10 +96,10 @@ const conversationData = {
         { speaker: "right", english: "How are you?", oromo: "Akkam jirta?", avatar: "👦", name: "Boonaa", gender: "male", pronunciation: "Ah-kahm jeer-tah" },
         { speaker: "left", english: "I am fine! And you?", oromo: "Nagaa koo dha! Ati akkami?", avatar: "👧", name: "Ayyaantuu", gender: "female", pronunciation: "Nah-gaah koh dah! Ah-tee ah-kah-mee" },
         { speaker: "right", english: "Fine, thanks to God.", oromo: "Nagaa, galata Gooftaa.", avatar: "👦", name: "Boonaa", gender: "male", pronunciation: "Nah-gaah, gah-lah-tah Gohf-tah" },
-        { speaker: "right", english: "My name is Bona. What is your name?", oromo: "Boonan jedhama. Maqaan kee hoo eenyuu?", avatar: "👦", name: "Boonaa", gender: "male", pronunciation: "Boh-nahn jeh-dhah-mah. Mah-qaan keh hoo een-yoo" },
-        { speaker: "left", english: "My name is Ayantu.", oromo: "Ayyaantuu jedhama.", avatar: "👧", name: "Ayyaantuu", gender: "female", pronunciation: "Ah-yahn-too jeh-dhah-mah" },
         { speaker: "right", english: "Nice to meet you.", oromo: "Si baruu kootti gammadeera.", avatar: "👦", name: "Boonaa", gender: "male", pronunciation: "See bah-roo koh-tee gahm-mah-deh-rah" },
         { speaker: "left", english: "Nice to meet you too.", oromo: "Anis si baruuf kootti gammadeera.", avatar: "👧", name: "Ayyaantuu", gender: "female", pronunciation: "Ah-nees see bah-roof koh-tee gahm-mah-deh-rah" },
+        { speaker: "right", english: "My name is Bona. What is your name?", oromo: "Boonan jedhama. Maqaan kee hoo eenyuu?", avatar: "👦", name: "Boonaa", gender: "male", pronunciation: "Boh-nahn jeh-dhah-mah. Mah-qaan keh hoo een-yoo" },
+        { speaker: "left", english: "My name is Ayantu.", oromo: "Ayyaantuu jedhama.", avatar: "👧", name: "Ayyaantuu", gender: "female", pronunciation: "Ah-yahn-too jeh-dhah-mah" },
       ]
     }
   ]
@@ -170,13 +169,19 @@ const ConversationModule = ({ onBack, language, level }: ConversationModuleProps
   const currentConversation = conversations[currentConversationIndex];
   const currentLine = currentConversation.conversations[currentLineIndex];
 
+  const getTextToSpeak = (line: { english: string; oromo: string; pronunciation?: string }) => {
+    if (language === 'oromo' && line.pronunciation) {
+      return line.pronunciation;
+    }
+    return language === 'english' ? line.english : line.oromo;
+  };
+
   const playConversation = async () => {
     setIsPlaying(true);
     for (let i = 0; i < currentConversation.conversations.length; i++) {
       setCurrentLineIndex(i);
       const line = currentConversation.conversations[i];
-      const text = language === 'english' ? line.english : line.oromo;
-      await speakText(text, language, line.gender as 'female' | 'male' | undefined);
+      await speakText(getTextToSpeak(line), language, line.gender as 'female' | 'male' | undefined);
     }
     setIsPlaying(false);
   };
@@ -319,7 +324,7 @@ const ConversationModule = ({ onBack, language, level }: ConversationModuleProps
           </Button>
           
           <Button
-            onClick={() => speakText(language === 'english' ? currentLine.english : currentLine.oromo, language, currentLine.gender as 'female' | 'male' | undefined)}
+            onClick={() => speakText(getTextToSpeak(currentLine), language, currentLine.gender as 'female' | 'male' | undefined)}
             className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full h-auto"
           >
             {language === 'oromo' && currentLine.pronunciation ? (
