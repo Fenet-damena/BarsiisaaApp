@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { speakText } from '@/utils/speechUtils';
@@ -13,20 +14,20 @@ const greetingData = {
       id: 1,
       title: "First Meeting",
       conversations: [
-        { speaker: "left", english: "Hello! What's your name?", oromo: "Akkam! Maqaan kee eenyu?", avatar: "👦", name: "Alex", gender: "male" },
-        { speaker: "right", english: "Hi! My name is Sara.", oromo: "Nagaatti! Maqaan koo Sara.", avatar: "👧", name: "Sara", gender: "female" },
-        { speaker: "left", english: "Nice to meet you, Sara!", oromo: "Si arguuf natti tola, Sara!", avatar: "👦", name: "Alex", gender: "male" },
-        { speaker: "right", english: "Nice to meet you too!", oromo: "Anis si arguuf natti tola!", avatar: "👧", name: "Sara", gender: "female" },
+        { speaker: "left", english: "Hello! What's your name?", oromo: "Akkam! Maqaan kee eenyu?", avatar: "👦", name: "Bona", gender: "male" },
+        { speaker: "right", english: "Hi! My name is Ayantu.", oromo: "Nagaatti! Maqaan koo Ayantu.", avatar: "👧", name: "Ayantu", gender: "female" },
+        { speaker: "left", english: "Nice to meet you, Ayantu!", oromo: "Si arguuf natti tola, Ayantu!", avatar: "👦", name: "Bona", gender: "male" },
+        { speaker: "right", english: "Nice to meet you too!", oromo: "Anis si arguuf natti tola!", avatar: "👧", name: "Ayantu", gender: "female" },
       ]
     },
     {
       id: 2,
       title: "Morning Greetings",
       conversations: [
-        { speaker: "left", english: "Good morning!", oromo: "Nagaa ganama!", avatar: "👨", name: "John", gender: "male" },
-        { speaker: "right", english: "Good morning! How are you?", oromo: "Nagaa ganama! Akkam jirta?", avatar: "👩", name: "Maya", gender: "female" },
-        { speaker: "left", english: "I am fine, thank you.", oromo: "Ani nagaan jira, galatoomaa.", avatar: "👨", name: "John", gender: "male" },
-        { speaker: "right", english: "Have a great day!", oromo: "Guyyaa gaarii qabaadhu!", avatar: "👩", name: "Maya", gender: "female" },
+        { speaker: "left", english: "Good morning!", oromo: "Nagaa ganama!", avatar: "👨", name: "Gadaa", gender: "male" },
+        { speaker: "right", english: "Good morning! How are you?", oromo: "Nagaa ganama! Akkam jirta?", avatar: "👩", name: "Chaltu", gender: "female" },
+        { speaker: "left", english: "I am fine, thank you.", oromo: "Ani nagaan jira, galatoomaa.", avatar: "👨", name: "Gadaa", gender: "male" },
+        { speaker: "right", english: "Have a great day!", oromo: "Guyyaa gaarii qabaadhu!", avatar: "👩", name: "Chaltu", gender: "female" },
       ]
     }
   ],
@@ -35,20 +36,20 @@ const greetingData = {
       id: 1,
       title: "Wal Argannaa Jalqabaa",
       conversations: [
-        { speaker: "left", english: "Hello! What's your name?", oromo: "Akkam! Maqaan kee eenyu?", avatar: "👦", name: "Alex", gender: "male" },
-        { speaker: "right", english: "Hi! My name is Sara.", oromo: "Nagaatti! Maqaan koo Sara.", avatar: "👧", name: "Sara", gender: "female" },
-        { speaker: "left", english: "Nice to meet you, Sara!", oromo: "Si arguuf natti tola, Sara!", avatar: "👦", name: "Alex", gender: "male" },
-        { speaker: "right", english: "Nice to meet you too!", oromo: "Anis si arguuf natti tola!", avatar: "👧", name: "Sara", gender: "female" },
+        { speaker: "left", english: "Hello! What's your name?", oromo: "Akkam! Maqaan kee eenyu?", avatar: "👦", name: "Bona", gender: "male" },
+        { speaker: "right", english: "Hi! My name is Ayantu.", oromo: "Nagaatti! Maqaan koo Ayantu.", avatar: "👧", name: "Ayantu", gender: "female" },
+        { speaker: "left", english: "Nice to meet you, Ayantu!", oromo: "Si arguuf natti tola, Ayantu!", avatar: "👦", name: "Bona", gender: "male" },
+        { speaker: "right", english: "Nice to meet you too!", oromo: "Anis si arguuf natti tola!", avatar: "👧", name: "Ayantu", gender: "female" },
       ]
     },
     {
       id: 2,
       title: "Nagaa Ganama",
       conversations: [
-        { speaker: "left", english: "Good morning!", oromo: "Nagaa ganama!", avatar: "👨", name: "John", gender: "male" },
-        { speaker: "right", english: "Good morning! How are you?", oromo: "Nagaa ganama! Akkam jirta?", avatar: "👩", name: "Maya", gender: "female" },
-        { speaker: "left", english: "I am fine, thank you.", oromo: "Ani nagaan jira, galatoomaa.", avatar: "👨", name: "John", gender: "male" },
-        { speaker: "right", english: "Have a great day!", oromo: "Guyyaa gaarii qabaadhu!", avatar: "👩", name: "Maya", gender: "female" },
+        { speaker: "left", english: "Good morning!", oromo: "Nagaa ganama!", avatar: "👨", name: "Gadaa", gender: "male" },
+        { speaker: "right", english: "Good morning! How are you?", oromo: "Nagaa ganama! Akkam jirta?", avatar: "👩", name: "Chaltu", gender: "female" },
+        { speaker: "left", english: "I am fine, thank you.", oromo: "Ani nagaan jira, galatoomaa.", avatar: "👨", name: "Gadaa", gender: "male" },
+        { speaker: "right", english: "Have a great day!", oromo: "Guyyaa gaarii qabaadhu!", avatar: "👩", name: "Chaltu", gender: "female" },
       ]
     }
   ]

@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { speakText } from '@/utils/speechUtils';
@@ -46,10 +45,10 @@ const conversationData = {
       id: 5,
       title: "Greeting for Kids",
       conversations: [
-        { speaker: "left", english: "How are you?", oromo: "Akkam jirta? (Ah-kahm jeer-tah?)", avatar: "👧", name: "Ayantu", gender: "female" },
-        { speaker: "right", english: "I'm fine, thanks to God. And you?", oromo: "Nagaa, galata Gooftaa. Ati akkami? (Nah-gaah, gah-lah-tah Gohf-tah. Ah-tee ah-kah-mee?)", avatar: "👦", name: "Bona", gender: "male" },
-        { speaker: "left", english: "I am fine!", oromo: "Nagaa koo dha! (Nah-gaah koh dah!)", avatar: "👧", name: "Ayantu", gender: "female" },
-        { speaker: "right", english: "Nice to meet you.", oromo: "Si baruu kootti gammadeera. (See bah-roo koh-tee gahm-mah-deh-rah.)", avatar: "👦", name: "Bona", gender: "male" },
+        { speaker: "left", english: "How are you?", oromo: "Akkam jirta?", avatar: "👧", name: "Ayantu", gender: "female" },
+        { speaker: "right", english: "I'm fine, thanks to God. And you?", oromo: "Nagaa, galata Gooftaa. Ati akkami?", avatar: "👦", name: "Bona", gender: "male" },
+        { speaker: "left", english: "I am fine!", oromo: "Nagaa koo dha!", avatar: "👧", name: "Ayantu", gender: "female" },
+        { speaker: "right", english: "Nice to meet you.", oromo: "Si baruu kootti gammadeera.", avatar: "👦", name: "Bona", gender: "male" },
         { speaker: "left", english: "Nice to meet you too.", oromo: "Anis si baruuf kootti gammadeera. (Ah-nees see bah-roof koh-tee gahm-mah-deh-rah.)", avatar: "👧", name: "Ayantu", gender: "female" },
       ]
     }
@@ -91,10 +90,10 @@ const conversationData = {
       id: 5,
       title: "Nagaa Gaafachuu Daa'immanii",
       conversations: [
-        { speaker: "left", english: "How are you?", oromo: "Akkam jirta? (Ah-kahm jeer-tah?)", avatar: "👧", name: "Ayantu", gender: "female" },
-        { speaker: "right", english: "I'm fine, thanks to God. And you?", oromo: "Nagaa, galata Gooftaa. Ati akkami? (Nah-gaah, gah-lah-tah Gohf-tah. Ah-tee ah-kah-mee?)", avatar: "👦", name: "Bona", gender: "male" },
-        { speaker: "left", english: "I am fine!", oromo: "Nagaa koo dha! (Nah-gaah koh dah!)", avatar: "👧", name: "Ayantu", gender: "female" },
-        { speaker: "right", english: "Nice to meet you.", oromo: "Si baruu kootti gammadeera. (See bah-roo koh-tee gahm-mah-deh-rah.)", avatar: "👦", name: "Bona", gender: "male" },
+        { speaker: "left", english: "How are you?", oromo: "Akkam jirta?", avatar: "👧", name: "Ayantu", gender: "female" },
+        { speaker: "right", english: "I'm fine, thanks to God. And you?", oromo: "Nagaa, galata Gooftaa. Ati akkami?", avatar: "👦", name: "Bona", gender: "male" },
+        { speaker: "left", english: "I am fine!", oromo: "Nagaa koo dha!", avatar: "👧", name: "Ayantu", gender: "female" },
+        { speaker: "right", english: "Nice to meet you.", oromo: "Si baruu kootti gammadeera.", avatar: "👦", name: "Bona", gender: "male" },
         { speaker: "left", english: "Nice to meet you too.", oromo: "Anis si baruuf kootti gammadeera. (Ah-nees see bah-roof koh-tee gahm-mah-deh-rah.)", avatar: "👧", name: "Ayantu", gender: "female" },
       ]
     }
