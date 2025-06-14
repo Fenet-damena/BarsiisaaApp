@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { speakText } from '@/utils/speechUtils';
@@ -9,28 +10,38 @@ interface AnimalSlideModuleProps {
 
 const animalData = {
   english: [
+    { english: "Dog", oromo: "Saree", emoji: "🐶", sound: "Woof!" },
+    { english: "Cat", oromo: "Adurree", emoji: "🐱", sound: "Meow!" },
+    { english: "Horse", oromo: "Farda", emoji: "🐴", sound: "Neigh!" },
+    { english: "Donkey", oromo: "Harree", emoji: "🫏", sound: "Hee-haw!" },
+    { english: "Sheep", oromo: "Hoolaa", emoji: "🐑", sound: "Baa!" },
+    { english: "Goat", oromo: "Re'ee", emoji: "🐐", sound: "Maa!" },
+    { english: "Cow", oromo: "Sa'a", emoji: "🐄", sound: "Moo!" },
+    { english: "Camel", oromo: "Gaala", emoji: "🐪", sound: "Grunt!" },
     { english: "Lion", oromo: "Leenca", emoji: "🦁", sound: "Roar!" },
-    { english: "Elephant", oromo: "Carbaa", emoji: "🐘", sound: "Trumpet!" },
-    { english: "Monkey", oromo: "Jeelbii", emoji: "🐵", sound: "Ooh ooh!" },
-    { english: "Tiger", oromo: "Qeerransaa", emoji: "🐅", sound: "Growl!" },
-    { english: "Giraffe", oromo: "Jiraafii", emoji: "🦒", sound: "Silent!" },
-    { english: "Zebra", oromo: "Zebraa", emoji: "🦓", sound: "Neigh!" },
-    { english: "Hippo", oromo: "Roobii", emoji: "🦛", sound: "Grunt!" },
-    { english: "Crocodile", oromo: "Aganee", emoji: "🐊", sound: "Snap!" },
-    { english: "Penguin", oromo: "Penguinii", emoji: "🐧", sound: "Squawk!" },
-    { english: "Panda", oromo: "Paandaa", emoji: "🐼", sound: "Chirp!" },
+    { english: "Tiger", oromo: "Qeerransa", emoji: "🐅", sound: "Growl!" },
+    { english: "Monkey", oromo: "Jaldeessa", emoji: "🐒", sound: "Ooh ooh!" },
+    { english: "Elephant", oromo: "Arba", emoji: "🐘", sound: "Trumpet!" },
+    { english: "Deer", oromo: "Bosonuu", emoji: "🦌", sound: "Bellow!" },
+    { english: "Wolf", oromo: "Yeeyyii", emoji: "🐺", sound: "Howl!" },
+    { english: "Snake", oromo: "Bofa", emoji: "🐍", sound: "Hiss!" },
   ],
   oromo: [
+    { english: "Dog", oromo: "Saree", emoji: "🐶", sound: "Wuuf!" },
+    { english: "Cat", oromo: "Adurree", emoji: "🐱", sound: "Miyawu!" },
+    { english: "Horse", oromo: "Farda", emoji: "🐴", sound: "Hiihii!" },
+    { english: "Donkey", oromo: "Harree", emoji: "🫏", sound: "Hii-hawu!" },
+    { english: "Sheep", oromo: "Hoolaa", emoji: "🐑", sound: "Baa!" },
+    { english: "Goat", oromo: "Re'ee", emoji: "🐐", sound: "Maa!" },
+    { english: "Cow", oromo: "Sa'a", emoji: "🐄", sound: "Muu!" },
+    { english: "Camel", oromo: "Gaala", emoji: "🐪", sound: "Huufuu!" },
     { english: "Lion", oromo: "Leenca", emoji: "🦁", sound: "Aaduu!" },
-    { english: "Elephant", oromo: "Carbaa", emoji: "🐘", sound: "Fuufuu!" },
-    { english: "Monkey", oromo: "Jeelbii", emoji: "🐵", sound: "Uu uu!" },
-    { english: "Tiger", oromo: "Qeerransaa", emoji: "🐅", sound: "Gurruu!" },
-    { english: "Giraffe", oromo: "Jiraafii", emoji: "🦒", sound: "Caliistu!" },
-    { english: "Zebra", oromo: "Zebraa", emoji: "🦓", sound: "Hiihii!" },
-    { english: "Hippo", oromo: "Roobii", emoji: "🦛", sound: "Huufuu!" },
-    { english: "Crocodile", oromo: "Aganee", emoji: "🐊", sound: "Qabuu!" },
-    { english: "Penguin", oromo: "Penguinii", emoji: "🐧", sound: "Ciicii!" },
-    { english: "Panda", oromo: "Paandaa", emoji: "🐼", sound: "Siixuu!" },
+    { english: "Tiger", oromo: "Qeerransa", emoji: "🐅", sound: "Gurruu!" },
+    { english: "Monkey", oromo: "Jaldeessa", emoji: "🐒", sound: "Uu uu!" },
+    { english: "Elephant", oromo: "Arba", emoji: "🐘", sound: "Fuufuu!" },
+    { english: "Deer", oromo: "Bosonuu", emoji: "🦌", sound: "Gaaduu!" },
+    { english: "Wolf", oromo: "Yeeyyii", emoji: "🐺", sound: "Yee'uu!" },
+    { english: "Snake", oromo: "Bofa", emoji: "🐍", sound: "Sii'suu!" },
   ]
 };
 
