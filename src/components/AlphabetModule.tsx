@@ -7,86 +7,88 @@ interface AlphabetModuleProps {
   language: 'english' | 'oromo';
 }
 
-const alphabetData = {
-  english: [
-    { letter: "A", english: "Apple", oromo: "Poomii", emoji: "🍎", sound: "/a/" },
-    { letter: "B", english: "Ball", oromo: "Kubbaa", emoji: "⚽", sound: "/b/" },
-    { letter: "C", english: "Cat", oromo: "Adurree", emoji: "🐱", sound: "/k/" },
-    { letter: "D", english: "Dog", oromo: "Saree", emoji: "🐶", sound: "/d/" },
-    { letter: "E", english: "Elephant", oromo: "Carbaa", emoji: "🐘", sound: "/e/" },
-    { letter: "F", english: "Fish", oromo: "Qurxummii", emoji: "🐟", sound: "/f/" },
-    { letter: "G", english: "Goat", oromo: "Re'ee", emoji: "🐐", sound: "/g/" },
-    { letter: "H", english: "House", oromo: "Mana", emoji: "🏠", sound: "/h/" },
-  ],
-  oromo: [
-    { letter: "A", english: "Apple", oromo: "Poomii", emoji: "🍎", sound: "/a/" },
-    { letter: "B", english: "Ball", oromo: "Kubbaa", emoji: "⚽", sound: "/b/" },
-    { letter: "C", english: "Cat", oromo: "Adurree", emoji: "🐱", sound: "/k/" },
-    { letter: "D", english: "Dog", oromo: "Saree", emoji: "🐶", sound: "/d/" },
-    { letter: "E", english: "Elephant", oromo: "Carbaa", emoji: "🐘", sound: "/e/" },
-    { letter: "F", english: "Fish", oromo: "Qurxummii", emoji: "🐟", sound: "/f/" },
-    { letter: "G", english: "Goat", oromo: "Re'ee", emoji: "🐐", sound: "/g/" },
-    { letter: "H", english: "House", oromo: "Mana", emoji: "🏠", sound: "/h/" },
-  ]
+type LetterData = {
+  letter: string;
+  english: string;
+  oromo: string;
+  emoji: string;
+  sound: string;
 };
 
-const numbers = {
-  english: [
-    { number: "1", english: "One", oromo: "Tokko", emoji: "1️⃣" },
-    { number: "2", english: "Two", oromo: "Lama", emoji: "2️⃣" },
-    { number: "3", english: "Three", oromo: "Sadii", emoji: "3️⃣" },
-    { number: "4", english: "Four", oromo: "Afur", emoji: "4️⃣" },
-    { number: "5", english: "Five", oromo: "Shan", emoji: "5️⃣" },
-    { number: "6", english: "Six", oromo: "Ja'a", emoji: "6️⃣" },
-    { number: "7", english: "Seven", oromo: "Torba", emoji: "7️⃣" },
-    { number: "8", english: "Eight", oromo: "Saddeet", emoji: "8️⃣" },
-    { number: "9", english: "Nine", oromo: "Sagal", emoji: "9️⃣" },
-    { number: "10", english: "Ten", oromo: "Kudhan", emoji: "🔟" },
-  ],
-  oromo: [
-    { number: "1", english: "One", oromo: "Tokko", emoji: "1️⃣" },
-    { number: "2", english: "Two", oromo: "Lama", emoji: "2️⃣" },
-    { number: "3", english: "Three", oromo: "Sadii", emoji: "3️⃣" },
-    { number: "4", english: "Four", oromo: "Afur", emoji: "4️⃣" },
-    { number: "5", english: "Five", oromo: "Shan", emoji: "5️⃣" },
-    { number: "6", english: "Six", oromo: "Ja'a", emoji: "6️⃣" },
-    { number: "7", english: "Seven", oromo: "Torba", emoji: "7️⃣" },
-    { number: "8", english: "Eight", oromo: "Saddeet", emoji: "8️⃣" },
-    { number: "9", english: "Nine", oromo: "Sagal", emoji: "9️⃣" },
-    { number: "10", english: "Ten", oromo: "Kudhan", emoji: "🔟" },
-  ]
+type NumberData = {
+  number: string;
+  english: string;
+  oromo: string;
+  emoji: string;
 };
+
+const alphabetData: LetterData[] = [
+  { letter: 'A', english: 'Apple', oromo: 'Poomii', emoji: '🍎', sound: 'ay' },
+  { letter: 'B', english: 'Ball', oromo: 'Kubbaa', emoji: '⚽', sound: 'bee' },
+  { letter: 'C', english: 'Cat', oromo: 'Adurree', emoji: '🐱', sound: 'see' },
+  { letter: 'D', english: 'Dog', oromo: 'Saree', emoji: '🐕', sound: 'dee' },
+  { letter: 'E', english: 'Elephant', oromo: 'Arbaa', emoji: '🐘', sound: 'ee' },
+  { letter: 'F', english: 'Fish', oromo: 'Qurxummii', emoji: '🐟', sound: 'eff' },
+  { letter: 'G', english: 'Giraffe', oromo: 'Dhaldhala', emoji: '🦒', sound: 'jee' },
+  { letter: 'H', english: 'House', oromo: 'Mana', emoji: '🏠', sound: 'aych' },
+  { letter: 'I', english: 'Ice cream', oromo: 'Qabbana', emoji: '🍦', sound: 'eye' },
+  { letter: 'J', english: 'Juice', oromo: 'Dhangala\'aa', emoji: '🧃', sound: 'jay' },
+  { letter: 'K', english: 'Kite', oromo: 'Konkolaataa', emoji: '🪁', sound: 'kay' },
+  { letter: 'L', english: 'Lion', oromo: 'Leenca', emoji: '🦁', sound: 'ell' },
+  { letter: 'M', english: 'Moon', oromo: 'Ji\'a', emoji: '🌙', sound: 'em' },
+  { letter: 'N', english: 'Nest', oromo: 'Mana Simbirroo', emoji: '🪺', sound: 'en' },
+  { letter: 'O', english: 'Orange', oromo: 'Burtukaana', emoji: '🍊', sound: 'oh' },
+  { letter: 'P', english: 'Pencil', oromo: 'Qalama', emoji: '✏️', sound: 'pee' },
+  { letter: 'Q', english: 'Queen', oromo: 'Mootittii', emoji: '👸', sound: 'kyoo' },
+  { letter: 'R', english: 'Rainbow', oromo: 'Sabbata Waaqaa', emoji: '🌈', sound: 'ar' },
+  { letter: 'S', english: 'Sun', oromo: 'Aduu', emoji: '☀️', sound: 'ess' },
+  { letter: 'T', english: 'Tree', oromo: 'Muka', emoji: '🌳', sound: 'tee' },
+  { letter: 'U', english: 'Umbrella', oromo: 'Gaaddidduu', emoji: '☂️', sound: 'yoo' },
+  { letter: 'V', english: 'Violin', oromo: 'Viiyooliin', emoji: '🎻', sound: 'vee' },
+  { letter: 'W', english: 'Water', oromo: 'Bishaan', emoji: '💧', sound: 'double-yoo' },
+  { letter: 'X', english: 'Xylophone', oromo: 'Xaayiloofoon', emoji: '🎵', sound: 'eks' },
+  { letter: 'Y', english: 'Yellow', oromo: 'Keelloo', emoji: '💛', sound: 'why' },
+  { letter: 'Z', english: 'Zebra', oromo: 'Zebraa', emoji: '🦓', sound: 'zee' },
+];
+
+const numberData: NumberData[] = [
+  { number: '1', english: 'One', oromo: 'Tokko', emoji: '1️⃣' },
+  { number: '2', english: 'Two', oromo: 'Lama', emoji: '2️⃣' },
+  { number: '3', english: 'Three', oromo: 'Sadii', emoji: '3️⃣' },
+  { number: '4', english: 'Four', oromo: 'Afur', emoji: '4️⃣' },
+  { number: '5', english: 'Five', oromo: 'Shan', emoji: '5️⃣' },
+  { number: '6', english: 'Six', oromo: 'Ja\'a', emoji: '6️⃣' },
+  { number: '7', english: 'Seven', oromo: 'Torba', emoji: '7️⃣' },
+  { number: '8', english: 'Eight', oromo: 'Saddeet', emoji: '8️⃣' },
+  { number: '9', english: 'Nine', oromo: 'Sagal', emoji: '9️⃣' },
+  { number: '10', english: 'Ten', oromo: 'Kudhan', emoji: '🔟' },
+];
 
 const AlphabetModule = ({ onBack, language }: AlphabetModuleProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [showWord, setShowWord] = useState(false);
-  const [isNumbers, setIsNumbers] = useState(false);
+  const [showNumbers, setShowNumbers] = useState(false);
 
-  const currentData = isNumbers ? numbers[language] : alphabetData[language];
+  const currentData = showNumbers ? numberData : alphabetData;
   const currentItem = currentData[currentIndex];
 
   const uiContent = {
     english: {
       back: "Back",
-      title: isNumbers ? "Learn Numbers!" : "Learn the Alphabet!",
-      alphabet: "Alphabet",
+      title: "Learn Alphabet & Numbers!",
+      letters: "Letters",
       numbers: "Numbers",
-      tapToSee: "Tap to see word!",
       listen: "Listen",
       previous: "Previous",
-      next: "Next",
-      progress: "Progress:"
+      next: "Next"
     },
     oromo: {
       back: "Duubatti",
-      title: isNumbers ? "Lakkoofsota Baradhu!" : "Qubee Baradhu!",
-      alphabet: "Qubee",
-      numbers: "Lakkoofsa",
-      tapToSee: "Jecha ilaaluuf dhiibi!",
+      title: "Qubee fi Lakkoofsota Baradhu!",
+      letters: "Qubeelee",
+      numbers: "Lakkoofsota",
       listen: "Dhaggeeffadhu",
-      previous: "Duraa",
-      next: "Itti aansu",
-      progress: "Adeemsa:"
+      previous: "Dura",
+      next: "Itti Aansu"
     }
   };
 
@@ -102,14 +104,43 @@ const AlphabetModule = ({ onBack, language }: AlphabetModuleProps) => {
   const handleNext = () => {
     if (currentIndex < currentData.length - 1) {
       setCurrentIndex(currentIndex + 1);
-      setShowWord(false);
     }
   };
 
   const handlePrevious = () => {
     if (currentIndex > 0) {
       setCurrentIndex(currentIndex - 1);
-      setShowWord(false);
+    }
+  };
+
+  const toggleMode = () => {
+    setShowNumbers(!showNumbers);
+    setCurrentIndex(0);
+  };
+
+  const getDisplayText = () => {
+    if (showNumbers) {
+      const item = currentItem as NumberData;
+      return language === 'english' ? item.english : item.oromo;
+    } else {
+      const item = currentItem as LetterData;
+      return language === 'english' ? item.english : item.oromo;
+    }
+  };
+
+  const getMainCharacter = () => {
+    if (showNumbers) {
+      return (currentItem as NumberData).number;
+    } else {
+      return (currentItem as LetterData).letter;
+    }
+  };
+
+  const getCurrentSound = () => {
+    if (showNumbers) {
+      return getDisplayText();
+    } else {
+      return (currentItem as LetterData).sound;
     }
   };
 
@@ -117,13 +148,14 @@ const AlphabetModule = ({ onBack, language }: AlphabetModuleProps) => {
     <div className="min-h-screen p-6 relative overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-16 w-20 h-20 bg-yellow-300 rounded-full animate-bounce opacity-40"></div>
-        <div className="absolute top-40 right-20 w-16 h-16 bg-pink-300 rounded-full animate-pulse opacity-40"></div>
-        <div className="absolute bottom-32 left-20 w-24 h-24 bg-blue-300 rounded-full animate-bounce delay-300 opacity-40"></div>
+        <div className="absolute top-20 left-16 w-32 h-32 bg-gradient-to-r from-red-300 to-pink-300 rounded-full animate-pulse opacity-30"></div>
+        <div className="absolute top-40 right-20 w-24 h-24 bg-gradient-to-r from-blue-300 to-green-300 rounded-full animate-bounce opacity-30"></div>
+        <div className="absolute bottom-32 left-20 w-28 h-28 bg-gradient-to-r from-yellow-300 to-orange-300 rounded-full animate-pulse delay-300 opacity-30"></div>
         
         {/* Floating Letters */}
-        <div className="absolute top-1/4 right-1/4 text-8xl animate-pulse delay-200 opacity-20">📚</div>
-        <div className="absolute bottom-1/4 left-1/4 text-6xl animate-bounce delay-400 opacity-20">✏️</div>
+        <div className="absolute top-1/4 right-1/4 text-6xl animate-bounce delay-200 opacity-20">📚</div>
+        <div className="absolute bottom-1/4 left-1/4 text-5xl animate-pulse delay-400 opacity-20">✏️</div>
+        <div className="absolute top-1/2 right-1/3 text-4xl animate-bounce delay-600 opacity-20">🎨</div>
       </div>
 
       <div className="max-w-4xl mx-auto relative z-10">
@@ -134,36 +166,31 @@ const AlphabetModule = ({ onBack, language }: AlphabetModuleProps) => {
           >
             ← {ui.back}
           </Button>
-          <div className="text-center">
-            <h1 className="text-3xl font-bold text-white mb-2">
-              🔤 {ui.title}
-            </h1>
-            <div className="text-white/80">
-              {isNumbers ? 'Number' : 'Letter'} {currentIndex + 1} of {currentData.length}
-            </div>
-          </div>
+          <h1 className="text-3xl font-bold text-white text-center">
+            📖 {ui.title}
+          </h1>
           <div className="w-32"></div>
         </div>
 
-        {/* Toggle Between Alphabet and Numbers */}
-        <div className="flex justify-center mb-6">
-          <div className="bg-white/20 backdrop-blur-sm rounded-full p-2 flex space-x-2">
+        {/* Mode Toggle */}
+        <div className="flex justify-center mb-8">
+          <div className="bg-white/20 backdrop-blur-sm rounded-full p-2">
             <Button
-              onClick={() => {setIsNumbers(false); setCurrentIndex(0); setShowWord(false);}}
-              className={`rounded-full px-6 py-2 ${
-                !isNumbers 
-                  ? 'bg-blue-500 text-white' 
-                  : 'bg-transparent text-white/80 hover:bg-white/20'
+              onClick={toggleMode}
+              className={`px-6 py-3 rounded-full mr-2 ${
+                !showNumbers 
+                  ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white' 
+                  : 'bg-white/30 text-white'
               }`}
             >
-              🔤 {ui.alphabet}
+              🔤 {ui.letters}
             </Button>
             <Button
-              onClick={() => {setIsNumbers(true); setCurrentIndex(0); setShowWord(false);}}
-              className={`rounded-full px-6 py-2 ${
-                isNumbers 
-                  ? 'bg-green-500 text-white' 
-                  : 'bg-transparent text-white/80 hover:bg-white/20'
+              onClick={toggleMode}
+              className={`px-6 py-3 rounded-full ${
+                showNumbers 
+                  ? 'bg-gradient-to-r from-green-500 to-blue-500 text-white' 
+                  : 'bg-white/30 text-white'
               }`}
             >
               🔢 {ui.numbers}
@@ -172,44 +199,27 @@ const AlphabetModule = ({ onBack, language }: AlphabetModuleProps) => {
         </div>
 
         {/* Main Display */}
-        <div className="flex justify-center mb-8">
-          <div 
-            className="bg-white/90 backdrop-blur-sm rounded-3xl p-12 shadow-2xl max-w-lg w-full min-h-96 flex flex-col justify-center items-center cursor-pointer transform hover:scale-105 transition-all duration-300"
-            onClick={() => setShowWord(!showWord)}
-          >
-            <div className="text-9xl font-bold text-purple-600 mb-6 animate-pulse">
-              {isNumbers ? currentItem.number : currentItem.letter}
+        <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-2xl mb-8">
+          <div className="text-center">
+            <div className="text-9xl mb-6 animate-pulse">
+              {getMainCharacter()}
             </div>
-            
-            {showWord ? (
-              <div className="text-center">
-                <div className="text-6xl mb-4">{currentItem.emoji}</div>
-                <div className="text-3xl font-bold text-gray-800 mb-2">
-                  {language === 'english' ? currentItem.english : currentItem.oromo}
-                </div>
-                <div className="text-lg text-gray-600 mb-4">
-                  {language === 'english' ? 'English' : 'Afaan Oromo'}
-                </div>
-                {!isNumbers && (
-                  <div className="text-2xl text-purple-600 font-mono">
-                    {currentItem.sound}
-                  </div>
-                )}
-              </div>
-            ) : (
-              <div className="text-center">
-                <div className="text-2xl font-bold text-gray-800 mb-4">
-                  {isNumbers ? 'Number' : 'Letter'} {isNumbers ? currentItem.number : currentItem.letter}
-                </div>
-                <div className="text-gray-500 text-lg">
-                  {ui.tapToSee} 👆
-                </div>
-              </div>
-            )}
+            <div className="text-8xl mb-6 animate-bounce">
+              {currentItem.emoji}
+            </div>
+            <div className="text-4xl font-bold text-gray-800 mb-4">
+              {getDisplayText()}
+            </div>
+            <Button
+              onClick={() => speakText(getCurrentSound())}
+              className="bg-gradient-to-r from-orange-400 to-red-500 hover:from-orange-500 hover:to-red-600 text-white text-xl px-8 py-4 rounded-full"
+            >
+              🔊 {ui.listen}
+            </Button>
           </div>
         </div>
 
-        {/* Controls */}
+        {/* Navigation */}
         <div className="flex justify-center space-x-4 mb-6">
           <Button
             onClick={handlePrevious}
@@ -218,14 +228,6 @@ const AlphabetModule = ({ onBack, language }: AlphabetModuleProps) => {
           >
             ← {ui.previous}
           </Button>
-          
-          <Button
-            onClick={() => speakText(`${isNumbers ? currentItem.number : currentItem.letter}. ${language === 'english' ? currentItem.english : currentItem.oromo}`)}
-            className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full"
-          >
-            🔊 {ui.listen}
-          </Button>
-          
           <Button
             onClick={handleNext}
             disabled={currentIndex === currentData.length - 1}
@@ -235,17 +237,20 @@ const AlphabetModule = ({ onBack, language }: AlphabetModuleProps) => {
           </Button>
         </div>
 
-        {/* Progress Bar */}
+        {/* Progress */}
         <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-4">
-          <div className="flex justify-between items-center mb-2">
-            <div className="text-white font-semibold">{ui.progress}</div>
-            <div className="text-white/80">{Math.round(((currentIndex + 1) / currentData.length) * 100)}%</div>
+          <div className="text-center text-white mb-2">
+            {getMainCharacter()} - {currentIndex + 1} of {currentData.length}
           </div>
-          <div className="w-full bg-white/30 rounded-full h-3">
-            <div 
-              className="bg-gradient-to-r from-yellow-400 to-orange-500 h-3 rounded-full transition-all duration-300"
-              style={{ width: `${((currentIndex + 1) / currentData.length) * 100}%` }}
-            ></div>
+          <div className="flex space-x-1">
+            {currentData.map((_, index) => (
+              <div
+                key={index}
+                className={`flex-1 h-3 rounded-full ${
+                  index <= currentIndex ? 'bg-gradient-to-r from-yellow-400 to-orange-500' : 'bg-white/30'
+                }`}
+              />
+            ))}
           </div>
         </div>
       </div>

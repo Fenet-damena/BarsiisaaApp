@@ -56,7 +56,6 @@ const conversationData = {
 const ConversationModule = ({ onBack, language }: ConversationModuleProps) => {
   const [currentConversationIndex, setCurrentConversationIndex] = useState(0);
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
-  const [language, setLanguage] = useState<'english' | 'oromo'>('english');
   const [isPlaying, setIsPlaying] = useState(false);
 
   const conversations = conversationData[language];
