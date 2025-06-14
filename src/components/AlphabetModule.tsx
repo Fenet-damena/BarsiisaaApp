@@ -37,7 +37,7 @@ const alphabetData: LetterData[] = [
   { letter: 'L', english: 'Lion', oromo: 'Loon', sound: 'el', oromoSound: 'Lah' },
   { letter: 'M', english: 'Moon', oromo: 'Muka', sound: 'em', oromoSound: 'mah' },
   { letter: 'N', english: 'Nest', oromo: 'Nama', sound: 'en', oromoSound: 'nah' },
-  { letter: 'O', english: 'Orange', oromo: 'Odaa', sound: 'oh', oromoSound: 'Oo' },
+  { letter: 'O', english: 'Orange', oromo: 'Odaa', sound: 'oh', oromoSound: 'o' },
   { letter: 'P', english: 'Pencil', oromo: 'Paarkii', sound: 'pee', oromoSound: 'pah' },
   { letter: 'Q', english: 'Queen', oromo: 'Qamalee', sound: 'cue', oromoSound: 'Qah' },
   { letter: 'R', english: 'Rainbow', oromo: 'Rooba', sound: 'ar', oromoSound: 'rah' },
