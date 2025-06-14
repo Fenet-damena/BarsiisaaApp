@@ -31,7 +31,7 @@ const conversationData = {
       title: "How are you?",
       conversations: [
         { speaker: "left", english: "How are you?", oromo: "Akkam jirta?", avatar: "👧", name: "Ayantu", gender: "female", pronunciation: "" },
-        { speaker: "right", english: "I’m fine, thank you!", oromo: "Ani nagaan jira, galatoomi!", avatar: "👦", name: "Bona", gender: "male", pronunciation: "" },
+        { speaker: "right", english: "I'm fine, thank you!", oromo: "Ani nagaan jira, galatoomi!", avatar: "👦", name: "Bona", gender: "male", pronunciation: "" },
       ]
     },
     {
@@ -49,10 +49,10 @@ const conversationData = {
         { speaker: "right", english: "How are you?", oromo: "Akkam jirta?", avatar: "👦", name: "Bona", gender: "male", pronunciation: "Ah-kahm jeer-tah" },
         { speaker: "left", english: "I am fine! And you?", oromo: "Nagaa koo dha! Ati akkami?", avatar: "👧", name: "Ayantu", gender: "female", pronunciation: "Nah-gaah koh dah! Ah-tee ah-kah-mee" },
         { speaker: "right", english: "Fine, thanks to God.", oromo: "Nagaa, galata Gooftaa.", avatar: "👦", name: "Bona", gender: "male", pronunciation: "Nah-gaah, gah-lah-tah Gohf-tah" },
+        { speaker: "right", english: "My name is Bona. What is your name?", oromo: "Boonân jedhama. Maqaan kee hoo eenyuu?", avatar: "👦", name: "Bona", gender: "male", pronunciation: "Boh-nahn jeh-dhah-mah. Mah-qaan keh hoo een-yoo" },
+        { speaker: "left", english: "My name is Ayantu.", oromo: "Ayyaantuu jedhama.", avatar: "👧", name: "Ayantu", gender: "female", pronunciation: "Ah-yahn-too jeh-dhah-mah" },
         { speaker: "right", english: "Nice to meet you.", oromo: "Si baruu kootti gammadeera.", avatar: "👦", name: "Bona", gender: "male", pronunciation: "See bah-roo koh-tee gahm-mah-deh-rah" },
         { speaker: "left", english: "Nice to meet you too.", oromo: "Anis si baruuf kootti gammadeera.", avatar: "👧", name: "Ayantu", gender: "female", pronunciation: "Ah-nees see bah-roof koh-tee gahm-mah-deh-rah" },
-        { speaker: "right", english: "My name is Bona. What is your name?", oromo: "Boonan jedhama. Maqaan kee hoo eenyuu?", avatar: "👦", name: "Bona", gender: "male", pronunciation: "Boh-nahn jeh-dhah-mah. Mah-qaan keh hoo een-yoo" },
-        { speaker: "left", english: "My name is Ayantu.", oromo: "Ayyaantuu jedhama.", avatar: "👧", name: "Ayantu", gender: "female", pronunciation: "Ah-yahn-too jeh-dhah-mah" },
       ]
     }
   ],
@@ -78,7 +78,7 @@ const conversationData = {
       title: "Akkam Jirta?",
       conversations: [
         { speaker: "left", english: "How are you?", oromo: "Akkam jirta?", avatar: "👧", name: "Ayyaantuu", gender: "female", pronunciation: "" },
-        { speaker: "right", english: "I’m fine, thank you!", oromo: "Ani nagaan jira, galatoomi!", avatar: "👦", name: "Boonaa", gender: "male", pronunciation: "" },
+        { speaker: "right", english: "I'm fine, thank you!", oromo: "Ani nagaan jira, galatoomi!", avatar: "👦", name: "Boonaa", gender: "male", pronunciation: "" },
       ]
     },
     {
@@ -96,10 +96,10 @@ const conversationData = {
         { speaker: "right", english: "How are you?", oromo: "Akkam jirta?", avatar: "👦", name: "Boonaa", gender: "male", pronunciation: "Ah-kahm jeer-tah" },
         { speaker: "left", english: "I am fine! And you?", oromo: "Nagaa koo dha! Ati akkami?", avatar: "👧", name: "Ayyaantuu", gender: "female", pronunciation: "Nah-gaah koh dah! Ah-tee ah-kah-mee" },
         { speaker: "right", english: "Fine, thanks to God.", oromo: "Nagaa, galata Gooftaa.", avatar: "👦", name: "Boonaa", gender: "male", pronunciation: "Nah-gaah, gah-lah-tah Gohf-tah" },
+        { speaker: "right", english: "My name is Bona. What is your name?", oromo: "Boonân jedhama. Maqaan kee hoo eenyuu?", avatar: "👦", name: "Bona", gender: "male", pronunciation: "Boh-nahn jeh-dhah-mah. Mah-qaan keh hoo een-yoo" },
+        { speaker: "left", english: "My name is Ayantu.", oromo: "Ayyaantuu jedhama.", avatar: "👧", name: "Ayyaantuu", gender: "female", pronunciation: "Ah-yahn-too jeh-dhah-mah" },
         { speaker: "right", english: "Nice to meet you.", oromo: "Si baruu kootti gammadeera.", avatar: "👦", name: "Boonaa", gender: "male", pronunciation: "See bah-roo koh-tee gahm-mah-deh-rah" },
         { speaker: "left", english: "Nice to meet you too.", oromo: "Anis si baruuf kootti gammadeera.", avatar: "👧", name: "Ayyaantuu", gender: "female", pronunciation: "Ah-nees see bah-roof koh-tee gahm-mah-deh-rah" },
-        { speaker: "right", english: "My name is Bona. What is your name?", oromo: "Boonan jedhama. Maqaan kee hoo eenyuu?", avatar: "👦", name: "Boonaa", gender: "male", pronunciation: "Boh-nahn jeh-dhah-mah. Mah-qaan keh hoo een-yoo" },
-        { speaker: "left", english: "My name is Ayantu.", oromo: "Ayyaantuu jedhama.", avatar: "👧", name: "Ayyaantuu", gender: "female", pronunciation: "Ah-yahn-too jeh-dhah-mah" },
       ]
     }
   ]
@@ -143,7 +143,8 @@ const ConversationModule = ({ onBack, language, level }: ConversationModuleProps
       previousTopic: "Previous Topic",
       nextTopic: "Next Topic",
       conversation: "Conversation",
-      line: "Line"
+      line: "Line",
+      startAgain: "Start Again"
     },
     oromo: {
       back: "Duubatti",
@@ -156,7 +157,8 @@ const ConversationModule = ({ onBack, language, level }: ConversationModuleProps
       previousTopic: "Mata Duree Duraa",
       nextTopic: "Mata Duree Itti Aansu",
       conversation: "Haasawa",
-      line: "Sarara"
+      line: "Sarara",
+      startAgain: "Jalqabaa Eegali"
     }
   };
 
@@ -196,6 +198,10 @@ const ConversationModule = ({ onBack, language, level }: ConversationModuleProps
     if (currentLineIndex > 0) {
       setCurrentLineIndex(currentLineIndex - 1);
     }
+  };
+
+  const handleStartAgain = () => {
+    setCurrentLineIndex(0);
   };
 
   const nextConversation = () => {
@@ -267,11 +273,6 @@ const ConversationModule = ({ onBack, language, level }: ConversationModuleProps
                 <div className="bg-blue-100 rounded-2xl p-6 max-w-sm animate-fade-in shadow-lg">
                   <div className="text-xl font-semibold text-gray-800 text-center">
                     {language === 'english' ? currentLine.english : currentLine.oromo}
-                    {language === 'oromo' && currentLine.pronunciation && (
-                      <div className="text-base italic text-gray-600 mt-2">
-                        {currentLine.pronunciation}
-                      </div>
-                    )}
                   </div>
                 </div>
               )}
@@ -301,11 +302,6 @@ const ConversationModule = ({ onBack, language, level }: ConversationModuleProps
                 <div className="bg-green-100 rounded-2xl p-6 max-w-sm animate-fade-in shadow-lg">
                   <div className="text-xl font-semibold text-gray-800 text-center">
                     {language === 'english' ? currentLine.english : currentLine.oromo}
-                    {language === 'oromo' && currentLine.pronunciation && (
-                      <div className="text-base italic text-gray-600 mt-2">
-                        {currentLine.pronunciation}
-                      </div>
-                    )}
                   </div>
                 </div>
               )}
@@ -327,14 +323,7 @@ const ConversationModule = ({ onBack, language, level }: ConversationModuleProps
             onClick={() => speakText(getTextToSpeak(currentLine), language, currentLine.gender as 'female' | 'male' | undefined)}
             className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full h-auto"
           >
-            {language === 'oromo' && currentLine.pronunciation ? (
-              <div className="text-center">
-                <div className="font-semibold">{currentLine.oromo}</div>
-                <div className="text-sm italic opacity-80">{currentLine.pronunciation}</div>
-              </div>
-            ) : (
-              '🔊 ' + ui.listen
-            )}
+            🔊 {ui.listen}
           </Button>
           
           <Button
@@ -351,6 +340,13 @@ const ConversationModule = ({ onBack, language, level }: ConversationModuleProps
             className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full disabled:opacity-50"
           >
             {ui.nextLine} →
+          </Button>
+
+          <Button
+            onClick={handleStartAgain}
+            className="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-3 rounded-full"
+          >
+            🔄 {ui.startAgain}
           </Button>
         </div>
 
