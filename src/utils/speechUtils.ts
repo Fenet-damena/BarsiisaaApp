@@ -1,3 +1,4 @@
+
 export const speakText = (text: string, language: 'english' | 'oromo' = 'english', gender?: 'female' | 'male'): Promise<void> => {
   return new Promise((resolve) => {
     if ('speechSynthesis' in window) {
@@ -20,7 +21,7 @@ export const speakText = (text: string, language: 'english' | 'oromo' = 'english
       } else {
         // For Oromo, use phonetic approximation with English pronunciation
         utterance.lang = 'en-US'; // Use English voice
-        utterance.rate = 1.0; // Normal pace
+        utterance.rate = 0.9; // Normal pace, slightly slowed down for clarity
         if (gender === 'female') {
           utterance.pitch = 1.2; // Higher pitch for female voice
         } else if (gender === 'male') {
