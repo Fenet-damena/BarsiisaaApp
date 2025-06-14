@@ -14,7 +14,7 @@ export const speakText = (text: string, language: 'english' | 'oromo' = 'english
     } else {
       // For Oromo, use phonetic approximation with English pronunciation
       utterance.lang = 'en-US'; // Use English voice but slower for better pronunciation
-      utterance.rate = 0.6; // Much slower for non-native language
+      utterance.rate = 0.5; // Much slower for non-native language
       utterance.pitch = 1.0;
     }
     
@@ -35,7 +35,12 @@ export const speakText = (text: string, language: 'english' | 'oromo' = 'english
 };
 
 export const speakLetter = (letter: string, sound: string, word: string, language: 'english' | 'oromo' = 'english') => {
-  const textToSpeak = `${letter} ${sound} ${word}`;
+  const textToSpeak = `${letter} ${sound}`;
+  speakText(textToSpeak, language);
+};
+
+export const speakLetterOnly = (letter: string, sound: string, language: 'english' | 'oromo' = 'english') => {
+  const textToSpeak = `${letter} ${sound}`;
   speakText(textToSpeak, language);
 };
 
