@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import WelcomeScreen from '@/components/WelcomeScreen';
 import LevelSelection from '@/components/LevelSelection';
@@ -46,9 +45,6 @@ const Index = () => {
         break;
       case 4:
         setCurrentScreen('calendar');
-        break;
-      case 5:
-        setCurrentScreen('conversations');
         break;
       case 6:
         setCurrentScreen('games');
@@ -133,4 +129,3 @@ const Index = () => {
 };
 
 export default Index;
-

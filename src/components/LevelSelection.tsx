@@ -1,4 +1,3 @@
-
 import { Button } from '@/components/ui/button';
 
 interface LevelSelectionProps {
@@ -13,7 +12,6 @@ const levelsContent = {
     { level: 2, age: 4, title: "Letter Words", emoji: "🅰️", color: "from-yellow-400 to-orange-500", description: "A for Apple, B for Ball" },
     { level: 3, age: 5, title: "Many Words", emoji: "📝", color: "from-green-400 to-blue-500", description: "100+ words daily" },
     { level: 4, age: 6, title: "Days & Months", emoji: "🗓️", color: "from-blue-400 to-purple-500", description: "Learn 7 days and 12 months" },
-    { level: 5, age: 6, title: "Greeting for Kids", emoji: "👋", color: "from-purple-400 to-pink-500", description: "How friends greet each other" },
     { level: 6, age: 7, title: "Word Games", emoji: "🎮", color: "from-pink-400 to-red-500", description: "Fill missing letters" },
     { level: 7, age: 7, title: "Animal World", emoji: "🦁", color: "from-green-400 to-yellow-500", description: "Animals sliding fun" },
   ],
