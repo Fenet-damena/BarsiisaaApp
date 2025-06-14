@@ -380,13 +380,13 @@ const FlagModule = ({ onBack, language }: FlagModuleProps) => {
 
           {/* Flag Card */}
           <div
-            className="bg-white/20 backdrop-blur-sm rounded-3xl p-8 shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 cursor-pointer hover:bg-white/30 min-w-[300px] text-center"
+            className="bg-white/20 backdrop-blur-sm rounded-3xl p-8 shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 cursor-pointer hover:bg-white/30 min-w-[400px] text-center"
             onClick={handleFlagClick}
           >
-            <div className="text-9xl mb-6 hover:scale-110 transform transition-all duration-300">
+            <div className="text-[200px] mb-6 hover:scale-110 transform transition-all duration-300 leading-none">
               {currentFlag.flag}
             </div>
-            <div className="text-2xl font-bold text-white mb-4">
+            <div className="text-3xl font-bold text-white mb-4">
               {currentFlag.name}
             </div>
             <div className="text-lg text-white/70">
