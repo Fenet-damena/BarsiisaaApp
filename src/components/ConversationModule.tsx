@@ -5,6 +5,7 @@ import { speakText } from '@/utils/speechUtils';
 interface ConversationModuleProps {
   onBack: () => void;
   language: 'english' | 'oromo';
+  level: number;
 }
 
 const conversationData = {
@@ -40,6 +41,19 @@ const conversationData = {
         { speaker: "left", english: "Nice to meet you!", oromo: "Si arguuf natti tola", avatar: "👧", name: "Ayantu", gender: "female", pronunciation: "" },
         { speaker: "right", english: "Nice to meet you too!", oromo: "Anis si arguuf natti tola!", avatar: "👦", name: "Bona", gender: "male", pronunciation: "" },
       ]
+    },
+    {
+      id: 5,
+      title: "Greeting for Kids",
+      conversations: [
+        { speaker: "right", english: "How are you?", oromo: "Akkam jirta?", avatar: "👦", name: "Bona", gender: "male", pronunciation: "Ah-kahm jeer-tah" },
+        { speaker: "left", english: "I am fine! And you?", oromo: "Nagaa koo dha! Ati akkami?", avatar: "👧", name: "Ayantu", gender: "female", pronunciation: "Nah-gaah koh dah! Ah-tee ah-kah-mee" },
+        { speaker: "right", english: "Fine, thanks to God.", oromo: "Nagaa, galata Gooftaa.", avatar: "👦", name: "Bona", gender: "male", pronunciation: "Nah-gaah, gah-lah-tah Gohf-tah" },
+        { speaker: "right", english: "My name is Bona. What is your name?", oromo: "Boonan jedhama. Maqaan kee hoo eenyuu?", avatar: "👦", name: "Bona", gender: "male", pronunciation: "Boh-nahn jeh-dhah-mah. Mah-qaan keh hoo een-yoo" },
+        { speaker: "left", english: "My name is Ayantu.", oromo: "Ayyaantuu jedhama.", avatar: "👧", name: "Ayantu", gender: "female", pronunciation: "Ah-yahn-too jeh-dhah-mah" },
+        { speaker: "right", english: "Nice to meet you.", oromo: "Si baruu kootti gammadeera.", avatar: "👦", name: "Bona", gender: "male", pronunciation: "See bah-roo koh-tee gahm-mah-deh-rah" },
+        { speaker: "left", english: "Nice to meet you too.", oromo: "Anis si baruuf kootti gammadeera.", avatar: "👧", name: "Ayantu", gender: "female", pronunciation: "Ah-nees see bah-roof koh-tee gahm-mah-deh-rah" },
+      ]
     }
   ],
   oromo: [
@@ -74,24 +88,39 @@ const conversationData = {
         { speaker: "left", english: "Nice to meet you!", oromo: "Si arguuf natti tola", avatar: "👧", name: "Ayyaantuu", gender: "female", pronunciation: "" },
         { speaker: "right", english: "Nice to meet you too!", oromo: "Anis si arguuf natti tola!", avatar: "👦", name: "Boonaa", gender: "male", pronunciation: "" },
       ]
+    },
+    {
+      id: 5,
+      title: "Haasawa Daa'immanii",
+      conversations: [
+        { speaker: "right", english: "How are you?", oromo: "Akkam jirta?", avatar: "👦", name: "Boonaa", gender: "male", pronunciation: "Ah-kahm jeer-tah" },
+        { speaker: "left", english: "I am fine! And you?", oromo: "Nagaa koo dha! Ati akkami?", avatar: "👧", name: "Ayyaantuu", gender: "female", pronunciation: "Nah-gaah koh dah! Ah-tee ah-kah-mee" },
+        { speaker: "right", english: "Fine, thanks to God.", oromo: "Nagaa, galata Gooftaa.", avatar: "👦", name: "Boonaa", gender: "male", pronunciation: "Nah-gaah, gah-lah-tah Gohf-tah" },
+        { speaker: "right", english: "My name is Bona. What is your name?", oromo: "Boonan jedhama. Maqaan kee hoo eenyuu?", avatar: "👦", name: "Boonaa", gender: "male", pronunciation: "Boh-nahn jeh-dhah-mah. Mah-qaan keh hoo een-yoo" },
+        { speaker: "left", english: "My name is Ayantu.", oromo: "Ayyaantuu jedhama.", avatar: "👧", name: "Ayyaantuu", gender: "female", pronunciation: "Ah-yahn-too jeh-dhah-mah" },
+        { speaker: "right", english: "Nice to meet you.", oromo: "Si baruu kootti gammadeera.", avatar: "👦", name: "Boonaa", gender: "male", pronunciation: "See bah-roo koh-tee gahm-mah-deh-rah" },
+        { speaker: "left", english: "Nice to meet you too.", oromo: "Anis si baruuf kootti gammadeera.", avatar: "👧", name: "Ayyaantuu", gender: "female", pronunciation: "Ah-nees see bah-roof koh-tee gahm-mah-deh-rah" },
+      ]
     }
   ]
 };
 
-const ConversationModule = ({ onBack, language }: ConversationModuleProps) => {
+const ConversationModule = ({ onBack, language, level }: ConversationModuleProps) => {
   const [currentConversationIndex, setCurrentConversationIndex] = useState<number | null>(null);
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
 
+  const conversations = conversationData[language];
+
   useEffect(() => {
-    const conversationsForLanguage = conversationData[language];
-    setCurrentConversationIndex(Math.floor(Math.random() * conversationsForLanguage.length));
+    const conversationIndex = conversations.findIndex(c => c.id === level);
+    setCurrentConversationIndex(conversationIndex !== -1 ? conversationIndex : 0);
     setCurrentLineIndex(0);
     if ('speechSynthesis' in window) {
       speechSynthesis.cancel();
     }
     setIsPlaying(false);
-  }, [language]);
+  }, [language, level, conversations]);
 
   // Cleanup speech on component unmount
   useEffect(() => {
@@ -101,8 +130,6 @@ const ConversationModule = ({ onBack, language }: ConversationModuleProps) => {
       }
     };
   }, []);
-
-  const conversations = conversationData[language];
   
   const uiContent = {
     english: {
@@ -236,7 +263,7 @@ const ConversationModule = ({ onBack, language }: ConversationModuleProps) => {
                     {language === 'english' ? currentLine.english : currentLine.oromo}
                     {language === 'oromo' && currentLine.pronunciation && (
                       <div className="text-base italic text-gray-600 mt-2">
-                        Pronounced as: {currentLine.pronunciation}
+                        {currentLine.pronunciation}
                       </div>
                     )}
                   </div>
@@ -270,7 +297,7 @@ const ConversationModule = ({ onBack, language }: ConversationModuleProps) => {
                     {language === 'english' ? currentLine.english : currentLine.oromo}
                     {language === 'oromo' && currentLine.pronunciation && (
                       <div className="text-base italic text-gray-600 mt-2">
-                        Pronounced as: {currentLine.pronunciation}
+                        {currentLine.pronunciation}
                       </div>
                     )}
                   </div>
