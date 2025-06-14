@@ -238,7 +238,7 @@ const FlagModule = ({ onBack, language }: FlagModuleProps) => {
                         <img 
                           src={getFlagImageUrl(flag.code)}
                           alt={`Flag of ${flag.name}`}
-                          className="w-12 h-8 object-cover rounded shadow-md"
+                          className="w-20 h-12 object-cover rounded shadow-md"
                           onError={(e) => {
                             e.currentTarget.style.display = 'none';
                             e.currentTarget.nextElementSibling?.classList.remove('hidden');
