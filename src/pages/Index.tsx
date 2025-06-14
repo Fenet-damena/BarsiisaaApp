@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import WelcomeScreen from '@/components/WelcomeScreen';
 import LevelSelection from '@/components/LevelSelection';
@@ -52,9 +51,12 @@ const Index = () => {
         setCurrentScreen('conversations');
         break;
       case 6:
-        setCurrentScreen('lettergame');
+        setCurrentScreen('words');
         break;
       case 7:
+        setCurrentScreen('lettergame');
+        break;
+      case 8:
         setCurrentScreen('animals');
         break;
       default:

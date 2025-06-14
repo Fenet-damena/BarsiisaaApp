@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { speakText } from '@/utils/speechUtils';
@@ -7,168 +8,186 @@ interface WordGameModuleProps {
   language: 'english' | 'oromo';
 }
 
-const wordsData = {
-  english: {
-    fruits: [
-      { english: "Apple", oromo: "Poomii", emoji: "🍎" },
-      { english: "Banana", oromo: "Muuzii", emoji: "🍌" },
-      { english: "Orange", oromo: "Burtukaana", emoji: "🍊" },
-      { english: "Grape", oromo: "Wayinii", emoji: "🍇" },
-      { english: "Mango", oromo: "Maangoo", emoji: "🥭" },
-      { english: "Pineapple", oromo: "Anaanaasii", emoji: "🍍" },
-      { english: "Strawberry", oromo: "Gora", emoji: "🍓" },
-      { english: "Watermelon", oromo: "Habbeessaa", emoji: "🍉" },
-      { english: "Cherry", oromo: "Cherii", emoji: "🍒" },
-      { english: "Peach", oromo: "Piichii", emoji: "🍑" },
-      { english: "Lemon", oromo: "Loomii", emoji: "🍋" },
-      { english: "Papaya", oromo: "Paapaayaa", emoji: "🍈" },
-    ],
-    colors: [
-      { english: "Red", oromo: "Diimaa", emoji: "🔴" },
-      { english: "Blue", oromo: "Cuquliisa", emoji: "🔵" },
-      { english: "Green", oromo: "Magariisa", emoji: "🟢" },
-      { english: "Yellow", oromo: "Keelloo", emoji: "🟡" },
-      { english: "Black", oromo: "Gurraacha", emoji: "⚫" },
-      { english: "White", oromo: "Adii", emoji: "⚪" },
-    ],
-    animals: [
-      { english: "Dog", oromo: "Saree", emoji: "🐶" },
-      { english: "Cat", oromo: "Adurree", emoji: "🐱" },
-      { english: "Horse", oromo: "Farda", emoji: "🐴" },
-      { english: "Donkey", oromo: "Harree", emoji: "🫏" },
-      { english: "Sheep", oromo: "Hoolaa", emoji: "🐑" },
-      { english: "Goat", oromo: "Re'ee", emoji: "🐐" },
-      { english: "Cow", oromo: "Sa'a", emoji: "🐄" },
-      { english: "Camel", oromo: "Gaala", emoji: "🐪" },
-      { english: "Lion", oromo: "Leenca", emoji: "🦁" },
-      { english: "Tiger", oromo: "Qeerransa", emoji: "🐅" },
-      { english: "Monkey", oromo: "Jaldeessa", emoji: "🐒" },
-      { english: "Elephant", oromo: "Arba", emoji: "🐘" },
-      { english: "Deer", oromo: "Bosonuu", emoji: "🦌" },
-      { english: "Wolf", oromo: "Yeeyyii", emoji: "🐺" },
-      { english: "Snake", oromo: "Bofa", emoji: "🐍" },
-    ]
-  },
-  oromo: {
-    fruits: [
-      { english: "Apple", oromo: "Poomii", emoji: "🍎" },
-      { english: "Banana", oromo: "Muuzii", emoji: "🍌" },
-      { english: "Orange", oromo: "Burtukaana", emoji: "🍊" },
-      { english: "Grape", oromo: "Wayinii", emoji: "🍇" },
-      { english: "Mango", oromo: "Maangoo", emoji: "🥭" },
-      { english: "Pineapple", oromo: "Anaanaasii", emoji: "🍍" },
-      { english: "Strawberry", oromo: "Gora", emoji: "🍓" },
-      { english: "Watermelon", oromo: "Habbeessaa", emoji: "🍉" },
-      { english: "Cherry", oromo: "Cherii", emoji: "🍒" },
-      { english: "Peach", oromo: "Piichii", emoji: "🍑" },
-      { english: "Lemon", oromo: "Loomii", emoji: "🍋" },
-      { english: "Papaya", oromo: "Paapaayaa", emoji: "🍈" },
-    ],
-    colors: [
-      { english: "Red", oromo: "Diimaa", emoji: "🔴" },
-      { english: "Blue", oromo: "Cuquliisa", emoji: "🔵" },
-      { english: "Green", oromo: "Magariisa", emoji: "🟢" },
-      { english: "Yellow", oromo: "Keelloo", emoji: "🟡" },
-      { english: "Black", oromo: "Gurraacha", emoji: "⚫" },
-      { english: "White", oromo: "Adii", emoji: "⚪" },
-    ],
-    animals: [
-      { english: "Dog", oromo: "Saree", emoji: "🐶" },
-      { english: "Cat", oromo: "Adurree", emoji: "🐱" },
-      { english: "Horse", oromo: "Farda", emoji: "🐴" },
-      { english: "Donkey", oromo: "Harree", emoji: "🫏" },
-      { english: "Sheep", oromo: "Hoolaa", emoji: "🐑" },
-      { english: "Goat", oromo: "Re'ee", emoji: "🐐" },
-      { english: "Cow", oromo: "Sa'a", emoji: "🐄" },
-      { english: "Camel", oromo: "Gaala", emoji: "🐪" },
-      { english: "Lion", oromo: "Leenca", emoji: "🦁" },
-      { english: "Tiger", oromo: "Qeerransa", emoji: "🐅" },
-      { english: "Monkey", oromo: "Jaldeessa", emoji: "🐒" },
-      { english: "Elephant", oromo: "Arba", emoji: "🐘" },
-      { english: "Deer", oromo: "Bosonuu", emoji: "🦌" },
-      { english: "Wolf", oromo: "Yeeyyii", emoji: "🐺" },
-      { english: "Snake", oromo: "Bofa", emoji: "🐍" },
-    ]
-  }
+const gameData = {
+  english: [
+    { word: "Apple", emoji: "🍎" },
+    { word: "Banana", emoji: "🍌" },
+    { word: "Orange", emoji: "🍊" },
+    { word: "Grape", emoji: "🍇" },
+    { word: "Mango", emoji: "🥭" },
+    { word: "Red", emoji: "🔴" },
+    { word: "Blue", emoji: "🔵" },
+    { word: "Green", emoji: "🟢" },
+    { word: "Yellow", emoji: "🟡" },
+    { word: "Dog", emoji: "🐶" },
+    { word: "Cat", emoji: "🐱" },
+    { word: "Horse", emoji: "🐴" },
+    { word: "Sheep", emoji: "🐑" },
+    { word: "Lion", emoji: "🦁" },
+    { word: "Elephant", emoji: "🐘" },
+  ],
+  oromo: [
+    { word: "Poomii", emoji: "🍎" },
+    { word: "Muuzii", emoji: "🍌" },
+    { word: "Burtukaana", emoji: "🍊" },
+    { word: "Wayinii", emoji: "🍇" },
+    { word: "Maangoo", emoji: "🥭" },
+    { word: "Diimaa", emoji: "🔴" },
+    { word: "Cuquliisa", emoji: "🔵" },
+    { word: "Magariisa", emoji: "🟢" },
+    { word: "Keelloo", emoji: "🟡" },
+    { word: "Saree", emoji: "🐶" },
+    { word: "Adurree", emoji: "🐱" },
+    { word: "Farda", emoji: "🐴" },
+    { word: "Hoolaa", emoji: "🐑" },
+    { word: "Leenca", emoji: "🦁" },
+    { word: "Arba", emoji: "🐘" },
+  ]
 };
 
 const WordGameModule = ({ onBack, language }: WordGameModuleProps) => {
-  const [currentCategory, setCurrentCategory] = useState<'fruits' | 'colors' | 'animals'>('fruits');
-  const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const [randomWords, setRandomWords] = useState<any[]>([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [score, setScore] = useState(0);
+  const [showResult, setShowResult] = useState(false);
+  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
+  const [gameComplete, setGameComplete] = useState(false);
+
+  const currentData = gameData[language];
+  const currentItem = currentData[currentIndex];
 
   const uiContent = {
     english: {
       back: "Back",
-      title: "Learn Many Words!",
-      fruits: "Fruits",
-      colors: "Colors", 
-      animals: "Animals",
-      tapToFlip: "Tap to flip!",
-      listen: "Listen",
-      previous: "Previous",
-      next: "Next",
-      shuffle: "Shuffle Words",
+      title: "Word Game!",
+      question: "What is this?",
+      score: "Score:",
+      correct: "Correct! Well done!",
+      incorrect: "Try again! You can do it!",
+      complete: "Amazing! You finished all words!",
+      restart: "Play Again",
       progress: "Progress:"
     },
     oromo: {
       back: "Duubatti",
-      title: "Jechota Hedduu Baradhu!",
-      fruits: "Fuduraalee",
-      colors: "Halluuwwan",
-      animals: "Bineensota",
-      tapToFlip: "Garagaluuf dhiibi!",
-      listen: "Dhaggeeffadhu",
-      previous: "Duraa",
-      next: "Itti aansu",
-      shuffle: "Jechota Makaa",
+      title: "Taphoota Jechaa!",
+      question: "Kun maali?",
+      score: "Qabxii:",
+      correct: "Sirrrii! Gaarii hojjette!",
+      incorrect: "Irra deebi'i! Ni dandeessa!",
+      complete: "Ajaa'iba! Jechota hunda xumurte!",
+      restart: "Deebi'ii Taphii",
       progress: "Adeemsa:"
     }
   };
 
   const ui = uiContent[language];
 
+  // Generate random word options
+  const generateOptions = () => {
+    const correctWord = currentItem.word;
+    const allWords = currentData.map(item => item.word);
+    const wrongWords = allWords.filter(word => word !== correctWord);
+    const randomWrong = wrongWords.sort(() => Math.random() - 0.5).slice(0, 3);
+    const options = [correctWord, ...randomWrong].sort(() => Math.random() - 0.5);
+    return options;
+  };
+
+  const [options, setOptions] = useState<string[]>([]);
+
   useEffect(() => {
-    shuffleWords();
-  }, [currentCategory, language]);
+    setOptions(generateOptions());
+    setSelectedAnswer(null);
+    setShowResult(false);
+  }, [currentIndex, language]);
 
-  const shuffleWords = () => {
-    const categoryWords = wordsData[language][currentCategory];
-    const shuffled = [...categoryWords].sort(() => Math.random() - 0.5);
-    setRandomWords(shuffled);
-    setCurrentWordIndex(0);
-  };
+  const handleAnswer = async (selectedWord: string) => {
+    setSelectedAnswer(selectedWord);
+    setShowResult(true);
 
-  const currentWord = randomWords[currentWordIndex];
-
-  const handleNext = () => {
-    if (currentWordIndex < randomWords.length - 1) {
-      setCurrentWordIndex(currentWordIndex + 1);
+    const isCorrect = selectedWord === currentItem.word;
+    
+    if (isCorrect) {
+      setScore(score + 1);
+      await speakText(ui.correct, language);
+      
+      // Auto advance after correct answer
+      setTimeout(() => {
+        if (currentIndex < currentData.length - 1) {
+          setCurrentIndex(currentIndex + 1);
+        } else {
+          setGameComplete(true);
+          speakText(ui.complete, language);
+        }
+      }, 2000);
     } else {
-      shuffleWords(); // Auto shuffle when reaching the end
+      await speakText(ui.incorrect, language);
     }
   };
 
-  const handlePrevious = () => {
-    if (currentWordIndex > 0) {
-      setCurrentWordIndex(currentWordIndex - 1);
-    }
+  const handleRestart = () => {
+    setCurrentIndex(0);
+    setScore(0);
+    setGameComplete(false);
+    setShowResult(false);
+    setSelectedAnswer(null);
   };
 
-  if (!currentWord) return null;
+  if (gameComplete) {
+    return (
+      <div className="min-h-screen p-6 relative overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-20 left-16 w-32 h-32 bg-gradient-to-r from-yellow-300 to-orange-300 rounded-full animate-pulse opacity-30"></div>
+          <div className="absolute top-40 right-20 w-24 h-24 bg-gradient-to-r from-pink-300 to-purple-300 rounded-full animate-bounce opacity-30"></div>
+          <div className="absolute bottom-32 left-20 w-28 h-28 bg-gradient-to-r from-blue-300 to-green-300 rounded-full animate-pulse delay-300 opacity-30"></div>
+          
+          {/* Celebration Elements */}
+          <div className="absolute top-1/4 right-1/4 text-6xl animate-bounce delay-200 opacity-40">🎉</div>
+          <div className="absolute bottom-1/4 left-1/4 text-5xl animate-pulse delay-400 opacity-40">🌟</div>
+          <div className="absolute top-1/2 right-1/3 text-4xl animate-bounce delay-600 opacity-40">🏆</div>
+        </div>
+
+        <div className="max-w-4xl mx-auto relative z-10 text-center">
+          <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-12 shadow-2xl">
+            <div className="text-8xl mb-6">🏆</div>
+            <h1 className="text-4xl font-bold text-gray-800 mb-4">
+              {ui.complete}
+            </h1>
+            <div className="text-2xl text-gray-600 mb-8">
+              {ui.score} {score}/{currentData.length}
+            </div>
+            <div className="space-y-4">
+              <Button
+                onClick={handleRestart}
+                className="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white text-xl px-8 py-4 rounded-full"
+              >
+                🔄 {ui.restart}
+              </Button>
+              <Button
+                onClick={onBack}
+                className="bg-gray-500 hover:bg-gray-600 text-white text-xl px-8 py-4 rounded-full ml-4"
+              >
+                ← {ui.back}
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen p-6 relative overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-16 w-32 h-32 bg-gradient-to-r from-yellow-300 to-orange-300 rounded-full animate-pulse opacity-30"></div>
-        <div className="absolute top-40 right-20 w-24 h-24 bg-gradient-to-r from-pink-300 to-purple-300 rounded-full animate-bounce opacity-30"></div>
-        <div className="absolute bottom-32 left-20 w-28 h-28 bg-gradient-to-r from-blue-300 to-green-300 rounded-full animate-pulse delay-300 opacity-30"></div>
+        <div className="absolute top-20 left-16 w-32 h-32 bg-gradient-to-r from-purple-300 to-pink-300 rounded-full animate-pulse opacity-30"></div>
+        <div className="absolute top-40 right-20 w-24 h-24 bg-gradient-to-r from-blue-300 to-green-300 rounded-full animate-bounce opacity-30"></div>
+        <div className="absolute bottom-32 left-20 w-28 h-28 bg-gradient-to-r from-yellow-300 to-orange-300 rounded-full animate-pulse delay-300 opacity-30"></div>
         
         {/* Floating Elements */}
-        <div className="absolute top-1/4 right-1/4 text-6xl animate-bounce delay-200 opacity-20">📚</div>
-        <div className="absolute bottom-1/4 left-1/4 text-5xl animate-pulse delay-400 opacity-20">🌈</div>
-        <div className="absolute top-1/2 right-1/3 text-4xl animate-bounce delay-600 opacity-20">⚡</div>
+        <div className="absolute top-1/4 right-1/4 text-6xl animate-bounce delay-200 opacity-20">🎯</div>
+        <div className="absolute bottom-1/4 left-1/4 text-5xl animate-pulse delay-400 opacity-20">📝</div>
+        <div className="absolute top-1/2 right-1/3 text-4xl animate-bounce delay-600 opacity-20">⭐</div>
       </div>
 
       <div className="max-w-4xl mx-auto relative z-10">
@@ -181,117 +200,69 @@ const WordGameModule = ({ onBack, language }: WordGameModuleProps) => {
           </Button>
           <div className="text-center">
             <h1 className="text-3xl font-bold text-white mb-2">
-              📝 {ui.title}
+              🎯 {ui.title}
             </h1>
             <div className="text-white/80">
-              Word {currentWordIndex + 1} of {randomWords.length}
+              {ui.score} {score} | {currentIndex + 1}/{currentData.length}
             </div>
           </div>
           <div className="w-32"></div>
         </div>
 
-        {/* Category Selection */}
-        <div className="flex justify-center mb-6">
-          <div className="bg-white/20 backdrop-blur-sm rounded-full p-2 flex space-x-2">
-            <Button
-              onClick={() => setCurrentCategory('fruits')}
-              className={`rounded-full px-6 py-2 ${
-                currentCategory === 'fruits' 
-                  ? 'bg-red-500 text-white' 
-                  : 'bg-transparent text-white/80 hover:bg-white/20'
-              }`}
-            >
-              🍎 {ui.fruits}
-            </Button>
-            <Button
-              onClick={() => setCurrentCategory('colors')}
-              className={`rounded-full px-6 py-2 ${
-                currentCategory === 'colors' 
-                  ? 'bg-blue-500 text-white' 
-                  : 'bg-transparent text-white/80 hover:bg-white/20'
-              }`}
-            >
-              🎨 {ui.colors}
-            </Button>
-            <Button
-              onClick={() => setCurrentCategory('animals')}
-              className={`rounded-full px-6 py-2 ${
-                currentCategory === 'animals' 
-                  ? 'bg-green-500 text-white' 
-                  : 'bg-transparent text-white/80 hover:bg-white/20'
-              }`}
-            >
-              🐾 {ui.animals}
-            </Button>
-          </div>
-        </div>
-
-        {/* Main Word Display */}
-        <div className="flex justify-center mb-8">
-          <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-12 shadow-2xl max-w-lg w-full min-h-96 flex flex-col justify-center items-center transform hover:scale-105 transition-all duration-300">
-            <div className="text-8xl mb-6">{currentWord.emoji}</div>
-            
-            {/* Enhanced visual representation with image placeholder */}
-            <div className="w-40 h-40 mx-auto mb-6 bg-gradient-to-br from-blue-50 to-purple-50 rounded-3xl flex items-center justify-center shadow-lg border-4 border-white">
-              <span className="text-7xl">{currentWord.emoji}</span>
+        {/* Main Game Area */}
+        <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-2xl mb-8">
+          <div className="text-center">
+            <div className="text-9xl mb-8 animate-bounce">
+              {currentItem.emoji}
             </div>
             
-            <div className="text-center">
-              <div className="text-4xl font-bold text-gray-800 mb-4">
-                {language === 'english' ? currentWord.english : currentWord.oromo}
-              </div>
-              <div className="text-lg text-gray-600 mb-4">
-                {language === 'english' ? 'English' : 'Afaan Oromo'}
-              </div>
-              <div className="text-xl text-gray-500">
-                {language === 'english' ? currentWord.oromo : currentWord.english}
-              </div>
+            <div className="text-xl text-gray-600 mb-8">
+              {ui.question}
             </div>
-          </div>
-        </div>
 
-        {/* Controls */}
-        <div className="flex justify-center space-x-4 mb-6">
-          <Button
-            onClick={handlePrevious}
-            disabled={currentWordIndex === 0}
-            className="bg-gray-500 hover:bg-gray-600 text-white px-6 py-3 rounded-full disabled:opacity-50"
-          >
-            ← {ui.previous}
-          </Button>
-          
-          <Button
-            onClick={() => speakText(language === 'english' ? currentWord.english : currentWord.oromo, language)}
-            className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full"
-          >
-            🔊 {ui.listen}
-          </Button>
-          
-          <Button
-            onClick={shuffleWords}
-            className="bg-purple-500 hover:bg-purple-600 text-white px-6 py-3 rounded-full"
-          >
-            🔀 {ui.shuffle}
-          </Button>
-          
-          <Button
-            onClick={handleNext}
-            className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full"
-          >
-            {ui.next} →
-          </Button>
+            {/* Word Options */}
+            <div className="grid grid-cols-2 gap-4 max-w-md mx-auto">
+              {options.map((word) => (
+                <Button
+                  key={word}
+                  onClick={() => handleAnswer(word)}
+                  disabled={showResult}
+                  className={`text-lg font-bold py-6 rounded-2xl transition-all duration-300 ${
+                    showResult && selectedAnswer === word
+                      ? word === currentItem.word
+                        ? 'bg-green-500 text-white'
+                        : 'bg-red-500 text-white'
+                      : showResult && word === currentItem.word
+                      ? 'bg-green-500 text-white'
+                      : 'bg-gradient-to-r from-purple-400 to-pink-500 hover:from-purple-500 hover:to-pink-600 text-white'
+                  }`}
+                >
+                  {word}
+                </Button>
+              ))}
+            </div>
+
+            {/* Result Message */}
+            {showResult && (
+              <div className={`mt-6 text-xl font-bold ${
+                selectedAnswer === currentItem.word ? 'text-green-600' : 'text-red-600'
+              }`}>
+                {selectedAnswer === currentItem.word ? ui.correct : ui.incorrect}
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Progress Bar */}
         <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-4">
           <div className="flex justify-between items-center mb-2">
             <div className="text-white font-semibold">{ui.progress}</div>
-            <div className="text-white/80">{Math.round(((currentWordIndex + 1) / randomWords.length) * 100)}%</div>
+            <div className="text-white/80">{Math.round(((currentIndex + 1) / currentData.length) * 100)}%</div>
           </div>
           <div className="w-full bg-white/30 rounded-full h-3">
             <div 
               className="bg-gradient-to-r from-purple-400 to-pink-500 h-3 rounded-full transition-all duration-300"
-              style={{ width: `${((currentWordIndex + 1) / randomWords.length) * 100}%` }}
+              style={{ width: `${((currentIndex + 1) / currentData.length) * 100}%` }}
             ></div>
           </div>
         </div>
