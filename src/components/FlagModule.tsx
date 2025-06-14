@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
@@ -307,13 +306,15 @@ const uiContent = {
 
 const FlagModule = ({ onBack, language }: FlagModuleProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [imageError, setImageError] = useState(false);
   const flags = flagsData[language];
   const ui = uiContent[language];
   const currentFlag = flags[currentIndex];
 
   useEffect(() => {
     console.log(`Flag Module loaded with ${flags.length} flags in ${language}`);
-  }, [flags.length, language]);
+    setImageError(false); // Reset error state when flag changes
+  }, [flags.length, language, currentIndex]);
 
   const handleFlagClick = async () => {
     console.log(`Speaking: ${currentFlag.name}`);
@@ -326,6 +327,14 @@ const FlagModule = ({ onBack, language }: FlagModuleProps) => {
 
   const handlePrevious = () => {
     setCurrentIndex((prev) => (prev - 1 + flags.length) % flags.length);
+  };
+
+  const handleImageError = () => {
+    setImageError(true);
+  };
+
+  const getFlagImageUrl = (countryCode: string) => {
+    return `https://flagcdn.com/w320/${countryCode.toLowerCase()}.png`;
   };
 
   return (
@@ -383,8 +392,19 @@ const FlagModule = ({ onBack, language }: FlagModuleProps) => {
             className="bg-white/20 backdrop-blur-sm rounded-3xl p-8 shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 cursor-pointer hover:bg-white/30 min-w-[400px] text-center"
             onClick={handleFlagClick}
           >
-            <div className="text-[200px] mb-6 hover:scale-110 transform transition-all duration-300 leading-none">
-              {currentFlag.flag}
+            <div className="mb-6 hover:scale-110 transform transition-all duration-300 leading-none">
+              {!imageError ? (
+                <img 
+                  src={getFlagImageUrl(currentFlag.code)}
+                  alt={`Flag of ${currentFlag.name}`}
+                  className="w-80 h-60 object-cover rounded-lg mx-auto shadow-lg"
+                  onError={handleImageError}
+                />
+              ) : (
+                <div className="text-[200px] leading-none">
+                  {currentFlag.flag}
+                </div>
+              )}
             </div>
             <div className="text-3xl font-bold text-white mb-4">
               {currentFlag.name}
