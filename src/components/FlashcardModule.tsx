@@ -173,13 +173,9 @@ const FlashcardModule = ({ level, onBack, language }: FlashcardModuleProps) => {
               </div>
             ) : (
               <div className="text-center">
-                {currentCard.imageUrl ? (
-                  <img src={currentCard.imageUrl} alt={currentCard.english} className="w-48 h-48 mx-auto mb-4 object-cover rounded-2xl shadow-lg" />
-                ) : (
-                  <div className="w-48 h-48 mx-auto mb-4 bg-gradient-to-br from-yellow-100 to-orange-100 rounded-2xl flex items-center justify-center shadow-lg">
-                    <span className="text-6xl">{currentCard.emoji}</span>
-                  </div>
-                )}
+                <div className="w-48 h-48 mx-auto mb-4 bg-gradient-to-br from-yellow-100 to-orange-100 rounded-2xl flex items-center justify-center shadow-lg">
+                  <span className="text-6xl">{currentCard.emoji}</span>
+                </div>
                 
                 <div className="text-3xl font-bold text-gray-800 mb-2">
                   {language === 'english' ? currentCard.english : currentCard.oromo}
