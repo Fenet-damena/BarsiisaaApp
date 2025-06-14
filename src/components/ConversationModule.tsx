@@ -92,13 +92,13 @@ const conversationData = {
       id: 5,
       title: "Nagaa Gaafachuu Daa'immanii",
       conversations: [
-        { speaker: "right", english: "How are you?", oromo: "Akkam jirta?", avatar: "👦", name: "Boonaa", gender: "male", pronunciation: "Ah-kahm jeer-tah?" },
-        { speaker: "left", english: "I am fine! And you?", oromo: "Nagaa koo dha! Ati akkami?", avatar: "👧", name: "Ayyaantuu", gender: "female", pronunciation: "Nah-gaah koh dah! Ah-tee ah-kah-mee?" },
-        { speaker: "right", english: "Fine, thanks to God.", oromo: "Nagaa, galata Gooftaa.", avatar: "👦", name: "Boonaa", gender: "male", pronunciation: "Nah-gaah, gah-lah-tah Gohf-tah." },
-        { speaker: "right", english: "My name is Boonaa. What is your name?", oromo: "Boonan jedhama. Maqaan kee hoo eenyuu?", avatar: "👦", name: "Boonaa", gender: "male", pronunciation: "Boh-nahn jeh-dhah-mah. Mah-qaan keh hoo een-yoo?" },
-        { speaker: "left", english: "My name is Ayyaantuu.", oromo: "Ayyaantuu jedhama.", avatar: "👧", name: "Ayyaantuu", gender: "female", pronunciation: "Ah-yahn-too jeh-dhah-mah." },
-        { speaker: "right", english: "Nice to meet you.", oromo: "Si baruu kootti gammadeera.", avatar: "👦", name: "Boonaa", gender: "male", pronunciation: "See bah-roo koh-tee gahm-mah-deh-rah." },
-        { speaker: "left", english: "Nice to meet you too.", oromo: "Anis si baruuf kootti gammadeera.", avatar: "👧", name: "Ayyaantuu", gender: "female", pronunciation: "Ah-nees see bah-roof koh-tee gahm-mah-deh-rah." },
+        { speaker: "right", english: "How are you?", oromo: "Akkam jirta?", avatar: "👦", name: "Boonaa", gender: "male", pronunciation: "Ah-kahm jeer-tah" },
+        { speaker: "left", english: "I am fine! And you?", oromo: "Nagaa koo dha! Ati akkami?", avatar: "👧", name: "Ayyaantuu", gender: "female", pronunciation: "Nah-gaah koh dah! Ah-tee ah-kah-mee" },
+        { speaker: "right", english: "Fine, thanks to God.", oromo: "Nagaa, galata Gooftaa.", avatar: "👦", name: "Boonaa", gender: "male", pronunciation: "Nah-gaah, gah-lah-tah Gohf-tah" },
+        { speaker: "right", english: "My name is Boonaa. What is your name?", oromo: "Boonan jedhama. Maqaan kee hoo eenyuu?", avatar: "👦", name: "Boonaa", gender: "male", pronunciation: "Boh-nahn jeh-dhah-mah. Mah-qaan keh hoo een-yoo" },
+        { speaker: "left", english: "My name is Ayyaantuu.", oromo: "Ayyaantuu jedhama.", avatar: "👧", name: "Ayyaantuu", gender: "female", pronunciation: "Ah-yahn-too jeh-dhah-mah" },
+        { speaker: "right", english: "Nice to meet you.", oromo: "Si baruu kootti gammadeera.", avatar: "👦", name: "Boonaa", gender: "male", pronunciation: "See bah-roo koh-tee gahm-mah-deh-rah" },
+        { speaker: "left", english: "Nice to meet you too.", oromo: "Anis si baruuf kootti gammadeera.", avatar: "👧", name: "Ayyaantuu", gender: "female", pronunciation: "Ah-nees see bah-roof koh-tee gahm-mah-deh-rah" },
       ]
     }
   ]
