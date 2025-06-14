@@ -1,5 +1,7 @@
+
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { speakText } from '@/utils/speechUtils';
 
 interface FlagModuleProps {
@@ -285,29 +287,45 @@ const flagsData = {
 const uiContent = {
   english: {
     title: "Learn Country Flags! 🏁",
-    subtitle: "Click on any flag to hear the country name!",
+    subtitle: "Click on the flag to hear the country name!",
     back: "Back to Levels",
-    clickToHear: "Click to hear"
+    clickToHear: "Click to hear",
+    next: "Next",
+    previous: "Previous",
+    flagCounter: "Flag"
   },
   oromo: {
     title: "Alaabaa Biyyootaa Baradhu! 🏁",
-    subtitle: "Maqaa biyyaa dhaggeeffachuuf alaabaa kamiyyuu cuqaasi!",
+    subtitle: "Maqaa biyyaa dhaggeeffachuuf alaabaa cuqaasi!",
     back: "Gara Sadarkaalee",
-    clickToHear: "Dhaggeeffachuuf cuqaasi"
+    clickToHear: "Dhaggeeffachuuf cuqaasi",
+    next: "Itti aanee",
+    previous: "Dura",
+    flagCounter: "Alaabaa"
   }
 };
 
 const FlagModule = ({ onBack, language }: FlagModuleProps) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
   const flags = flagsData[language];
   const ui = uiContent[language];
+  const currentFlag = flags[currentIndex];
 
   useEffect(() => {
     console.log(`Flag Module loaded with ${flags.length} flags in ${language}`);
   }, [flags.length, language]);
 
-  const handleFlagClick = async (flag: { name: string; flag: string; code: string }) => {
-    console.log(`Speaking: ${flag.name}`);
-    await speakText(flag.name, language);
+  const handleFlagClick = async () => {
+    console.log(`Speaking: ${currentFlag.name}`);
+    await speakText(currentFlag.name, language);
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % flags.length);
+  };
+
+  const handlePrevious = () => {
+    setCurrentIndex((prev) => (prev - 1 + flags.length) % flags.length);
   };
 
   return (
@@ -324,7 +342,7 @@ const FlagModule = ({ onBack, language }: FlagModuleProps) => {
         <div className="absolute top-1/2 left-10 text-5xl animate-spin opacity-20">🌟</div>
       </div>
 
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="max-w-4xl mx-auto relative z-10">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <Button
@@ -342,27 +360,66 @@ const FlagModule = ({ onBack, language }: FlagModuleProps) => {
           <div className="w-24"></div>
         </div>
 
-        {/* Flags Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-          {flags.map((flag, index) => (
-            <div
-              key={index}
-              className="bg-white/20 backdrop-blur-sm rounded-2xl p-4 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 cursor-pointer hover:bg-white/30"
-              onClick={() => handleFlagClick(flag)}
-            >
-              <div className="text-center">
-                <div className="text-6xl mb-3 hover:scale-110 transform transition-all duration-300">
-                  {flag.flag}
-                </div>
-                <div className="text-sm font-semibold text-white mb-2 min-h-[40px] flex items-center justify-center">
-                  {flag.name}
-                </div>
-                <div className="text-xs text-white/70">
-                  {ui.clickToHear}
-                </div>
-              </div>
+        {/* Flag Counter */}
+        <div className="text-center mb-6">
+          <p className="text-white/80 text-lg">
+            {ui.flagCounter} {currentIndex + 1} / {flags.length}
+          </p>
+        </div>
+
+        {/* Main Flag Display */}
+        <div className="flex items-center justify-center mb-8">
+          {/* Previous Button */}
+          <Button
+            onClick={handlePrevious}
+            className="bg-white/20 hover:bg-white/30 text-white border-2 border-white/30 rounded-full p-4 mr-8"
+            disabled={flags.length <= 1}
+          >
+            <ChevronLeft size={24} />
+          </Button>
+
+          {/* Flag Card */}
+          <div
+            className="bg-white/20 backdrop-blur-sm rounded-3xl p-8 shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 cursor-pointer hover:bg-white/30 min-w-[300px] text-center"
+            onClick={handleFlagClick}
+          >
+            <div className="text-9xl mb-6 hover:scale-110 transform transition-all duration-300">
+              {currentFlag.flag}
             </div>
-          ))}
+            <div className="text-2xl font-bold text-white mb-4">
+              {currentFlag.name}
+            </div>
+            <div className="text-lg text-white/70">
+              {ui.clickToHear}
+            </div>
+          </div>
+
+          {/* Next Button */}
+          <Button
+            onClick={handleNext}
+            className="bg-white/20 hover:bg-white/30 text-white border-2 border-white/30 rounded-full p-4 ml-8"
+            disabled={flags.length <= 1}
+          >
+            <ChevronRight size={24} />
+          </Button>
+        </div>
+
+        {/* Navigation Buttons */}
+        <div className="flex justify-center space-x-4">
+          <Button
+            onClick={handlePrevious}
+            className="bg-white/20 hover:bg-white/30 text-white border-2 border-white/30 rounded-full px-8 py-3"
+            disabled={flags.length <= 1}
+          >
+            ← {ui.previous}
+          </Button>
+          <Button
+            onClick={handleNext}
+            className="bg-white/20 hover:bg-white/30 text-white border-2 border-white/30 rounded-full px-8 py-3"
+            disabled={flags.length <= 1}
+          >
+            {ui.next} →
+          </Button>
         </div>
       </div>
     </div>
