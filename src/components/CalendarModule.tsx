@@ -10,11 +10,24 @@ interface CalendarModuleProps {
 const calendarData = {
   days: {
     english: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-    oromo: ["Wiixata", "Kibxata", "Roobii", "Kamisa", "Jimaata", "Sanbata", "Alhada"],
+    oromo: ["Wiixata", "Qibxata", "Roobii", "Kamiisa", "Jimaata", "Sanbata", "Dilbata"],
   },
   months: {
     english: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-    oromo: ["Amajjii", "Guraandhala", "Bitootessa", "Ebla", "Caamsaa", "Waxabajjii", "Adoolessa", "Hagayya", "Fulbaana", "Onkololeessa", "Sadaasa", "Muddee"],
+    oromo: [
+      "Fuulbana",
+      "Onkololeessa",
+      "Sadaasa",
+      "Muddee",
+      "Amajjii",
+      "Guraandhala",
+      "Bitooteessa",
+      "Elba",
+      "Caamsa",
+      "Waxabajjii",
+      "Adoolessa",
+      "Hagayya",
+    ],
   }
 };
 
@@ -97,4 +110,3 @@ const CalendarModule = ({ onBack, language }: CalendarModuleProps) => {
 };
 
 export default CalendarModule;
-
