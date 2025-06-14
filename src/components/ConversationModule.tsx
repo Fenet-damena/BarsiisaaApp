@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { speakText } from '@/utils/speechUtils';
 
 interface ConversationModuleProps {
   onBack: () => void;
@@ -93,20 +94,13 @@ const ConversationModule = ({ onBack, language }: ConversationModuleProps) => {
 
   const ui = uiContent[language];
 
-  const speakText = (text: string) => {
-    if ('speechSynthesis' in window) {
-      const utterance = new SpeechSynthesisUtterance(text);
-      speechSynthesis.speak(utterance);
-    }
-  };
-
   const playConversation = async () => {
     setIsPlaying(true);
     for (let i = 0; i <= currentLineIndex; i++) {
       const line = currentConversation.conversations[i];
       const text = language === 'english' ? line.english : line.oromo;
-      speakText(text);
-      await new Promise(resolve => setTimeout(resolve, 3000)); // Wait 3 seconds between lines
+      speakText(text, language);
+      await new Promise(resolve => setTimeout(resolve, 4000)); // Wait 4 seconds between lines
     }
     setIsPlaying(false);
   };
@@ -178,9 +172,17 @@ const ConversationModule = ({ onBack, language }: ConversationModuleProps) => {
               <div className="text-8xl mb-4 animate-bounce">
                 {currentLine.speaker === 'left' ? currentLine.avatar : '👤'}
               </div>
+              
+              {/* Character image placeholder */}
+              {currentLine.speaker === 'left' && (
+                <div className="w-20 h-20 mb-2 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full flex items-center justify-center shadow-md">
+                  <span className="text-3xl">{currentLine.avatar}</span>
+                </div>
+              )}
+              
               <div className="text-2xl font-semibold text-gray-700 mb-2">{currentLine.speaker === 'left' ? currentLine.name : 'Person 1'}</div>
               {currentLine.speaker === 'left' && (
-                <div className="bg-blue-100 rounded-2xl p-6 max-w-sm animate-fade-in">
+                <div className="bg-blue-100 rounded-2xl p-6 max-w-sm animate-fade-in shadow-lg">
                   <div className="text-xl font-semibold text-gray-800 text-center">
                     {language === 'english' ? currentLine.english : currentLine.oromo}
                   </div>
@@ -199,9 +201,17 @@ const ConversationModule = ({ onBack, language }: ConversationModuleProps) => {
               <div className="text-8xl mb-4 animate-bounce delay-200">
                 {currentLine.speaker === 'right' ? currentLine.avatar : '👤'}
               </div>
+              
+              {/* Character image placeholder */}
+              {currentLine.speaker === 'right' && (
+                <div className="w-20 h-20 mb-2 bg-gradient-to-br from-green-100 to-green-200 rounded-full flex items-center justify-center shadow-md">
+                  <span className="text-3xl">{currentLine.avatar}</span>
+                </div>
+              )}
+              
               <div className="text-2xl font-semibold text-gray-700 mb-2">{currentLine.speaker === 'right' ? currentLine.name : 'Person 2'}</div>
               {currentLine.speaker === 'right' && (
-                <div className="bg-green-100 rounded-2xl p-6 max-w-sm animate-fade-in">
+                <div className="bg-green-100 rounded-2xl p-6 max-w-sm animate-fade-in shadow-lg">
                   <div className="text-xl font-semibold text-gray-800 text-center">
                     {language === 'english' ? currentLine.english : currentLine.oromo}
                   </div>
@@ -222,7 +232,7 @@ const ConversationModule = ({ onBack, language }: ConversationModuleProps) => {
           </Button>
           
           <Button
-            onClick={() => speakText(language === 'english' ? currentLine.english : currentLine.oromo)}
+            onClick={() => speakText(language === 'english' ? currentLine.english : currentLine.oromo, language)}
             className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full"
           >
             🔊 {ui.listen}

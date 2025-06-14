@@ -1,6 +1,6 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { speakText } from '@/utils/speechUtils';
 
 interface FlashcardModuleProps {
   level: number;
@@ -89,13 +89,6 @@ const FlashcardModule = ({ level, onBack, language }: FlashcardModuleProps) => {
     }
   };
 
-  const speakText = (text: string) => {
-    if ('speechSynthesis' in window) {
-      const utterance = new SpeechSynthesisUtterance(text);
-      speechSynthesis.speak(utterance);
-    }
-  };
-
   return (
     <div className="min-h-screen p-6">
       <div className="max-w-4xl mx-auto">
@@ -129,6 +122,12 @@ const FlashcardModule = ({ level, onBack, language }: FlashcardModuleProps) => {
                 <div className="text-9xl font-bold text-purple-600 mb-6 animate-pulse">
                   {currentCard.letter}
                 </div>
+                
+                {/* Visual representation */}
+                <div className="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-purple-100 to-pink-100 rounded-xl flex items-center justify-center">
+                  <span className="text-4xl">📚</span>
+                </div>
+                
                 <div className="text-3xl font-bold text-gray-800 mb-4">
                   Letter {currentCard.letter}
                 </div>
@@ -139,6 +138,12 @@ const FlashcardModule = ({ level, onBack, language }: FlashcardModuleProps) => {
             ) : (
               <div className="text-center">
                 <div className="text-8xl mb-6">{currentCard.emoji}</div>
+                
+                {/* Enhanced visual card with image placeholder */}
+                <div className="w-32 h-32 mx-auto mb-4 bg-gradient-to-br from-yellow-100 to-orange-100 rounded-2xl flex items-center justify-center shadow-lg">
+                  <span className="text-6xl">{currentCard.emoji}</span>
+                </div>
+                
                 <div className="text-3xl font-bold text-gray-800 mb-2">
                   {currentCard.letter} for {language === 'english' ? currentCard.english : currentCard.oromo}
                 </div>
@@ -163,7 +168,7 @@ const FlashcardModule = ({ level, onBack, language }: FlashcardModuleProps) => {
           </Button>
           
           <Button
-            onClick={() => speakText(`${currentCard.letter} for ${language === 'english' ? currentCard.english : currentCard.oromo}`)}
+            onClick={() => speakText(`${currentCard.letter} for ${language === 'english' ? currentCard.english : currentCard.oromo}`, language)}
             className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full"
           >
             🔊 {ui.listen}

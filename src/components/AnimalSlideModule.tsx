@@ -1,6 +1,6 @@
-
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
+import { speakText } from '@/utils/speechUtils';
 
 interface AnimalSlideModuleProps {
   onBack: () => void;
@@ -141,6 +141,11 @@ const AnimalSlideModule = ({ onBack, language }: AnimalSlideModuleProps) => {
           <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-12 shadow-2xl max-w-lg w-full min-h-96 flex flex-col justify-center items-center transform hover:scale-105 transition-all duration-300">
             <div className="text-9xl mb-6 animate-bounce">{currentAnimal.emoji}</div>
             
+            {/* Animal image placeholder with enhanced styling */}
+            <div className="w-48 h-48 mx-auto mb-6 bg-gradient-to-br from-green-50 to-blue-50 rounded-3xl flex items-center justify-center shadow-xl border-4 border-white">
+              <span className="text-8xl">{currentAnimal.emoji}</span>
+            </div>
+            
             <div className="text-center">
               <div className="text-4xl font-bold text-gray-800 mb-4">
                 {language === 'english' ? currentAnimal.english : currentAnimal.oromo}
@@ -168,7 +173,7 @@ const AnimalSlideModule = ({ onBack, language }: AnimalSlideModuleProps) => {
           </Button>
           
           <Button
-            onClick={() => speakText(`${language === 'english' ? currentAnimal.english : currentAnimal.oromo}. ${currentAnimal.sound}`)}
+            onClick={() => speakText(`${language === 'english' ? currentAnimal.english : currentAnimal.oromo}. ${currentAnimal.sound}`, language)}
             className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full"
           >
             🔊 {ui.listen}

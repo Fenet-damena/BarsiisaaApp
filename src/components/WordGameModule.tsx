@@ -1,6 +1,6 @@
-
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
+import { speakText } from '@/utils/speechUtils';
 
 interface WordGameModuleProps {
   onBack: () => void;
@@ -232,6 +232,11 @@ const WordGameModule = ({ onBack, language }: WordGameModuleProps) => {
           <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-12 shadow-2xl max-w-lg w-full min-h-96 flex flex-col justify-center items-center transform hover:scale-105 transition-all duration-300">
             <div className="text-8xl mb-6">{currentWord.emoji}</div>
             
+            {/* Enhanced visual representation with image placeholder */}
+            <div className="w-40 h-40 mx-auto mb-6 bg-gradient-to-br from-blue-50 to-purple-50 rounded-3xl flex items-center justify-center shadow-lg border-4 border-white">
+              <span className="text-7xl">{currentWord.emoji}</span>
+            </div>
+            
             <div className="text-center">
               <div className="text-4xl font-bold text-gray-800 mb-4">
                 {language === 'english' ? currentWord.english : currentWord.oromo}
@@ -257,7 +262,7 @@ const WordGameModule = ({ onBack, language }: WordGameModuleProps) => {
           </Button>
           
           <Button
-            onClick={() => speakText(language === 'english' ? currentWord.english : currentWord.oromo)}
+            onClick={() => speakText(language === 'english' ? currentWord.english : currentWord.oromo, language)}
             className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full"
           >
             🔊 {ui.listen}

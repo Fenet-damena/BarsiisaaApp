@@ -1,6 +1,6 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { speakText, speakLetter } from '@/utils/speechUtils';
 
 interface AlphabetModuleProps {
   onBack: () => void;
@@ -94,13 +94,6 @@ const AlphabetModule = ({ onBack, language }: AlphabetModuleProps) => {
 
   const ui = uiContent[language];
 
-  const speakText = (text: string) => {
-    if ('speechSynthesis' in window) {
-      const utterance = new SpeechSynthesisUtterance(text);
-      speechSynthesis.speak(utterance);
-    }
-  };
-
   const handleNext = () => {
     if (currentIndex < currentData.length - 1) {
       setCurrentIndex(currentIndex + 1);
@@ -136,11 +129,15 @@ const AlphabetModule = ({ onBack, language }: AlphabetModuleProps) => {
     }
   };
 
-  const getCurrentSound = () => {
+  const handleSpeak = () => {
     if (showNumbers) {
-      return getDisplayText();
+      const item = currentItem as NumberData;
+      const text = language === 'english' ? item.english : item.oromo;
+      speakText(text, language);
     } else {
-      return (currentItem as LetterData).sound;
+      const item = currentItem as LetterData;
+      const word = language === 'english' ? item.english : item.oromo;
+      speakLetter(item.letter, `${item.letter} for ${word}`, language);
     }
   };
 
@@ -207,11 +204,17 @@ const AlphabetModule = ({ onBack, language }: AlphabetModuleProps) => {
             <div className="text-8xl mb-6 animate-bounce">
               {currentItem.emoji}
             </div>
+            
+            {/* Image placeholder for visual learning */}
+            <div className="w-32 h-32 mx-auto mb-4 bg-gradient-to-br from-blue-100 to-purple-100 rounded-2xl flex items-center justify-center shadow-lg">
+              <span className="text-6xl">{currentItem.emoji}</span>
+            </div>
+            
             <div className="text-4xl font-bold text-gray-800 mb-4">
               {getDisplayText()}
             </div>
             <Button
-              onClick={() => speakText(getCurrentSound())}
+              onClick={handleSpeak}
               className="bg-gradient-to-r from-orange-400 to-red-500 hover:from-orange-500 hover:to-red-600 text-white text-xl px-8 py-4 rounded-full"
             >
               🔊 {ui.listen}
