@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { speakText } from '@/utils/speechUtils';
@@ -23,32 +24,32 @@ type NumberData = {
 };
 
 const alphabetData: LetterData[] = [
-  { letter: 'A', english: 'Apple', oromo: 'Arba', sound: 'A', oromoSound: 'ah' },
-  { letter: 'B', english: 'Ball', oromo: 'Bishaan', sound: 'B', oromoSound: 'ba' },
-  { letter: 'C', english: 'Cat', oromo: 'Callee', sound: 'C', oromoSound: 'cha' },
-  { letter: 'D', english: 'Dog', oromo: 'Dandii', sound: 'D', oromoSound: 'da' },
-  { letter: 'E', english: 'Elephant', oromo: 'Eelee', sound: 'E', oromoSound: 'Eh' },
-  { letter: 'F', english: 'Fish', oromo: 'Farda', sound: 'F', oromoSound: 'Fa' },
-  { letter: 'G', english: 'Giraffe', oromo: 'Gurraacha', sound: 'G', oromoSound: 'ga' },
-  { letter: 'H', english: 'House', oromo: 'Harree', sound: 'H', oromoSound: 'ha' },
-  { letter: 'I', english: 'Ice cream', oromo: 'Ilkaan', sound: 'I', oromoSound: 'Ee' },
-  { letter: 'J', english: 'Juice', oromo: 'Jaldeessa', sound: 'J', oromoSound: 'Ja' },
-  { letter: 'K', english: 'Kite', oromo: 'Kitaaba', sound: 'K', oromoSound: 'Ka' },
-  { letter: 'L', english: 'Lion', oromo: 'Loon', sound: 'L', oromoSound: 'La' },
-  { letter: 'M', english: 'Moon', oromo: 'Muka', sound: 'M', oromoSound: 'ma' },
-  { letter: 'N', english: 'Nest', oromo: 'Nama', sound: 'N', oromoSound: 'na' },
-  { letter: 'O', english: 'Orange', oromo: 'Odaa', sound: 'O', oromoSound: 'Oo' },
-  { letter: 'P', english: 'Pencil', oromo: 'Paarkii', sound: 'P', oromoSound: 'pa' },
-  { letter: 'Q', english: 'Queen', oromo: 'Qamalee', sound: 'Q', oromoSound: 'Qa' },
-  { letter: 'R', english: 'Rainbow', oromo: 'Rooba', sound: 'R', oromoSound: 'ra' },
-  { letter: 'S', english: 'Sun', oromo: 'Simbirroo', sound: 'S', oromoSound: 'sa' },
-  { letter: 'T', english: 'Tree', oromo: 'Tokko', sound: 'T', oromoSound: 'ta' },
-  { letter: 'U', english: 'Umbrella', oromo: 'Ulee', sound: 'U', oromoSound: 'oo' },
-  { letter: 'V', english: 'Violin', oromo: 'Viiyooliin', sound: 'V', oromoSound: 'Va' },
-  { letter: 'W', english: 'Water', oromo: 'Waraabessa', sound: 'W', oromoSound: 'wa' },
-  { letter: 'X', english: 'Xylophone', oromo: 'Xurree', sound: 'X', oromoSound: 'Xa' },
-  { letter: 'Y', english: 'Yellow', oromo: 'Yeeyyii', sound: 'Y', oromoSound: 'ya' },
-  { letter: 'Z', english: 'Zebra', oromo: 'Zeeroo', sound: 'Z', oromoSound: 'za' },
+  { letter: 'A', english: 'Apple', oromo: 'Arba', sound: 'ay', oromoSound: 'ah' },
+  { letter: 'B', english: 'Ball', oromo: 'Bishaan', sound: 'bee', oromoSound: 'bah' },
+  { letter: 'C', english: 'Cat', oromo: 'Callee', sound: 'see', oromoSound: 'chah' },
+  { letter: 'D', english: 'Dog', oromo: 'Dandii', sound: 'dee', oromoSound: 'dah' },
+  { letter: 'E', english: 'Elephant', oromo: 'Eelee', sound: 'ee', oromoSound: 'Eh' },
+  { letter: 'F', english: 'Fish', oromo: 'Farda', sound: 'ef', oromoSound: 'Fah' },
+  { letter: 'G', english: 'Giraffe', oromo: 'Gurraacha', sound: 'jee', oromoSound: 'gah' },
+  { letter: 'H', english: 'House', oromo: 'Harree', sound: 'aitch', oromoSound: 'hah' },
+  { letter: 'I', english: 'Ice cream', oromo: 'Ilkaan', sound: 'eye', oromoSound: 'Ee' },
+  { letter: 'J', english: 'Juice', oromo: 'Jaldeessa', sound: 'jay', oromoSound: 'Jah' },
+  { letter: 'K', english: 'Kite', oromo: 'Kitaaba', sound: 'kay', oromoSound: 'Kah' },
+  { letter: 'L', english: 'Lion', oromo: 'Loon', sound: 'el', oromoSound: 'Lah' },
+  { letter: 'M', english: 'Moon', oromo: 'Muka', sound: 'em', oromoSound: 'mah' },
+  { letter: 'N', english: 'Nest', oromo: 'Nama', sound: 'en', oromoSound: 'nah' },
+  { letter: 'O', english: 'Orange', oromo: 'Odaa', sound: 'oh', oromoSound: 'Oo' },
+  { letter: 'P', english: 'Pencil', oromo: 'Paarkii', sound: 'pee', oromoSound: 'pah' },
+  { letter: 'Q', english: 'Queen', oromo: 'Qamalee', sound: 'cue', oromoSound: 'Qah' },
+  { letter: 'R', english: 'Rainbow', oromo: 'Rooba', sound: 'ar', oromoSound: 'rah' },
+  { letter: 'S', english: 'Sun', oromo: 'Simbirroo', sound: 'ess', oromoSound: 'sah' },
+  { letter: 'T', english: 'Tree', oromo: 'Tokko', sound: 'tee', oromoSound: 'tah' },
+  { letter: 'U', english: 'Umbrella', oromo: 'Ulee', sound: 'you', oromoSound: 'oo' },
+  { letter: 'V', english: 'Violin', oromo: 'Viiyooliin', sound: 'vee', oromoSound: 'Vah' },
+  { letter: 'W', english: 'Water', oromo: 'Waraabessa', sound: 'double-you', oromoSound: 'wah' },
+  { letter: 'X', english: 'Xylophone', oromo: 'Xurree', sound: 'eks', oromoSound: 'Kha' },
+  { letter: 'Y', english: 'Yellow', oromo: 'Yeeyyii', sound: 'why', oromoSound: 'yah' },
+  { letter: 'Z', english: 'Zebra', oromo: 'Zeeroo', sound: 'zee', oromoSound: 'zah' },
 ];
 
 const numberData: NumberData[] = [
