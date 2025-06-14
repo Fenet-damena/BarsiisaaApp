@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { speakText } from '@/utils/speechUtils';
@@ -308,7 +309,7 @@ const ConversationModule = ({ onBack, language, level }: ConversationModuleProps
         </div>
 
         {/* Controls */}
-        <div className="flex justify-center space-x-4 mb-6">
+        <div className="flex justify-center items-stretch space-x-4 mb-6">
           <Button
             onClick={handlePrevious}
             disabled={currentLineIndex === 0}
@@ -319,9 +320,16 @@ const ConversationModule = ({ onBack, language, level }: ConversationModuleProps
           
           <Button
             onClick={() => speakText(language === 'english' ? currentLine.english : currentLine.oromo, language, currentLine.gender as 'female' | 'male' | undefined)}
-            className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full"
+            className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full h-auto"
           >
-            🔊 {ui.listen}
+            {language === 'oromo' && currentLine.pronunciation ? (
+              <div className="text-center">
+                <div className="font-semibold">{currentLine.oromo}</div>
+                <div className="text-sm italic opacity-80">{currentLine.pronunciation}</div>
+              </div>
+            ) : (
+              '🔊 ' + ui.listen
+            )}
           </Button>
           
           <Button
