@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { speakText } from '@/utils/speechUtils';
@@ -286,98 +285,30 @@ const flagsData = {
 const uiContent = {
   english: {
     title: "Learn Country Flags! 🏁",
-    subtitle: "Can you identify these flags?",
+    subtitle: "Click on any flag to hear the country name!",
     back: "Back to Levels",
-    score: "Score:",
-    next: "Next Flag",
-    finish: "Finish",
-    congratulations: "Great job! You learned about flags!",
-    tryAgain: "Try again!",
-    correct: "Correct! Well done!",
-    clickFlag: "Click on the flag to hear the country name!"
+    clickToHear: "Click to hear"
   },
   oromo: {
     title: "Alaabaa Biyyootaa Baradhu! 🏁",
-    subtitle: "Alaabaa kana beektaa?",
+    subtitle: "Maqaa biyyaa dhaggeeffachuuf alaabaa kamiyyuu cuqaasi!",
     back: "Gara Sadarkaalee",
-    score: "Qabxii:",
-    next: "Alaabaa Itti Aanu",
-    finish: "Xumuri",
-    congratulations: "Gaarii! Waa'ee alaabaa baratteerta!",
-    tryAgain: "Ammas yaali!",
-    correct: "Sirrii! Gaarii!",
-    clickFlag: "Maqaa biyyaa dhaggeeffachuuf alaabaa cuqaasi!"
+    clickToHear: "Dhaggeeffachuuf cuqaasi"
   }
 };
 
 const FlagModule = ({ onBack, language }: FlagModuleProps) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [score, setScore] = useState(0);
-  const [showResult, setShowResult] = useState(false);
-  const [isComplete, setIsComplete] = useState(false);
-
   const flags = flagsData[language];
   const ui = uiContent[language];
-  const currentFlag = flags[currentIndex];
 
   useEffect(() => {
     console.log(`Flag Module loaded with ${flags.length} flags in ${language}`);
   }, [flags.length, language]);
 
-  const handleFlagClick = async () => {
-    console.log(`Speaking: ${currentFlag.name}`);
-    await speakText(currentFlag.name, language);
-    setShowResult(true);
-    setScore(score + 1);
-    
-    setTimeout(() => {
-      speakText(ui.correct, language);
-    }, 1000);
+  const handleFlagClick = async (flag: { name: string; flag: string; code: string }) => {
+    console.log(`Speaking: ${flag.name}`);
+    await speakText(flag.name, language);
   };
-
-  const handleNext = () => {
-    if (currentIndex < flags.length - 1) {
-      setCurrentIndex(currentIndex + 1);
-      setShowResult(false);
-    } else {
-      setIsComplete(true);
-      speakText(ui.congratulations, language);
-    }
-  };
-
-  const handleFinish = () => {
-    onBack();
-  };
-
-  if (isComplete) {
-    return (
-      <div className="min-h-screen p-6 flex items-center justify-center relative overflow-hidden">
-        {/* Animated Background */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-20 w-32 h-32 bg-gradient-to-r from-green-300 to-blue-300 rounded-full animate-pulse opacity-30"></div>
-          <div className="absolute top-40 right-20 w-24 h-24 bg-gradient-to-r from-yellow-300 to-red-300 rounded-full animate-bounce opacity-30"></div>
-          <div className="absolute bottom-32 left-16 w-28 h-28 bg-gradient-to-r from-purple-300 to-pink-300 rounded-full animate-pulse delay-300 opacity-30"></div>
-          
-          {/* Floating Flags */}
-          <div className="absolute top-1/4 right-1/4 text-8xl animate-bounce delay-200 opacity-20">🏁</div>
-          <div className="absolute bottom-1/4 left-1/4 text-6xl animate-pulse delay-400 opacity-20">🌍</div>
-          <div className="absolute top-1/2 left-10 text-5xl animate-spin opacity-20">🎯</div>
-        </div>
-
-        <div className="bg-white/20 backdrop-blur-sm rounded-3xl p-8 shadow-xl text-center max-w-md relative z-10">
-          <div className="text-8xl mb-6 animate-bounce">🏆</div>
-          <h2 className="text-3xl font-bold text-white mb-4">{ui.congratulations}</h2>
-          <p className="text-xl text-white mb-6">{ui.score} {score}/{flags.length}</p>
-          <Button
-            onClick={handleFinish}
-            className="bg-gradient-to-r from-green-400 to-blue-500 hover:opacity-90 text-white font-bold px-8 py-4 rounded-full text-lg transform hover:scale-105 transition-all duration-200"
-          >
-            {ui.back} 🚀
-          </Button>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen p-6 relative overflow-hidden">
@@ -393,7 +324,7 @@ const FlagModule = ({ onBack, language }: FlagModuleProps) => {
         <div className="absolute top-1/2 left-10 text-5xl animate-spin opacity-20">🌟</div>
       </div>
 
-      <div className="max-w-4xl mx-auto relative z-10">
+      <div className="max-w-6xl mx-auto relative z-10">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <Button
@@ -408,59 +339,30 @@ const FlagModule = ({ onBack, language }: FlagModuleProps) => {
             </h1>
             <p className="text-xl text-white/80">{ui.subtitle}</p>
           </div>
-          <div className="text-white font-bold text-lg">
-            {ui.score} {score}/{flags.length}
-          </div>
+          <div className="w-24"></div>
         </div>
 
-        {/* Progress Bar */}
-        <div className="w-full bg-white/20 rounded-full h-4 mb-8">
-          <div 
-            className="bg-gradient-to-r from-green-400 to-blue-500 h-4 rounded-full transition-all duration-300"
-            style={{ width: `${((currentIndex + 1) / flags.length) * 100}%` }}
-          ></div>
-        </div>
-
-        {/* Flag Display */}
-        <div className="bg-white/20 backdrop-blur-sm rounded-3xl p-12 shadow-xl text-center">
-          <div className="mb-8">
-            <div className="text-xl text-white mb-4">
-              {language === 'english' ? 'Flag' : 'Alaabaa'} {currentIndex + 1} / {flags.length}
-            </div>
-            <p className="text-lg text-white/80 mb-6">{ui.clickFlag}</p>
-          </div>
-
-          {/* Flag Button */}
-          <div className="mb-8">
-            <button
-              onClick={handleFlagClick}
-              className="text-9xl hover:scale-110 transform transition-all duration-300 cursor-pointer bg-white/10 rounded-3xl p-8 border-4 border-white/20 hover:border-white/40"
+        {/* Flags Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+          {flags.map((flag, index) => (
+            <div
+              key={index}
+              className="bg-white/20 backdrop-blur-sm rounded-2xl p-4 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 cursor-pointer hover:bg-white/30"
+              onClick={() => handleFlagClick(flag)}
             >
-              {currentFlag.flag}
-            </button>
-          </div>
-
-          {/* Country Name (shown after click) */}
-          {showResult && (
-            <div className="mb-8 animate-bounce">
-              <div className="text-4xl font-bold text-white mb-4">
-                {currentFlag.name}
-              </div>
-              <div className="text-2xl text-green-300 font-bold">
-                {ui.correct} ✅
+              <div className="text-center">
+                <div className="text-6xl mb-3 hover:scale-110 transform transition-all duration-300">
+                  {flag.flag}
+                </div>
+                <div className="text-sm font-semibold text-white mb-2 min-h-[40px] flex items-center justify-center">
+                  {flag.name}
+                </div>
+                <div className="text-xs text-white/70">
+                  {ui.clickToHear}
+                </div>
               </div>
             </div>
-          )}
-
-          {/* Next Button */}
-          {showResult && (
-            <Button
-              onClick={handleNext}
-              className="bg-gradient-to-r from-blue-400 to-purple-500 hover:opacity-90 text-white font-bold px-8 py-4 rounded-full text-xl transform hover:scale-105 transition-all duration-200"
-            >
-              {currentIndex < flags.length - 1 ? ui.next : ui.finish} 🚀
-            </Button>
-          )}
+          ))}
         </div>
       </div>
     </div>
