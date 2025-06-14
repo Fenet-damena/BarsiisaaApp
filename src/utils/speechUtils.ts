@@ -34,8 +34,8 @@ export const speakText = (text: string, language: 'english' | 'oromo' = 'english
   }
 };
 
-export const speakLetter = (letter: string, sound: string, language: 'english' | 'oromo' = 'english') => {
-  const textToSpeak = `${letter}. ${sound}`;
+export const speakLetter = (letter: string, sound: string, word: string, language: 'english' | 'oromo' = 'english') => {
+  const textToSpeak = `${letter} ${sound} ${word}`;
   speakText(textToSpeak, language);
 };
 
