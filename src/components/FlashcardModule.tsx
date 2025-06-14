@@ -11,62 +11,62 @@ interface FlashcardModuleProps {
 const flashcardData = {
   english: {
     2: [
-      { english: "Elephant", oromo: "Arba", emoji: "🐘", letter: "A", imageUrl: "https://images.unsplash.com/photo-1557052583-59f3102555fb" },
-      { english: "Coffee", oromo: "Buna", emoji: "☕", letter: "B", imageUrl: "https://images.unsplash.com/photo-1511920183353-34e85a7420e2" },
-      { english: "Ice", oromo: "Cabbi", emoji: "🧊", letter: "C", imageUrl: "https://images.unsplash.com/photo-1549488344-cbb6c34cf08b" },
-      { english: "Honey", oromo: "Damma", emoji: "🍯", letter: "D", imageUrl: "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62" },
-      { english: "Tail", oromo: "Eegee", emoji: "🦎", letter: "E", imageUrl: "https://images.unsplash.com/photo-1517395949122-103e694975a8" },
-      { english: "Horse", oromo: "Farda", emoji: "🐴", letter: "F", imageUrl: "https://images.unsplash.com/photo-1553272725-0861007692b1" },
-      { english: "Black", oromo: "Gurraacha", emoji: "⬛", letter: "G", imageUrl: "https://images.unsplash.com/photo-1516629221142-990a420b9e4a" },
-      { english: "Lake", oromo: "Haroo", emoji: "🏞️", letter: "H", imageUrl: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e" },
-      { english: "Child/Son", oromo: "Ilma", emoji: "👦", letter: "I", imageUrl: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9" },
-      { english: "Monkey", oromo: "Jaldeessa", emoji: "🐒", letter: "J", imageUrl: "https://images.unsplash.com/photo-1540573133985-87b6da6d54a9" },
-      { english: "Book", oromo: "Kitaaba", emoji: "📖", letter: "K", imageUrl: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c" },
-      { english: "Cow", oromo: "Loon", emoji: "🐄", letter: "L", imageUrl: "https://images.unsplash.com/photo-1570042225731-9a3a9a83958c" },
-      { english: "Tree", oromo: "Muka", emoji: "🌳", letter: "M", imageUrl: "https://images.unsplash.com/photo-1458966480352-a5424a413abe" },
-      { english: "Person", oromo: "Nama", emoji: "👤", letter: "N", imageUrl: "https://images.unsplash.com/photo-1552058544-f2b08422138a" },
-      { english: "Sacred Tree", oromo: "Odaa", emoji: "🌳", letter: "O", imageUrl: "https://images.unsplash.com/photo-1433215581134-97c3966a42a0" },
-      { english: "Papaya", oromo: "Pappayaa", emoji: "🥭", letter: "P", imageUrl: "https://images.unsplash.com/photo-1517282009859-f000ec3b26fe" },
-      { english: "Monkey", oromo: "Qamalee", emoji: "🐒", letter: "Q", imageUrl: "https://images.unsplash.com/photo-1570288636-5293c4a80630" },
-      { english: "Frog", oromo: "Raachaa", emoji: "🐸", letter: "R", imageUrl: "https://images.unsplash.com/photo-1587588319693-55097461c659" },
-      { english: "Dog", oromo: "Saree", emoji: "🐶", letter: "S", imageUrl: "https://images.unsplash.com/photo-1537151625747-768eb6cf92b2" },
-      { english: "One (1)", oromo: "Tokko", emoji: "1️⃣", letter: "T", imageUrl: null },
-      { english: "Stick", oromo: "Ulee", emoji: "🪵", letter: "U", imageUrl: "https://images.unsplash.com/photo-1550369433-2144d93a5bde" },
-      { english: "Violin", oromo: "Vayooliini", emoji: "🎻", letter: "V", imageUrl: "https://images.unsplash.com/photo-1612225330847-64b8d7c58d24" },
-      { english: "Hyena", oromo: "Waraabessa", emoji: "🐺", letter: "W", imageUrl: "https://images.unsplash.com/photo-1599335607092-b4307c9fb371" },
-      { english: "Letter (mail)", oromo: "Xalayaa", emoji: "✉️", letter: "X", imageUrl: "https://images.unsplash.com/photo-1594950393437-a7b20e73e919" },
-      { english: "Fox", oromo: "Yeeyyii", emoji: "🦊", letter: "Y", imageUrl: "https://images.unsplash.com/photo-1516934024016-1591d163c78a" },
-      { english: "Zero", oromo: "Zeeroo", emoji: "0️⃣", letter: "Z", imageUrl: null },
+      { english: "Elephant", oromo: "Arba", emoji: "🐘", letter: "A", oromoLetterSound: "Ah", imageUrl: "https://images.unsplash.com/photo-1557052583-59f3102555fb" },
+      { english: "Coffee", oromo: "Buna", emoji: "☕", letter: "B", oromoLetterSound: "Buh", imageUrl: "https://images.unsplash.com/photo-1511920183353-34e85a7420e2" },
+      { english: "Ice", oromo: "Cabbi", emoji: "🧊", letter: "C", oromoLetterSound: "Cha", imageUrl: "https://images.unsplash.com/photo-1549488344-cbb6c34cf08b" },
+      { english: "Honey", oromo: "Damma", emoji: "🍯", letter: "D", oromoLetterSound: "Dah", imageUrl: "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62" },
+      { english: "Tail", oromo: "Eegee", emoji: "🦎", letter: "E", oromoLetterSound: "Eh", imageUrl: "https://images.unsplash.com/photo-1517395949122-103e694975a8" },
+      { english: "Horse", oromo: "Farda", emoji: "🐴", letter: "F", oromoLetterSound: "Fah", imageUrl: "https://images.unsplash.com/photo-1452378174528-3090a4bba7b2" },
+      { english: "Black", oromo: "Gurraacha", emoji: "⬛", letter: "G", oromoLetterSound: "Gah", imageUrl: "https://images.unsplash.com/photo-1516629221142-990a420b9e4a" },
+      { english: "Lake", oromo: "Haroo", emoji: "🏞️", letter: "H", oromoLetterSound: "Hah", imageUrl: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e" },
+      { english: "Child/Son", oromo: "Ilma", emoji: "👦", letter: "I", oromoLetterSound: "Ee", imageUrl: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9" },
+      { english: "Monkey", oromo: "Jaldeessa", emoji: "🐒", letter: "J", oromoLetterSound: "Jah", imageUrl: "https://images.unsplash.com/photo-1501286353178-1ec881214838" },
+      { english: "Book", oromo: "Kitaaba", emoji: "📖", letter: "K", oromoLetterSound: "Kah", imageUrl: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c" },
+      { english: "Cow", oromo: "Loon", emoji: "🐄", letter: "L", oromoLetterSound: "Lah", imageUrl: "https://images.unsplash.com/photo-1493962853295-0fd70327578a" },
+      { english: "Tree", oromo: "Muka", emoji: "🌳", letter: "M", oromoLetterSound: "Mah", imageUrl: "https://images.unsplash.com/photo-1458966480352-a5424a413abe" },
+      { english: "Person", oromo: "Nama", emoji: "👤", letter: "N", oromoLetterSound: "Nah", imageUrl: "https://images.unsplash.com/photo-1552058544-f2b08422138a" },
+      { english: "Sacred Tree", oromo: "Odaa", emoji: "🌳", letter: "O", oromoLetterSound: "Oh", imageUrl: "https://images.unsplash.com/photo-1433215581134-97c3966a42a0" },
+      { english: "Papaya", oromo: "Pappayaa", emoji: "🥭", letter: "P", oromoLetterSound: "Pah", imageUrl: "https://images.unsplash.com/photo-1517282009859-f000ec3b26fe" },
+      { english: "Monkey", oromo: "Qamalee", emoji: "🐒", letter: "Q", oromoLetterSound: "Qah", imageUrl: "https://images.unsplash.com/photo-1501286353178-1ec881214838" },
+      { english: "Frog", oromo: "Raachaa", emoji: "🐸", letter: "R", oromoLetterSound: "Rah", imageUrl: "https://images.unsplash.com/photo-1587588319693-55097461c659" },
+      { english: "Dog", oromo: "Saree", emoji: "🐶", letter: "S", oromoLetterSound: "Sah", imageUrl: "https://images.unsplash.com/photo-1537151625747-768eb6cf92b2" },
+      { english: "One (1)", oromo: "Tokko", emoji: "1️⃣", letter: "T", oromoLetterSound: "Tah", imageUrl: null },
+      { english: "Stick", oromo: "Ulee", emoji: "🪵", letter: "U", oromoLetterSound: "Oo", imageUrl: "https://images.unsplash.com/photo-1550369433-2144d93a5bde" },
+      { english: "Violin", oromo: "Vayooliini", emoji: "🎻", letter: "V", oromoLetterSound: "Vah", imageUrl: "https://images.unsplash.com/photo-1612225330847-64b8d7c58d24" },
+      { english: "Hyena", oromo: "Waraabessa", emoji: "🐺", letter: "W", oromoLetterSound: "Wah", imageUrl: "https://images.unsplash.com/photo-1599335607092-b4307c9fb371" },
+      { english: "Letter (mail)", oromo: "Xalayaa", emoji: "✉️", letter: "X", oromoLetterSound: "Kha", imageUrl: "https://images.unsplash.com/photo-1594950393437-a7b20e73e919" },
+      { english: "Fox", oromo: "Yeeyyii", emoji: "🦊", letter: "Y", oromoLetterSound: "Yah", imageUrl: "https://images.unsplash.com/photo-1516934024016-1591d163c78a" },
+      { english: "Zero", oromo: "Zeeroo", emoji: "0️⃣", letter: "Z", oromoLetterSound: "Zah", imageUrl: null },
     ]
   },
   oromo: {
     2: [
-      { english: "Elephant", oromo: "Arba", emoji: "🐘", letter: "A", imageUrl: "https://images.unsplash.com/photo-1557052583-59f3102555fb" },
-      { english: "Coffee", oromo: "Buna", emoji: "☕", letter: "B", imageUrl: "https://images.unsplash.com/photo-1511920183353-34e85a7420e2" },
-      { english: "Ice", oromo: "Cabbi", emoji: "🧊", letter: "C", imageUrl: "https://images.unsplash.com/photo-1549488344-cbb6c34cf08b" },
-      { english: "Honey", oromo: "Damma", emoji: "🍯", letter: "D", imageUrl: "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62" },
-      { english: "Tail", oromo: "Eegee", emoji: "🦎", letter: "E", imageUrl: "https://images.unsplash.com/photo-1517395949122-103e694975a8" },
-      { english: "Horse", oromo: "Farda", emoji: "🐴", letter: "F", imageUrl: "https://images.unsplash.com/photo-1553272725-0861007692b1" },
-      { english: "Black", oromo: "Gurraacha", emoji: "⬛", letter: "G", imageUrl: "https://images.unsplash.com/photo-1516629221142-990a420b9e4a" },
-      { english: "Lake", oromo: "Haroo", emoji: "🏞️", letter: "H", imageUrl: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e" },
-      { english: "Child/Son", oromo: "Ilma", emoji: "👦", letter: "I", imageUrl: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9" },
-      { english: "Monkey", oromo: "Jaldeessa", emoji: "🐒", letter: "J", imageUrl: "https://images.unsplash.com/photo-1540573133985-87b6da6d54a9" },
-      { english: "Book", oromo: "Kitaaba", emoji: "📖", letter: "K", imageUrl: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c" },
-      { english: "Cow", oromo: "Loon", emoji: "🐄", letter: "L", imageUrl: "https://images.unsplash.com/photo-1570042225731-9a3a9a83958c" },
-      { english: "Tree", oromo: "Muka", emoji: "🌳", letter: "M", imageUrl: "https://images.unsplash.com/photo-1458966480352-a5424a413abe" },
-      { english: "Person", oromo: "Nama", emoji: "👤", letter: "N", imageUrl: "https://images.unsplash.com/photo-1552058544-f2b08422138a" },
-      { english: "Sacred Tree", oromo: "Odaa", emoji: "🌳", letter: "O", imageUrl: "https://images.unsplash.com/photo-1433215581134-97c3966a42a0" },
-      { english: "Papaya", oromo: "Pappayaa", emoji: "🥭", letter: "P", imageUrl: "https://images.unsplash.com/photo-1517282009859-f000ec3b26fe" },
-      { english: "Monkey", oromo: "Qamalee", emoji: "🐒", letter: "Q", imageUrl: "https://images.unsplash.com/photo-1570288636-5293c4a80630" },
-      { english: "Frog", oromo: "Raachaa", emoji: "🐸", letter: "R", imageUrl: "https://images.unsplash.com/photo-1587588319693-55097461c659" },
-      { english: "Dog", oromo: "Saree", emoji: "🐶", letter: "S", imageUrl: "https://images.unsplash.com/photo-1537151625747-768eb6cf92b2" },
-      { english: "One (1)", oromo: "Tokko", emoji: "1️⃣", letter: "T", imageUrl: null },
-      { english: "Stick", oromo: "Ulee", emoji: "🪵", letter: "U", imageUrl: "https://images.unsplash.com/photo-1550369433-2144d93a5bde" },
-      { english: "Violin", oromo: "Vayooliini", emoji: "🎻", letter: "V", imageUrl: "https://images.unsplash.com/photo-1612225330847-64b8d7c58d24" },
-      { english: "Hyena", oromo: "Waraabessa", emoji: "🐺", letter: "W", imageUrl: "https://images.unsplash.com/photo-1599335607092-b4307c9fb371" },
-      { english: "Letter (mail)", oromo: "Xalayaa", emoji: "✉️", letter: "X", imageUrl: "https://images.unsplash.com/photo-1594950393437-a7b20e73e919" },
-      { english: "Fox", oromo: "Yeeyyii", emoji: "🦊", letter: "Y", imageUrl: "https://images.unsplash.com/photo-1516934024016-1591d163c78a" },
-      { english: "Zero", oromo: "Zeeroo", emoji: "0️⃣", letter: "Z", imageUrl: null },
+      { english: "Elephant", oromo: "Arba", emoji: "🐘", letter: "A", oromoLetterSound: "Ah", imageUrl: "https://images.unsplash.com/photo-1557052583-59f3102555fb" },
+      { english: "Coffee", oromo: "Buna", emoji: "☕", letter: "B", oromoLetterSound: "Buh", imageUrl: "https://images.unsplash.com/photo-1511920183353-34e85a7420e2" },
+      { english: "Ice", oromo: "Cabbi", emoji: "🧊", letter: "C", oromoLetterSound: "Cha", imageUrl: "https://images.unsplash.com/photo-1549488344-cbb6c34cf08b" },
+      { english: "Honey", oromo: "Damma", emoji: "🍯", letter: "D", oromoLetterSound: "Dah", imageUrl: "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62" },
+      { english: "Tail", oromo: "Eegee", emoji: "🦎", letter: "E", oromoLetterSound: "Eh", imageUrl: "https://images.unsplash.com/photo-1517395949122-103e694975a8" },
+      { english: "Horse", oromo: "Farda", emoji: "🐴", letter: "F", oromoLetterSound: "Fah", imageUrl: "https://images.unsplash.com/photo-1452378174528-3090a4bba7b2" },
+      { english: "Black", oromo: "Gurraacha", emoji: "⬛", letter: "G", oromoLetterSound: "Gah", imageUrl: "https://images.unsplash.com/photo-1516629221142-990a420b9e4a" },
+      { english: "Lake", oromo: "Haroo", emoji: "🏞️", letter: "H", oromoLetterSound: "Hah", imageUrl: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e" },
+      { english: "Child/Son", oromo: "Ilma", emoji: "👦", letter: "I", oromoLetterSound: "Ee", imageUrl: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9" },
+      { english: "Monkey", oromo: "Jaldeessa", emoji: "🐒", letter: "J", oromoLetterSound: "Jah", imageUrl: "https://images.unsplash.com/photo-1501286353178-1ec881214838" },
+      { english: "Book", oromo: "Kitaaba", emoji: "📖", letter: "K", oromoLetterSound: "Kah", imageUrl: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c" },
+      { english: "Cow", oromo: "Loon", emoji: "🐄", letter: "L", oromoLetterSound: "Lah", imageUrl: "https://images.unsplash.com/photo-1493962853295-0fd70327578a" },
+      { english: "Tree", oromo: "Muka", emoji: "🌳", letter: "M", oromoLetterSound: "Mah", imageUrl: "https://images.unsplash.com/photo-1458966480352-a5424a413abe" },
+      { english: "Person", oromo: "Nama", emoji: "👤", letter: "N", oromoLetterSound: "Nah", imageUrl: "https://images.unsplash.com/photo-1552058544-f2b08422138a" },
+      { english: "Sacred Tree", oromo: "Odaa", emoji: "🌳", letter: "O", oromoLetterSound: "Oh", imageUrl: "https://images.unsplash.com/photo-1433215581134-97c3966a42a0" },
+      { english: "Papaya", oromo: "Pappayaa", emoji: "🥭", letter: "P", oromoLetterSound: "Pah", imageUrl: "https://images.unsplash.com/photo-1517282009859-f000ec3b26fe" },
+      { english: "Monkey", oromo: "Qamalee", emoji: "🐒", letter: "Q", oromoLetterSound: "Qah", imageUrl: "https://images.unsplash.com/photo-1501286353178-1ec881214838" },
+      { english: "Frog", oromo: "Raachaa", emoji: "🐸", letter: "R", oromoLetterSound: "Rah", imageUrl: "https://images.unsplash.com/photo-1587588319693-55097461c659" },
+      { english: "Dog", oromo: "Saree", emoji: "🐶", letter: "S", oromoLetterSound: "Sah", imageUrl: "https://images.unsplash.com/photo-1537151625747-768eb6cf92b2" },
+      { english: "One (1)", oromo: "Tokko", emoji: "1️⃣", letter: "T", oromoLetterSound: "Tah", imageUrl: null },
+      { english: "Stick", oromo: "Ulee", emoji: "🪵", letter: "U", oromoLetterSound: "Oo", imageUrl: "https://images.unsplash.com/photo-1550369433-2144d93a5bde" },
+      { english: "Violin", oromo: "Vayooliini", emoji: "🎻", letter: "V", oromoLetterSound: "Vah", imageUrl: "https://images.unsplash.com/photo-1612225330847-64b8d7c58d24" },
+      { english: "Hyena", oromo: "Waraabessa", emoji: "🐺", letter: "W", oromoLetterSound: "Wah", imageUrl: "https://images.unsplash.com/photo-1599335607092-b4307c9fb371" },
+      { english: "Letter (mail)", oromo: "Xalayaa", emoji: "✉️", letter: "X", oromoLetterSound: "Kha", imageUrl: "https://images.unsplash.com/photo-1594950393437-a7b20e73e919" },
+      { english: "Fox", oromo: "Yeeyyii", emoji: "🦊", letter: "Y", oromoLetterSound: "Yah", imageUrl: "https://images.unsplash.com/photo-1516934024016-1591d163c78a" },
+      { english: "Zero", oromo: "Zeeroo", emoji: "0️⃣", letter: "Z", oromoLetterSound: "Zah", imageUrl: null },
     ]
   }
 };
@@ -173,12 +173,17 @@ const FlashcardModule = ({ level, onBack, language }: FlashcardModuleProps) => {
               </div>
             ) : (
               <div className="text-center">
-                <div className="w-48 h-48 mx-auto mb-4 bg-gradient-to-br from-yellow-100 to-orange-100 rounded-2xl flex items-center justify-center shadow-lg">
-                  <span className="text-6xl">{currentCard.emoji}</span>
-                </div>
+                {currentCard.imageUrl ? (
+                  <img src={currentCard.imageUrl} alt={currentCard.english} className="w-48 h-48 mx-auto mb-4 object-cover rounded-2xl shadow-lg" />
+                ) : (
+                  <div className="w-48 h-48 mx-auto mb-4 bg-gradient-to-br from-yellow-100 to-orange-100 rounded-2xl flex items-center justify-center shadow-lg">
+                    <span className="text-6xl">{currentCard.emoji}</span>
+                  </div>
+                )}
                 
-                <div className="text-3xl font-bold text-gray-800 mb-2">
-                  {language === 'english' ? currentCard.english : currentCard.oromo}
+                <div className="text-3xl font-bold text-gray-800 mb-2 flex items-center justify-center gap-2">
+                  <span>{language === 'english' ? currentCard.english : currentCard.oromo}</span>
+                  <span>{currentCard.emoji}</span>
                 </div>
                 <div className="text-xl text-purple-600">
                   {language === 'english' ? currentCard.oromo : currentCard.english}
@@ -198,7 +203,7 @@ const FlashcardModule = ({ level, onBack, language }: FlashcardModuleProps) => {
           </Button>
           
           <Button
-            onClick={() => speakText(language === 'oromo' ? `${currentCard.letter}, ${currentCard.oromo}` : `${currentCard.letter} for ${currentCard.english}`, language)}
+            onClick={() => speakText(language === 'oromo' ? `${currentCard.oromoLetterSound}, ${currentCard.oromo}` : `${currentCard.letter} for ${currentCard.english}`, language)}
             className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full"
           >
             🔊 {ui.listen}
