@@ -1,7 +1,17 @@
+
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, List, Grid } from 'lucide-react';
 import { speakText } from '@/utils/speechUtils';
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 interface FlagModuleProps {
   onBack: () => void;
@@ -10,276 +20,88 @@ interface FlagModuleProps {
 
 const flagsData = {
   english: [
-    { name: "United States", flag: "🇺🇸", code: "US" },
-    { name: "United Kingdom", flag: "🇬🇧", code: "GB" },
-    { name: "Canada", flag: "🇨🇦", code: "CA" },
-    { name: "France", flag: "🇫🇷", code: "FR" },
-    { name: "Germany", flag: "🇩🇪", code: "DE" },
-    { name: "Italy", flag: "🇮🇹", code: "IT" },
-    { name: "Spain", flag: "🇪🇸", code: "ES" },
-    { name: "Japan", flag: "🇯🇵", code: "JP" },
-    { name: "China", flag: "🇨🇳", code: "CN" },
-    { name: "India", flag: "🇮🇳", code: "IN" },
-    { name: "Brazil", flag: "🇧🇷", code: "BR" },
-    { name: "Mexico", flag: "🇲🇽", code: "MX" },
-    { name: "Australia", flag: "🇦🇺", code: "AU" },
-    { name: "Russia", flag: "🇷🇺", code: "RU" },
-    { name: "South Korea", flag: "🇰🇷", code: "KR" },
-    { name: "Turkey", flag: "🇹🇷", code: "TR" },
-    { name: "Egypt", flag: "🇪🇬", code: "EG" },
-    { name: "South Africa", flag: "🇿🇦", code: "ZA" },
-    { name: "Nigeria", flag: "🇳🇬", code: "NG" },
-    { name: "Ethiopia", flag: "🇪🇹", code: "ET" },
-    { name: "Kenya", flag: "🇰🇪", code: "KE" },
-    { name: "Ghana", flag: "🇬🇭", code: "GH" },
-    { name: "Morocco", flag: "🇲🇦", code: "MA" },
-    { name: "Algeria", flag: "🇩🇿", code: "DZ" },
-    { name: "Tunisia", flag: "🇹🇳", code: "TN" },
-    { name: "Libya", flag: "🇱🇾", code: "LY" },
-    { name: "Sudan", flag: "🇸🇩", code: "SD" },
-    { name: "Uganda", flag: "🇺🇬", code: "UG" },
-    { name: "Tanzania", flag: "🇹🇿", code: "TZ" },
-    { name: "Rwanda", flag: "🇷🇼", code: "RW" },
-    { name: "Zambia", flag: "🇿🇲", code: "ZM" },
-    { name: "Zimbabwe", flag: "🇿🇼", code: "ZW" },
-    { name: "Botswana", flag: "🇧🇼", code: "BW" },
-    { name: "Namibia", flag: "🇳🇦", code: "NA" },
-    { name: "Angola", flag: "🇦🇴", code: "AO" },
-    { name: "Mozambique", flag: "🇲🇿", code: "MZ" },
-    { name: "Madagascar", flag: "🇲🇬", code: "MG" },
-    { name: "Mauritius", flag: "🇲🇺", code: "MU" },
-    { name: "Seychelles", flag: "🇸🇨", code: "SC" },
-    { name: "Comoros", flag: "🇰🇲", code: "KM" },
-    { name: "Djibouti", flag: "🇩🇯", code: "DJ" },
-    { name: "Somalia", flag: "🇸🇴", code: "SO" },
-    { name: "Eritrea", flag: "🇪🇷", code: "ER" },
-    { name: "Chad", flag: "🇹🇩", code: "TD" },
-    { name: "Niger", flag: "🇳🇪", code: "NE" },
-    { name: "Mali", flag: "🇲🇱", code: "ML" },
-    { name: "Burkina Faso", flag: "🇧🇫", code: "BF" },
-    { name: "Senegal", flag: "🇸🇳", code: "SN" },
-    { name: "Guinea", flag: "🇬🇳", code: "GN" },
-    { name: "Sierra Leone", flag: "🇸🇱", code: "SL" },
-    { name: "Liberia", flag: "🇱🇷", code: "LR" },
-    { name: "Ivory Coast", flag: "🇨🇮", code: "CI" },
-    { name: "Togo", flag: "🇹🇬", code: "TG" },
-    { name: "Benin", flag: "🇧🇯", code: "BJ" },
-    { name: "Cameroon", flag: "🇨🇲", code: "CM" },
-    { name: "Central African Republic", flag: "🇨🇫", code: "CF" },
-    { name: "Democratic Republic of Congo", flag: "🇨🇩", code: "CD" },
-    { name: "Republic of Congo", flag: "🇨🇬", code: "CG" },
-    { name: "Gabon", flag: "🇬🇦", code: "GA" },
-    { name: "Equatorial Guinea", flag: "🇬🇶", code: "GQ" },
-    { name: "Sao Tome and Principe", flag: "🇸🇹", code: "ST" },
-    { name: "Cape Verde", flag: "🇨🇻", code: "CV" },
-    { name: "Gambia", flag: "🇬🇲", code: "GM" },
-    { name: "Guinea-Bissau", flag: "🇬🇼", code: "GW" },
-    { name: "Malawi", flag: "🇲🇼", code: "MW" },
-    { name: "Lesotho", flag: "🇱🇸", code: "LS" },
-    { name: "Eswatini", flag: "🇸🇿", code: "SZ" },
-    { name: "Argentina", flag: "🇦🇷", code: "AR" },
-    { name: "Chile", flag: "🇨🇱", code: "CL" },
-    { name: "Peru", flag: "🇵🇪", code: "PE" },
-    { name: "Colombia", flag: "🇨🇴", code: "CO" },
-    { name: "Venezuela", flag: "🇻🇪", code: "VE" },
-    { name: "Ecuador", flag: "🇪🇨", code: "EC" },
-    { name: "Bolivia", flag: "🇧🇴", code: "BO" },
-    { name: "Paraguay", flag: "🇵🇾", code: "PY" },
-    { name: "Uruguay", flag: "🇺🇾", code: "UY" },
-    { name: "Guyana", flag: "🇬🇾", code: "GY" },
-    { name: "Suriname", flag: "🇸🇷", code: "SR" },
-    { name: "French Guiana", flag: "🇬🇫", code: "GF" },
-    { name: "Norway", flag: "🇳🇴", code: "NO" },
-    { name: "Sweden", flag: "🇸🇪", code: "SE" },
-    { name: "Denmark", flag: "🇩🇰", code: "DK" },
-    { name: "Finland", flag: "🇫🇮", code: "FI" },
-    { name: "Iceland", flag: "🇮🇸", code: "IS" },
-    { name: "Netherlands", flag: "🇳🇱", code: "NL" },
-    { name: "Belgium", flag: "🇧🇪", code: "BE" },
-    { name: "Luxembourg", flag: "🇱🇺", code: "LU" },
-    { name: "Switzerland", flag: "🇨🇭", code: "CH" },
-    { name: "Austria", flag: "🇦🇹", code: "AT" },
-    { name: "Portugal", flag: "🇵🇹", code: "PT" },
-    { name: "Ireland", flag: "🇮🇪", code: "IE" },
-    { name: "Poland", flag: "🇵🇱", code: "PL" },
-    { name: "Czech Republic", flag: "🇨🇿", code: "CZ" },
-    { name: "Slovakia", flag: "🇸🇰", code: "SK" },
-    { name: "Hungary", flag: "🇭🇺", code: "HU" },
-    { name: "Romania", flag: "🇷🇴", code: "RO" },
-    { name: "Bulgaria", flag: "🇧🇬", code: "BG" },
-    { name: "Greece", flag: "🇬🇷", code: "GR" },
-    { name: "Serbia", flag: "🇷🇸", code: "RS" },
-    { name: "Croatia", flag: "🇭🇷", code: "HR" },
-    { name: "Slovenia", flag: "🇸🇮", code: "SI" },
-    { name: "Bosnia and Herzegovina", flag: "🇧🇦", code: "BA" },
-    { name: "Montenegro", flag: "🇲🇪", code: "ME" },
-    { name: "North Macedonia", flag: "🇲🇰", code: "MK" },
-    { name: "Albania", flag: "🇦🇱", code: "AL" },
-    { name: "Thailand", flag: "🇹🇭", code: "TH" },
-    { name: "Vietnam", flag: "🇻🇳", code: "VN" },
-    { name: "Philippines", flag: "🇵🇭", code: "PH" },
-    { name: "Indonesia", flag: "🇮🇩", code: "ID" },
-    { name: "Malaysia", flag: "🇲🇾", code: "MY" },
-    { name: "Singapore", flag: "🇸🇬", code: "SG" },
-    { name: "Myanmar", flag: "🇲🇲", code: "MM" },
-    { name: "Cambodia", flag: "🇰🇭", code: "KH" },
-    { name: "Laos", flag: "🇱🇦", code: "LA" },
-    { name: "Brunei", flag: "🇧🇳", code: "BN" },
-    { name: "Nepal", flag: "🇳🇵", code: "NP" },
-    { name: "Bangladesh", flag: "🇧🇩", code: "BD" },
-    { name: "Sri Lanka", flag: "🇱🇰", code: "LK" },
-    { name: "Pakistan", flag: "🇵🇰", code: "PK" },
-    { name: "Afghanistan", flag: "🇦🇫", code: "AF" },
-    { name: "Iran", flag: "🇮🇷", code: "IR" },
-    { name: "Iraq", flag: "🇮🇶", code: "IQ" },
-    { name: "Saudi Arabia", flag: "🇸🇦", code: "SA" },
-    { name: "Kuwait", flag: "🇰🇼", code: "KW" },
-    { name: "Qatar", flag: "🇶🇦", code: "QA" },
-    { name: "United Arab Emirates", flag: "🇦🇪", code: "AE" },
-    { name: "Oman", flag: "🇴🇲", code: "OM" },
-    { name: "Yemen", flag: "🇾🇪", code: "YE" },
-    { name: "Jordan", flag: "🇯🇴", code: "JO" },
-    { name: "Lebanon", flag: "🇱🇧", code: "LB" },
-    { name: "Syria", flag: "🇸🇾", code: "SY" },
-    { name: "Israel", flag: "🇮🇱", code: "IL" },
-    { name: "Palestine", flag: "🇵🇸", code: "PS" },
-    { name: "Cyprus", flag: "🇨🇾", code: "CY" }
+    { name: "United States", flag: "🇺🇸", code: "US", oromo: "Ameerikaa", pronunciation: "Ah-mee-ree-kah" },
+    { name: "United Kingdom", flag: "🇬🇧", code: "GB", oromo: "Buriteeniyaa", pronunciation: "Boo-ree-tay-nee-yah" },
+    { name: "Canada", flag: "🇨🇦", code: "CA", oromo: "Kanaadaa", pronunciation: "Ka-naa-dah" },
+    { name: "France", flag: "🇫🇷", code: "FR", oromo: "Firaansi", pronunciation: "Fee-raan-see" },
+    { name: "Germany", flag: "🇩🇪", code: "DE", oromo: "Jarmanii", pronunciation: "Jar-maa-nee" },
+    { name: "Italy", flag: "🇮🇹", code: "IT", oromo: "Xaaliyaan", pronunciation: "Ha-lee-yaan" },
+    { name: "Spain", flag: "🇪🇸", code: "ES", oromo: "Ispeeniyaa", pronunciation: "Is-pay-nee-yah" },
+    { name: "Japan", flag: "🇯🇵", code: "JP", oromo: "Jaappaan", pronunciation: "Jaa-paan" },
+    { name: "China", flag: "🇨🇳", code: "CN", oromo: "Chaayinaa", pronunciation: "Chaa-yee-naa" },
+    { name: "India", flag: "🇮🇳", code: "IN", oromo: "Indiyaa", pronunciation: "In-dee-yah" },
+    { name: "Brazil", flag: "🇧🇷", code: "BR", oromo: "Biraaziil", pronunciation: "Bee-raa-zeel" },
+    { name: "Mexico", flag: "🇲🇽", code: "MX", oromo: "Meksikoo", pronunciation: "Mek-see-koh" },
+    { name: "Australia", flag: "🇦🇺", code: "AU", oromo: "Awustraaliyaa", pronunciation: "Ah-woos-traa-lee-yah" },
+    { name: "Russia", flag: "🇷🇺", code: "RU", oromo: "Raashiyaa", pronunciation: "Raa-shee-yah" },
+    { name: "South Korea", flag: "🇰🇷", code: "KR", oromo: "Kooriyaa Kibbaa", pronunciation: "Koh-ree-yaa Kib-baa" },
+    { name: "Turkey", flag: "🇹🇷", code: "TR", oromo: "Turkii", pronunciation: "Tur-kee" },
+    { name: "Egypt", flag: "🇪🇬", code: "EG", oromo: "Gibtsii", pronunciation: "Gib-tsee" },
+    { name: "South Africa", flag: "🇿🇦", code: "ZA", oromo: "Afrikaa Kibbaa", pronunciation: "Ah-free-kaa Kib-baa" },
+    { name: "Nigeria", flag: "🇳🇬", code: "NG", oromo: "Naayijeeriyaa", pronunciation: "Naa-yee-jay-ree-yah" },
+    { name: "Ethiopia", flag: "🇪🇹", code: "ET", oromo: "Itoophiyaa", pronunciation: "Ee-toh-pee-yah" },
+    { name: "Kenya", flag: "🇰🇪", code: "KE", oromo: "Keeniyaa", pronunciation: "Kay-nee-yah" },
+    { name: "Ghana", flag: "🇬🇭", code: "GH", oromo: "Gaanaa", pronunciation: "Gaa-naa" },
+    { name: "Morocco", flag: "🇲🇦", code: "MA", oromo: "Marooko", pronunciation: "Ma-roh-koh" },
+    { name: "Algeria", flag: "🇩🇿", code: "DZ", oromo: "Aljeeriyaa", pronunciation: "Al-jay-ree-yah" },
+    { name: "Tunisia", flag: "🇹🇳", code: "TN", oromo: "Tuunisiyaa", pronunciation: "Too-nee-see-yah" },
+    { name: "Libya", flag: "🇱🇾", code: "LY", oromo: "Liibiyaa", pronunciation: "Lee-bee-yah" },
+    { name: "Sudan", flag: "🇸🇩", code: "SD", oromo: "Suudaan", pronunciation: "Soo-daan" },
+    { name: "Uganda", flag: "🇺🇬", code: "UG", oromo: "Yuugaandaa", pronunciation: "Yoo-gaan-dah" },
+    { name: "Tanzania", flag: "🇹🇿", code: "TZ", oromo: "Taanzaniyaa", pronunciation: "Taan-zaa-nee-yah" },
+    { name: "Rwanda", flag: "🇷🇼", code: "RW", oromo: "Ruwaandaa", pronunciation: "Roo-waan-dah" },
+    { name: "Djibouti", flag: "🇩🇯", code: "DJ", oromo: "Jibuutii", pronunciation: "Jee-boo-tee" },
+    { name: "Somalia", flag: "🇸🇴", code: "SO", oromo: "Somaaliyaa", pronunciation: "Soh-maa-lee-yah" },
+    { name: "Eritrea", flag: "🇪🇷", code: "ER", oromo: "Eeritriyaa", pronunciation: "Eh-ree-tree-yah" },
+    { name: "Zambia", flag: "🇿🇲", code: "ZM", oromo: "Zaambiyaa", pronunciation: "Zaam-bee-yah" },
+    { name: "Zimbabwe", flag: "🇿🇼", code: "ZW", oromo: "Zimbaabwee", pronunciation: "Zim-baab-way" },
+    { name: "Botswana", flag: "🇧🇼", code: "BW", oromo: "Botswaanaa", pronunciation: "Bots-waa-naa" },
+    { name: "Namibia", flag: "🇳🇦", code: "NA", oromo: "Naamiibiyaa", pronunciation: "Naa-mee-bee-yah" },
+    { name: "Angola", flag: "🇦🇴", code: "AO", oromo: "Angoolaa", pronunciation: "An-goh-laa" },
+    { name: "Mozambique", flag: "🇲🇿", code: "MZ", oromo: "Moozaambiiqu", pronunciation: "Moh-zaam-bee-koo" },
+    { name: "Madagascar", flag: "🇲🇬", code: "MG", oromo: "Madagaaskar", pronunciation: "Ma-da-gaas-kar" }
   ],
   oromo: [
-    { name: "Ameerikaa", flag: "🇺🇸", code: "US" },
-    { name: "Buriteeniyaa", flag: "🇬🇧", code: "GB" },
-    { name: "Kaannadaa", flag: "🇨🇦", code: "CA" },
-    { name: "Faransaay", flag: "🇫🇷", code: "FR" },
-    { name: "Jarmaniyaa", flag: "🇩🇪", code: "DE" },
-    { name: "Xaaliyaan", flag: "🇮🇹", code: "IT" },
-    { name: "Ispeeniyaa", flag: "🇪🇸", code: "ES" },
-    { name: "Jaappaan", flag: "🇯🇵", code: "JP" },
-    { name: "Chaayinaa", flag: "🇨🇳", code: "CN" },
-    { name: "Hindiyaa", flag: "🇮🇳", code: "IN" },
-    { name: "Biraazil", flag: "🇧🇷", code: "BR" },
-    { name: "Meksikoo", flag: "🇲🇽", code: "MX" },
-    { name: "Awusxiraaliiyaa", flag: "🇦🇺", code: "AU" },
-    { name: "Ruushiyaa", flag: "🇷🇺", code: "RU" },
-    { name: "Kooriyaa Kibbaa", flag: "🇰🇷", code: "KR" },
-    { name: "Turkii", flag: "🇹🇷", code: "TR" },
-    { name: "Misir", flag: "🇪🇬", code: "EG" },
-    { name: "Afrikaa Kibbaa", flag: "🇿🇦", code: "ZA" },
-    { name: "Naayijeeriyaa", flag: "🇳🇬", code: "NG" },
-    { name: "Itoophiyaa", flag: "🇪🇹", code: "ET" },
-    { name: "Keeniyaa", flag: "🇰🇪", code: "KE" },
-    { name: "Gaanaa", flag: "🇬🇭", code: "GH" },
-    { name: "Marooko", flag: "🇲🇦", code: "MA" },
-    { name: "Aljeeriyaa", flag: "🇩🇿", code: "DZ" },
-    { name: "Tuunisiyaa", flag: "🇹🇳", code: "TN" },
-    { name: "Liibiyaa", flag: "🇱🇾", code: "LY" },
-    { name: "Suudaan", flag: "🇸🇩", code: "SD" },
-    { name: "Yugaandaa", flag: "🇺🇬", code: "UG" },
-    { name: "Tanziiniyaa", flag: "🇹🇿", code: "TZ" },
-    { name: "Ruwaandaa", flag: "🇷🇼", code: "RW" },
-    { name: "Zaambiyaa", flag: "🇿🇲", code: "ZM" },
-    { name: "Zimbaabwee", flag: "🇿🇼", code: "ZW" },
-    { name: "Botswaanaa", flag: "🇧🇼", code: "BW" },
-    { name: "Naamiibiyaa", flag: "🇳🇦", code: "NA" },
-    { name: "Angoolaa", flag: "🇦🇴", code: "AO" },
-    { name: "Moozaambiiqu", flag: "🇲🇿", code: "MZ" },
-    { name: "Madagaaskar", flag: "🇲🇬", code: "MG" },
-    { name: "Moorishaas", flag: "🇲🇺", code: "MU" },
-    { name: "Seyshelles", flag: "🇸🇨", code: "SC" },
-    { name: "Komoroos", flag: "🇰🇲", code: "KM" },
-    { name: "Jibuutii", flag: "🇩🇯", code: "DJ" },
-    { name: "Soomaaliyaa", flag: "🇸🇴", code: "SO" },
-    { name: "Erxiraayaa", flag: "🇪🇷", code: "ER" },
-    { name: "Chaad", flag: "🇹🇩", code: "TD" },
-    { name: "Niijeer", flag: "🇳🇪", code: "NE" },
-    { name: "Maali", flag: "🇲🇱", code: "ML" },
-    { name: "Burkiinaa Faaso", flag: "🇧🇫", code: "BF" },
-    { name: "Senegaal", flag: "🇸🇳", code: "SN" },
-    { name: "Giiinee", flag: "🇬🇳", code: "GN" },
-    { name: "Siraa Liyoon", flag: "🇸🇱", code: "SL" },
-    { name: "Laayibeeriyaa", flag: "🇱🇷", code: "LR" },
-    { name: "Koost Aayivrii", flag: "🇨🇮", code: "CI" },
-    { name: "Toogoo", flag: "🇹🇬", code: "TG" },
-    { name: "Beniin", flag: "🇧🇯", code: "BJ" },
-    { name: "Kaamruun", flag: "🇨🇲", code: "CM" },
-    { name: "Riphablika Afrikaa Giddugaleessaa", flag: "🇨🇫", code: "CF" },
-    { name: "Riphablika Dimokiraatawaa Kongo", flag: "🇨🇩", code: "CD" },
-    { name: "Riphablika Kongo", flag: "🇨🇬", code: "CG" },
-    { name: "Gaaboon", flag: "🇬🇦", code: "GA" },
-    { name: "Giiinee Ekwadoor", flag: "🇬🇶", code: "GQ" },
-    { name: "Saawoo Tomee fi Pirinsipii", flag: "🇸🇹", code: "ST" },
-    { name: "Kaappii Verdii", flag: "🇨🇻", code: "CV" },
-    { name: "Gaambiyaa", flag: "🇬🇲", code: "GM" },
-    { name: "Giiinee-Bisaawu", flag: "🇬🇼", code: "GW" },
-    { name: "Malaawii", flag: "🇲🇼", code: "MW" },
-    { name: "Lesootoo", flag: "🇱🇸", code: "LS" },
-    { name: "Eswatiinii", flag: "🇸🇿", code: "SZ" },
-    { name: "Arjenxiinaa", flag: "🇦🇷", code: "AR" },
-    { name: "Chilii", flag: "🇨🇱", code: "CL" },
-    { name: "Peeruu", flag: "🇵🇪", code: "PE" },
-    { name: "Kolombiyaa", flag: "🇨🇴", code: "CO" },
-    { name: "Venezuwelaa", flag: "🇻🇪", code: "VE" },
-    { name: "Ekwaadoor", flag: "🇪🇨", code: "EC" },
-    { name: "Boliiviyaa", flag: "🇧🇴", code: "BO" },
-    { name: "Paraagwaay", flag: "🇵🇾", code: "PY" },
-    { name: "Uruguwaay", flag: "🇺🇾", code: "UY" },
-    { name: "Guyaanaa", flag: "🇬🇾", code: "GY" },
-    { name: "Suriinaam", flag: "🇸🇷", code: "SR" },
-    { name: "Guyaanaa Faransaay", flag: "🇬🇫", code: "GF" },
-    { name: "Noorweey", flag: "🇳🇴", code: "NO" },
-    { name: "Siwiidin", flag: "🇸🇪", code: "SE" },
-    { name: "Deenmaark", flag: "🇩🇰", code: "DK" },
-    { name: "Fiinlaand", flag: "🇫🇮", code: "FI" },
-    { name: "Aayislaand", flag: "🇮🇸", code: "IS" },
-    { name: "Nedaarlaand", flag: "🇳🇱", code: "NL" },
-    { name: "Beeljiyam", flag: "🇧🇪", code: "BE" },
-    { name: "Luksemboorg", flag: "🇱🇺", code: "LU" },
-    { name: "Siwizarlaand", flag: "🇨🇭", code: "CH" },
-    { name: "Awustriyaa", flag: "🇦🇹", code: "AT" },
-    { name: "Poorchugaal", flag: "🇵🇹", code: "PT" },
-    { name: "Ayarlaand", flag: "🇮🇪", code: "IE" },
-    { name: "Poolaand", flag: "🇵🇱", code: "PL" },
-    { name: "Riphablika Cheek", flag: "🇨🇿", code: "CZ" },
-    { name: "Silovaakiyaa", flag: "🇸🇰", code: "SK" },
-    { name: "Hungaarii", flag: "🇭🇺", code: "HU" },
-    { name: "Roomaaniyaa", flag: "🇷🇴", code: "RO" },
-    { name: "Bulgaariyaa", flag: "🇧🇬", code: "BG" },
-    { name: "Giriik", flag: "🇬🇷", code: "GR" },
-    { name: "Serbiyaa", flag: "🇷🇸", code: "RS" },
-    { name: "Korooshiyaa", flag: "🇭🇷", code: "HR" },
-    { name: "Siloveeniyaa", flag: "🇸🇮", code: "SI" },
-    { name: "Boosniyaa fi Herzegoviinaa", flag: "🇧🇦", code: "BA" },
-    { name: "Monteneegroo", flag: "🇲🇪", code: "ME" },
-    { name: "Makedoniyaa Kaabaa", flag: "🇲🇰", code: "MK" },
-    { name: "Albaaniyaa", flag: "🇦🇱", code: "AL" },
-    { name: "Tayilaand", flag: "🇹🇭", code: "TH" },
-    { name: "Veetinaam", flag: "🇻🇳", code: "VN" },
-    { name: "Filiippiyaas", flag: "🇵🇭", code: "PH" },
-    { name: "Indoneesiyaa", flag: "🇮🇩", code: "ID" },
-    { name: "Maleesiyaa", flag: "🇲🇾", code: "MY" },
-    { name: "Singaapoor", flag: "🇸🇬", code: "SG" },
-    { name: "Miyaanmaar", flag: "🇲🇲", code: "MM" },
-    { name: "Kamboojiyaa", flag: "🇰🇭", code: "KH" },
-    { name: "Laaoos", flag: "🇱🇦", code: "LA" },
-    { name: "Burunaay", flag: "🇧🇳", code: "BN" },
-    { name: "Neepaal", flag: "🇳🇵", code: "NP" },
-    { name: "Baanglaadeesh", flag: "🇧🇩", code: "BD" },
-    { name: "Siri Laankaa", flag: "🇱🇰", code: "LK" },
-    { name: "Paakistaan", flag: "🇵🇰", code: "PK" },
-    { name: "Afgaanistaan", flag: "🇦🇫", code: "AF" },
-    { name: "Iraan", flag: "🇮🇷", code: "IR" },
-    { name: "Iraaq", flag: "🇮🇶", code: "IQ" },
-    { name: "Arabiyaa Sawudii", flag: "🇸🇦", code: "SA" },
-    { name: "Kuweeti", flag: "🇰🇼", code: "KW" },
-    { name: "Qaxaar", flag: "🇶🇦", code: "QA" },
-    { name: "Imaaraatii Arabii Walxaxanii", flag: "🇦🇪", code: "AE" },
-    { name: "Omaan", flag: "🇴🇲", code: "OM" },
-    { name: "Yaman", flag: "🇾🇪", code: "YE" },
-    { name: "Jordaan", flag: "🇯🇴", code: "JO" },
-    { name: "Lebaanoon", flag: "🇱🇧", code: "LB" },
-    { name: "Suuriyaa", flag: "🇸🇾", code: "SY" },
-    { name: "Israa'iil", flag: "🇮🇱", code: "IL" },
-    { name: "Falasxiin", flag: "🇵🇸", code: "PS" },
-    { name: "Saayipiraas", flag: "🇨🇾", code: "CY" }
+    { name: "Ameerikaa", flag: "🇺🇸", code: "US", english: "United States", pronunciation: "Ah-mee-ree-kah" },
+    { name: "Buriteeniyaa", flag: "🇬🇧", code: "GB", english: "United Kingdom", pronunciation: "Boo-ree-tay-nee-yah" },
+    { name: "Kanaadaa", flag: "🇨🇦", code: "CA", english: "Canada", pronunciation: "Ka-naa-dah" },
+    { name: "Firaansi", flag: "🇫🇷", code: "FR", english: "France", pronunciation: "Fee-raan-see" },
+    { name: "Jarmanii", flag: "🇩🇪", code: "DE", english: "Germany", pronunciation: "Jar-maa-nee" },
+    { name: "Xaaliyaan", flag: "🇮🇹", code: "IT", english: "Italy", pronunciation: "Ha-lee-yaan" },
+    { name: "Ispeeniyaa", flag: "🇪🇸", code: "ES", english: "Spain", pronunciation: "Is-pay-nee-yah" },
+    { name: "Jaappaan", flag: "🇯🇵", code: "JP", english: "Japan", pronunciation: "Jaa-paan" },
+    { name: "Chaayinaa", flag: "🇨🇳", code: "CN", english: "China", pronunciation: "Chaa-yee-naa" },
+    { name: "Indiyaa", flag: "🇮🇳", code: "IN", english: "India", pronunciation: "In-dee-yah" },
+    { name: "Biraaziil", flag: "🇧🇷", code: "BR", english: "Brazil", pronunciation: "Bee-raa-zeel" },
+    { name: "Meksikoo", flag: "🇲🇽", code: "MX", english: "Mexico", pronunciation: "Mek-see-koh" },
+    { name: "Awustraaliyaa", flag: "🇦🇺", code: "AU", english: "Australia", pronunciation: "Ah-woos-traa-lee-yah" },
+    { name: "Raashiyaa", flag: "🇷🇺", code: "RU", english: "Russia", pronunciation: "Raa-shee-yah" },
+    { name: "Kooriyaa Kibbaa", flag: "🇰🇷", code: "KR", english: "South Korea", pronunciation: "Koh-ree-yaa Kib-baa" },
+    { name: "Turkii", flag: "🇹🇷", code: "TR", english: "Turkey", pronunciation: "Tur-kee" },
+    { name: "Gibtsii", flag: "🇪🇬", code: "EG", english: "Egypt", pronunciation: "Gib-tsee" },
+    { name: "Afrikaa Kibbaa", flag: "🇿🇦", code: "ZA", english: "South Africa", pronunciation: "Ah-free-kaa Kib-baa" },
+    { name: "Naayijeeriyaa", flag: "🇳🇬", code: "NG", english: "Nigeria", pronunciation: "Naa-yee-jay-ree-yah" },
+    { name: "Itoophiyaa", flag: "🇪🇹", code: "ET", english: "Ethiopia", pronunciation: "Ee-toh-pee-yah" },
+    { name: "Keeniyaa", flag: "🇰🇪", code: "KE", english: "Kenya", pronunciation: "Kay-nee-yah" },
+    { name: "Gaanaa", flag: "🇬🇭", code: "GH", english: "Ghana", pronunciation: "Gaa-naa" },
+    { name: "Marooko", flag: "🇲🇦", code: "MA", english: "Morocco", pronunciation: "Ma-roh-koh" },
+    { name: "Aljeeriyaa", flag: "🇩🇿", code: "DZ", english: "Algeria", pronunciation: "Al-jay-ree-yah" },
+    { name: "Tuunisiyaa", flag: "🇹🇳", code: "TN", english: "Tunisia", pronunciation: "Too-nee-see-yah" },
+    { name: "Liibiyaa", flag: "🇱🇾", code: "LY", english: "Libya", pronunciation: "Lee-bee-yah" },
+    { name: "Suudaan", flag: "🇸🇩", code: "SD", english: "Sudan", pronunciation: "Soo-daan" },
+    { name: "Yuugaandaa", flag: "🇺🇬", code: "UG", english: "Uganda", pronunciation: "Yoo-gaan-dah" },
+    { name: "Taanzaniyaa", flag: "🇹🇿", code: "TZ", english: "Tanzania", pronunciation: "Taan-zaa-nee-yah" },
+    { name: "Ruwaandaa", flag: "🇷🇼", code: "RW", english: "Rwanda", pronunciation: "Roo-waan-dah" },
+    { name: "Jibuutii", flag: "🇩🇯", code: "DJ", english: "Djibouti", pronunciation: "Jee-boo-tee" },
+    { name: "Somaaliyaa", flag: "🇸🇴", code: "SO", english: "Somalia", pronunciation: "Soh-maa-lee-yah" },
+    { name: "Eeritriyaa", flag: "🇪🇷", code: "ER", english: "Eritrea", pronunciation: "Eh-ree-tree-yah" },
+    { name: "Zaambiyaa", flag: "🇿🇲", code: "ZM", english: "Zambia", pronunciation: "Zaam-bee-yah" },
+    { name: "Zimbaabwee", flag: "🇿🇼", code: "ZW", english: "Zimbabwe", pronunciation: "Zim-baab-way" },
+    { name: "Botswaanaa", flag: "🇧🇼", code: "BW", english: "Botswana", pronunciation: "Bots-waa-naa" },
+    { name: "Naamiibiyaa", flag: "🇳🇦", code: "NA", english: "Namibia", pronunciation: "Naa-mee-bee-yah" },
+    { name: "Angoolaa", flag: "🇦🇴", code: "AO", english: "Angola", pronunciation: "An-goh-laa" },
+    { name: "Moozaambiiqu", flag: "🇲🇿", code: "MZ", english: "Mozambique", pronunciation: "Moh-zaam-bee-koo" },
+    { name: "Madagaaskar", flag: "🇲🇬", code: "MG", english: "Madagascar", pronunciation: "Ma-da-gaas-kar" }
   ]
 };
 
@@ -291,7 +113,13 @@ const uiContent = {
     clickToHear: "Click to hear",
     next: "Next",
     previous: "Previous",
-    flagCounter: "Flag"
+    flagCounter: "Flag",
+    tableView: "Table View",
+    gridView: "Grid View",
+    countryColumn: "Country",
+    flagColumn: "Flag",
+    oromoColumn: "Afaan Oromo",
+    pronunciationColumn: "Pronunciation"
   },
   oromo: {
     title: "Alaabaa Biyyootaa Baradhu! 🏁",
@@ -300,25 +128,32 @@ const uiContent = {
     clickToHear: "Dhaggeeffachuuf cuqaasi",
     next: "Itti aanee",
     previous: "Dura",
-    flagCounter: "Alaabaa"
+    flagCounter: "Alaabaa",
+    tableView: "Mul'ata Gabatee",
+    gridView: "Mul'ata Qaree",
+    countryColumn: "Biyya",
+    flagColumn: "Alaabaa",
+    oromoColumn: "Afaan Oromo",
+    pronunciationColumn: "Akka Dubbifamu"
   }
 };
 
 const FlagModule = ({ onBack, language }: FlagModuleProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [imageError, setImageError] = useState(false);
+  const [viewMode, setViewMode] = useState<'grid' | 'table'>('grid');
   const flags = flagsData[language];
   const ui = uiContent[language];
   const currentFlag = flags[currentIndex];
 
   useEffect(() => {
     console.log(`Flag Module loaded with ${flags.length} flags in ${language}`);
-    setImageError(false); // Reset error state when flag changes
+    setImageError(false);
   }, [flags.length, language, currentIndex]);
 
-  const handleFlagClick = async () => {
-    console.log(`Speaking: ${currentFlag.name}`);
-    await speakText(currentFlag.name, language);
+  const handleFlagClick = async (flagName: string) => {
+    console.log(`Speaking: ${flagName}`);
+    await speakText(flagName, language);
   };
 
   const handleNext = () => {
@@ -337,6 +172,10 @@ const FlagModule = ({ onBack, language }: FlagModuleProps) => {
     return `https://flagcdn.com/w320/${countryCode.toLowerCase()}.png`;
   };
 
+  const toggleViewMode = () => {
+    setViewMode(prev => prev === 'grid' ? 'table' : 'grid');
+  };
+
   return (
     <div className="min-h-screen p-6 relative overflow-hidden">
       {/* Animated Background */}
@@ -345,13 +184,12 @@ const FlagModule = ({ onBack, language }: FlagModuleProps) => {
         <div className="absolute top-40 right-16 w-24 h-24 bg-gradient-to-r from-green-300 to-yellow-300 rounded-full animate-bounce opacity-30"></div>
         <div className="absolute bottom-32 left-10 w-28 h-28 bg-gradient-to-r from-purple-300 to-pink-300 rounded-full animate-pulse delay-300 opacity-30"></div>
         
-        {/* Floating Elements */}
         <div className="absolute top-1/4 right-1/4 text-8xl animate-bounce delay-200 opacity-20">🌎</div>
         <div className="absolute bottom-1/4 left-1/4 text-6xl animate-pulse delay-400 opacity-20">🗺️</div>
         <div className="absolute top-1/2 left-10 text-5xl animate-spin opacity-20">🌟</div>
       </div>
 
-      <div className="max-w-4xl mx-auto relative z-10">
+      <div className="max-w-6xl mx-auto relative z-10">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <Button
@@ -366,81 +204,151 @@ const FlagModule = ({ onBack, language }: FlagModuleProps) => {
             </h1>
             <p className="text-xl text-white/80">{ui.subtitle}</p>
           </div>
-          <div className="w-24"></div>
-        </div>
-
-        {/* Flag Counter */}
-        <div className="text-center mb-6">
-          <p className="text-white/80 text-lg">
-            {ui.flagCounter} {currentIndex + 1} / {flags.length}
-          </p>
-        </div>
-
-        {/* Main Flag Display */}
-        <div className="flex items-center justify-center mb-8">
-          {/* Previous Button */}
           <Button
-            onClick={handlePrevious}
-            className="bg-white/20 hover:bg-white/30 text-white border-2 border-white/30 rounded-full p-4 mr-8"
-            disabled={flags.length <= 1}
+            onClick={toggleViewMode}
+            className="bg-white/20 hover:bg-white/30 text-white border-2 border-white/30 rounded-full px-6 py-3"
           >
-            <ChevronLeft size={24} />
+            {viewMode === 'grid' ? <List size={20} /> : <Grid size={20} />}
+            {viewMode === 'grid' ? ui.tableView : ui.gridView}
           </Button>
+        </div>
 
-          {/* Flag Card */}
-          <div
-            className="bg-white/20 backdrop-blur-sm rounded-3xl p-8 shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 cursor-pointer hover:bg-white/30 min-w-[400px] text-center"
-            onClick={handleFlagClick}
-          >
-            <div className="mb-6 hover:scale-110 transform transition-all duration-300 leading-none">
-              {!imageError ? (
-                <img 
-                  src={getFlagImageUrl(currentFlag.code)}
-                  alt={`Flag of ${currentFlag.name}`}
-                  className="w-80 h-60 object-cover rounded-lg mx-auto shadow-lg"
-                  onError={handleImageError}
-                />
-              ) : (
-                <div className="text-[200px] leading-none">
-                  {currentFlag.flag}
-                </div>
-              )}
-            </div>
-            <div className="text-3xl font-bold text-white mb-4">
-              {currentFlag.name}
-            </div>
-            <div className="text-lg text-white/70">
-              {ui.clickToHear}
-            </div>
+        {viewMode === 'table' ? (
+          // Table View
+          <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-6 shadow-2xl">
+            <Table>
+              <TableCaption className="text-white/80 text-lg mb-4">
+                {language === 'english' ? 'All Countries with Oromo Names and Pronunciation' : 'Biyyoota Hunduu Maqaa Afaan Oromoo fi Akka Dubbifamuun'}
+              </TableCaption>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="text-white font-bold">{ui.flagColumn}</TableHead>
+                  <TableHead className="text-white font-bold">{language === 'english' ? 'English' : 'Afaan Oromo'}</TableHead>
+                  <TableHead className="text-white font-bold">{language === 'english' ? ui.oromoColumn : 'English'}</TableHead>
+                  <TableHead className="text-white font-bold">{ui.pronunciationColumn}</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {flags.map((flag, index) => (
+                  <TableRow key={flag.code} className="hover:bg-white/10">
+                    <TableCell>
+                      <button
+                        onClick={() => handleFlagClick(flag.name)}
+                        className="hover:scale-110 transform transition-all duration-200"
+                      >
+                        <img 
+                          src={getFlagImageUrl(flag.code)}
+                          alt={`Flag of ${flag.name}`}
+                          className="w-12 h-8 object-cover rounded shadow-md"
+                          onError={(e) => {
+                            e.currentTarget.style.display = 'none';
+                            e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                          }}
+                        />
+                        <span className="text-2xl hidden">{flag.flag}</span>
+                      </button>
+                    </TableCell>
+                    <TableCell className="text-white font-medium">
+                      <button
+                        onClick={() => handleFlagClick(flag.name)}
+                        className="hover:text-yellow-300 transition-colors"
+                      >
+                        {flag.name}
+                      </button>
+                    </TableCell>
+                    <TableCell className="text-white">
+                      <button
+                        onClick={() => handleFlagClick(language === 'english' ? flag.oromo : flag.english)}
+                        className="hover:text-yellow-300 transition-colors"
+                      >
+                        {language === 'english' ? flag.oromo : flag.english}
+                      </button>
+                    </TableCell>
+                    <TableCell className="text-white/80 italic">
+                      {flag.pronunciation}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
           </div>
+        ) : (
+          // Grid View (Original)
+          <>
+            <div className="text-center mb-6">
+              <p className="text-white/80 text-lg">
+                {ui.flagCounter} {currentIndex + 1} / {flags.length}
+              </p>
+            </div>
 
-          {/* Next Button */}
-          <Button
-            onClick={handleNext}
-            className="bg-white/20 hover:bg-white/30 text-white border-2 border-white/30 rounded-full p-4 ml-8"
-            disabled={flags.length <= 1}
-          >
-            <ChevronRight size={24} />
-          </Button>
-        </div>
+            <div className="flex items-center justify-center mb-8">
+              <Button
+                onClick={handlePrevious}
+                className="bg-white/20 hover:bg-white/30 text-white border-2 border-white/30 rounded-full p-4 mr-8"
+                disabled={flags.length <= 1}
+              >
+                <ChevronLeft size={24} />
+              </Button>
 
-        {/* Navigation Buttons */}
-        <div className="flex justify-center space-x-4">
-          <Button
-            onClick={handlePrevious}
-            className="bg-white/20 hover:bg-white/30 text-white border-2 border-white/30 rounded-full px-8 py-3"
-            disabled={flags.length <= 1}
-          >
-            ← {ui.previous}
-          </Button>
-          <Button
-            onClick={handleNext}
-            className="bg-white/20 hover:bg-white/30 text-white border-2 border-white/30 rounded-full px-8 py-3"
-            disabled={flags.length <= 1}
-          >
-            {ui.next} →
-          </Button>
-        </div>
+              <div
+                className="bg-white/20 backdrop-blur-sm rounded-3xl p-8 shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 cursor-pointer hover:bg-white/30 min-w-[400px] text-center"
+                onClick={() => handleFlagClick(currentFlag.name)}
+              >
+                <div className="mb-6 hover:scale-110 transform transition-all duration-300 leading-none">
+                  {!imageError ? (
+                    <img 
+                      src={getFlagImageUrl(currentFlag.code)}
+                      alt={`Flag of ${currentFlag.name}`}
+                      className="w-80 h-60 object-cover rounded-lg mx-auto shadow-lg"
+                      onError={handleImageError}
+                    />
+                  ) : (
+                    <div className="text-[200px] leading-none">
+                      {currentFlag.flag}
+                    </div>
+                  )}
+                </div>
+                <div className="text-3xl font-bold text-white mb-2">
+                  {currentFlag.name}
+                </div>
+                <div className="text-xl text-white/80 mb-2">
+                  {language === 'english' ? currentFlag.oromo : currentFlag.english}
+                </div>
+                <div className="text-lg text-white/60 italic mb-4">
+                  {currentFlag.pronunciation}
+                </div>
+                <div className="text-lg text-white/70">
+                  {ui.clickToHear}
+                </div>
+              </div>
+
+              <Button
+                onClick={handleNext}
+                className="bg-white/20 hover:bg-white/30 text-white border-2 border-white/30 rounded-full p-4 ml-8"
+                disabled={flags.length <= 1}
+              >
+                <ChevronRight size={24} />
+              </Button>
+            </div>
+
+            <div className="flex justify-center space-x-4">
+              <Button
+                onClick={handlePrevious}
+                className="bg-white/20 hover:bg-white/30 text-white border-2 border-white/30 rounded-full px-8 py-3"
+                disabled={flags.length <= 1}
+              >
+                ← {ui.previous}
+              </Button>
+              <Button
+                onClick={handleNext}
+                className="bg-white/20 hover:bg-white/30 text-white border-2 border-white/30 rounded-full px-8 py-3"
+                disabled={flags.length <= 1}
+              >
+                {ui.next} →
+              </Button>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
