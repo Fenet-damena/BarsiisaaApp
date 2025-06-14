@@ -93,7 +93,39 @@ const flagsData = {
     { name: "Vatican City", flag: "🇻🇦", code: "VA", oromo: "Vaatikaan", pronunciation: "Vah-tee-kan" },
     { name: "San Marino", flag: "🇸🇲", code: "SM", oromo: "Saan Mariinoo", pronunciation: "San Ma-ree-noh" },
     { name: "Andorra", flag: "🇦🇩", code: "AD", oromo: "Andooraa", pronunciation: "An-doh-rah" },
-    { name: "Liechtenstein", flag: "🇱🇮", code: "LI", oromo: "Liiktenstaayn", pronunciation: "Leek-ten-stayn" }
+    { name: "Liechtenstein", flag: "🇱🇮", code: "LI", oromo: "Liiktenstaayn", pronunciation: "Leek-ten-stayn" },
+    { name: "Argentina", flag: "🇦🇷", code: "AR", oromo: "Arjentiinaa", pronunciation: "Ar-jen-tee-nah" },
+    { name: "Chile", flag: "🇨🇱", code: "CL", oromo: "Chiilay", pronunciation: "Chee-lay" },
+    { name: "Peru", flag: "🇵🇪", code: "PE", oromo: "Peeruu", pronunciation: "Pay-roo" },
+    { name: "Colombia", flag: "🇨🇴", code: "CO", oromo: "Kolombiyaa", pronunciation: "Ko-lom-bee-yah" },
+    { name: "Venezuela", flag: "🇻🇪", code: "VE", oromo: "Venezuweelaa", pronunciation: "Ve-ne-zoo-way-lah" },
+    { name: "Ecuador", flag: "🇪🇨", code: "EC", oromo: "Ikuwadoor", pronunciation: "Ee-koo-wah-door" },
+    { name: "Uruguay", flag: "🇺🇾", code: "UY", oromo: "Uruguwaay", pronunciation: "Oo-roo-gway" },
+    { name: "Paraguay", flag: "🇵🇾", code: "PY", oromo: "Paaraguwii", pronunciation: "Pah-rah-goo-wee" },
+    { name: "Bolivia", flag: "🇧🇴", code: "BO", oromo: "Booliiviyaa", pronunciation: "Boh-lee-vee-yah" },
+    { name: "Guyana", flag: "🇬🇾", code: "GY", oromo: "Guyaanaa", pronunciation: "Goo-yah-nah" },
+    { name: "Suriname", flag: "🇸🇷", code: "SR", oromo: "Suriinamee", pronunciation: "Soo-ree-nah-may" },
+    { name: "Thailand", flag: "🇹🇭", code: "TH", oromo: "Tayilaand", pronunciation: "Tay-ee-land" },
+    { name: "Vietnam", flag: "🇻🇳", code: "VN", oromo: "Viyetnaam", pronunciation: "Vee-yet-nam" },
+    { name: "Singapore", flag: "🇸🇬", code: "SG", oromo: "Singaapoora", pronunciation: "Sin-gah-poh-rah" },
+    { name: "Malaysia", flag: "🇲🇾", code: "MY", oromo: "Maleeziyaa", pronunciation: "Ma-lay-zee-yah" },
+    { name: "Indonesia", flag: "🇮🇩", code: "ID", oromo: "Indooneeziyaa", pronunciation: "In-doh-nay-zee-yah" },
+    { name: "Philippines", flag: "🇵🇭", code: "PH", oromo: "Filiippayinii", pronunciation: "Fee-lee-pay-nee" },
+    { name: "New Zealand", flag: "🇳🇿", code: "NZ", oromo: "Nyuu Zilaand", pronunciation: "Nyoo Zee-land" },
+    { name: "Pakistan", flag: "🇵🇰", code: "PK", oromo: "Paakistaan", pronunciation: "Pah-kees-tan" },
+    { name: "Bangladesh", flag: "🇧🇩", code: "BD", oromo: "Banglaadeesh", pronunciation: "Bang-lah-daysh" },
+    { name: "Sri Lanka", flag: "🇱🇰", code: "LK", oromo: "Srii Laankaa", pronunciation: "Sree Lan-kah" },
+    { name: "Nepal", flag: "🇳🇵", code: "NP", oromo: "Neepaal", pronunciation: "Nay-pal" },
+    { name: "Iran", flag: "🇮🇷", code: "IR", oromo: "Iraanii", pronunciation: "Ee-rah-nee" },
+    { name: "Iraq", flag: "🇮🇶", code: "IQ", oromo: "Iraaq", pronunciation: "Ee-rahk" },
+    { name: "Israel", flag: "🇮🇱", code: "IL", oromo: "Israayel", pronunciation: "Is-rah-yel" },
+    { name: "Jordan", flag: "🇯🇴", code: "JO", oromo: "Jordaan", pronunciation: "Jor-dan" },
+    { name: "Lebanon", flag: "🇱🇧", code: "LB", oromo: "Lebanaanii", pronunciation: "Le-ba-na-nee" },
+    { name: "Syria", flag: "🇸🇾", code: "SY", oromo: "Siiriyaa", pronunciation: "See-ree-yah" },
+    { name: "Saudi Arabia", flag: "🇸🇦", code: "SA", oromo: "Arabiya Sadudiya", pronunciation: "Ah-rah-bee-ya Sa-doo-dee-ya" },
+    { name: "Kuwait", flag: "🇰🇼", code: "KW", oromo: "Kuweeti", pronunciation: "Koo-way-tee" },
+    { name: "Qatar", flag: "🇶🇦", code: "QA", oromo: "Qataar", pronunciation: "Ka-tar" },
+    { name: "Bahrain", flag: "🇧🇭", code: "BH", oromo: "Baahireeni", pronunciation: "Bah-ree-nee" }
   ],
   oromo: [
     { name: "Ameerikaa", flag: "🇺🇸", code: "US", english: "United States", pronunciation: "Ah-mee-ree-kah" },
@@ -169,7 +201,39 @@ const flagsData = {
     { name: "Vaatikaan", flag: "🇻🇦", code: "VA", english: "Vatican City", pronunciation: "Vah-tee-kan" },
     { name: "Saan Mariinoo", flag: "🇸🇲", code: "SM", english: "San Marino", pronunciation: "San Ma-ree-noh" },
     { name: "Andooraa", flag: "🇦🇩", code: "AD", english: "Andorra", pronunciation: "An-doh-rah" },
-    { name: "Liiktenstaayn", flag: "🇱🇮", code: "LI", english: "Liechtenstein", pronunciation: "Leek-ten-stayn" }
+    { name: "Liiktenstaayn", flag: "🇱🇮", code: "LI", english: "Liechtenstein", pronunciation: "Leek-ten-stayn" },
+    { name: "Arjentiinaa", flag: "🇦🇷", code: "AR", english: "Argentina", pronunciation: "Ar-jen-tee-nah" },
+    { name: "Chiilay", flag: "🇨🇱", code: "CL", english: "Chile", pronunciation: "Chee-lay" },
+    { name: "Peeruu", flag: "🇵🇪", code: "PE", english: "Peru", pronunciation: "Pay-roo" },
+    { name: "Kolombiyaa", flag: "🇨🇴", code: "CO", english: "Colombia", pronunciation: "Ko-lom-bee-yah" },
+    { name: "Venezuweelaa", flag: "🇻🇪", code: "VE", english: "Venezuela", pronunciation: "Ve-ne-zoo-way-lah" },
+    { name: "Ikuwadoor", flag: "🇪🇨", code: "EC", english: "Ecuador", pronunciation: "Ee-koo-wah-door" },
+    { name: "Uruguwaay", flag: "🇺🇾", code: "UY", english: "Uruguay", pronunciation: "Oo-roo-gway" },
+    { name: "Paaraguwii", flag: "🇵🇾", code: "PY", english: "Paraguay", pronunciation: "Pah-rah-goo-wee" },
+    { name: "Booliiviyaa", flag: "🇧🇴", code: "BO", english: "Bolivia", pronunciation: "Boh-lee-vee-yah" },
+    { name: "Guyaanaa", flag: "🇬🇾", code: "GY", english: "Guyana", pronunciation: "Goo-yah-nah" },
+    { name: "Suriinamee", flag: "🇸🇷", code: "SR", english: "Suriname", pronunciation: "Soo-ree-nah-may" },
+    { name: "Tayilaand", flag: "🇹🇭", code: "TH", english: "Thailand", pronunciation: "Tay-ee-land" },
+    { name: "Viyetnaam", flag: "🇻🇳", code: "VN", english: "Vietnam", pronunciation: "Vee-yet-nam" },
+    { name: "Singaapoora", flag: "🇸🇬", code: "SG", english: "Singapore", pronunciation: "Sin-gah-poh-rah" },
+    { name: "Maleeziyaa", flag: "🇲🇾", code: "MY", english: "Malaysia", pronunciation: "Ma-lay-zee-yah" },
+    { name: "Indooneeziyaa", flag: "🇮🇩", code: "ID", english: "Indonesia", pronunciation: "In-doh-nay-zee-yah" },
+    { name: "Filiippayinii", flag: "🇵🇭", code: "PH", english: "Philippines", pronunciation: "Fee-lee-pay-nee" },
+    { name: "Nyuu Zilaand", flag: "🇳🇿", code: "NZ", english: "New Zealand", pronunciation: "Nyoo Zee-land" },
+    { name: "Paakistaan", flag: "🇵🇰", code: "PK", english: "Pakistan", pronunciation: "Pah-kees-tan" },
+    { name: "Banglaadeesh", flag: "🇧🇩", code: "BD", english: "Bangladesh", pronunciation: "Bang-lah-daysh" },
+    { name: "Srii Laankaa", flag: "🇱🇰", code: "LK", english: "Sri Lanka", pronunciation: "Sree Lan-kah" },
+    { name: "Neepaal", flag: "🇳🇵", code: "NP", english: "Nepal", pronunciation: "Nay-pal" },
+    { name: "Iraanii", flag: "🇮🇷", code: "IR", english: "Iran", pronunciation: "Ee-rah-nee" },
+    { name: "Iraaq", flag: "🇮🇶", code: "IQ", english: "Iraq", pronunciation: "Ee-rahk" },
+    { name: "Israayel", flag: "🇮🇱", code: "IL", english: "Israel", pronunciation: "Is-rah-yel" },
+    { name: "Jordaan", flag: "🇯🇴", code: "JO", english: "Jordan", pronunciation: "Jor-dan" },
+    { name: "Lebanaanii", flag: "🇱🇧", code: "LB", english: "Lebanon", pronunciation: "Le-ba-na-nee" },
+    { name: "Siiriyaa", flag: "🇸🇾", code: "SY", english: "Syria", pronunciation: "See-ree-yah" },
+    { name: "Arabiya Sadudiya", flag: "🇸🇦", code: "SA", english: "Saudi Arabia", pronunciation: "Ah-rah-bee-ya Sa-doo-dee-ya" },
+    { name: "Kuweeti", flag: "🇰🇼", code: "KW", english: "Kuwait", pronunciation: "Koo-way-tee" },
+    { name: "Qataar", flag: "🇶🇦", code: "QA", english: "Qatar", pronunciation: "Ka-tar" },
+    { name: "Baahireeni", flag: "🇧🇭", code: "BH", english: "Bahrain", pronunciation: "Bah-ree-nee" }
   ]
 };
 
@@ -351,7 +415,7 @@ const FlagModule = ({ onBack, language }: FlagModuleProps) => {
             </Table>
           </div>
         ) : (
-          // Grid View (Original)
+          // Grid View
           <>
             <div className="text-center mb-6">
               <p className="text-white/80 text-lg">
@@ -395,8 +459,16 @@ const FlagModule = ({ onBack, language }: FlagModuleProps) => {
                 <div className="text-lg text-white/60 italic mb-4">
                   {currentFlag.pronunciation}
                 </div>
-                <div className="text-lg text-white/70">
-                  {ui.clickToHear}
+                <div className="flex justify-center">
+                  <Button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleFlagClick(currentFlag.name);
+                    }}
+                    className="bg-white/20 hover:bg-white/30 text-white border-2 border-white/30 rounded-full p-3"
+                  >
+                    <Volume2 size={20} />
+                  </Button>
                 </div>
               </div>
 
