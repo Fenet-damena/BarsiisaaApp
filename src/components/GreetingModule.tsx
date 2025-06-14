@@ -13,20 +13,20 @@ const greetingData = {
       id: 1,
       title: "First Meeting",
       conversations: [
-        { speaker: "left", english: "Hello! What's your name?", oromo: "Akkam! Maqaan kee eenyu?", avatar: "👦", name: "Bona", gender: "male" },
-        { speaker: "right", english: "Hi! My name is Ayantu.", oromo: "Nagaatti! Maqaan koo Ayyaantuu.", avatar: "👧", name: "Ayantu", gender: "female" },
-        { speaker: "left", english: "Nice to meet you, Ayantu!", oromo: "Si arguuf natti tola, Ayyaantuu!", avatar: "👦", name: "Bona", gender: "male" },
-        { speaker: "right", english: "Nice to meet you too!", oromo: "Anis si arguuf natti tola!", avatar: "👧", name: "Ayantu", gender: "female" },
+        { speaker: "left", english: "Hello! What's your name?", oromo: "Akkam! Maqaan kee eenyu?", avatar: "👦", name: "Bona", gender: "male", pronunciation: "" },
+        { speaker: "right", english: "Hi! My name is Ayantu.", oromo: "Nagaatti! Maqaan koo Ayyaantuu.", avatar: "👧", name: "Ayantu", gender: "female", pronunciation: "" },
+        { speaker: "left", english: "Nice to meet you, Ayantu!", oromo: "Si arguuf natti tola, Ayyaantuu!", avatar: "👦", name: "Bona", gender: "male", pronunciation: "" },
+        { speaker: "right", english: "Nice to meet you too!", oromo: "Anis si arguuf natti tola!", avatar: "👧", name: "Ayantu", gender: "female", pronunciation: "" },
       ]
     },
     {
       id: 2,
       title: "Morning Greetings",
       conversations: [
-        { speaker: "left", english: "Good morning!", oromo: "Nagaa ganama!", avatar: "👨", name: "Gadaa", gender: "male" },
-        { speaker: "right", english: "Good morning! How are you?", oromo: "Nagaa ganama! Akkam jirta?", avatar: "👩", name: "Chaltu", gender: "female" },
-        { speaker: "left", english: "I am fine, thank you.", oromo: "Ani nagaan jira, galatoomaa.", avatar: "👨", name: "Gadaa", gender: "male" },
-        { speaker: "right", english: "Have a great day!", oromo: "Guyyaa gaarii qabaadhu!", avatar: "👩", name: "Chaltu", gender: "female" },
+        { speaker: "left", english: "Good morning!", oromo: "Nagaa ganama!", avatar: "👨", name: "Gadaa", gender: "male", pronunciation: "" },
+        { speaker: "right", english: "Good morning! How are you?", oromo: "Nagaa ganama! Akkam jirta?", avatar: "👩", name: "Chaltu", gender: "female", pronunciation: "" },
+        { speaker: "left", english: "I am fine, thank you.", oromo: "Ani nagaan jira, galatoomaa.", avatar: "👨", name: "Gadaa", gender: "male", pronunciation: "" },
+        { speaker: "right", english: "Have a great day!", oromo: "Guyyaa gaarii qabaadhu!", avatar: "👩", name: "Chaltu", gender: "female", pronunciation: "" },
       ]
     }
   ],
@@ -35,20 +35,20 @@ const greetingData = {
       id: 1,
       title: "Wal Argannaa Jalqabaa",
       conversations: [
-        { speaker: "left", english: "Hello! What's your name?", oromo: "Akkam! Maqaan kee eenyu?", avatar: "👦", name: "Boonaa", gender: "male" },
-        { speaker: "right", english: "Hi! My name is Ayyaantuu.", oromo: "Nagaatti! Maqaan koo Ayyaantuu.", avatar: "👧", name: "Ayyaantuu", gender: "female" },
-        { speaker: "left", english: "Nice to meet you, Ayyaantuu!", oromo: "Si arguuf natti tola, Ayyaantuu!", avatar: "👦", name: "Boonaa", gender: "male" },
-        { speaker: "right", english: "Nice to meet you too!", oromo: "Anis si arguuf natti tola!", avatar: "👧", name: "Ayyaantuu", gender: "female" },
+        { speaker: "left", english: "Hello! What's your name?", oromo: "Akkam! Maqaan kee eenyu?", avatar: "👦", name: "Boonaa", gender: "male", pronunciation: "" },
+        { speaker: "right", english: "Hi! My name is Ayyaantuu.", oromo: "Nagaatti! Maqaan koo Ayyaantuu.", avatar: "👧", name: "Ayyaantuu", gender: "female", pronunciation: "" },
+        { speaker: "left", english: "Nice to meet you, Ayyaantuu!", oromo: "Si arguuf natti tola, Ayyaantuu!", avatar: "👦", name: "Boonaa", gender: "male", pronunciation: "" },
+        { speaker: "right", english: "Nice to meet you too!", oromo: "Anis si arguuf natti tola!", avatar: "👧", name: "Ayyaantuu", gender: "female", pronunciation: "" },
       ]
     },
     {
       id: 2,
       title: "Nagaa Ganama",
       conversations: [
-        { speaker: "left", english: "Good morning!", oromo: "Nagaa ganama!", avatar: "👨", name: "Gadaa", gender: "male" },
-        { speaker: "right", english: "Good morning! How are you?", oromo: "Nagaa ganama! Akkam jirta?", avatar: "👩", name: "Chaltu", gender: "female" },
-        { speaker: "left", english: "I am fine, thank you.", oromo: "Ani nagaan jira, galatoomaa.", avatar: "👨", name: "Gadaa", gender: "male" },
-        { speaker: "right", english: "Have a great day!", oromo: "Guyyaa gaarii qabaadhu!", avatar: "👩", name: "Chaltu", gender: "female" },
+        { speaker: "left", english: "Good morning!", oromo: "Nagaa ganama!", avatar: "👨", name: "Gadaa", gender: "male", pronunciation: "" },
+        { speaker: "right", english: "Good morning! How are you?", oromo: "Nagaa ganama! Akkam jirta?", avatar: "👩", name: "Chaltu", gender: "female", pronunciation: "" },
+        { speaker: "left", english: "I am fine, thank you.", oromo: "Ani nagaan jira, galatoomaa.", avatar: "👨", name: "Gadaa", gender: "male", pronunciation: "" },
+        { speaker: "right", english: "Have a great day!", oromo: "Guyyaa gaarii qabaadhu!", avatar: "👩", name: "Chaltu", gender: "female", pronunciation: "" },
       ]
     }
   ]
@@ -155,6 +155,7 @@ const GreetingModule = ({ onBack, language }: GreetingModuleProps) => {
       </div>
 
       <div className="max-w-6xl mx-auto relative z-10">
+        {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <Button
             onClick={onBack}
@@ -186,6 +187,11 @@ const GreetingModule = ({ onBack, language }: GreetingModuleProps) => {
                 <div className="bg-blue-100 rounded-2xl p-6 max-w-sm animate-fade-in">
                   <div className="text-xl font-semibold text-gray-800 text-center">
                     {language === 'english' ? currentLine.english : currentLine.oromo}
+                    {language === 'oromo' && currentLine.pronunciation && (
+                      <div className="text-base italic text-gray-600 mt-2">
+                        Pronounced as: {currentLine.pronunciation}
+                      </div>
+                    )}
                   </div>
                 </div>
               )}
@@ -207,6 +213,11 @@ const GreetingModule = ({ onBack, language }: GreetingModuleProps) => {
                 <div className="bg-green-100 rounded-2xl p-6 max-w-sm animate-fade-in">
                   <div className="text-xl font-semibold text-gray-800 text-center">
                     {language === 'english' ? currentLine.english : currentLine.oromo}
+                     {language === 'oromo' && currentLine.pronunciation && (
+                      <div className="text-base italic text-gray-600 mt-2">
+                        Pronounced as: {currentLine.pronunciation}
+                      </div>
+                    )}
                   </div>
                 </div>
               )}
