@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight, List, Grid } from 'lucide-react';
@@ -258,10 +257,10 @@ const FlagModule = ({ onBack, language }: FlagModuleProps) => {
                     </TableCell>
                     <TableCell className="text-white">
                       <button
-                        onClick={() => handleFlagClick(language === 'english' ? flag.oromo : flag.english)}
+                        onClick={() => handleFlagClick(language === 'english' ? (flag as any).oromo : (flag as any).english)}
                         className="hover:text-yellow-300 transition-colors"
                       >
-                        {language === 'english' ? flag.oromo : flag.english}
+                        {language === 'english' ? (flag as any).oromo : (flag as any).english}
                       </button>
                     </TableCell>
                     <TableCell className="text-white/80 italic">
@@ -312,7 +311,7 @@ const FlagModule = ({ onBack, language }: FlagModuleProps) => {
                   {currentFlag.name}
                 </div>
                 <div className="text-xl text-white/80 mb-2">
-                  {language === 'english' ? currentFlag.oromo : currentFlag.english}
+                  {language === 'english' ? (currentFlag as any).oromo : (currentFlag as any).english}
                 </div>
                 <div className="text-lg text-white/60 italic mb-4">
                   {currentFlag.pronunciation}
