@@ -33,17 +33,3 @@ export const speakText = (text: string, language: 'english' | 'oromo' = 'english
     speechSynthesis.speak(utterance);
   }
 };
-
-export const speakLetter = (letter: string, sound: string, word: string, language: 'english' | 'oromo' = 'english') => {
-  const textToSpeak = `${letter} ${sound}`;
-  speakText(textToSpeak, language);
-};
-
-export const speakLetterOnly = (letter: string, sound: string, language: 'english' | 'oromo' = 'english') => {
-  const textToSpeak = `${letter} ${sound}`;
-  speakText(textToSpeak, language);
-};
-
-export const speakWord = (word: string, language: 'english' | 'oromo' = 'english') => {
-  speakText(word, language);
-};
