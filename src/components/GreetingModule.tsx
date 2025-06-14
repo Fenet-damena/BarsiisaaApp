@@ -1,72 +1,71 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 
-interface ConversationModuleProps {
+interface GreetingModuleProps {
   onBack: () => void;
   language: 'english' | 'oromo';
 }
 
-const conversationData = {
+const greetingData = {
   english: [
     {
       id: 1,
-      title: "Playground Chat",
+      title: "First Meeting",
       conversations: [
-        { speaker: "left", english: "Hi! Want to play together?", oromo: "Akkam! Waliin taphachuu barbaaddaa?", avatar: "👦", name: "Sam" },
-        { speaker: "right", english: "Yes! What should we play?", oromo: "Eeyyee! Maal taphanna?", avatar: "👧", name: "Luna" },
-        { speaker: "left", english: "Let's play hide and seek!", oromo: "Dhokaa fi barbaaddii haa taphannuu!", avatar: "👦", name: "Sam" },
-        { speaker: "right", english: "Great idea! You count first.", oromo: "Yaadni gaarii! Ati jalqabatti lakkaa'i.", avatar: "👧", name: "Luna" },
+        { speaker: "left", english: "Hello! What's your name?", oromo: "Akkam! Maqaan kee eenyu?", avatar: "👦", name: "Alex" },
+        { speaker: "right", english: "Hi! My name is Sara.", oromo: "Nagaatti! Maqaan koo Sara.", avatar: "👧", name: "Sara" },
+        { speaker: "left", english: "Nice to meet you, Sara!", oromo: "Si arguuf natti tola, Sara!", avatar: "👦", name: "Alex" },
+        { speaker: "right", english: "Nice to meet you too!", oromo: "Anis si arguuf natti tola!", avatar: "👧", name: "Sara" },
       ]
     },
     {
       id: 2,
-      title: "Best Friends Talk",
+      title: "Morning Greetings",
       conversations: [
-        { speaker: "left", english: "You are my best friend!", oromo: "Ati hiriyaa koo hunda caalaa jaalladhu!", avatar: "🧒", name: "Alex" },
-        { speaker: "right", english: "You are my best friend too!", oromo: "Anis si hunda caalaa nan jaalladha!", avatar: "👶", name: "Maya" },
-        { speaker: "left", english: "Let's be friends forever!", oromo: "Bara baraan hiriyoota haa ta'annuu!", avatar: "🧒", name: "Alex" },
-        { speaker: "right", english: "Yes, forever and ever!", oromo: "Eeyyee, bara baraa fi baraa!", avatar: "👶", name: "Maya" },
+        { speaker: "left", english: "Good morning!", oromo: "Nagaa ganama!", avatar: "👨", name: "John" },
+        { speaker: "right", english: "Good morning! How are you?", oromo: "Nagaa ganama! Akkam jirta?", avatar: "👩", name: "Maya" },
+        { speaker: "left", english: "I am fine, thank you.", oromo: "Ani nagaan jira, galatoomaa.", avatar: "👨", name: "John" },
+        { speaker: "right", english: "Have a great day!", oromo: "Guyyaa gaarii qabaadhu!", avatar: "👩", name: "Maya" },
       ]
     }
   ],
   oromo: [
     {
       id: 1,
-      title: "Haasawa Taphaa Irratti",
+      title: "Wal Argannaa Jalqabaa",
       conversations: [
-        { speaker: "left", english: "Hi! Want to play together?", oromo: "Akkam! Waliin taphachuu barbaaddaa?", avatar: "👦", name: "Sam" },
-        { speaker: "right", english: "Yes! What should we play?", oromo: "Eeyyee! Maal taphanna?", avatar: "👧", name: "Luna" },
-        { speaker: "left", english: "Let's play hide and seek!", oromo: "Dhokaa fi barbaaddii haa taphannuu!", avatar: "👦", name: "Sam" },
-        { speaker: "right", english: "Great idea! You count first.", oromo: "Yaadni gaarii! Ati jalqabatti lakkaa'i.", avatar: "👧", name: "Luna" },
+        { speaker: "left", english: "Hello! What's your name?", oromo: "Akkam! Maqaan kee eenyu?", avatar: "👦", name: "Alex" },
+        { speaker: "right", english: "Hi! My name is Sara.", oromo: "Nagaatti! Maqaan koo Sara.", avatar: "👧", name: "Sara" },
+        { speaker: "left", english: "Nice to meet you, Sara!", oromo: "Si arguuf natti tola, Sara!", avatar: "👦", name: "Alex" },
+        { speaker: "right", english: "Nice to meet you too!", oromo: "Anis si arguuf natti tola!", avatar: "👧", name: "Sara" },
       ]
     },
     {
       id: 2,
-      title: "Hiriyyoota Dhugaa Haasawa",
+      title: "Nagaa Ganama",
       conversations: [
-        { speaker: "left", english: "You are my best friend!", oromo: "Ati hiriyaa koo hunda caalaa jaalladhu!", avatar: "🧒", name: "Alex" },
-        { speaker: "right", english: "You are my best friend too!", oromo: "Anis si hunda caalaa nan jaalladha!", avatar: "👶", name: "Maya" },
-        { speaker: "left", english: "Let's be friends forever!", oromo: "Bara baraan hiriyoota haa ta'annuu!", avatar: "🧒", name: "Alex" },
-        { speaker: "right", english: "Yes, forever and ever!", oromo: "Eeyyee, bara baraa fi baraa!", avatar: "👶", name: "Maya" },
+        { speaker: "left", english: "Good morning!", oromo: "Nagaa ganama!", avatar: "👨", name: "John" },
+        { speaker: "right", english: "Good morning! How are you?", oromo: "Nagaa ganama! Akkam jirta?", avatar: "👩", name: "Maya" },
+        { speaker: "left", english: "I am fine, thank you.", oromo: "Ani nagaan jira, galatoomaa.", avatar: "👨", name: "John" },
+        { speaker: "right", english: "Have a great day!", oromo: "Guyyaa gaarii qabaadhu!", avatar: "👩", name: "Maya" },
       ]
     }
   ]
 };
 
-const ConversationModule = ({ onBack, language }: ConversationModuleProps) => {
+const GreetingModule = ({ onBack, language }: GreetingModuleProps) => {
   const [currentConversationIndex, setCurrentConversationIndex] = useState(0);
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
-  const [language, setLanguage] = useState<'english' | 'oromo'>('english');
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const conversations = conversationData[language];
+  const conversations = greetingData[language];
   const currentConversation = conversations[currentConversationIndex];
   const currentLine = currentConversation.conversations[currentLineIndex];
 
   const uiContent = {
     english: {
       back: "Back",
-      title: "Learn Conversations!",
+      title: "Learn Greetings!",
       previousLine: "Previous Line",
       listen: "Listen",
       playAll: "Play All",
@@ -79,7 +78,7 @@ const ConversationModule = ({ onBack, language }: ConversationModuleProps) => {
     },
     oromo: {
       back: "Duubatti",
-      title: "Haasawa Baradhu!",
+      title: "Nagaa Gaafachuu Baradhu!",
       previousLine: "Sarara Duraa",
       listen: "Dhaggeeffadhu",
       playAll: "Hunda Taphisi",
@@ -107,7 +106,7 @@ const ConversationModule = ({ onBack, language }: ConversationModuleProps) => {
       const line = currentConversation.conversations[i];
       const text = language === 'english' ? line.english : line.oromo;
       speakText(text);
-      await new Promise(resolve => setTimeout(resolve, 3000)); // Wait 3 seconds between lines
+      await new Promise(resolve => setTimeout(resolve, 3000));
     }
     setIsPlaying(false);
   };
@@ -162,7 +161,7 @@ const ConversationModule = ({ onBack, language }: ConversationModuleProps) => {
           </Button>
           <div className="text-center">
             <h1 className="text-3xl font-bold text-white mb-2">
-              💬 {ui.title}
+              👋 {ui.title}
             </h1>
             <div className="text-white/80">
               {currentConversation.title}
@@ -291,4 +290,4 @@ const ConversationModule = ({ onBack, language }: ConversationModuleProps) => {
   );
 };
 
-export default ConversationModule;
+export default GreetingModule;

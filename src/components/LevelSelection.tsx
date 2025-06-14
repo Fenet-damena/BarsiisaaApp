@@ -4,17 +4,47 @@ import { Button } from '@/components/ui/button';
 interface LevelSelectionProps {
   onLevelSelect: (level: number) => void;
   onBack: () => void;
+  language: 'english' | 'oromo';
 }
 
-const levels = [
-  { level: 1, age: 3, title: "Alphabet & ABCs", emoji: "🔤", color: "from-red-400 to-pink-500", description: "Learn letters A-Z" },
-  { level: 2, age: 4, title: "Words & Sounds", emoji: "🔊", color: "from-yellow-400 to-orange-500", description: "Simple words & pronunciation" },
-  { level: 3, age: 5, title: "Greetings", emoji: "👋", color: "from-green-400 to-blue-500", description: "Hello, goodbye, thank you" },
-  { level: 4, age: 6, title: "Conversations", emoji: "💬", color: "from-blue-400 to-purple-500", description: "Talk between friends" },
-  { level: 5, age: 7, title: "Stories & Games", emoji: "📖", color: "from-purple-400 to-pink-500", description: "Fun stories & activities" },
-];
+const levelsContent = {
+  english: [
+    { level: 1, age: 3, title: "Alphabet & Numbers", emoji: "🔤", color: "from-red-400 to-pink-500", description: "Learn A-Z & 1-10" },
+    { level: 2, age: 4, title: "Letter Words", emoji: "🅰️", color: "from-yellow-400 to-orange-500", description: "A for Apple, B for Ball" },
+    { level: 3, age: 5, title: "Many Words", emoji: "📝", color: "from-green-400 to-blue-500", description: "100+ words daily" },
+    { level: 4, age: 6, title: "Greetings", emoji: "👋", color: "from-blue-400 to-purple-500", description: "Hello & introductions" },
+    { level: 5, age: 6, title: "Conversations", emoji: "💬", color: "from-purple-400 to-pink-500", description: "Chat between friends" },
+    { level: 6, age: 7, title: "Word Games", emoji: "🎮", color: "from-pink-400 to-red-500", description: "Fill missing letters" },
+    { level: 7, age: 7, title: "Animal World", emoji: "🦁", color: "from-green-400 to-yellow-500", description: "Animals sliding fun" },
+  ],
+  oromo: [
+    { level: 1, age: 3, title: "Qubee fi Lakkoofsota", emoji: "🔤", color: "from-red-400 to-pink-500", description: "A-Z fi 1-10 baradhu" },
+    { level: 2, age: 4, title: "Jecha Qubee", emoji: "🅰️", color: "from-yellow-400 to-orange-500", description: "A Poomii, B Kubbaa" },
+    { level: 3, age: 5, title: "Jechota Hedduu", emoji: "📝", color: "from-green-400 to-blue-500", description: "Jechota 100+ guyyaa" },
+    { level: 4, age: 6, title: "Nagaa Gaafachuu", emoji: "👋", color: "from-blue-400 to-purple-500", description: "Nagaa fi jalqaba" },
+    { level: 5, age: 6, title: "Haasawa", emoji: "💬", color: "from-purple-400 to-pink-500", description: "Hiriyyoota haasawa" },
+    { level: 6, age: 7, title: "Taphoota Jechaa", emoji: "🎮", color: "from-pink-400 to-red-500", description: "Qubee dhiisan guuti" },
+    { level: 7, age: 7, title: "Addunyaa Bineensotaa", emoji: "🦁", color: "from-green-400 to-yellow-500", description: "Bineensota suukaneessaa" },
+  ]
+};
 
-const LevelSelection = ({ onLevelSelect, onBack }: LevelSelectionProps) => {
+const uiContent = {
+  english: {
+    back: "Back",
+    title: "Choose Your Level!",
+    start: "Start!"
+  },
+  oromo: {
+    back: "Duubatti",
+    title: "Sadarkaa Kee Filadhu!",
+    start: "Jalqabi!"
+  }
+};
+
+const LevelSelection = ({ onLevelSelect, onBack, language }: LevelSelectionProps) => {
+  const levels = levelsContent[language];
+  const ui = uiContent[language];
+
   return (
     <div className="min-h-screen p-6 relative overflow-hidden">
       {/* Animated Background */}
@@ -35,10 +65,10 @@ const LevelSelection = ({ onLevelSelect, onBack }: LevelSelectionProps) => {
             onClick={onBack}
             className="bg-white/20 hover:bg-white/30 text-white border-2 border-white/30 rounded-full px-6 py-3"
           >
-            ← Back
+            ← {ui.back}
           </Button>
           <h1 className="text-4xl font-bold text-white text-center flex-1 animate-pulse">
-            Choose Your Level! 🎯
+            {ui.title} 🎯
           </h1>
           <div className="w-24"></div>
         </div>
@@ -53,10 +83,10 @@ const LevelSelection = ({ onLevelSelect, onBack }: LevelSelectionProps) => {
               <div className="text-center">
                 <div className="text-6xl mb-4 animate-bounce">{levelData.emoji}</div>
                 <div className="text-2xl font-bold text-white mb-2">
-                  Level {levelData.level}
+                  {language === 'english' ? 'Level' : 'Sadarkaa'} {levelData.level}
                 </div>
                 <div className="text-lg text-white/90 mb-2">
-                  Age {levelData.age}
+                  {language === 'english' ? 'Age' : 'Umrii'} {levelData.age}
                 </div>
                 <div className="text-xl font-semibold text-white mb-2">
                   {levelData.title}
@@ -67,7 +97,7 @@ const LevelSelection = ({ onLevelSelect, onBack }: LevelSelectionProps) => {
                 <Button
                   className={`bg-gradient-to-r ${levelData.color} hover:opacity-90 text-white font-bold px-8 py-3 rounded-full w-full transform hover:scale-105 transition-all duration-200`}
                 >
-                  Start! 🚀
+                  {ui.start} 🚀
                 </Button>
               </div>
             </div>

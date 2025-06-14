@@ -1,20 +1,35 @@
 
 import { Button } from '@/components/ui/button';
-import { useState } from 'react';
 
 interface WelcomeScreenProps {
   onStartLearning: () => void;
+  onLanguageSelect: (language: 'english' | 'oromo') => void;
+  selectedLanguage: 'english' | 'oromo';
 }
 
-const WelcomeScreen = ({ onStartLearning }: WelcomeScreenProps) => {
-  const [selectedLanguage, setSelectedLanguage] = useState<string>('');
-
-  const handleLanguageSelect = (language: string) => {
-    setSelectedLanguage(language);
-    // Store language preference
-    localStorage.setItem('selectedLanguage', language);
-    onStartLearning();
+const WelcomeScreen = ({ onStartLearning, onLanguageSelect, selectedLanguage }: WelcomeScreenProps) => {
+  const content = {
+    english: {
+      title: "BarsiisaApp",
+      subtitle: "Learn Afaan Oromo & English",
+      description: "Fun learning for kids aged 3-7!",
+      chooseLanguage: "Choose Your Language!",
+      startLearning: "Start Learning!",
+      oromo: "Afaan Oromo",
+      english: "English"
+    },
+    oromo: {
+      title: "BarsiisaApp",
+      subtitle: "Afaan Oromo fi Inglizii Barnoota",
+      description: "Daa'imman umrii 3-7 barnoota gammachiisaa!",
+      chooseLanguage: "Afaan Kee Filadhu!",
+      startLearning: "Barnoota Jalqabi!",
+      oromo: "Afaan Oromo",
+      english: "Inglizii"
+    }
   };
+
+  const currentContent = content[selectedLanguage];
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-8 text-center relative overflow-hidden">
@@ -38,73 +53,74 @@ const WelcomeScreen = ({ onStartLearning }: WelcomeScreenProps) => {
       <div className="bg-white/20 backdrop-blur-sm rounded-3xl p-8 shadow-2xl max-w-2xl w-full relative z-10">
         <div className="mb-8">
           <h1 className="text-6xl font-bold text-white mb-4 drop-shadow-lg animate-pulse">
-            🌟 BarsiisaApp 🌟
+            🌟 {currentContent.title} 🌟
           </h1>
           <p className="text-2xl text-white/90 font-semibold mb-2">
-            Learn Afaan Oromo & English
+            {currentContent.subtitle}
           </p>
           <p className="text-lg text-white/80">
-            Fun learning for kids aged 3-7!
+            {currentContent.description}
           </p>
         </div>
 
-        {!selectedLanguage ? (
-          <div className="flex flex-col items-center space-y-6">
-            <div className="flex space-x-4 text-4xl mb-6">
-              <span className="animate-bounce">🎈</span>
-              <span className="animate-bounce delay-100">🎨</span>
-              <span className="animate-bounce delay-200">🎪</span>
-              <span className="animate-bounce delay-300">🎭</span>
-            </div>
-
-            <h2 className="text-3xl font-bold text-white mb-6">Choose Your Language!</h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
-              <Button
-                onClick={() => handleLanguageSelect('oromo')}
-                className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white font-bold text-2xl px-12 py-8 rounded-full shadow-lg transform hover:scale-105 transition-all duration-200"
-              >
-                <div className="flex flex-col items-center">
-                  <span className="text-4xl mb-2">🇪🇹</span>
-                  <span>Afaan Oromo</span>
-                </div>
-              </Button>
-
-              <Button
-                onClick={() => handleLanguageSelect('english')}
-                className="bg-gradient-to-r from-purple-400 to-pink-500 hover:from-purple-500 hover:to-pink-600 text-white font-bold text-2xl px-12 py-8 rounded-full shadow-lg transform hover:scale-105 transition-all duration-200"
-              >
-                <div className="flex flex-col items-center">
-                  <span className="text-4xl mb-2">🇺🇸</span>
-                  <span>English</span>
-                </div>
-              </Button>
-            </div>
-
-            <div className="flex items-center space-x-2 text-white/70 mt-6">
-              <span>📚</span>
-              <span>Alphabet</span>
-              <span>•</span>
-              <span>💬</span>
-              <span>Conversations</span>
-              <span>•</span>
-              <span>🎮</span>
-              <span>Games</span>
-            </div>
+        <div className="flex flex-col items-center space-y-6">
+          <div className="flex space-x-4 text-4xl mb-6">
+            <span className="animate-bounce">🎈</span>
+            <span className="animate-bounce delay-100">🎨</span>
+            <span className="animate-bounce delay-200">🎪</span>
+            <span className="animate-bounce delay-300">🎭</span>
           </div>
-        ) : (
-          <div className="flex flex-col items-center space-y-6">
-            <div className="text-2xl text-white/90 mb-4">
-              Great choice! Ready to learn?
-            </div>
+
+          <h2 className="text-3xl font-bold text-white mb-6">{currentContent.chooseLanguage}</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mb-6">
             <Button
-              onClick={onStartLearning}
-              className="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-white font-bold text-2xl px-12 py-6 rounded-full shadow-lg transform hover:scale-105 transition-all duration-200"
+              onClick={() => onLanguageSelect('oromo')}
+              className={`font-bold text-2xl px-12 py-8 rounded-full shadow-lg transform hover:scale-105 transition-all duration-200 ${
+                selectedLanguage === 'oromo' 
+                  ? 'bg-gradient-to-r from-green-600 to-blue-700 text-white' 
+                  : 'bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white'
+              }`}
             >
-              🚀 Start Learning!
+              <div className="flex flex-col items-center">
+                <span className="text-4xl mb-2">🇪🇹</span>
+                <span>{currentContent.oromo}</span>
+              </div>
+            </Button>
+
+            <Button
+              onClick={() => onLanguageSelect('english')}
+              className={`font-bold text-2xl px-12 py-8 rounded-full shadow-lg transform hover:scale-105 transition-all duration-200 ${
+                selectedLanguage === 'english' 
+                  ? 'bg-gradient-to-r from-purple-600 to-pink-700 text-white' 
+                  : 'bg-gradient-to-r from-purple-400 to-pink-500 hover:from-purple-500 hover:to-pink-600 text-white'
+              }`}
+            >
+              <div className="flex flex-col items-center">
+                <span className="text-4xl mb-2">🇺🇸</span>
+                <span>{currentContent.english}</span>
+              </div>
             </Button>
           </div>
-        )}
+
+          <Button
+            onClick={onStartLearning}
+            className="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-white font-bold text-2xl px-12 py-6 rounded-full shadow-lg transform hover:scale-105 transition-all duration-200"
+          >
+            🚀 {currentContent.startLearning}
+          </Button>
+
+          <div className="flex items-center space-x-2 text-white/70 mt-6">
+            <span>📚</span>
+            <span>Alphabet</span>
+            <span>•</span>
+            <span>💬</span>
+            <span>Conversations</span>
+            <span>•</span>
+            <span>🎮</span>
+            <span>Games</span>
+          </div>
+        </div>
       </div>
     </div>
   );
