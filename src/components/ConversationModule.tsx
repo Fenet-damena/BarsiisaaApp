@@ -1,4 +1,5 @@
-import { useState } from 'react';
+
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { speakText } from '@/utils/speechUtils';
 
@@ -18,6 +19,28 @@ const conversationData = {
         { speaker: "left", english: "I am fine too! Nice to see you.", oromo: "Anis nagaa koo! Si arguunkoo na gammachiiseera.", avatar: "👧", name: "Ayantu" },
         { speaker: "right", english: "Nice to see you too! Welcome.", oromo: "Anis si arguunkoo na gammachiiseera! Baga nagaan dhufe.", avatar: "👦", name: "Bona" },
       ]
+    },
+    {
+      id: 2,
+      title: "Asking for Help",
+      conversations: [
+        { speaker: "left", english: "Excuse me, Bona. Can you help me?", oromo: "Dhiifama, Boonaa. Na gargaaruu dandeessaa?", avatar: "👧", name: "Ayantu" },
+        { speaker: "right", english: "Of course, Ayantu. What do you need?", oromo: "Eeyyee, Ayyaantuu. Maal si barbaachisa?", avatar: "👦", name: "Bona" },
+        { speaker: "left", english: "I can't reach that book. Can you get it for me?", oromo: "Kitaaba sana dhaqqabuu dadhabe. Naaf fuudhuu dandeessaa?", avatar: "👧", name: "Ayantu" },
+        { speaker: "right", english: "Sure, here you go.", oromo: "Tole, kunoo.", avatar: "👦", name: "Bona" },
+        { speaker: "left", english: "Thank you so much!", oromo: "Hedduu galatoomi!", avatar: "👧", name: "Ayantu" },
+      ]
+    },
+    {
+      id: 3,
+      title: "Talking About School",
+      conversations: [
+        { speaker: "right", english: "Hi Ayantu, how was school today?", oromo: "Akkam Ayyaantuu, barnoonni har'aa akkam ture?", avatar: "👦", name: "Bona" },
+        { speaker: "left", english: "It was great! We learned about animals.", oromo: "Bareedaa ture! Bineensota baranne.", avatar: "👧", name: "Ayantu" },
+        { speaker: "right", english: "That sounds fun! What's your favorite animal?", oromo: "Sun bashannansiisaa fakkaata! Bineensa kam jaalatta?", avatar: "👦", name: "Bona" },
+        { speaker: "left", english: "I like lions. They are strong!", oromo: "Leenca nan jaaladha. Jaboodha!", avatar: "👧", name: "Ayantu" },
+        { speaker: "right", english: "Me too! See you tomorrow.", oromo: "Anis! Boru wal argina.", avatar: "👦", name: "Bona" },
+      ]
     }
   ],
   oromo: [
@@ -30,19 +53,45 @@ const conversationData = {
         { speaker: "left", english: "I am fine too! Nice to see you.", oromo: "Anis nagaa koo! Si arguunkoo na gammachiiseera.", avatar: "👧", name: "Ayantu" },
         { speaker: "right", english: "Nice to see you too! Welcome.", oromo: "Anis si arguunkoo na gammachiiseera! Baga nagaan dhufe.", avatar: "👦", name: "Bona" },
       ]
+    },
+    {
+      id: 2,
+      title: "Gargaarsa Gaafachuu",
+      conversations: [
+        { speaker: "left", english: "Excuse me, Bona. Can you help me?", oromo: "Dhiifama, Boonaa. Na gargaaruu dandeessaa?", avatar: "👧", name: "Ayantu" },
+        { speaker: "right", english: "Of course, Ayantu. What do you need?", oromo: "Eeyyee, Ayyaantuu. Maal si barbaachisa?", avatar: "👦", name: "Bona" },
+        { speaker: "left", english: "I can't reach that book. Can you get it for me?", oromo: "Kitaaba sana dhaqqabuu dadhabe. Naaf fuudhuu dandeessaa?", avatar: "👧", name: "Ayantu" },
+        { speaker: "right", english: "Sure, here you go.", oromo: "Tole, kunoo.", avatar: "👦", name: "Bona" },
+        { speaker: "left", english: "Thank you so much!", oromo: "Hedduu galatoomi!", avatar: "👧", name: "Ayantu" },
+      ]
+    },
+    {
+      id: 3,
+      title: "Waa'ee Mana Barumsaa Haasawa",
+      conversations: [
+        { speaker: "right", english: "Hi Ayantu, how was school today?", oromo: "Akkam Ayyaantuu, barnoonni har'aa akkam ture?", avatar: "👦", name: "Bona" },
+        { speaker: "left", english: "It was great! We learned about animals.", oromo: "Bareedaa ture! Bineensota baranne.", avatar: "👧", name: "Ayantu" },
+        { speaker: "right", english: "That sounds fun! What's your favorite animal?", oromo: "Sun bashannansiisaa fakkaata! Bineensa kam jaalatta?", avatar: "👦", name: "Bona" },
+        { speaker: "left", english: "I like lions. They are strong!", oromo: "Leenca nan jaaladha. Jaboodha!", avatar: "👧", name: "Ayantu" },
+        { speaker: "right", english: "Me too! See you tomorrow.", oromo: "Anis! Boru wal argina.", avatar: "👦", name: "Bona" },
+      ]
     }
   ]
 };
 
 const ConversationModule = ({ onBack, language }: ConversationModuleProps) => {
-  const [currentConversationIndex, setCurrentConversationIndex] = useState(0);
+  const [currentConversationIndex, setCurrentConversationIndex] = useState<number | null>(null);
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const conversations = conversationData[language];
-  const currentConversation = conversations[currentConversationIndex];
-  const currentLine = currentConversation.conversations[currentLineIndex];
+  useEffect(() => {
+    const conversationsForLanguage = conversationData[language];
+    setCurrentConversationIndex(Math.floor(Math.random() * conversationsForLanguage.length));
+    setCurrentLineIndex(0);
+  }, [language]);
 
+  const conversations = conversationData[language];
+  
   const uiContent = {
     english: {
       back: "Back",
@@ -73,6 +122,13 @@ const ConversationModule = ({ onBack, language }: ConversationModuleProps) => {
   };
 
   const ui = uiContent[language];
+
+  if (currentConversationIndex === null) {
+    return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+  }
+
+  const currentConversation = conversations[currentConversationIndex];
+  const currentLine = currentConversation.conversations[currentLineIndex];
 
   const playConversation = async () => {
     setIsPlaying(true);
