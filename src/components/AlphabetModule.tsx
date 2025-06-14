@@ -124,8 +124,13 @@ const AlphabetModule = ({ onBack, language }: AlphabetModuleProps) => {
       speakText(text, language);
     } else {
       const item = currentItem as LetterData;
-      const sound = language === 'english' ? item.sound : item.oromoSound;
-      speakLetterOnly(item.letter, sound, language);
+      if (language === 'english') {
+        // For English: speak letter + sound (e.g., "A ay")
+        speakLetterOnly(item.letter, item.sound, language);
+      } else {
+        // For Oromo: speak ONLY the Oromo sound (e.g., "ah" not "A ah")
+        speakText(item.oromoSound, language);
+      }
     }
   };
 
