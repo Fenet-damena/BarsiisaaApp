@@ -1,5 +1,5 @@
 
-export const speakText = (text: string, language: 'english' | 'oromo' = 'english') => {
+export const speakText = (text: string, language: 'english' | 'oromo' = 'english', gender?: 'female' | 'male') => {
   if ('speechSynthesis' in window) {
     // Cancel any ongoing speech
     speechSynthesis.cancel();
@@ -10,7 +10,13 @@ export const speakText = (text: string, language: 'english' | 'oromo' = 'english
     if (language === 'english') {
       utterance.lang = 'en-US';
       utterance.rate = 0.8; // Slower for children
-      utterance.pitch = 1.1; // Slightly higher pitch for children
+      if (gender === 'female') {
+        utterance.pitch = 1.2; // Higher pitch for female voice
+      } else if (gender === 'male') {
+        utterance.pitch = 0.9; // Lower pitch for male voice
+      } else {
+        utterance.pitch = 1.1; // Default slightly higher pitch for children
+      }
     } else {
       // For Oromo, use phonetic approximation with English pronunciation
       utterance.lang = 'en-US'; // Use English voice but slower for better pronunciation

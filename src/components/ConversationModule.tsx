@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { speakText } from '@/utils/speechUtils';
@@ -14,32 +13,32 @@ const conversationData = {
       id: 1,
       title: "Saying Hello",
       conversations: [
-        { speaker: "left", english: "Hello!", oromo: "Hello!", avatar: "👧", name: "Ayantu" },
-        { speaker: "right", english: "Hi!", oromo: "Hi!", avatar: "👦", name: "Bona" },
+        { speaker: "left", english: "Hello!", oromo: "Hello!", avatar: "👧", name: "Ayantu", gender: "female" },
+        { speaker: "right", english: "Hi!", oromo: "Hi!", avatar: "👦", name: "Bona", gender: "male" },
       ]
     },
     {
       id: 2,
       title: "Morning Greeting",
       conversations: [
-        { speaker: "left", english: "Good morning!", oromo: "Good morning!", avatar: "👧", name: "Ayantu" },
-        { speaker: "right", english: "Good morning!", oromo: "Good morning!", avatar: "👦", name: "Bona" },
+        { speaker: "left", english: "Good morning!", oromo: "Good morning!", avatar: "👧", name: "Ayantu", gender: "female" },
+        { speaker: "right", english: "Good morning!", oromo: "Good morning!", avatar: "👦", name: "Bona", gender: "male" },
       ]
     },
     {
       id: 3,
       title: "How are you?",
       conversations: [
-        { speaker: "left", english: "How are you?", oromo: "How are you?", avatar: "👧", name: "Ayantu" },
-        { speaker: "right", english: "I’m fine, thank you!", oromo: "I’m fine, thank you!", avatar: "👦", name: "Bona" },
+        { speaker: "left", english: "How are you?", oromo: "How are you?", avatar: "👧", name: "Ayantu", gender: "female" },
+        { speaker: "right", english: "I’m fine, thank you!", oromo: "I’m fine, thank you!", avatar: "👦", name: "Bona", gender: "male" },
       ]
     },
     {
       id: 4,
       title: "Nice to meet you",
       conversations: [
-        { speaker: "left", english: "Nice to meet you!", oromo: "Nice to meet you!", avatar: "👧", name: "Ayantu" },
-        { speaker: "right", english: "Nice to meet you too!", oromo: "Nice to meet you too!", avatar: "👦", name: "Bona" },
+        { speaker: "left", english: "Nice to meet you!", oromo: "Nice to meet you!", avatar: "👧", name: "Ayantu", gender: "female" },
+        { speaker: "right", english: "Nice to meet you too! bu name is Ayantu and Bona", oromo: "Nice to meet you too! bu name is Ayantu and Bona", avatar: "👦", name: "Bona", gender: "male" },
       ]
     }
   ],
@@ -48,32 +47,32 @@ const conversationData = {
       id: 1,
       title: "Saying Hello",
       conversations: [
-        { speaker: "left", english: "Hello!", oromo: "Hello!", avatar: "👧", name: "Ayantu" },
-        { speaker: "right", english: "Hi!", oromo: "Hi!", avatar: "👦", name: "Bona" },
+        { speaker: "left", english: "Hello!", oromo: "Hello!", avatar: "👧", name: "Ayantu", gender: "female" },
+        { speaker: "right", english: "Hi!", oromo: "Hi!", avatar: "👦", name: "Bona", gender: "male" },
       ]
     },
     {
       id: 2,
       title: "Morning Greeting",
       conversations: [
-        { speaker: "left", english: "Good morning!", oromo: "Good morning!", avatar: "👧", name: "Ayantu" },
-        { speaker: "right", english: "Good morning!", oromo: "Good morning!", avatar: "👦", name: "Bona" },
+        { speaker: "left", english: "Good morning!", oromo: "Good morning!", avatar: "👧", name: "Ayantu", gender: "female" },
+        { speaker: "right", english: "Good morning!", oromo: "Good morning!", avatar: "👦", name: "Bona", gender: "male" },
       ]
     },
     {
       id: 3,
       title: "How are you?",
       conversations: [
-        { speaker: "left", english: "How are you?", oromo: "How are you?", avatar: "👧", name: "Ayantu" },
-        { speaker: "right", english: "I’m fine, thank you!", oromo: "I’m fine, thank you!", avatar: "👦", name: "Bona" },
+        { speaker: "left", english: "How are you?", oromo: "How are you?", avatar: "👧", name: "Ayantu", gender: "female" },
+        { speaker: "right", english: "I’m fine, thank you!", oromo: "I’m fine, thank you!", avatar: "👦", name: "Bona", gender: "male" },
       ]
     },
     {
       id: 4,
       title: "Nice to meet you",
       conversations: [
-        { speaker: "left", english: "Nice to meet you!", oromo: "Nice to meet you!", avatar: "👧", name: "Ayantu" },
-        { speaker: "right", english: "Nice to meet you too!", oromo: "Nice to meet you too!", avatar: "👦", name: "Bona" },
+        { speaker: "left", english: "Nice to meet you!", oromo: "Nice to meet you!", avatar: "👧", name: "Ayantu", gender: "female" },
+        { speaker: "right", english: "Nice to meet you too! bu name is Ayantu and Bona", oromo: "Nice to meet you too! bu name is Ayantu and Bona", avatar: "👦", name: "Bona", gender: "male" },
       ]
     }
   ]
@@ -136,7 +135,7 @@ const ConversationModule = ({ onBack, language }: ConversationModuleProps) => {
       setCurrentLineIndex(i);
       const line = currentConversation.conversations[i];
       const text = language === 'english' ? line.english : line.oromo;
-      speakText(text, language);
+      speakText(text, language, line.gender as 'female' | 'male' | undefined);
       await new Promise(resolve => setTimeout(resolve, 4000)); // Wait 4 seconds between lines
     }
     setIsPlaying(false);
@@ -269,7 +268,7 @@ const ConversationModule = ({ onBack, language }: ConversationModuleProps) => {
           </Button>
           
           <Button
-            onClick={() => speakText(language === 'english' ? currentLine.english : currentLine.oromo, language)}
+            onClick={() => speakText(language === 'english' ? currentLine.english : currentLine.oromo, language, currentLine.gender as 'female' | 'male' | undefined)}
             className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full"
           >
             🔊 {ui.listen}
