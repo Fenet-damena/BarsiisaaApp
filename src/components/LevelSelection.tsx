@@ -12,7 +12,7 @@ const levelsContent = {
     { level: 2, age: 4, title: "Letter Words", emoji: "🅰️", color: "from-yellow-400 to-orange-500", description: "A for Apple, B for Ball" },
     { level: 3, age: 5, title: "Many Words", emoji: "📝", color: "from-green-400 to-blue-500", description: "100+ words daily" },
     { level: 4, age: 6, title: "Days & Months", emoji: "🗓️", color: "from-blue-400 to-purple-500", description: "Learn 7 days and 12 months" },
-    { level: 5, age: 6, title: "Conversations", emoji: "💬", color: "from-purple-400 to-pink-500", description: "Chat between friends" },
+    { level: 5, age: 6, title: "Greeting", emoji: "👋", color: "from-purple-400 to-pink-500", description: "How friends greet each other" },
     { level: 6, age: 7, title: "Word Games", emoji: "🎮", color: "from-pink-400 to-red-500", description: "Fill missing letters" },
     { level: 7, age: 7, title: "Animal World", emoji: "🦁", color: "from-green-400 to-yellow-500", description: "Animals sliding fun" },
   ],
@@ -21,7 +21,7 @@ const levelsContent = {
     { level: 2, age: 4, title: "Jecha Qubee", emoji: "🅰️", color: "from-yellow-400 to-orange-500", description: "A Poomii, B Kubbaa" },
     { level: 3, age: 5, title: "Jechota Hedduu", emoji: "📝", color: "from-green-400 to-blue-500", description: "Jechota 100+ guyyaa" },
     { level: 4, age: 6, title: "Guyyoota & Ji'oota", emoji: "🗓️", color: "from-blue-400 to-purple-500", description: "Guyyoota 7 fi Ji'oota 12 baradhu" },
-    { level: 5, age: 6, title: "Haasawa", emoji: "💬", color: "from-purple-400 to-pink-500", description: "Hiriyyoota haasawa" },
+    { level: 5, age: 6, title: "Nagaa Gaafachuu", emoji: "👋", color: "from-purple-400 to-pink-500", description: "Hiriyoonni akkamitti nagaa wal gaafatu" },
     { level: 6, age: 7, title: "Taphoota Jechaa", emoji: "🎮", color: "from-pink-400 to-red-500", description: "Qubee dhiisan guuti" },
     { level: 7, age: 7, title: "Addunyaa Bineensotaa", emoji: "🦁", color: "from-green-400 to-yellow-500", description: "Bineensota suukaneessaa" },
   ]
@@ -83,9 +83,6 @@ const LevelSelection = ({ onLevelSelect, onBack, language }: LevelSelectionProps
                 <div className="text-6xl mb-4 animate-bounce">{levelData.emoji}</div>
                 <div className="text-2xl font-bold text-white mb-2">
                   {language === 'english' ? 'Level' : 'Sadarkaa'} {levelData.level}
-                </div>
-                <div className="text-lg text-white/90 mb-2">
-                  {language === 'english' ? 'Age' : 'Umrii'} {levelData.age}
                 </div>
                 <div className="text-xl font-semibold text-white mb-2">
                   {levelData.title}

@@ -11,44 +11,24 @@ const conversationData = {
   english: [
     {
       id: 1,
-      title: "Playground Chat",
+      title: "Greeting",
       conversations: [
-        { speaker: "left", english: "Hi! Want to play together?", oromo: "Akkam! Waliin taphachuu barbaaddaa?", avatar: "👦", name: "Sam" },
-        { speaker: "right", english: "Yes! What should we play?", oromo: "Eeyyee! Maal taphanna?", avatar: "👧", name: "Luna" },
-        { speaker: "left", english: "Let's play hide and seek!", oromo: "Dhokaa fi barbaaddii haa taphannuu!", avatar: "👦", name: "Sam" },
-        { speaker: "right", english: "Great idea! You count first.", oromo: "Yaadni gaarii! Ati jalqabatti lakkaa'i.", avatar: "👧", name: "Luna" },
-      ]
-    },
-    {
-      id: 2,
-      title: "Best Friends Talk",
-      conversations: [
-        { speaker: "left", english: "You are my best friend!", oromo: "Ati hiriyaa koo hunda caalaa jaalladhu!", avatar: "🧒", name: "Alex" },
-        { speaker: "right", english: "You are my best friend too!", oromo: "Anis si hunda caalaa nan jaalladha!", avatar: "👶", name: "Maya" },
-        { speaker: "left", english: "Let's be friends forever!", oromo: "Bara baraan hiriyoota haa ta'annuu!", avatar: "🧒", name: "Alex" },
-        { speaker: "right", english: "Yes, forever and ever!", oromo: "Eeyyee, bara baraa fi baraa!", avatar: "👶", name: "Maya" },
+        { speaker: "left", english: "Hi, Bona! How are you? 😊", oromo: "Akkam, Boonaa! Akkam jirta? 😊", avatar: "👧", name: "Ayantu" },
+        { speaker: "right", english: "Hi, Ayantu! I am fine, thank you. And you?", oromo: "Akkam, Ayyaantuu! Nagaa koo, galatoomi. Atimmoo?", avatar: "👦", name: "Bona" },
+        { speaker: "left", english: "I am fine too! Nice to see you.", oromo: "Anis nagaa koo! Si arguunkoo na gammachiiseera.", avatar: "👧", name: "Ayantu" },
+        { speaker: "right", english: "Nice to see you too! Welcome.", oromo: "Anis si arguunkoo na gammachiiseera! Baga nagaan dhufe.", avatar: "👦", name: "Bona" },
       ]
     }
   ],
   oromo: [
     {
       id: 1,
-      title: "Haasawa Taphaa Irratti",
+      title: "Nagaa Gaafachuu",
       conversations: [
-        { speaker: "left", english: "Hi! Want to play together?", oromo: "Akkam! Waliin taphachuu barbaaddaa?", avatar: "👦", name: "Sam" },
-        { speaker: "right", english: "Yes! What should we play?", oromo: "Eeyyee! Maal taphanna?", avatar: "👧", name: "Luna" },
-        { speaker: "left", english: "Let's play hide and seek!", oromo: "Dhokaa fi barbaaddii haa taphannuu!", avatar: "👦", name: "Sam" },
-        { speaker: "right", english: "Great idea! You count first.", oromo: "Yaadni gaarii! Ati jalqabatti lakkaa'i.", avatar: "👧", name: "Luna" },
-      ]
-    },
-    {
-      id: 2,
-      title: "Hiriyyoota Dhugaa Haasawa",
-      conversations: [
-        { speaker: "left", english: "You are my best friend!", oromo: "Ati hiriyaa koo hunda caalaa jaalladhu!", avatar: "🧒", name: "Alex" },
-        { speaker: "right", english: "You are my best friend too!", oromo: "Anis si hunda caalaa nan jaalladha!", avatar: "👶", name: "Maya" },
-        { speaker: "left", english: "Let's be friends forever!", oromo: "Bara baraan hiriyoota haa ta'annuu!", avatar: "🧒", name: "Alex" },
-        { speaker: "right", english: "Yes, forever and ever!", oromo: "Eeyyee, bara baraa fi baraa!", avatar: "👶", name: "Maya" },
+        { speaker: "left", english: "Hi, Bona! How are you? 😊", oromo: "Akkam, Boonaa! Akkam jirta? 😊", avatar: "👧", name: "Ayantu" },
+        { speaker: "right", english: "Hi, Ayantu! I am fine, thank you. And you?", oromo: "Akkam, Ayyaantuu! Nagaa koo, galatoomi. Atimmoo?", avatar: "👦", name: "Bona" },
+        { speaker: "left", english: "I am fine too! Nice to see you.", oromo: "Anis nagaa koo! Si arguunkoo na gammachiiseera.", avatar: "👧", name: "Ayantu" },
+        { speaker: "right", english: "Nice to see you too! Welcome.", oromo: "Anis si arguunkoo na gammachiiseera! Baga nagaan dhufe.", avatar: "👦", name: "Bona" },
       ]
     }
   ]
@@ -96,7 +76,8 @@ const ConversationModule = ({ onBack, language }: ConversationModuleProps) => {
 
   const playConversation = async () => {
     setIsPlaying(true);
-    for (let i = 0; i <= currentLineIndex; i++) {
+    for (let i = 0; i < currentConversation.conversations.length; i++) {
+      setCurrentLineIndex(i);
       const line = currentConversation.conversations[i];
       const text = language === 'english' ? line.english : line.oromo;
       speakText(text, language);
