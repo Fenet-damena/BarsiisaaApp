@@ -40,6 +40,20 @@ const conversationData = {
         { speaker: "left", english: "Nice to meet you!", oromo: "Nice to meet you!", avatar: "👧", name: "Ayantu", gender: "female" },
         { speaker: "right", english: "Nice to meet you too! bu name is Ayantu and Bona", oromo: "Nice to meet you too! bu name is Ayantu and Bona", avatar: "👦", name: "Bona", gender: "male" },
       ]
+    },
+    {
+      id: 5,
+      title: "Greeting for Kids",
+      conversations: [
+        { speaker: "left", english: "Hello!", oromo: "Hello!", avatar: "👧", name: "Ayantu", gender: "female" },
+        { speaker: "right", english: "Hi!", oromo: "Hi!", avatar: "👦", name: "Bona", gender: "male" },
+        { speaker: "left", english: "Good morning!", oromo: "Good morning!", avatar: "👧", name: "Ayantu", gender: "female" },
+        { speaker: "right", english: "Good morning!", oromo: "Good morning!", avatar: "👦", name: "Bona", gender: "male" },
+        { speaker: "left", english: "How are you?", oromo: "How are you?", avatar: "👧", name: "Ayantu", gender: "female" },
+        { speaker: "right", english: "I’m fine, thank you!", oromo: "I’m fine, thank you!", avatar: "👦", name: "Bona", gender: "male" },
+        { speaker: "left", english: "Nice to meet you!", oromo: "Nice to meet you!", avatar: "👧", name: "Ayantu", gender: "female" },
+        { speaker: "right", english: "Nice to meet you too!", oromo: "Anis si arguuf natti tola!", avatar: "👦", name: "Bona", gender: "male" },
+      ]
     }
   ],
   oromo: [
@@ -73,6 +87,20 @@ const conversationData = {
       conversations: [
         { speaker: "left", english: "Nice to meet you!", oromo: "Nice to meet you!", avatar: "👧", name: "Ayantu", gender: "female" },
         { speaker: "right", english: "Nice to meet you too! bu name is Ayantu and Bona", oromo: "Nice to meet you too! bu name is Ayantu and Bona", avatar: "👦", name: "Bona", gender: "male" },
+      ]
+    },
+    {
+      id: 5,
+      title: "Greeting for Kids",
+      conversations: [
+        { speaker: "left", english: "Hello!", oromo: "Hello!", avatar: "👧", name: "Ayantu", gender: "female" },
+        { speaker: "right", english: "Hi!", oromo: "Hi!", avatar: "👦", name: "Bona", gender: "male" },
+        { speaker: "left", english: "Good morning!", oromo: "Good morning!", avatar: "👧", name: "Ayantu", gender: "female" },
+        { speaker: "right", english: "Good morning!", oromo: "Good morning!", avatar: "👦", name: "Bona", gender: "male" },
+        { speaker: "left", english: "How are you?", oromo: "How are you?", avatar: "👧", name: "Ayantu", gender: "female" },
+        { speaker: "right", english: "I’m fine, thank you!", oromo: "I’m fine, thank you!", avatar: "👦", name: "Bona", gender: "male" },
+        { speaker: "left", english: "Nice to meet you!", oromo: "Nice to meet you!", avatar: "👧", name: "Ayantu", gender: "female" },
+        { speaker: "right", english: "Nice to meet you too!", oromo: "Anis si arguuf natti tola!", avatar: "👦", name: "Bona", gender: "male" },
       ]
     }
   ]
