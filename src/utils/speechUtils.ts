@@ -12,9 +12,9 @@ export const speakText = (text: string, language: 'english' | 'oromo' = 'english
       utterance.rate = 0.8; // Slower for children
       utterance.pitch = 1.1; // Slightly higher pitch for children
     } else {
-      // For Oromo, use closest available voice or default
-      utterance.lang = 'en-US'; // Fallback to English pronunciation
-      utterance.rate = 0.7; // Even slower for non-native language
+      // For Oromo, use phonetic approximation with English pronunciation
+      utterance.lang = 'en-US'; // Use English voice but slower for better pronunciation
+      utterance.rate = 0.6; // Much slower for non-native language
       utterance.pitch = 1.0;
     }
     

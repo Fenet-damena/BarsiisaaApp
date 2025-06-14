@@ -13,6 +13,7 @@ type LetterData = {
   oromo: string;
   emoji: string;
   sound: string;
+  pronunciation: string;
 };
 
 type NumberData = {
@@ -23,32 +24,32 @@ type NumberData = {
 };
 
 const alphabetData: LetterData[] = [
-  { letter: 'A', english: 'Apple', oromo: 'Poomii', emoji: '🍎', sound: 'ay' },
-  { letter: 'B', english: 'Ball', oromo: 'Kubbaa', emoji: '⚽', sound: 'bee' },
-  { letter: 'C', english: 'Cat', oromo: 'Adurree', emoji: '🐱', sound: 'see' },
-  { letter: 'D', english: 'Dog', oromo: 'Saree', emoji: '🐕', sound: 'dee' },
-  { letter: 'E', english: 'Elephant', oromo: 'Arbaa', emoji: '🐘', sound: 'ee' },
-  { letter: 'F', english: 'Fish', oromo: 'Qurxummii', emoji: '🐟', sound: 'eff' },
-  { letter: 'G', english: 'Giraffe', oromo: 'Dhaldhala', emoji: '🦒', sound: 'jee' },
-  { letter: 'H', english: 'House', oromo: 'Mana', emoji: '🏠', sound: 'aych' },
-  { letter: 'I', english: 'Ice cream', oromo: 'Qabbana', emoji: '🍦', sound: 'eye' },
-  { letter: 'J', english: 'Juice', oromo: 'Dhangala\'aa', emoji: '🧃', sound: 'jay' },
-  { letter: 'K', english: 'Kite', oromo: 'Konkolaataa', emoji: '🪁', sound: 'kay' },
-  { letter: 'L', english: 'Lion', oromo: 'Leenca', emoji: '🦁', sound: 'ell' },
-  { letter: 'M', english: 'Moon', oromo: 'Ji\'a', emoji: '🌙', sound: 'em' },
-  { letter: 'N', english: 'Nest', oromo: 'Mana Simbirroo', emoji: '🪺', sound: 'en' },
-  { letter: 'O', english: 'Orange', oromo: 'Burtukaana', emoji: '🍊', sound: 'oh' },
-  { letter: 'P', english: 'Pencil', oromo: 'Qalama', emoji: '✏️', sound: 'pee' },
-  { letter: 'Q', english: 'Queen', oromo: 'Mootittii', emoji: '👸', sound: 'kyoo' },
-  { letter: 'R', english: 'Rainbow', oromo: 'Sabbata Waaqaa', emoji: '🌈', sound: 'ar' },
-  { letter: 'S', english: 'Sun', oromo: 'Aduu', emoji: '☀️', sound: 'ess' },
-  { letter: 'T', english: 'Tree', oromo: 'Muka', emoji: '🌳', sound: 'tee' },
-  { letter: 'U', english: 'Umbrella', oromo: 'Gaaddidduu', emoji: '☂️', sound: 'yoo' },
-  { letter: 'V', english: 'Violin', oromo: 'Viiyooliin', emoji: '🎻', sound: 'vee' },
-  { letter: 'W', english: 'Water', oromo: 'Bishaan', emoji: '💧', sound: 'double-yoo' },
-  { letter: 'X', english: 'Xylophone', oromo: 'Xaayiloofoon', emoji: '🎵', sound: 'eks' },
-  { letter: 'Y', english: 'Yellow', oromo: 'Keelloo', emoji: '💛', sound: 'why' },
-  { letter: 'Z', english: 'Zebra', oromo: 'Zebraa', emoji: '🦓', sound: 'zee' },
+  { letter: 'A', english: 'Apple', oromo: 'Arba', emoji: '🐘', sound: 'ay', pronunciation: 'AHR-bah' },
+  { letter: 'B', english: 'Ball', oromo: 'Bishaan', emoji: '💧', sound: 'bee', pronunciation: 'BEE-shaan' },
+  { letter: 'C', english: 'Cat', oromo: 'Callee', emoji: '🐕', sound: 'see', pronunciation: 'CHAL-lay' },
+  { letter: 'D', english: 'Dog', oromo: 'Dandii', emoji: '🛤️', sound: 'dee', pronunciation: 'DAN-dee' },
+  { letter: 'E', english: 'Elephant', oromo: 'Eelee', emoji: '🥄', sound: 'ee', pronunciation: 'EH-leh' },
+  { letter: 'F', english: 'Fish', oromo: 'Farda', emoji: '🐴', sound: 'eff', pronunciation: 'FAR-da' },
+  { letter: 'G', english: 'Giraffe', oromo: 'Gurraacha', emoji: '⚫', sound: 'jee', pronunciation: 'GUR-raachaa' },
+  { letter: 'H', english: 'House', oromo: 'Harree', emoji: '🫏', sound: 'aych', pronunciation: 'HAR-ray' },
+  { letter: 'I', english: 'Ice cream', oromo: 'Ilkaan', emoji: '🦷', sound: 'eye', pronunciation: 'EEL-kahn' },
+  { letter: 'J', english: 'Juice', oromo: 'Jaldeessa', emoji: '🦊', sound: 'jay', pronunciation: 'JAL-deh-ssa' },
+  { letter: 'K', english: 'Kite', oromo: 'Kitaaba', emoji: '📚', sound: 'kay', pronunciation: 'KEE-taa-bah' },
+  { letter: 'L', english: 'Lion', oromo: 'Loon', emoji: '🐄', sound: 'ell', pronunciation: 'LOHN' },
+  { letter: 'M', english: 'Moon', oromo: 'Muka', emoji: '🌳', sound: 'em', pronunciation: 'MOO-kah' },
+  { letter: 'N', english: 'Nest', oromo: 'Nama', emoji: '👤', sound: 'en', pronunciation: 'NAH-mah' },
+  { letter: 'O', english: 'Orange', oromo: 'Odaa', emoji: '🌳', sound: 'oh', pronunciation: 'OH-daa' },
+  { letter: 'P', english: 'Pencil', oromo: 'Paarkii', emoji: '🏞️', sound: 'pee', pronunciation: 'PAAR-kee' },
+  { letter: 'Q', english: 'Queen', oromo: 'Qamalee', emoji: '🐵', sound: 'kyoo', pronunciation: 'QAH-mah-leh' },
+  { letter: 'R', english: 'Rainbow', oromo: 'Rooba', emoji: '🌧️', sound: 'ar', pronunciation: 'ROH-bah' },
+  { letter: 'S', english: 'Sun', oromo: 'Simbirroo', emoji: '🐦', sound: 'ess', pronunciation: 'SIM-birr-roo' },
+  { letter: 'T', english: 'Tree', oromo: 'Tokko', emoji: '1️⃣', sound: 'tee', pronunciation: 'TOK-ko' },
+  { letter: 'U', english: 'Umbrella', oromo: 'Ulee', emoji: '🪵', sound: 'yoo', pronunciation: 'OO-lay' },
+  { letter: 'V', english: 'Violin', oromo: 'Viiyooliin', emoji: '🎻', sound: 'vee', pronunciation: 'VEE-yoh-leen' },
+  { letter: 'W', english: 'Water', oromo: 'Waraabessa', emoji: '🐺', sound: 'double-yoo', pronunciation: 'WAH-raah-bes-saa' },
+  { letter: 'X', english: 'Xylophone', oromo: 'Xurree', emoji: '🐜', sound: 'eks', pronunciation: 'HOO-ray' },
+  { letter: 'Y', english: 'Yellow', oromo: 'Yeeyyii', emoji: '👵', sound: 'why', pronunciation: 'YAY-yyee' },
+  { letter: 'Z', english: 'Zebra', oromo: 'Zeeroo', emoji: '0️⃣', sound: 'zee', pronunciation: 'ZEH-roh' },
 ];
 
 const numberData: NumberData[] = [
@@ -79,7 +80,8 @@ const AlphabetModule = ({ onBack, language }: AlphabetModuleProps) => {
       numbers: "Numbers",
       listen: "Listen",
       previous: "Previous",
-      next: "Next"
+      next: "Next",
+      pronunciation: "Pronunciation:"
     },
     oromo: {
       back: "Duubatti",
@@ -88,28 +90,12 @@ const AlphabetModule = ({ onBack, language }: AlphabetModuleProps) => {
       numbers: "Lakkoofsota",
       listen: "Dhaggeeffadhu",
       previous: "Dura",
-      next: "Itti Aansu"
+      next: "Itti Aansu",
+      pronunciation: "Dubbii:"
     }
   };
 
   const ui = uiContent[language];
-
-  const handleNext = () => {
-    if (currentIndex < currentData.length - 1) {
-      setCurrentIndex(currentIndex + 1);
-    }
-  };
-
-  const handlePrevious = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
-    }
-  };
-
-  const toggleMode = () => {
-    setShowNumbers(!showNumbers);
-    setCurrentIndex(0);
-  };
 
   const getDisplayText = () => {
     if (showNumbers) {
@@ -137,8 +123,29 @@ const AlphabetModule = ({ onBack, language }: AlphabetModuleProps) => {
     } else {
       const item = currentItem as LetterData;
       const word = language === 'english' ? item.english : item.oromo;
-      speakLetter(item.letter, `${item.letter} for ${word}`, language);
+      // Use the pronunciation guide for Oromo
+      const textToSpeak = language === 'oromo' ? 
+        `${item.letter} for ${word}. Pronounced ${item.pronunciation}` : 
+        `${item.letter} for ${word}`;
+      speakLetter(item.letter, textToSpeak, language);
     }
+  };
+
+  const handleNext = () => {
+    if (currentIndex < currentData.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+    }
+  };
+
+  const handlePrevious = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+    }
+  };
+
+  const toggleMode = () => {
+    setShowNumbers(!showNumbers);
+    setCurrentIndex(0);
   };
 
   return (
@@ -213,6 +220,16 @@ const AlphabetModule = ({ onBack, language }: AlphabetModuleProps) => {
             <div className="text-4xl font-bold text-gray-800 mb-4">
               {getDisplayText()}
             </div>
+            
+            {/* Show pronunciation guide for Oromo letters */}
+            {!showNumbers && language === 'oromo' && (
+              <div className="text-lg text-gray-600 mb-4">
+                {ui.pronunciation} <span className="font-semibold text-purple-600">
+                  {(currentItem as LetterData).pronunciation}
+                </span>
+              </div>
+            )}
+            
             <Button
               onClick={handleSpeak}
               className="bg-gradient-to-r from-orange-400 to-red-500 hover:from-orange-500 hover:to-red-600 text-white text-xl px-8 py-4 rounded-full"
