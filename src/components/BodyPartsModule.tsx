@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
+import { Volume2 } from 'lucide-react';
 import { speakText } from '@/utils/speechUtils';
 
 interface BodyPartsModuleProps {
@@ -17,9 +18,19 @@ const bodyPartsData = {
     { word: 'Ear', emoji: '👂', pronunciation: 'ear' },
     { word: 'Hand', emoji: '✋', pronunciation: 'hand' },
     { word: 'Foot', emoji: '🦶', pronunciation: 'foot' },
-    { word: 'Heart', emoji: '❤️', pronunciation: 'heart' },
     { word: 'Arm', emoji: '💪', pronunciation: 'arm' },
-    { word: 'Leg', emoji: '🦵', pronunciation: 'leg' }
+    { word: 'Leg', emoji: '🦵', pronunciation: 'leg' },
+    { word: 'Finger', emoji: '☝️', pronunciation: 'finger' },
+    { word: 'Toe', emoji: '🦶', pronunciation: 'toe' },
+    { word: 'Shoulder', emoji: '🤷', pronunciation: 'shoulder' },
+    { word: 'Knee', emoji: '🦵', pronunciation: 'knee' },
+    { word: 'Elbow', emoji: '💪', pronunciation: 'elbow' },
+    { word: 'Neck', emoji: '🧱', pronunciation: 'neck' },
+    { word: 'Back', emoji: '🔙', pronunciation: 'back' },
+    { word: 'Chest', emoji: '🫁', pronunciation: 'chest' },
+    { word: 'Stomach', emoji: '🤰', pronunciation: 'stomach' },
+    { word: 'Hip', emoji: '🕺', pronunciation: 'hip' },
+    { word: 'Wrist', emoji: '⌚', pronunciation: 'wrist' }
   ],
   oromo: [
     { word: 'Mataa', emoji: '👤', pronunciation: 'mah-tah' },
@@ -29,9 +40,19 @@ const bodyPartsData = {
     { word: 'Gurra', emoji: '👂', pronunciation: 'goo-rah' },
     { word: 'Harka', emoji: '✋', pronunciation: 'har-kah' },
     { word: 'Miila', emoji: '🦶', pronunciation: 'mee-lah' },
-    { word: 'Onnee', emoji: '❤️', pronunciation: 'oh-neh' },
     { word: 'Irree', emoji: '💪', pronunciation: 'eer-eh' },
-    { word: 'Luka', emoji: '🦵', pronunciation: 'loo-kah' }
+    { word: 'Luka', emoji: '🦵', pronunciation: 'loo-kah' },
+    { word: 'Quba', emoji: '☝️', pronunciation: 'koo-bah' },
+    { word: 'Quba Miilaa', emoji: '🦶', pronunciation: 'koo-bah mee-lah' },
+    { word: 'Gatiittii', emoji: '🤷', pronunciation: 'gah-tee-tee' },
+    { word: 'Jilba', emoji: '🦵', pronunciation: 'jeel-bah' },
+    { word: 'Harkaa Morma', emoji: '💪', pronunciation: 'har-kah mor-mah' },
+    { word: 'Morma', emoji: '🧱', pronunciation: 'mor-mah' },
+    { word: 'Dugda', emoji: '🔙', pronunciation: 'doog-dah' },
+    { word: 'Handhura', emoji: '🫁', pronunciation: 'han-dhoo-rah' },
+    { word: 'Garaa', emoji: '🤰', pronunciation: 'gah-rah' },
+    { word: 'Mudhii', emoji: '🕺', pronunciation: 'moo-dhee' },
+    { word: 'Harkaa Jalqaba', emoji: '⌚', pronunciation: 'har-kah jal-kah-bah' }
   ]
 };
 
@@ -121,7 +142,13 @@ const BodyPartsModule = ({ onBack, language }: BodyPartsModuleProps) => {
           <h1 className="text-3xl font-bold text-white text-center flex-1">
             {ui.title}
           </h1>
-          <div className="w-24"></div>
+          <Button
+            onClick={handleBodyPartClick}
+            className="bg-white/20 hover:bg-white/30 text-white border-2 border-white/30 rounded-full p-3"
+            disabled={isPlaying}
+          >
+            <Volume2 size={20} />
+          </Button>
         </div>
 
         {/* Progress Bar */}
