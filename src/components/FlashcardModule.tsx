@@ -36,7 +36,7 @@ const flashcardData: {
       { english: "K for Kite", oromo: "Barruu", emoji: "🪁", letter: "K", oromoLetterSound: "Kah" },
       { english: "L for Lion", oromo: "Leenca", emoji: "🦁", letter: "L", oromoLetterSound: "Lah" },
       { english: "M for Moon", oromo: "Jia", emoji: "🌙", letter: "M", oromoLetterSound: "mah" },
-      { english: "N for Nest", oromo: "Godee", emoji: "🪹", letter: "N", oromoLetterSound: "nah" },
+      { english: "N for Nose", oromo: "Funyaan", emoji: "👃", letter: "N", oromoLetterSound: "nah" },
       { english: "O for Orange", oromo: "Burtukaana", emoji: "🍊", letter: "O", oromoLetterSound: "o" },
       { english: "P for Pencil", oromo: "Irsaasa", emoji: "✏️", letter: "P", oromoLetterSound: "pah" },
       { english: "Q for Queen", oromo: "Gingin", emoji: "👑", letter: "Q", oromoLetterSound: "Qah" },
@@ -86,7 +86,7 @@ const flashcardData: {
 const FlashcardModule = ({ level, onBack, language }: FlashcardModuleProps) => {
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [showWord, setShowWord] = useState(false);
-  const [isCompleted, setIsCompleted] = useState(false);
+  const [isCompleted, setIsCompleted] = useState(isCompleted);
   const [completionMessage, setCompletionMessage] = useState('');
   const [isReadingAll, setIsReadingAll] = useState(false);
   const stopReadingRef = useRef(false);
