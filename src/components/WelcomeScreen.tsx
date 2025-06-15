@@ -1,3 +1,4 @@
+
 import { Button } from '@/components/ui/button';
 
 interface WelcomeScreenProps {
@@ -11,7 +12,7 @@ const WelcomeScreen = ({ onStartLearning, onLanguageSelect, selectedLanguage }: 
     english: {
       title: "BarsiisaApp",
       subtitle: "Learn Afaan Oromo & English",
-      description: "Fun learning for kids aged 3-7!",
+      description: "Fun learning for kids!",
       chooseLanguage: "Choose Your Language!",
       startLearning: "Start Learning!",
       oromo: "Afaan Oromo",
@@ -20,7 +21,7 @@ const WelcomeScreen = ({ onStartLearning, onLanguageSelect, selectedLanguage }: 
     oromo: {
       title: "BarsiisaApp",
       subtitle: "Afaan Oromo fi Inglizii Barnoota",
-      description: "Daa'imman umrii 3-7 barnoota gammachiisaa!",
+      description: "Daa'imman barnoota gammachiisaa!",
       chooseLanguage: "Afaan Kee Filadhu!",
       startLearning: "Barnoota Jalqabi!",
       oromo: "Afaan Oromo",
