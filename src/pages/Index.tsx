@@ -11,9 +11,10 @@ import CalendarModule from '@/components/CalendarModule';
 import LetterGameModule from '@/components/LetterGameModule';
 import BodyPartsModule from '@/components/BodyPartsModule';
 import FlagModule from '@/components/FlagModule';
+import MathModule from '@/components/MathModule';
 
 const Index = () => {
-  const [currentScreen, setCurrentScreen] = useState<'welcome' | 'levels' | 'alphabet' | 'flashcards' | 'words' | 'conversations' | 'lettergame' | 'animals' | 'calendar' | 'bodyparts' | 'flags'>('welcome');
+  const [currentScreen, setCurrentScreen] = useState<'welcome' | 'levels' | 'alphabet' | 'flashcards' | 'words' | 'conversations' | 'lettergame' | 'animals' | 'calendar' | 'bodyparts' | 'flags' | 'math'>('welcome');
   const [selectedLevel, setSelectedLevel] = useState<number>(1);
   const [selectedLanguage, setSelectedLanguage] = useState<'english' | 'oromo'>('english');
 
@@ -64,6 +65,9 @@ const Index = () => {
         break;
       case 9:
         setCurrentScreen('flags');
+        break;
+      case 10:
+        setCurrentScreen('math');
         break;
       default:
         setCurrentScreen('alphabet');
@@ -146,6 +150,12 @@ const Index = () => {
       )}
       {currentScreen === 'flags' && (
         <FlagModule 
+          onBack={handleBackToLevels}
+          language={selectedLanguage}
+        />
+      )}
+      {currentScreen === 'math' && (
+        <MathModule 
           onBack={handleBackToLevels}
           language={selectedLanguage}
         />
