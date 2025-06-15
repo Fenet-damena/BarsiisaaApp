@@ -35,14 +35,14 @@ const bodyPartsData = {
   oromo: [
     { word: 'Mataa', emoji: '👤', pronunciation: 'mah-tah' }, // Head
     { word: 'Ija', emoji: '👁️', pronunciation: 'ee-jah' }, // Eye
-    { word: 'Funyaan', emoji: '👃', pronunciation: 'foo-nyahn' }, // Nose
     { word: 'Afaan', emoji: '👄', pronunciation: 'ah-fahn' }, // Mouth
     { word: 'Gurra', emoji: '👂', pronunciation: 'goo-rah' }, // Ear
     { word: 'Harka', emoji: '✋', pronunciation: 'har-kah' }, // Hand
     { word: 'Miila', emoji: '🦶', pronunciation: 'mee-lah' }, // Foot
     { word: 'Luka', emoji: '🦵', pronunciation: 'loo-kah' }, // Leg
     { word: 'Quba', emoji: '☝️', pronunciation: 'koo-bah' }, // Finger
-    { word: 'Garaa', emoji: '🤰', pronunciation: 'gah-rah' } // Stomach
+    { word: 'Garaa', emoji: '🤰', pronunciation: 'gah-rah' }, // Stomach
+    { word: 'Arraba', emoji: '👅', pronunciation: 'ah-rrah-bah' } // Tongue
   ]
 };
 
