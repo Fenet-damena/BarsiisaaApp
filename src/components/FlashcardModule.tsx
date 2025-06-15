@@ -43,29 +43,29 @@ const flashcardData = {
     2: [
       { english: "Elephant", oromo: "Arba", emoji: "🐘", letter: "A", oromoLetterSound: "Ah" },
       { english: "Coffee", oromo: "Buna", emoji: "☕", letter: "B", oromoLetterSound: "Bah" },
-      { english: "Ice", oromo: "Cabbi", emoji: "🧊", letter: "C", oromoLetterSound: "Chah" },
-      { english: "Honey", oromo: "Damma", emoji: "🍯", letter: "D", oromoLetterSound: "Dah" },
+      { english: "Ice", oromo: "Cabbi", emoji: "🧊", letter: "C", oromoLetterSound: "Chah", pronunciation: "Chab-bi" },
+      { english: "Honey", oromo: "Damma", emoji: "🍯", letter: "D", oromoLetterSound: "Dah", pronunciation: "Dam-ma" },
       { english: "Pan", oromo: "Eelee", emoji: "🍳", letter: "E", oromoLetterSound: "A" },
       { english: "Horse", oromo: "Farda", emoji: "🐴", letter: "F", oromoLetterSound: "Fah" },
-      { english: "Black", oromo: "Gurraacha", emoji: "⚫", letter: "G", oromoLetterSound: "Gah" },
+      { english: "Black", oromo: "Gurraacha", emoji: "⚫", letter: "G", oromoLetterSound: "Gah", pronunciation: "Gur-raa-cha" },
       { english: "Sheep", oromo: "Hoola", emoji: "🐑", letter: "H", oromoLetterSound: "Hah" },
       { english: "Tooth", oromo: "Ilkaan", emoji: "🦷", letter: "I", oromoLetterSound: "E" },
-      { english: "Monkey", oromo: "Jaldeessa", emoji: "🐒", letter: "J", oromoLetterSound: "Jah" },
+      { english: "Monkey", oromo: "Jaldeessa", emoji: "🐒", letter: "J", oromoLetterSound: "Jah", pronunciation: "Jal-dees-sa" },
       { english: "Book", oromo: "Kitaaba", emoji: "📚", letter: "K", oromoLetterSound: "Kah" },
       { english: "Cow", oromo: "Loon", emoji: "🐄", letter: "L", oromoLetterSound: "Lah" },
       { english: "Tree", oromo: "Muka", emoji: "🌳", letter: "M", oromoLetterSound: "Mah" },
       { english: "Person", oromo: "Nama", emoji: "🧑", letter: "N", oromoLetterSound: "Nah" },
       { english: "Odaa Tree", oromo: "Odaa", emoji: "🌳", letter: "O", oromoLetterSound: "O" },
-      { english: "Papaya", oromo: "Pappayaa", emoji: "🥭", letter: "P", oromoLetterSound: "Pah" },
+      { english: "Papaya", oromo: "Pappayaa", emoji: "🥭", letter: "P", oromoLetterSound: "Pah", pronunciation: "Pap-pa-yaa" },
       { english: "Alphabet", oromo: "Qubee", emoji: "🔤", letter: "Q", oromoLetterSound: "Qah" },
       { english: "Frog", oromo: "Racha", emoji: "🐸", letter: "R", oromoLetterSound: "Rah" },
       { english: "Dog", oromo: "Saree", emoji: "🐶", letter: "S", oromoLetterSound: "Sah" },
-      { english: "One", oromo: "Tokko", emoji: "1️⃣", letter: "T", oromoLetterSound: "Tah" },
-      { english: "Stick / Cane", oromo: "Ulee", emoji: "🦯", letter: "U", oromoLetterSound: "Oo" },
+      { english: "One", oromo: "Tokko", emoji: "1️⃣", letter: "T", oromoLetterSound: "Tah", pronunciation: "Tok-ko" },
+      { english: "Stick / Cane", oromo: "Ulee", emoji: "🦯", letter: "U", oromoLetterSound: "Oo", pronunciation: "Ola" },
       { english: "Violin", oromo: "Vayolinii", emoji: "🎻", letter: "V", oromoLetterSound: "Vah" },
-      { english: "Hyena", oromo: "Warabeessa", emoji: "🐺", letter: "W", oromoLetterSound: "Wah" },
-      { english: "Letter (mail)", oromo: "Xalayaa", emoji: "✉️", letter: "X", oromoLetterSound: "Tah" },
-      { english: "Wolf", oromo: "Yeeyyii", emoji: "🐺", letter: "Y", oromoLetterSound: "Yah" },
+      { english: "Hyena", oromo: "Warabeessa", emoji: "🐺", letter: "W", oromoLetterSound: "Wah", pronunciation: "Wa-ra-bee-ssa" },
+      { english: "Letter (mail)", oromo: "Xalayaa", emoji: "✉️", letter: "X", oromoLetterSound: "Tah", pronunciation: "Talaya" },
+      { english: "Wolf", oromo: "Yeeyyii", emoji: "🐺", letter: "Y", oromoLetterSound: "Yah", pronunciation: "Yey-yii" },
       { english: "Zero", oromo: "Zeeroo", emoji: "0️⃣", letter: "Z", oromoLetterSound: "Zah" },
     ]
   }
@@ -227,7 +227,7 @@ const FlashcardModule = ({ level, onBack, language }: FlashcardModuleProps) => {
           </Button>
           
           <Button
-            onClick={() => speakText(language === 'oromo' ? `${currentCard.oromoLetterSound}, ${currentCard.oromo}` : `${currentCard.letter} for ${currentCard.english.split(' for ')[1]}`, language)}
+            onClick={() => speakText(language === 'oromo' ? `${currentCard.oromoLetterSound}, ${currentCard.pronunciation || currentCard.oromo}` : `${currentCard.letter} for ${currentCard.english.split(' for ')[1]}`, language)}
             className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full"
           >
             🔊 {ui.listen}
