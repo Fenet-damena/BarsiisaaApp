@@ -1,3 +1,4 @@
+
 import { Button } from '@/components/ui/button';
 import { speakText } from '@/utils/speechUtils';
 
@@ -17,7 +18,7 @@ const calendarData = {
     oromo: [
       { name: "Wiixata", pronunciation: "wiitata" },
       { name: "Kibxata", pronunciation: "kibtata" },
-      { name: "Roobii", pronunciation: "Roobii" },
+      { name: "Roobii", pronunciation: "Robii" },
       { name: "Kamiisa", pronunciation: "Kamiisa" },
       { name: "Jimaata", pronunciation: "Jimaata" },
       { name: "Sanbata", pronunciation: "Sanbata" },
