@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Volume2 } from 'lucide-react';
@@ -108,15 +107,20 @@ const BodyPartsModule = ({ onBack, language }: BodyPartsModuleProps) => {
   };
 
   useEffect(() => {
+    const playCurrentSound = async () => {
+      setIsPlaying(true);
+      await speakText(currentBodyPart.pronunciation, language);
+      setIsPlaying(false);
+    };
+
     // Auto-play the body part name when it appears
     const timer = setTimeout(() => {
-      if (!isPlaying) {
-        speakText(currentBodyPart.pronunciation, language);
-      }
+      // `speakText` will cancel any ongoing speech, so this is safe.
+      playCurrentSound();
     }, 500);
     
     return () => clearTimeout(timer);
-  }, [currentIndex, language, currentBodyPart.pronunciation, isPlaying]);
+  }, [currentIndex, language, currentBodyPart.pronunciation]);
 
   return (
     <div className="min-h-screen p-6 relative overflow-hidden">
