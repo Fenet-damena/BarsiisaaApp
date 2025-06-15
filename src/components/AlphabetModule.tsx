@@ -162,18 +162,10 @@ const AlphabetModule = ({ onBack, language }: AlphabetModuleProps) => {
       }
       setCurrentIndex(i);
       const item = alphabetData[i];
-      const textToSpeak = language === 'english'
-        ? `${item.letter}. ${item.english}`
-        : `${item.oromoSound}. ${item.oromo}`;
-      
-      try {
-        await speakText(textToSpeak, language);
-        // Add a small delay between words
-        if (!stopReadingRef.current) {
-          await new Promise(resolve => setTimeout(resolve, 200));
-        }
-      } catch (e) {
-        console.error("Speech error, continuing with next item", e);
+      if (language === 'english') {
+        await speakText(item.letter, 'english');
+      } else {
+        await speakText(item.oromoSound, 'oromo');
       }
     }
 
