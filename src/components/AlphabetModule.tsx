@@ -1,4 +1,3 @@
-
 import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { speakText } from '@/utils/speechUtils';
@@ -93,7 +92,9 @@ const AlphabetModule = ({ onBack, language }: AlphabetModuleProps) => {
       numbers: "Numbers",
       listen: "Listen",
       previous: "Previous",
-      next: "Next"
+      next: "Next",
+      readAll: "Read All Letters",
+      stopReading: "Stop Reading",
     },
     oromo: {
       back: "Duubatti",
@@ -102,7 +103,9 @@ const AlphabetModule = ({ onBack, language }: AlphabetModuleProps) => {
       numbers: "Lakkoofsota",
       listen: "Dhaggeeffadhu",
       previous: "Dura",
-      next: "Itti Aansu"
+      next: "Itti Aansu",
+      readAll: "Hunda Dubbisi",
+      stopReading: "Dhaabi",
     }
   };
 
@@ -159,8 +162,11 @@ const AlphabetModule = ({ onBack, language }: AlphabetModuleProps) => {
       }
       setCurrentIndex(i);
       const item = alphabetData[i];
-      // Speak the English letter name
-      await speakText(item.letter, 'english');
+      if (language === 'english') {
+        await speakText(item.letter, 'english');
+      } else {
+        await speakText(item.oromoSound, 'oromo');
+      }
     }
 
     setIsReadingAll(false);
@@ -277,12 +283,12 @@ const AlphabetModule = ({ onBack, language }: AlphabetModuleProps) => {
                 🔊 {ui.listen}
               </Button>
 
-              {language === 'english' && !showNumbers && (
+              {!showNumbers && (
                 <Button
                   onClick={handleReadAll}
                   className="bg-gradient-to-r from-blue-400 to-teal-500 hover:from-blue-500 hover:to-teal-600 text-white text-xl px-8 py-4 rounded-full"
                 >
-                  {isReadingAll ? '⏹️ Stop Reading' : '▶️ Read All Letters'}
+                  {isReadingAll ? `⏹️ ${ui.stopReading}` : `▶️ ${ui.readAll}`}
                 </Button>
               )}
             </div>
