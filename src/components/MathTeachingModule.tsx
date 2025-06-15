@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { speakText } from '@/utils/speechUtils';
@@ -14,6 +13,34 @@ type MathProblem = {
   operation: '+' | '-';
   answer: number;
   emoji: string;
+};
+
+const BackgroundAnimations = () => {
+  const animatedItems = [
+    { emoji: '🏃', duration: '15s', delay: '0s', left: '10%' },
+    { emoji: '🎈', duration: '20s', delay: '2s', left: '25%' },
+    { emoji: '⭐', duration: '18s', delay: '5s', left: '40%' },
+    { emoji: '🚀', duration: '12s', delay: '7s', left: '60%' },
+    { emoji: '🦋', duration: '22s', delay: '9s', left: '75%' },
+    { emoji: '🏃‍♀️', duration: '16s', delay: '11s', left: '90%' },
+  ];
+
+  return (
+    <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+      {animatedItems.map((item, index) => (
+        <div
+          key={index}
+          className="absolute text-5xl"
+          style={{
+            left: item.left,
+            animation: `float-up ${item.duration} linear ${item.delay} infinite`,
+          }}
+        >
+          {item.emoji}
+        </div>
+      ))}
+    </div>
+  );
 };
 
 const MathTeachingModule = ({ onBack, language }: MathTeachingModuleProps) => {
@@ -175,6 +202,7 @@ const MathTeachingModule = ({ onBack, language }: MathTeachingModuleProps) => {
 
   return (
     <div className="min-h-screen p-6 relative overflow-hidden bg-gradient-to-br from-blue-300 via-green-300 to-yellow-300">
+      <BackgroundAnimations />
       <div className="max-w-4xl mx-auto relative z-10">
         <div className="flex items-center justify-between mb-8">
           <Button onClick={onBack} className="bg-white/20 hover:bg-white/30 text-white border-2 border-white/30 rounded-full px-6 py-3">
