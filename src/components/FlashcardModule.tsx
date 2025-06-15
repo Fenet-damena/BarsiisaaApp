@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { speakText } from '@/utils/speechUtils';
@@ -75,7 +74,6 @@ const flashcardData = {
 const FlashcardModule = ({ level, onBack, language }: FlashcardModuleProps) => {
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [showWord, setShowWord] = useState(false);
-  const [score, setScore] = useState(0);
   const [isCompleted, setIsCompleted] = useState(false);
   const [completionMessage, setCompletionMessage] = useState('');
 
@@ -92,7 +90,6 @@ const FlashcardModule = ({ level, onBack, language }: FlashcardModuleProps) => {
       previous: "Previous",
       next: "Next",
       progress: "Progress:",
-      score: "Score",
       finish: "Finish",
       congratulations: "Congratulations!",
       completionMessages: [
@@ -111,7 +108,6 @@ const FlashcardModule = ({ level, onBack, language }: FlashcardModuleProps) => {
       previous: "Duraa",
       next: "Itti aansu",
       progress: "Adeemsa:",
-      score: "Qabannoo",
       finish: "Xumuri",
       congratulations: "Baga Gammaddan!",
       completionMessages: [
@@ -131,7 +127,6 @@ const FlashcardModule = ({ level, onBack, language }: FlashcardModuleProps) => {
     if (currentCardIndex < cards.length - 1) {
       setCurrentCardIndex(currentCardIndex + 1);
       setShowWord(false);
-      setScore(score + 1);
     }
   };
 
@@ -146,7 +141,6 @@ const FlashcardModule = ({ level, onBack, language }: FlashcardModuleProps) => {
     const messages = ui.completionMessages;
     const randomMessage = messages[Math.floor(Math.random() * messages.length)];
     setCompletionMessage(randomMessage);
-    setScore(score + 1);
     setIsCompleted(true);
     speakText(randomMessage, language);
   };
@@ -157,7 +151,6 @@ const FlashcardModule = ({ level, onBack, language }: FlashcardModuleProps) => {
         <div className="text-8xl mb-4 animate-bounce">🎉</div>
         <h2 className="text-4xl font-bold mb-4">{ui.congratulations}</h2>
         <p className="text-2xl mb-8">{completionMessage}</p>
-        <p className="text-xl mb-8">{ui.score}: {score} ⭐</p>
         <Button onClick={onBack} className="bg-white/20 hover:bg-white/30 text-white border-2 border-white/30 rounded-full px-6 py-3">
           ← {ui.back}
         </Button>
@@ -183,7 +176,7 @@ const FlashcardModule = ({ level, onBack, language }: FlashcardModuleProps) => {
               {ui.description}
             </div>
             <div className="text-white/80">
-              Card {currentCardIndex + 1} of {cards.length} • {ui.score}: {score} ⭐
+              Card {currentCardIndex + 1} of {cards.length}
             </div>
           </div>
           <div className="w-32"></div>
