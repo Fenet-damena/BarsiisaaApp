@@ -1,7 +1,7 @@
-
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { speakText } from '@/utils/speechUtils';
+import Fireworks from '@/components/Fireworks';
 
 interface LetterGameModuleProps {
   onBack: () => void;
@@ -73,6 +73,7 @@ const LetterGameModule = ({ onBack, language }: LetterGameModuleProps) => {
   const [showResult, setShowResult] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [gameComplete, setGameComplete] = useState(false);
+  const [showFireworks, setShowFireworks] = useState(false);
 
   const currentData = gameData[language];
   const currentItem = currentData[currentIndex];
@@ -122,7 +123,15 @@ const LetterGameModule = ({ onBack, language }: LetterGameModuleProps) => {
     setShowResult(false);
   }, [currentIndex, language]);
 
+  useEffect(() => {
+    if (gameComplete) {
+      setShowFireworks(true);
+      speakText(ui.complete, language);
+    }
+  }, [gameComplete]);
+
   const handleAnswer = async (selectedLetter: string) => {
+    if (showResult) return;
     setSelectedAnswer(selectedLetter);
     setShowResult(true);
 
@@ -131,18 +140,21 @@ const LetterGameModule = ({ onBack, language }: LetterGameModuleProps) => {
     if (isCorrect) {
       setScore(score + 1);
       await speakText(ui.correct, language);
+      setShowFireworks(true);
       
-      // Auto advance after correct answer
       setTimeout(() => {
         if (currentIndex < currentData.length - 1) {
           setCurrentIndex(currentIndex + 1);
         } else {
           setGameComplete(true);
-          speakText(ui.complete, language);
         }
       }, 2000);
     } else {
       await speakText(ui.incorrect, language);
+      setTimeout(() => {
+        setShowResult(false);
+        setSelectedAnswer(null);
+      }, 2000);
     }
   };
 
@@ -152,11 +164,13 @@ const LetterGameModule = ({ onBack, language }: LetterGameModuleProps) => {
     setGameComplete(false);
     setShowResult(false);
     setSelectedAnswer(null);
+    setShowFireworks(false);
   };
 
   if (gameComplete) {
     return (
       <div className="min-h-screen p-6 relative overflow-hidden">
+        {showFireworks && <Fireworks onComplete={() => setShowFireworks(false)} />}
         {/* Animated Background */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 left-16 w-32 h-32 bg-gradient-to-r from-yellow-300 to-orange-300 rounded-full animate-pulse opacity-30"></div>
@@ -200,6 +214,7 @@ const LetterGameModule = ({ onBack, language }: LetterGameModuleProps) => {
 
   return (
     <div className="min-h-screen p-6 relative overflow-hidden">
+      {showFireworks && <Fireworks onComplete={() => setShowFireworks(false)} />}
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-16 w-32 h-32 bg-gradient-to-r from-purple-300 to-pink-300 rounded-full animate-pulse opacity-30"></div>
@@ -256,7 +271,7 @@ const LetterGameModule = ({ onBack, language }: LetterGameModuleProps) => {
                   className={`text-3xl font-bold py-8 rounded-2xl transition-all duration-300 ${
                     showResult && selectedAnswer === letter
                       ? letter === currentItem.letter
-                        ? 'bg-green-500 text-white'
+                        ? 'bg-green-500 text-white animate-pulse'
                         : 'bg-red-500 text-white'
                       : showResult && letter === currentItem.letter
                       ? 'bg-green-500 text-white'
@@ -269,7 +284,7 @@ const LetterGameModule = ({ onBack, language }: LetterGameModuleProps) => {
             </div>
 
             {/* Result Message */}
-            {showResult && (
+            {showResult && selectedAnswer && (
               <div className={`mt-6 text-xl font-bold ${
                 selectedAnswer === currentItem.letter ? 'text-green-600' : 'text-red-600'
               }`}>

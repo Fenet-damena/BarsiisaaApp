@@ -1,7 +1,7 @@
-
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { speakText } from '@/utils/speechUtils';
+import Fireworks from '@/components/Fireworks';
 
 interface WordGameModuleProps {
   onBack: () => void;
@@ -51,6 +51,7 @@ const WordGameModule = ({ onBack, language }: WordGameModuleProps) => {
   const [showResult, setShowResult] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [gameComplete, setGameComplete] = useState(false);
+  const [showFireworks, setShowFireworks] = useState(false);
 
   const currentData = gameData[language];
   const currentItem = currentData[currentIndex];
@@ -100,7 +101,15 @@ const WordGameModule = ({ onBack, language }: WordGameModuleProps) => {
     setShowResult(false);
   }, [currentIndex, language]);
 
+  useEffect(() => {
+    if (gameComplete) {
+      setShowFireworks(true);
+      speakText(ui.complete, language);
+    }
+  }, [gameComplete]);
+
   const handleAnswer = async (selectedWord: string) => {
+    if (showResult) return;
     setSelectedAnswer(selectedWord);
     setShowResult(true);
 
@@ -109,18 +118,21 @@ const WordGameModule = ({ onBack, language }: WordGameModuleProps) => {
     if (isCorrect) {
       setScore(score + 1);
       await speakText(ui.correct, language);
+      setShowFireworks(true);
       
-      // Auto advance after correct answer
       setTimeout(() => {
         if (currentIndex < currentData.length - 1) {
           setCurrentIndex(currentIndex + 1);
         } else {
           setGameComplete(true);
-          speakText(ui.complete, language);
         }
       }, 2000);
     } else {
       await speakText(ui.incorrect, language);
+      setTimeout(() => {
+        setShowResult(false);
+        setSelectedAnswer(null);
+      }, 2000);
     }
   };
 
@@ -130,11 +142,13 @@ const WordGameModule = ({ onBack, language }: WordGameModuleProps) => {
     setGameComplete(false);
     setShowResult(false);
     setSelectedAnswer(null);
+    setShowFireworks(false);
   };
 
   if (gameComplete) {
     return (
       <div className="min-h-screen p-6 relative overflow-hidden">
+        {showFireworks && <Fireworks onComplete={() => setShowFireworks(false)} />}
         {/* Animated Background */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 left-16 w-32 h-32 bg-gradient-to-r from-yellow-300 to-orange-300 rounded-full animate-pulse opacity-30"></div>
@@ -178,6 +192,7 @@ const WordGameModule = ({ onBack, language }: WordGameModuleProps) => {
 
   return (
     <div className="min-h-screen p-6 relative overflow-hidden">
+      {showFireworks && <Fireworks onComplete={() => setShowFireworks(false)} />}
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-16 w-32 h-32 bg-gradient-to-r from-purple-300 to-pink-300 rounded-full animate-pulse opacity-30"></div>
@@ -230,7 +245,7 @@ const WordGameModule = ({ onBack, language }: WordGameModuleProps) => {
                   className={`text-lg font-bold py-6 rounded-2xl transition-all duration-300 ${
                     showResult && selectedAnswer === word
                       ? word === currentItem.word
-                        ? 'bg-green-500 text-white'
+                        ? 'bg-green-500 text-white animate-pulse'
                         : 'bg-red-500 text-white'
                       : showResult && word === currentItem.word
                       ? 'bg-green-500 text-white'
@@ -243,7 +258,7 @@ const WordGameModule = ({ onBack, language }: WordGameModuleProps) => {
             </div>
 
             {/* Result Message */}
-            {showResult && (
+            {showResult && selectedAnswer && (
               <div className={`mt-6 text-xl font-bold ${
                 selectedAnswer === currentItem.word ? 'text-green-600' : 'text-red-600'
               }`}>

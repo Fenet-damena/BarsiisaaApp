@@ -20,7 +20,7 @@ const MathModule = ({ onBack, language }: MathModuleProps) => {
   const [currentProblem, setCurrentProblem] = useState<MathProblem | null>(null);
   const [userAnswer, setUserAnswer] = useState<number | null>(null);
   const [showAnswer, setShowAnswer] = useState(false);
-  const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
+  const [feedback, setFeedback] = useState<'correct' | 'incorrect' | null>(null);
   const [score, setScore] = useState(0);
   const [totalProblems, setTotalProblems] = useState(0);
   const [animatingEmojis, setAnimatingEmojis] = useState<string[]>([]);
@@ -77,7 +77,7 @@ const MathModule = ({ onBack, language }: MathModuleProps) => {
     setCurrentProblem({ num1, num2, operation, answer, emoji });
     setUserAnswer(null);
     setShowAnswer(false);
-    setIsCorrect(null);
+    setFeedback(null);
     
     // Create animated emojis array
     const totalEmojis = operation === '+' ? num1 + num2 : num1;
@@ -92,22 +92,28 @@ const MathModule = ({ onBack, language }: MathModuleProps) => {
     if (userAnswer === null || !currentProblem) return;
     
     const correct = userAnswer === currentProblem.answer;
-    setIsCorrect(correct);
-    setShowAnswer(true);
     setTotalProblems(prev => prev + 1);
     
     if (correct) {
       setScore(prev => prev + 1);
       speakText(ui.correct, language);
       setShowFireworks(true);
+      setShowAnswer(true);
+      setFeedback('correct');
     } else {
       speakText(ui.incorrect, language);
+      setFeedback('incorrect');
+      setUserAnswer(null);
+      setTimeout(() => {
+        setFeedback(null);
+      }, 2000);
     }
   };
 
   const handleNextProblem = () => {
     const operation = Math.random() > 0.5 ? '+' : '-';
     generateProblem(operation);
+    setFeedback(null);
   };
 
   const speakProblem = () => {
@@ -253,6 +259,13 @@ const MathModule = ({ onBack, language }: MathModuleProps) => {
                   </div>
                 </div>
 
+                {/* Feedback Message for incorrect answer */}
+                {feedback === 'incorrect' && (
+                  <div className="mt-6 text-2xl font-bold text-red-500 animate-pulse">
+                    {ui.incorrect}
+                  </div>
+                )}
+
                 {/* Check Answer Button */}
                 {userAnswer !== null && !showAnswer && (
                   <Button
@@ -266,10 +279,8 @@ const MathModule = ({ onBack, language }: MathModuleProps) => {
                 {/* Result Display */}
                 {showAnswer && (
                   <div className="mt-6">
-                    <div className={`text-3xl font-bold mb-4 ${
-                      isCorrect ? 'text-green-600' : 'text-red-500'
-                    }`}>
-                      {isCorrect ? ui.correct : ui.incorrect}
+                    <div className="text-3xl font-bold mb-4 text-green-600">
+                      {ui.correct}
                     </div>
                     <div className="text-2xl text-gray-700 mb-4">
                       {currentProblem.num1} {currentProblem.operation} {currentProblem.num2} = {currentProblem.answer}
