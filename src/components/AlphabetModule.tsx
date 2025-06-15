@@ -1,5 +1,4 @@
-
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { speakText } from '@/utils/speechUtils';
 
@@ -70,6 +69,16 @@ const numberData: NumberData[] = [
 const AlphabetModule = ({ onBack, language }: AlphabetModuleProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showNumbers, setShowNumbers] = useState(false);
+  const [isReadingAll, setIsReadingAll] = useState(false);
+  const stopReadingRef = useRef(false);
+
+  useEffect(() => {
+    // Cleanup function to cancel speech synthesis when the component unmounts
+    return () => {
+      speechSynthesis.cancel();
+      stopReadingRef.current = true;
+    };
+  }, []);
 
   const currentData = showNumbers ? numberData : alphabetData;
   const currentItem = currentData[currentIndex];
@@ -130,6 +139,31 @@ const AlphabetModule = ({ onBack, language }: AlphabetModuleProps) => {
     }
   };
 
+  const handleReadAll = async () => {
+    if (isReadingAll) {
+      stopReadingRef.current = true;
+      speechSynthesis.cancel();
+      setIsReadingAll(false);
+      return;
+    }
+
+    setIsReadingAll(true);
+    stopReadingRef.current = false;
+
+    // We are in letter mode, so we use alphabetData
+    for (let i = 0; i < alphabetData.length; i++) {
+      if (stopReadingRef.current) {
+        break;
+      }
+      setCurrentIndex(i);
+      const item = alphabetData[i];
+      // Speak the English sound
+      await speakText(item.sound, 'english');
+    }
+
+    setIsReadingAll(false);
+  };
+
   const handleNext = () => {
     if (currentIndex < currentData.length - 1) {
       setCurrentIndex(currentIndex + 1);
@@ -143,6 +177,7 @@ const AlphabetModule = ({ onBack, language }: AlphabetModuleProps) => {
   };
 
   const toggleMode = () => {
+    if (isReadingAll) return; // Prevent toggling while reading all letters.
     setShowNumbers(!showNumbers);
     setCurrentIndex(0);
   };
@@ -180,6 +215,7 @@ const AlphabetModule = ({ onBack, language }: AlphabetModuleProps) => {
           <div className="bg-white/20 backdrop-blur-sm rounded-full p-2">
             <Button
               onClick={toggleMode}
+              disabled={isReadingAll}
               className={`px-6 py-3 rounded-full mr-2 ${
                 !showNumbers 
                   ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white' 
@@ -190,6 +226,7 @@ const AlphabetModule = ({ onBack, language }: AlphabetModuleProps) => {
             </Button>
             <Button
               onClick={toggleMode}
+              disabled={isReadingAll}
               className={`px-6 py-3 rounded-full ${
                 showNumbers 
                   ? 'bg-gradient-to-r from-green-500 to-blue-500 text-white' 
@@ -229,12 +266,24 @@ const AlphabetModule = ({ onBack, language }: AlphabetModuleProps) => {
               {getDisplayText()}
             </div>
             
-            <Button
-              onClick={handleSpeak}
-              className="bg-gradient-to-r from-orange-400 to-red-500 hover:from-orange-500 hover:to-red-600 text-white text-xl px-8 py-4 rounded-full"
-            >
-              🔊 {ui.listen}
-            </Button>
+            <div className="flex justify-center items-center gap-4">
+              <Button
+                onClick={handleSpeak}
+                disabled={isReadingAll}
+                className="bg-gradient-to-r from-orange-400 to-red-500 hover:from-orange-500 hover:to-red-600 text-white text-xl px-8 py-4 rounded-full"
+              >
+                🔊 {ui.listen}
+              </Button>
+
+              {language === 'english' && !showNumbers && (
+                <Button
+                  onClick={handleReadAll}
+                  className="bg-gradient-to-r from-blue-400 to-teal-500 hover:from-blue-500 hover:to-teal-600 text-white text-xl px-8 py-4 rounded-full"
+                >
+                  {isReadingAll ? '⏹️ Stop Reading' : '▶️ Read All Letters'}
+                </Button>
+              )}
+            </div>
           </div>
         </div>
 
@@ -242,14 +291,14 @@ const AlphabetModule = ({ onBack, language }: AlphabetModuleProps) => {
         <div className="flex justify-center space-x-4 mb-6">
           <Button
             onClick={handlePrevious}
-            disabled={currentIndex === 0}
+            disabled={currentIndex === 0 || isReadingAll}
             className="bg-gray-500 hover:bg-gray-600 text-white px-6 py-3 rounded-full disabled:opacity-50"
           >
             ← {ui.previous}
           </Button>
           <Button
             onClick={handleNext}
-            disabled={currentIndex === currentData.length - 1}
+            disabled={currentIndex === currentData.length - 1 || isReadingAll}
             className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full disabled:opacity-50"
           >
             {ui.next} →
