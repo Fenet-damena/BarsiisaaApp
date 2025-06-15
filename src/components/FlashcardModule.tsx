@@ -62,10 +62,10 @@ const flashcardData = {
       { english: "Frog", oromo: "Racha", emoji: "🐸", letter: "R", oromoLetterSound: "Rah" },
       { english: "Dog", oromo: "Saree", emoji: "🐶", letter: "S", oromoLetterSound: "Sah" },
       { english: "One", oromo: "Tokko", emoji: "1️⃣", letter: "T", oromoLetterSound: "Tah" },
-      { english: "Stick", oromo: "oole", emoji: "🦯", letter: "U", oromoLetterSound: "Oo" },
+      { english: "Stick", oromo: "Ulee", emoji: "🦯", letter: "U", oromoLetterSound: "Oo" },
       { english: "Violin", oromo: "Vayolinii", emoji: "🎻", letter: "V", oromoLetterSound: "Vah" },
       { english: "Hyena", oromo: "Warabeessa", emoji: "🐺", letter: "W", oromoLetterSound: "Wah" },
-      { english: "Letter", oromo: "Talayaa", emoji: "✉️", letter: "X", oromoLetterSound: "Ta" },
+      { english: "Letter", oromo: "Xalayaa", emoji: "✉️", letter: "X", oromoLetterSound: "Ta" },
       { english: "Wolf", oromo: "Yaayii", emoji: "🐺", letter: "Y", oromoLetterSound: "Yah" },
       { english: "Zero", oromo: "Zeeroo", emoji: "0️⃣", letter: "Z", oromoLetterSound: "Zah" },
     ]
