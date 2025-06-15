@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+
+import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { speakText } from '@/utils/speechUtils';
 
@@ -89,6 +90,7 @@ const FlashcardModule = ({ level, onBack, language }: FlashcardModuleProps) => {
   const [isCompleted, setIsCompleted] = useState(false);
   const [completionMessage, setCompletionMessage] = useState('');
   const [isReadingAll, setIsReadingAll] = useState(false);
+  const stopReadingRef = useRef(false);
 
   const cards = flashcardData[language][level as keyof typeof flashcardData[typeof language]] || flashcardData[language][2];
   const currentCard = cards[currentCardIndex];
@@ -112,7 +114,8 @@ const FlashcardModule = ({ level, onBack, language }: FlashcardModuleProps) => {
         "Fantastic work!"
       ],
       readAll: "Read All",
-      reading: "Reading..."
+      reading: "Reading...",
+      stopReading: "Stop Reading"
     },
     oromo: {
       back: "Gara Sadarkootatti",
@@ -130,7 +133,8 @@ const FlashcardModule = ({ level, onBack, language }: FlashcardModuleProps) => {
         "Baay'ee hojii bareedaa!"
       ],
       readAll: "Hunda Dubbisi",
-      reading: "Dubbisaa..."
+      reading: "Dubbisaa...",
+      stopReading: "Dhaabi"
     }
   };
 
@@ -138,6 +142,7 @@ const FlashcardModule = ({ level, onBack, language }: FlashcardModuleProps) => {
 
   useEffect(() => {
     return () => {
+      stopReadingRef.current = true;
       if (window.speechSynthesis.speaking) {
         window.speechSynthesis.cancel();
       }
@@ -163,11 +168,27 @@ const FlashcardModule = ({ level, onBack, language }: FlashcardModuleProps) => {
   };
 
   const handleReadAll = async () => {
+    if (isReadingAll) {
+      stopReadingRef.current = true;
+      speechSynthesis.cancel();
+      setIsReadingAll(false);
+      return;
+    }
+
     setIsReadingAll(true);
+    stopReadingRef.current = false;
+
     if (window.speechSynthesis.speaking) {
       window.speechSynthesis.cancel();
     }
-    for (const card of cards) {
+    for (let i = 0; i < cards.length; i++) {
+      if (stopReadingRef.current) {
+        break;
+      }
+      setCurrentCardIndex(i);
+      setShowWord(false);
+      
+      const card = cards[i];
       const textToSpeak = language === 'oromo'
         ? `${card.oromoLetterSound}, ${card.pronunciation || card.oromo}`
         : `${card.letter} for ${card.english.split(' for ')[1]}`;
@@ -280,10 +301,9 @@ const FlashcardModule = ({ level, onBack, language }: FlashcardModuleProps) => {
 
           <Button
             onClick={handleReadAll}
-            disabled={isReadingAll}
             className="bg-teal-500 hover:bg-teal-600 text-white px-6 py-3 rounded-full disabled:opacity-50"
           >
-            {isReadingAll ? ui.reading : `📖 ${ui.readAll}`}
+            {isReadingAll ? `⏹️ ${ui.stopReading}` : `📖 ${ui.readAll}`}
           </Button>
 
           {currentCardIndex === cards.length - 1 ? (
