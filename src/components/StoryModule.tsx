@@ -15,9 +15,9 @@ const englishStories = [
 ];
 
 const oromoStories = [
-    { title: "Hantuuta Badiyyaa fi Hantuuta Magaalaa", videoId: "u66aJ4M6VLs" },
-    { title: "Raachaa Illimaa Mootii Ta'e", videoId: "qmvwakg5pqk" },
-    { title: "Durbii fi Guchii", videoId: "re3BVHoJrXs" }
+    { title: "antutaa badiyaa fi antutaa magaala", videoId: "u66aJ4M6VLs" },
+    { title: "Raachaa illimaa mootti tahee", videoId: "qmvwakg5pqk" },
+    { title: "Raachaa illimaa mootti tahee", videoId: "re3BVHoJrXs" }
 ];
 
 const uiContent = {
