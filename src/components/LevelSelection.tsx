@@ -1,3 +1,4 @@
+
 import { Button } from '@/components/ui/button';
 
 interface LevelSelectionProps {
@@ -30,12 +31,12 @@ const levelsContent = {
     { level: 5, age: 6, title: "Haasawa Daa'immanii", emoji: "👋", color: "from-purple-400 to-pink-500", description: "Akkaataa hiriyaan itti wal nagaa gaafatan" },
     { level: 6, age: 7, title: "Taphoota Jechaa", emoji: "🎯", color: "from-pink-400 to-red-500", description: "Emoji irraa jecha tilmaami" },
     { level: 7, age: 7, title: "Taphoota Qubee", emoji: "🎮", color: "from-green-400 to-yellow-500", description: "Qubee dhiisan guuti" },
-    { level: 8, age: 7, title: "Qaamni Namaa", emoji: "👶", color: "from-orange-400 to-red-500", description: "Qaamni namaa baradhu" },
+    { level: 8, age: 7, title: "Qaama Namaa", emoji: "👶", color: "from-orange-400 to-red-500", description: "Qaama namaa baradhu" },
     { level: 9, age: 8, title: "Alaabaa Biyyootaa", emoji: "🏁", color: "from-blue-400 to-green-500", description: "Alaabaa biyyoota 100+ baradhu" },
     { level: 10, age: 8, title: "Herrega Baradhu", emoji: "👨‍🏫", color: "from-purple-400 to-blue-500", description: "Ida'uu fi hir'isuu baradhu" },
     { level: 11, age: 8, title: "Qormaata Herregaa", emoji: "🧮", color: "from-teal-400 to-cyan-500", description: "Dandeettii herregaa kee qori" },
     { level: 12, age: 3, title: "Kitaaba Haalluu", emoji: "🎨", color: "from-pink-300 to-yellow-300", description: "Fakkiiwwan babbareedoo halluu dibi" },
-    { level: 13, age: 4, title: "Yeroo Seenaa", emoji: "📖", color: "from-indigo-400 to-purple-500", description: "Seenaawwan ilaaliifi dhaggeeffadhu" },
+    { level: 13, age: 4, title: "Yeroo Seenaa", emoji: "📖", color: "from-indigo-400 to-purple-500", description: "Seenaawwan ilaaluu fi dhaggeeffachuu" },
   ]
 };
 
