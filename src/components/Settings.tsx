@@ -1,4 +1,3 @@
-
 import { useState } from "react"
 import {
   Sheet,
@@ -128,7 +127,7 @@ export function Settings({ onBackgroundChange, currentBackground }: SettingsProp
               <Label className="text-base font-semibold">About Us</Label>
             </div>
             <p className="text-sm text-muted-foreground">
-              This learning app is designed to provide an engaging and interactive educational experience for children. Our mission is to make learning new languages and concepts fun and accessible for everyone.
+              Welcome, little explorer! This app is a magical place for you to learn new languages and cool things about the world. Let's play, learn, and grow together!
             </p>
           </div>
         </div>
