@@ -1,4 +1,3 @@
-
 import { Button } from '@/components/ui/button';
 
 interface LevelSelectionProps {
@@ -94,9 +93,6 @@ const LevelSelection = ({ onLevelSelect, onBack, language }: LevelSelectionProps
             >
               <div className="text-center">
                 <div className="text-6xl mb-4 animate-bounce">{levelData.emoji}</div>
-                <div className="text-2xl font-bold text-white mb-2">
-                  {language === 'english' ? 'Level' : 'Sadarkaa'} {levelData.level}
-                </div>
                 <div className="text-xl font-semibold text-white mb-2">
                   {levelData.title}
                 </div>
