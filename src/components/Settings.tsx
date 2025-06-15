@@ -10,8 +10,8 @@ import {
 import { Button } from "@/components/ui/button"
 import { Settings as SettingsIcon } from "lucide-react"
 import { useTheme } from "next-themes"
-import { Switch } from "@/components/ui/switch"
 import { Label } from "@/components/ui/label"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 
 export function Settings() {
   const { theme, setTheme } = useTheme()
@@ -31,20 +31,29 @@ export function Settings() {
           </SheetDescription>
         </SheetHeader>
         <div className="grid gap-4 py-4">
-          <div className="flex items-center justify-between rounded-lg border p-4">
-             <Label htmlFor="dark-mode" className="flex flex-col space-y-1">
-                <span>Dark Mode</span>
-                <span className="font-normal leading-snug text-muted-foreground">
-                  Enjoy a darker theme.
-                </span>
-              </Label>
-            <Switch
-              id="dark-mode"
-              checked={theme === 'dark'}
-              onCheckedChange={(checked) => {
-                setTheme(checked ? 'dark' : 'light')
-              }}
-            />
+          <div className="rounded-lg border p-4">
+             <Label className="text-base font-semibold">Theme</Label>
+             <p className="text-sm text-muted-foreground mb-4">
+                Select the theme for the application.
+             </p>
+            <RadioGroup
+              value={theme}
+              onValueChange={setTheme}
+              className="space-y-2"
+            >
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="light" id="light" />
+                <Label htmlFor="light">Light</Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="dark" id="dark" />
+                <Label htmlFor="dark">Dark</Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="system" id="system" />
+                <Label htmlFor="system">System</Label>
+              </div>
+            </RadioGroup>
           </div>
         </div>
       </SheetContent>
