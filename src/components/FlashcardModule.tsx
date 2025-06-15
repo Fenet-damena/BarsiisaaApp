@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { speakText } from '@/utils/speechUtils';
 
@@ -88,6 +88,7 @@ const FlashcardModule = ({ level, onBack, language }: FlashcardModuleProps) => {
   const [showWord, setShowWord] = useState(false);
   const [isCompleted, setIsCompleted] = useState(false);
   const [completionMessage, setCompletionMessage] = useState('');
+  const [isReadingAll, setIsReadingAll] = useState(false);
 
   const cards = flashcardData[language][level as keyof typeof flashcardData[typeof language]] || flashcardData[language][2];
   const currentCard = cards[currentCardIndex];
@@ -109,7 +110,9 @@ const FlashcardModule = ({ level, onBack, language }: FlashcardModuleProps) => {
         "Wow! You're so smart!",
         "You're learning so fast!",
         "Fantastic work!"
-      ]
+      ],
+      readAll: "Read All",
+      reading: "Reading..."
     },
     oromo: {
       back: "Gara Sadarkootatti",
@@ -125,11 +128,21 @@ const FlashcardModule = ({ level, onBack, language }: FlashcardModuleProps) => {
       completionMessages: [
         "Baay'ee hojii Gaarii!",
         "Baay'ee hojii bareedaa!"
-      ]
+      ],
+      readAll: "Hunda Dubbisi",
+      reading: "Dubbisaa..."
     }
   };
 
   const ui = uiContent[language];
+
+  useEffect(() => {
+    return () => {
+      if (window.speechSynthesis.speaking) {
+        window.speechSynthesis.cancel();
+      }
+    };
+  }, []);
 
   const handleCardFlip = () => {
     setShowWord(!showWord);
@@ -147,6 +160,25 @@ const FlashcardModule = ({ level, onBack, language }: FlashcardModuleProps) => {
       setCurrentCardIndex(currentCardIndex - 1);
       setShowWord(false);
     }
+  };
+
+  const handleReadAll = async () => {
+    setIsReadingAll(true);
+    if (window.speechSynthesis.speaking) {
+      window.speechSynthesis.cancel();
+    }
+    for (const card of cards) {
+      const textToSpeak = language === 'oromo'
+        ? `${card.oromoLetterSound}, ${card.pronunciation || card.oromo}`
+        : `${card.letter} for ${card.english.split(' for ')[1]}`;
+      try {
+        await speakText(textToSpeak, language);
+        await new Promise(resolve => setTimeout(resolve, 200));
+      } catch (e) {
+        console.error("Speech error, continuing with next card", e);
+      }
+    }
+    setIsReadingAll(false);
   };
 
   const handleFinish = () => {
@@ -197,17 +229,17 @@ const FlashcardModule = ({ level, onBack, language }: FlashcardModuleProps) => {
         <div className="flex justify-center">
           <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-2xl max-w-lg w-full min-h-96 flex flex-col justify-center items-center cursor-pointer transform hover:scale-105 transition-all duration-300"
                onClick={handleCardFlip}>
-            
+
             {!showWord ? (
               <div className="text-center">
                 <div className="text-9xl font-bold text-purple-600 mb-6 animate-pulse">
                   {currentCard.letter}
                 </div>
-                
+
                 <div className="text-8xl my-4 animate-bounce">
                   {currentCard.emoji}
                 </div>
-                
+
                 <div className="text-3xl font-bold text-gray-800 mb-4">
                   {language === 'english' ? currentCard.english : currentCard.oromo}
                 </div>
@@ -220,7 +252,7 @@ const FlashcardModule = ({ level, onBack, language }: FlashcardModuleProps) => {
                 <div className="w-48 h-48 mx-auto mb-4 flex items-center justify-center">
                   <span className="text-9xl">{currentCard.emoji}</span>
                 </div>
-                
+
                 <div className="text-3xl font-bold text-gray-800 mb-2">
                   {language === 'english' ? currentCard.oromo : currentCard.english}
                 </div>
@@ -232,30 +264,41 @@ const FlashcardModule = ({ level, onBack, language }: FlashcardModuleProps) => {
         <div className="flex justify-center space-x-4 mt-8">
           <Button
             onClick={handlePrevCard}
-            disabled={currentCardIndex === 0}
+            disabled={currentCardIndex === 0 || isReadingAll}
             className="bg-gray-500 hover:bg-gray-600 text-white px-6 py-3 rounded-full disabled:opacity-50"
           >
             ← {ui.previous}
           </Button>
-          
+
           <Button
             onClick={() => speakText(language === 'oromo' ? `${currentCard.oromoLetterSound}, ${currentCard.pronunciation || currentCard.oromo}` : `${currentCard.letter} for ${currentCard.english.split(' for ')[1]}`, language)}
-            className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full"
+            disabled={isReadingAll}
+            className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full disabled:opacity-50"
           >
             🔊 {ui.listen}
           </Button>
-          
+
+          <Button
+            onClick={handleReadAll}
+            disabled={isReadingAll}
+            className="bg-teal-500 hover:bg-teal-600 text-white px-6 py-3 rounded-full disabled:opacity-50"
+          >
+            {isReadingAll ? ui.reading : `📖 ${ui.readAll}`}
+          </Button>
+
           {currentCardIndex === cards.length - 1 ? (
             <Button
               onClick={handleFinish}
-              className="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-3 rounded-full"
+              disabled={isReadingAll}
+              className="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-3 rounded-full disabled:opacity-50"
             >
               {ui.finish} 🎉
             </Button>
           ) : (
             <Button
               onClick={handleNextCard}
-              className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full"
+              disabled={isReadingAll}
+              className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full disabled:opacity-50"
             >
               {ui.next} →
             </Button>
