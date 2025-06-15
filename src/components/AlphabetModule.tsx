@@ -114,7 +114,7 @@ const AlphabetModule = ({ onBack, language }: AlphabetModuleProps) => {
       return language === 'english' ? item.english : item.oromo;
     } else {
       const item = currentItem as LetterData;
-      return language === 'english' ? item.sound : item.oromoSound;
+      return language === 'english' ? item.english : item.oromo;
     }
   };
 
@@ -134,9 +134,9 @@ const AlphabetModule = ({ onBack, language }: AlphabetModuleProps) => {
     } else {
       const item = currentItem as LetterData;
       if (language === 'english') {
-        speakText(item.sound, language);
+        speakText(`${item.letter}. ${item.english}`, language);
       } else {
-        speakText(item.oromoSound, language);
+        speakText(`${item.oromoSound}. ${item.oromo}`, language);
       }
     }
   };
@@ -160,7 +160,7 @@ const AlphabetModule = ({ onBack, language }: AlphabetModuleProps) => {
       setCurrentIndex(i);
       const item = alphabetData[i];
       // Speak the English letter name
-      await speakText(item.sound, 'english');
+      await speakText(item.letter, 'english');
     }
 
     setIsReadingAll(false);
