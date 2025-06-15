@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import WelcomeScreen from '@/components/WelcomeScreen';
 import LevelSelection from '@/components/LevelSelection';
@@ -12,6 +13,7 @@ import BodyPartsModule from '@/components/BodyPartsModule';
 import FlagModule from '@/components/FlagModule';
 import MathModule from '@/components/MathModule';
 import MathTeachingModule from '@/components/MathTeachingModule';
+import { Settings } from '@/components/Settings';
 
 const Index = () => {
   const [currentScreen, setCurrentScreen] = useState<'welcome' | 'levels' | 'alphabet' | 'flashcards' | 'words' | 'conversations' | 'lettergame' | 'animals' | 'calendar' | 'bodyparts' | 'flags' | 'math' | 'mathteaching'>('welcome');
@@ -87,6 +89,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-400 via-purple-500 to-pink-400 animated-gradient">
+      <Settings />
       {currentScreen === 'welcome' && (
         <WelcomeScreen 
           onStartLearning={handleStartLearning}
