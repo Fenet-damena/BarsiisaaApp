@@ -1,4 +1,3 @@
-
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { BookOpen } from 'lucide-react';
@@ -9,9 +8,9 @@ interface StoryModuleProps {
 }
 
 const englishStories = [
-    { title: "The Three Little Pigs", videoId: "Oay1yfT2_4A" },
-    { title: "The Lion and the Mouse", videoId: "GxcGVCEgjcU" },
-    { title: "The Tortoise and the Hare", videoId: "p22_m5r2g2A" }
+    { title: "The Bear and the Bee", videoId: "jKi2SvWOCXc" },
+    { title: "The Boy Who Cried Wolf", videoId: "b9YllX5eeKY" },
+    { title: "The Ant and The Dove", videoId: "TpLhLBhFTag" }
 ];
 
 const oromoStories = [
