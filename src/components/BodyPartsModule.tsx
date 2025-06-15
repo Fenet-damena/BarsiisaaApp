@@ -32,26 +32,16 @@ const bodyPartsData = {
     { word: 'Wrist', emoji: '⌚', pronunciation: 'wrist' }
   ],
   oromo: [
-    { word: 'Mataa', emoji: '👤', pronunciation: 'mah-tah' },
-    { word: 'Ija', emoji: '👁️', pronunciation: 'ee-jah' },
-    { word: 'Funyaan', emoji: '👃', pronunciation: 'foo-nyahn' },
-    { word: 'Afaan', emoji: '👄', pronunciation: 'ah-fahn' },
-    { word: 'Gurra', emoji: '👂', pronunciation: 'goo-rah' },
-    { word: 'Harka', emoji: '✋', pronunciation: 'har-kah' },
-    { word: 'Miila', emoji: '🦶', pronunciation: 'mee-lah' },
-    { word: 'Irree', emoji: '💪', pronunciation: 'eer-eh' },
-    { word: 'Luka', emoji: '🦵', pronunciation: 'loo-kah' },
-    { word: 'Quba', emoji: '☝️', pronunciation: 'koo-bah' },
-    { word: 'Quba Miilaa', emoji: '🦶', pronunciation: 'koo-bah mee-lah' },
-    { word: 'Gatiittii', emoji: '🤷', pronunciation: 'gah-tee-tee' },
-    { word: 'Jilba', emoji: '🦵', pronunciation: 'jeel-bah' },
-    { word: 'Harkaa Morma', emoji: '💪', pronunciation: 'har-kah mor-mah' },
-    { word: 'Morma', emoji: '🧱', pronunciation: 'mor-mah' },
-    { word: 'Dugda', emoji: '🔙', pronunciation: 'doog-dah' },
-    { word: 'Handhura', emoji: '🫁', pronunciation: 'han-dhoo-rah' },
-    { word: 'Garaa', emoji: '🤰', pronunciation: 'gah-rah' },
-    { word: 'Mudhii', emoji: '🕺', pronunciation: 'moo-dhee' },
-    { word: 'Harkaa Jalqaba', emoji: '⌚', pronunciation: 'har-kah jal-kah-bah' }
+    { word: 'Mataa', emoji: '👤', pronunciation: 'mah-tah' }, // Head
+    { word: 'Ija', emoji: '👁️', pronunciation: 'ee-jah' }, // Eye
+    { word: 'Funyaan', emoji: '👃', pronunciation: 'foo-nyahn' }, // Nose
+    { word: 'Afaan', emoji: '👄', pronunciation: 'ah-fahn' }, // Mouth
+    { word: 'Gurra', emoji: '👂', pronunciation: 'goo-rah' }, // Ear
+    { word: 'Harka', emoji: '✋', pronunciation: 'har-kah' }, // Hand
+    { word: 'Miila', emoji: '🦶', pronunciation: 'mee-lah' }, // Foot
+    { word: 'Luka', emoji: '🦵', pronunciation: 'loo-kah' }, // Leg
+    { word: 'Quba', emoji: '☝️', pronunciation: 'koo-bah' }, // Finger
+    { word: 'Garaa', emoji: '🤰', pronunciation: 'gah-rah' } // Stomach
   ]
 };
 
