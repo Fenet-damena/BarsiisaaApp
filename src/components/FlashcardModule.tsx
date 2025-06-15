@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { speakText } from '@/utils/speechUtils';
@@ -58,14 +57,14 @@ const flashcardData = {
       { english: "Person", oromo: "Nama", emoji: "🧑", letter: "N", oromoLetterSound: "Nah" },
       { english: "Odaa Tree", oromo: "Odaa", emoji: "🌳", letter: "O", oromoLetterSound: "O" },
       { english: "Papaya", oromo: "Pappayaa", emoji: "🥭", letter: "P", oromoLetterSound: "Pah" },
-      { english: "Plow", oromo: "Qoccaa", emoji: "🛠️", letter: "Q", oromoLetterSound: "Qah" },
+      { english: "Alphabet", oromo: "Qubee", emoji: "🔤", letter: "Q", oromoLetterSound: "Qah" },
       { english: "Frog", oromo: "Racha", emoji: "🐸", letter: "R", oromoLetterSound: "Rah" },
       { english: "Dog", oromo: "Saree", emoji: "🐶", letter: "S", oromoLetterSound: "Sah" },
       { english: "One", oromo: "Tokko", emoji: "1️⃣", letter: "T", oromoLetterSound: "Tah" },
-      { english: "Stick", oromo: "Ulee", emoji: "🦯", letter: "U", oromoLetterSound: "Oo" },
+      { english: "Stick / Cane", oromo: "Ulee", emoji: "🦯", letter: "U", oromoLetterSound: "Oo" },
       { english: "Violin", oromo: "Vayolinii", emoji: "🎻", letter: "V", oromoLetterSound: "Vah" },
       { english: "Hyena", oromo: "Warabeessa", emoji: "🐺", letter: "W", oromoLetterSound: "Wah" },
-      { english: "Letter", oromo: "Xalayaa", emoji: "✉️", letter: "X", oromoLetterSound: "Tah" },
+      { english: "Letter (mail)", oromo: "Xalayaa", emoji: "✉️", letter: "X", oromoLetterSound: "Tah" },
       { english: "Wolf", oromo: "Yeeyyii", emoji: "🐺", letter: "Y", oromoLetterSound: "Yah" },
       { english: "Zero", oromo: "Zeeroo", emoji: "0️⃣", letter: "Z", oromoLetterSound: "Zah" },
     ]
@@ -198,7 +197,7 @@ const FlashcardModule = ({ level, onBack, language }: FlashcardModuleProps) => {
                 </div>
                 
                 <div className="text-3xl font-bold text-gray-800 mb-4">
-                  {language === 'english' ? currentCard.english : `Qubee ${currentCard.letter}`}
+                  {language === 'english' ? currentCard.english : currentCard.oromo}
                 </div>
                 <div className="text-gray-500 text-lg">
                   {ui.tapToFlip} 🔄
@@ -211,9 +210,6 @@ const FlashcardModule = ({ level, onBack, language }: FlashcardModuleProps) => {
                 </div>
                 
                 <div className="text-3xl font-bold text-gray-800 mb-2">
-                  {language === 'english' ? currentCard.english : currentCard.oromo}
-                </div>
-                <div className="text-xl text-purple-600">
                   {language === 'english' ? currentCard.oromo : currentCard.english}
                 </div>
               </div>
