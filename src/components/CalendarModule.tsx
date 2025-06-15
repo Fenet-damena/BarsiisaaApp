@@ -7,26 +7,39 @@ interface CalendarModuleProps {
   language: 'english' | 'oromo';
 }
 
+interface OromoCalendarItem {
+  name: string;
+  pronunciation: string;
+}
+
 const calendarData = {
   days: {
     english: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-    oromo: ["Wiixata", "Qibxata", "Roobii", "Kamiisa", "Jimaata", "Sanbata", "Dilbata"],
+    oromo: [
+      { name: "Wiixata", pronunciation: "wiitata" },
+      { name: "Kibxata", pronunciation: "kibtata" },
+      { name: "Roobii", pronunciation: "Roobii" },
+      { name: "Kamiisa", pronunciation: "Kamiisa" },
+      { name: "Jimaata", pronunciation: "Jimaata" },
+      { name: "Sanbata", pronunciation: "Sanbata" },
+      { name: "Dilbata", pronunciation: "Dilbata" },
+    ],
   },
   months: {
     english: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
     oromo: [
-      "Fuulbana",
-      "Onkololeessa",
-      "Sadaasa",
-      "Muddee",
-      "Amajjii",
-      "Guraandhala",
-      "Bitooteessa",
-      "Elba",
-      "Caamsa",
-      "Waxabajjii",
-      "Adoolessa",
-      "Hagayya",
+      { name: "Fuulbana", pronunciation: "Fuulbana" },
+      { name: "Onkololeessa", pronunciation: "Onkololeessa" },
+      { name: "Sadaasa", pronunciation: "Sadaasa" },
+      { name: "Muddee", pronunciation: "Muddee" },
+      { name: "Amajjii", pronunciation: "Amajjii" },
+      { name: "Guraandhala", pronunciation: "Guraandhala" },
+      { name: "Bitooteessa", pronunciation: "Bitooteessa" },
+      { name: "Elba", pronunciation: "Elba" },
+      { name: "Caamsa", pronunciation: "Chamsa" },
+      { name: "Waxabajjii", pronunciation: "Watabajjii" },
+      { name: "Adoolessa", pronunciation: "Adoolessa" },
+      { name: "Hagayya", pronunciation: "Hagayya" },
     ],
   }
 };
@@ -73,34 +86,42 @@ const CalendarModule = ({ onBack, language }: CalendarModuleProps) => {
           <div>
             <h2 className="text-3xl font-bold text-white text-center mb-6">{ui.daysHeader}</h2>
             <div className="space-y-4">
-              {days.map((day, index) => (
-                <div key={day} className="bg-white/20 backdrop-blur-sm rounded-2xl p-4 flex items-center justify-between shadow-lg">
-                  <div className="flex items-center">
-                    <span className="text-xl font-bold text-white mr-4">{index + 1}.</span>
-                    <span className="text-xl font-semibold text-white">{day}</span>
+              {days.map((day, index) => {
+                const dayName = typeof day === 'string' ? day : day.name;
+                const pronunciation = typeof day === 'string' ? day : (day as OromoCalendarItem).pronunciation;
+                return (
+                  <div key={dayName} className="bg-white/20 backdrop-blur-sm rounded-2xl p-4 flex items-center justify-between shadow-lg">
+                    <div className="flex items-center">
+                      <span className="text-xl font-bold text-white mr-4">{index + 1}.</span>
+                      <span className="text-xl font-semibold text-white">{dayName}</span>
+                    </div>
+                    <Button onClick={() => speakText(pronunciation, language)} className="bg-blue-500 hover:bg-blue-600 text-white rounded-full px-4 py-2">
+                      🔊 <span className="sr-only">{ui.listen}</span>
+                    </Button>
                   </div>
-                  <Button onClick={() => speakText(day, language)} className="bg-blue-500 hover:bg-blue-600 text-white rounded-full px-4 py-2">
-                    🔊 <span className="sr-only">{ui.listen}</span>
-                  </Button>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
 
           <div>
             <h2 className="text-3xl font-bold text-white text-center mb-6">{ui.monthsHeader}</h2>
             <div className="space-y-4">
-              {months.map((month, index) => (
-                <div key={month} className="bg-white/20 backdrop-blur-sm rounded-2xl p-4 flex items-center justify-between shadow-lg">
-                  <div className="flex items-center">
-                    <span className="text-xl font-bold text-white mr-4">{index + 1}.</span>
-                    <span className="text-xl font-semibold text-white">{month}</span>
+              {months.map((month, index) => {
+                const monthName = typeof month === 'string' ? month : month.name;
+                const pronunciation = typeof month === 'string' ? month : (month as OromoCalendarItem).pronunciation;
+                return (
+                  <div key={monthName} className="bg-white/20 backdrop-blur-sm rounded-2xl p-4 flex items-center justify-between shadow-lg">
+                    <div className="flex items-center">
+                      <span className="text-xl font-bold text-white mr-4">{index + 1}.</span>
+                      <span className="text-xl font-semibold text-white">{monthName}</span>
+                    </div>
+                    <Button onClick={() => speakText(pronunciation, language)} className="bg-green-500 hover:bg-green-600 text-white rounded-full px-4 py-2">
+                      🔊 <span className="sr-only">{ui.listen}</span>
+                    </Button>
                   </div>
-                  <Button onClick={() => speakText(month, language)} className="bg-green-500 hover:bg-green-600 text-white rounded-full px-4 py-2">
-                    🔊 <span className="sr-only">{ui.listen}</span>
-                  </Button>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
