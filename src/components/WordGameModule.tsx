@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { speakText } from '@/utils/speechUtils';
@@ -130,8 +131,8 @@ const WordGameModule = ({ onBack, language }: WordGameModuleProps) => {
     } else {
       await speakText(ui.incorrect, language);
       setTimeout(() => {
-        setShowResult(false);
         setSelectedAnswer(null);
+        setShowResult(false);
       }, 2000);
     }
   };
