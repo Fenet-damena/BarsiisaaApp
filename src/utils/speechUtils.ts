@@ -9,12 +9,26 @@ export const speakText = (text: string, language: 'english' | 'oromo' = 'english
 
       // Language-specific text processing for better pronunciation approximation
       if (language === 'oromo') {
+        // Specific phonetic adjustments must come first to override general rules
+        processedText = processedText.replace(/Sirrii/g, 'Seari');
+
         // In Oromo, 'c' is pronounced like 'ch' in English.
         // This replaces 'c' with 'ch', but uses a negative lookahead (?!h) 
         // to avoid altering a 'c' that's already part of a 'ch' digraph.
-        processedText = text.replace(/c(?!h)/g, 'ch').replace(/C(?!h)/g, 'Ch');
+        processedText = processedText.replace(/c(?!h)/g, 'ch').replace(/C(?!h)/g, 'Ch');
+        
         // In Oromo, 'x' is pronounced like 't' in English.
         processedText = processedText.replace(/x/g, 't').replace(/X/g, 'T');
+
+        // General rules for double vowels to guide English TTS
+        processedText = processedText.replace(/aa/g, 'a').replace(/AA/g, 'A');
+        processedText = processedText.replace(/ee/g, 'e').replace(/EE/g, 'E');
+        processedText = processedText.replace(/ii/g, 'i').replace(/II/g, 'I');
+        processedText = processedText.replace(/oo/g, 'o').replace(/OO/g, 'O');
+        processedText = processedText.replace(/uu/g, 'u').replace(/UU/g, 'U');
+        
+        // General rule for 'rr'
+        processedText = processedText.replace(/rr/g, 'r').replace(/RR/g, 'R');
       }
 
       const utterance = new SpeechSynthesisUtterance(processedText);

@@ -96,7 +96,7 @@ const LetterGameModule = ({ onBack, language }: LetterGameModuleProps) => {
       title: "Taphoota Qubee!",
       question: "Qubeen jalqabaa maal?",
       score: "Qabxii:",
-      correct: "Sirrrii! Gaarii hojjette!",
+      correct: "Sirrii! Gaarii hojjette!",
       incorrect: "Irra deebi'i! Ni dandeessa!",
       complete: "Ajaa'iba! Qubeelee hunda xumurte!",
       restart: "Deebi'ii Taphii",
