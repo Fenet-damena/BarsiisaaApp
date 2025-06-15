@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { speakText } from '@/utils/speechUtils';
@@ -8,7 +9,19 @@ interface FlashcardModuleProps {
   language: 'english' | 'oromo';
 }
 
-const flashcardData = {
+interface Flashcard {
+  english: string;
+  oromo: string;
+  emoji: string;
+  letter: string;
+  oromoLetterSound: string;
+  pronunciation?: string;
+}
+
+const flashcardData: {
+  english: { [key: number]: Flashcard[] };
+  oromo: { [key: number]: Flashcard[] };
+} = {
   english: {
     2: [
       { english: "A for Apple", oromo: "Poomii", emoji: "🍎", letter: "A", oromoLetterSound: "ah" },
@@ -63,7 +76,7 @@ const flashcardData = {
       { english: "One", oromo: "Tokko", emoji: "1️⃣", letter: "T", oromoLetterSound: "Tah", pronunciation: "Tok-ko" },
       { english: "Stick / Cane", oromo: "Ulee", emoji: "🦯", letter: "U", oromoLetterSound: "Oo", pronunciation: "Ola" },
       { english: "Violin", oromo: "Vayolinii", emoji: "🎻", letter: "V", oromoLetterSound: "Vah" },
-      { english: "Hyena", oromo: "Warabeessa", emoji: "🐺", letter: "W", oromoLetterSound: "Wah", pronunciation: "Wa-ra-bee-ssa" },
+      { english: "Hyena", oromo: "Warabeessa", emoji: "🐺", letter: "W", oromoLetterSound: "Wah", pronunciation: "wa-ra-bassa" },
       { english: "Letter (mail)", oromo: "Xalayaa", emoji: "✉️", letter: "X", oromoLetterSound: "Tah", pronunciation: "Talaya" },
       { english: "Wolf", oromo: "Yeeyyii", emoji: "🐺", letter: "Y", oromoLetterSound: "Yah", pronunciation: "Yey-yii" },
       { english: "Zero", oromo: "Zeeroo", emoji: "0️⃣", letter: "Z", oromoLetterSound: "Zah" },
