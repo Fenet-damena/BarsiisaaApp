@@ -26,7 +26,7 @@ const uiContent = {
     back: 'Back',
   },
   oromo: {
-    title: 'Yeroo Seenaa',
+    title: 'Oduu Durii',
     back: 'Duubatti',
   },
 };
