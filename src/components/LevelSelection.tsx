@@ -20,6 +20,7 @@ const levelsContent = {
     { level: 9, age: 8, title: "Country Flags", emoji: "🏁", color: "from-blue-400 to-green-500", description: "Learn 100+ country flags" },
     { level: 10, age: 8, title: "Learn Math", emoji: "👨‍🏫", color: "from-purple-400 to-blue-500", description: "Learn addition & subtraction" },
     { level: 11, age: 8, title: "Math Quiz", emoji: "🧮", color: "from-teal-400 to-cyan-500", description: "Test your math skills" },
+    { level: 12, age: 3, title: "Coloring Book", emoji: "🎨", color: "from-pink-300 to-yellow-300", description: "Color fun pictures" },
   ],
   oromo: [
     { level: 1, age: 3, title: "Qubee fi Lakkoofsota", emoji: "🔤", color: "from-red-400 to-pink-500", description: "A-Z fi 1-10 baradhu" },
@@ -33,6 +34,7 @@ const levelsContent = {
     { level: 9, age: 8, title: "Alaabaa Biyyootaa", emoji: "🏁", color: "from-blue-400 to-green-500", description: "Alaabaa biyyoota 100+ baradhu" },
     { level: 10, age: 8, title: "Herrega Baradhu", emoji: "👨‍🏫", color: "from-purple-400 to-blue-500", description: "Ida'uu fi hir'isuu baradhu" },
     { level: 11, age: 8, title: "Qormaata Herregaa", emoji: "🧮", color: "from-teal-400 to-cyan-500", description: "Dandeettii herregaa kee qori" },
+    { level: 12, age: 3, title: "Kitaaba Qalamaa", emoji: "🎨", color: "from-pink-300 to-yellow-300", description: "Fakkiiwwan babbareedoo halluu dibi" },
   ]
 };
 

@@ -13,6 +13,7 @@ import BodyPartsModule from '@/components/BodyPartsModule';
 import FlagModule from '@/components/FlagModule';
 import MathModule from '@/components/MathModule';
 import MathTeachingModule from '@/components/MathTeachingModule';
+import ColoringBookModule from '@/components/ColoringBookModule';
 import { Settings } from '@/components/Settings';
 
 const backgroundThemes = {
@@ -23,7 +24,7 @@ const backgroundThemes = {
 };
 
 const Index = () => {
-  const [currentScreen, setCurrentScreen] = useState<'welcome' | 'levels' | 'alphabet' | 'flashcards' | 'words' | 'conversations' | 'lettergame' | 'animals' | 'calendar' | 'bodyparts' | 'flags' | 'math' | 'mathteaching'>('welcome');
+  const [currentScreen, setCurrentScreen] = useState<'welcome' | 'levels' | 'alphabet' | 'flashcards' | 'words' | 'conversations' | 'lettergame' | 'animals' | 'calendar' | 'bodyparts' | 'flags' | 'math' | 'mathteaching' | 'coloringbook'>('welcome');
   const [selectedLevel, setSelectedLevel] = useState<number>(1);
   const [selectedLanguage, setSelectedLanguage] = useState<'english' | 'oromo'>('english');
   const [backgroundTheme, setBackgroundTheme] = useState('default');
@@ -85,6 +86,9 @@ const Index = () => {
         break;
       case 11:
         setCurrentScreen('math');
+        break;
+      case 12:
+        setCurrentScreen('coloringbook');
         break;
       default:
         setCurrentScreen('alphabet');
@@ -188,6 +192,12 @@ const Index = () => {
       )}
       {currentScreen === 'mathteaching' && (
         <MathTeachingModule 
+          onBack={handleBackToLevels}
+          language={selectedLanguage}
+        />
+      )}
+      {currentScreen === 'coloringbook' && (
+        <ColoringBookModule 
           onBack={handleBackToLevels}
           language={selectedLanguage}
         />
