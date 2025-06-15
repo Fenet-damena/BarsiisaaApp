@@ -88,7 +88,6 @@ const WelcomeScreen = ({ onStartLearning, onLanguageSelect, selectedLanguage }: 
               }`}
             >
               <div className="flex flex-col items-center">
-                <span className="text-4xl mb-2">🇪🇹</span>
                 <span>{currentContent.oromo}</span>
               </div>
             </Button>
@@ -102,7 +101,6 @@ const WelcomeScreen = ({ onStartLearning, onLanguageSelect, selectedLanguage }: 
               }`}
             >
               <div className="flex flex-col items-center">
-                <span className="text-4xl mb-2">🇺🇸</span>
                 <span>{currentContent.english}</span>
               </div>
             </Button>
