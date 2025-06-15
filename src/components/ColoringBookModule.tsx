@@ -18,9 +18,9 @@ const uiContent = {
     reset: 'Reset',
   },
   oromo: {
-    title: 'Kitaaba Qalamaa',
+    title: 'Kitaaba Haalluu',
     back: 'Duubatti',
-    colors: 'Qalama',
+    colors: 'Haalluu',
     prev: 'Duraa',
     next: 'Itti Aanu',
     reset: 'Haressi',
