@@ -1,4 +1,3 @@
-
 import { Button } from '@/components/ui/button';
 
 interface WelcomeScreenProps {
@@ -48,6 +47,12 @@ const WelcomeScreen = ({ onStartLearning, onLanguageSelect, selectedLanguage }: 
         {/* Moving Stars */}
         <div className="absolute top-20 left-1/2 text-4xl animate-spin opacity-60">⭐</div>
         <div className="absolute bottom-32 right-1/3 text-3xl animate-spin delay-300 opacity-60">🌟</div>
+        
+        {/* New floating items */}
+        <div className="absolute text-5xl opacity-20" style={{ top: '15%', left: '80%', animation: 'float-up 20s linear infinite 3s' }}>🦉</div>
+        <div className="absolute text-5xl opacity-20" style={{ top: '60%', left: '10%', animation: 'float-up 25s linear infinite 7s' }}>🎈</div>
+        <div className="absolute text-5xl opacity-20" style={{ top: '5%', left: '30%', animation: 'float-up 18s linear infinite 1s' }}>📚</div>
+        <div className="absolute text-5xl opacity-20" style={{ top: '85%', left: '50%', animation: 'float-up 22s linear infinite 5s' }}>✏️</div>
       </div>
 
       <div className="bg-white/20 backdrop-blur-sm rounded-3xl p-8 shadow-2xl max-w-2xl w-full relative z-10">

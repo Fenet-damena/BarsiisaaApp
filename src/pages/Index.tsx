@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import WelcomeScreen from '@/components/WelcomeScreen';
 import LevelSelection from '@/components/LevelSelection';
@@ -87,7 +86,7 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-400 via-purple-500 to-pink-400">
+    <div className="min-h-screen bg-gradient-to-br from-blue-400 via-purple-500 to-pink-400 animated-gradient">
       {currentScreen === 'welcome' && (
         <WelcomeScreen 
           onStartLearning={handleStartLearning}

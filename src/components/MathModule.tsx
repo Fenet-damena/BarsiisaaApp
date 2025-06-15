@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { speakText } from '@/utils/speechUtils';
@@ -174,7 +173,7 @@ const MathModule = ({ onBack, language }: MathModuleProps) => {
   };
 
   return (
-    <div className="min-h-screen p-6 relative overflow-hidden">
+    <div className="min-h-screen p-6 relative">
       {showFireworks && <Fireworks onComplete={() => setShowFireworks(false)} />}
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -186,6 +185,12 @@ const MathModule = ({ onBack, language }: MathModuleProps) => {
         <div className="absolute top-1/4 right-1/4 text-6xl animate-bounce delay-200 opacity-20">➕</div>
         <div className="absolute bottom-1/4 left-1/4 text-5xl animate-pulse delay-400 opacity-20">➖</div>
         <div className="absolute top-1/2 right-1/3 text-4xl animate-bounce delay-600 opacity-20">🔢</div>
+
+        {/* New floating items */}
+        <div className="absolute text-5xl opacity-20" style={{ top: '15%', left: '80%', animation: 'float-up 20s linear infinite 3s' }}>🍎</div>
+        <div className="absolute text-5xl opacity-20" style={{ top: '60%', left: '10%', animation: 'float-up 25s linear infinite 7s' }}>🎈</div>
+        <div className="absolute text-5xl opacity-20" style={{ top: '5%', left: '30%', animation: 'float-up 18s linear infinite 1s' }}>⭐</div>
+        <div className="absolute text-5xl opacity-20" style={{ top: '85%', left: '50%', animation: 'float-up 22s linear infinite 5s' }}>🚀</div>
       </div>
 
       <div className="max-w-4xl mx-auto relative z-10">

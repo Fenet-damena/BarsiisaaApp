@@ -3,8 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
-
+/* // ... keep existing code (root and .dark variables) */
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -103,7 +102,19 @@
   }
 }
 
+@keyframes gradient-animation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animated-gradient {
+  background-size: 400% 400%;
+  animation: gradient-animation 15s ease infinite;
+}
+
 @keyframes float-up {
+/* // ... keep existing code */
   0% {
     transform: translateY(100vh) rotate(0deg);
     opacity: 0;
@@ -120,6 +131,7 @@
   }
 }
 
+/* // ... keep existing code (Fireworks Animation) */
 /* Fireworks Animation */
 .fireworks-container {
   position: fixed;
