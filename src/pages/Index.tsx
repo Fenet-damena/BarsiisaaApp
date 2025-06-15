@@ -15,15 +15,27 @@ import MathModule from '@/components/MathModule';
 import MathTeachingModule from '@/components/MathTeachingModule';
 import { Settings } from '@/components/Settings';
 
+const backgroundThemes = {
+  default: 'from-blue-400 via-purple-500 to-pink-400',
+  ocean: 'from-blue-300 via-teal-400 to-green-300',
+  sunset: 'from-yellow-400 via-red-500 to-pink-500',
+  forest: 'from-green-400 via-teal-600 to-blue-800',
+};
+
 const Index = () => {
   const [currentScreen, setCurrentScreen] = useState<'welcome' | 'levels' | 'alphabet' | 'flashcards' | 'words' | 'conversations' | 'lettergame' | 'animals' | 'calendar' | 'bodyparts' | 'flags' | 'math' | 'mathteaching'>('welcome');
   const [selectedLevel, setSelectedLevel] = useState<number>(1);
   const [selectedLanguage, setSelectedLanguage] = useState<'english' | 'oromo'>('english');
+  const [backgroundTheme, setBackgroundTheme] = useState('default');
 
   useEffect(() => {
     const savedLanguage = localStorage.getItem('selectedLanguage') as 'english' | 'oromo';
     if (savedLanguage) {
       setSelectedLanguage(savedLanguage);
+    }
+    const savedTheme = localStorage.getItem('backgroundTheme');
+    if (savedTheme && backgroundThemes[savedTheme as keyof typeof backgroundThemes]) {
+      setBackgroundTheme(savedTheme);
     }
   }, []);
 
@@ -87,9 +99,17 @@ const Index = () => {
     setCurrentScreen('welcome');
   };
 
+  const handleBackgroundChange = (theme: string) => {
+    setBackgroundTheme(theme);
+    localStorage.setItem('backgroundTheme', theme);
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-400 via-purple-500 to-pink-400 animated-gradient">
-      <Settings />
+    <div className={`min-h-screen bg-gradient-to-br ${backgroundThemes[backgroundTheme as keyof typeof backgroundThemes]} animated-gradient`}>
+      <Settings 
+        onBackgroundChange={handleBackgroundChange}
+        currentBackground={backgroundTheme}
+      />
       {currentScreen === 'welcome' && (
         <WelcomeScreen 
           onStartLearning={handleStartLearning}

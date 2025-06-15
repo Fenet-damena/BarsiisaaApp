@@ -9,13 +9,15 @@ import {
 } from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button"
 import { Settings as SettingsIcon } from "lucide-react"
-import { useTheme } from "next-themes"
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 
-export function Settings() {
-  const { theme, setTheme } = useTheme()
+interface SettingsProps {
+  onBackgroundChange: (theme: string) => void;
+  currentBackground: string;
+}
 
+export function Settings({ onBackgroundChange, currentBackground }: SettingsProps) {
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -32,26 +34,30 @@ export function Settings() {
         </SheetHeader>
         <div className="grid gap-4 py-4">
           <div className="rounded-lg border p-4">
-             <Label className="text-base font-semibold">Theme</Label>
+             <Label className="text-base font-semibold">Background Theme</Label>
              <p className="text-sm text-muted-foreground mb-4">
-                Select the theme for the application.
+                Select the theme for the application's background.
              </p>
             <RadioGroup
-              value={theme}
-              onValueChange={setTheme}
+              value={currentBackground}
+              onValueChange={onBackgroundChange}
               className="space-y-2"
             >
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="light" id="light" />
-                <Label htmlFor="light">Light</Label>
+                <RadioGroupItem value="default" id="default" />
+                <Label htmlFor="default">Default</Label>
               </div>
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="dark" id="dark" />
-                <Label htmlFor="dark">Dark</Label>
+                <RadioGroupItem value="ocean" id="ocean" />
+                <Label htmlFor="ocean">Ocean</Label>
               </div>
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="system" id="system" />
-                <Label htmlFor="system">System</Label>
+                <RadioGroupItem value="sunset" id="sunset" />
+                <Label htmlFor="sunset">Sunset</Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="forest" id="forest" />
+                <Label htmlFor="forest">Forest</Label>
               </div>
             </RadioGroup>
           </div>
