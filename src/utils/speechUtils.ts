@@ -10,7 +10,9 @@ export const speakText = (text: string, language: 'english' | 'oromo' = 'english
       // Language-specific text processing for better pronunciation approximation
       if (language === 'oromo') {
         // Specific phonetic adjustments must come first to override general rules
-        processedText = processedText.replace(/Sirrii/g, 'Seari');
+        processedText = processedText.replace(/Sirrii/g, 'seare');
+        processedText = processedText.replace(/Gaarii/g, 'gare');
+        processedText = processedText.replace(/hojjette/g, 'hojata');
 
         // In Oromo, 'c' is pronounced like 'ch' in English.
         // This replaces 'c' with 'ch', but uses a negative lookahead (?!h) 
