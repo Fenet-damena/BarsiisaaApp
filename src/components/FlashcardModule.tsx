@@ -30,7 +30,7 @@ const flashcardData: {
       { english: "E for Elephant", oromo: "Arba", emoji: "🐘", letter: "E", oromoLetterSound: "A" },
       { english: "F for Fish", oromo: "Qurxummii", emoji: "🐟", letter: "F", oromoLetterSound: "Fah" },
       { english: "G for Giraffe", oromo: "Sattawwaa", emoji: "🦒", letter: "G", oromoLetterSound: "gah" },
-      { english: "H for Hoola", oromo: "Hoola", emoji: "🐑", letter: "H", oromoLetterSound: "hah" },
+      { english: "H for House", oromo: "Manee", emoji: "🏠", letter: "H", oromoLetterSound: "hah" },
       { english: "I for Ice Cream", oromo: "Jalaala", emoji: "🍦", letter: "I", oromoLetterSound: "e" },
       { english: "J for Juice", oromo: "Cuunfaa", emoji: "🧃", letter: "J", oromoLetterSound: "Jah" },
       { english: "K for Kite", oromo: "Barruu", emoji: "🪁", letter: "K", oromoLetterSound: "Kah" },
