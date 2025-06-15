@@ -61,7 +61,7 @@ const wordData = {
     { word: "Orange", emoji: "🟠", category: "Color" },
     { word: "Purple", emoji: "🟣", category: "Color" },
     { word: "Brown", emoji: "🟤", category: "Color" },
-    { word: "Pink", emoji: "🩷", category: "Color" },
+    { word: "Pink", emoji: "🌸", category: "Color" },
     { word: "Gray", emoji: "🔘", category: "Color" },
   ],
   oromo: [
