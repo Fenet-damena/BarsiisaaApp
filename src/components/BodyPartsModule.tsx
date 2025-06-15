@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Volume2, RefreshCw } from 'lucide-react';
@@ -56,8 +55,8 @@ const uiContent = {
     finish: "Well Done! 🎉"
   },
   oromo: {
-    title: "Qaamni Namaa Baradhu! 👶",
-    instruction: "Qaamni kamiyyuu tuqi maqaa isaa dhaggeeffachuuf",
+    title: "Qaama Namaa Baradhu! 👶",
+    instruction: "Qaama kamiyyuu tuqi maqaa isaa dhaggeeffachuuf",
     back: "Gara Sadarkaa",
     great: "Gaarii dha!",
     next: "Itti Aanu",
