@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { speakText } from '@/utils/speechUtils';
+import Fireworks from '@/components/Fireworks';
 
 interface MathModuleProps {
   onBack: () => void;
@@ -24,6 +25,7 @@ const MathModule = ({ onBack, language }: MathModuleProps) => {
   const [score, setScore] = useState(0);
   const [totalProblems, setTotalProblems] = useState(0);
   const [animatingEmojis, setAnimatingEmojis] = useState<string[]>([]);
+  const [showFireworks, setShowFireworks] = useState(false);
 
   const uiContent = {
     english: {
@@ -98,6 +100,7 @@ const MathModule = ({ onBack, language }: MathModuleProps) => {
     if (correct) {
       setScore(prev => prev + 1);
       speakText(ui.correct, language);
+      setShowFireworks(true);
     } else {
       speakText(ui.incorrect, language);
     }
@@ -172,6 +175,7 @@ const MathModule = ({ onBack, language }: MathModuleProps) => {
 
   return (
     <div className="min-h-screen p-6 relative overflow-hidden">
+      {showFireworks && <Fireworks onComplete={() => setShowFireworks(false)} />}
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-16 w-32 h-32 bg-gradient-to-r from-green-300 to-blue-300 rounded-full animate-pulse opacity-30"></div>
