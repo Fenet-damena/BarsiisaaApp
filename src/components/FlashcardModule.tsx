@@ -86,7 +86,7 @@ const flashcardData: {
 const FlashcardModule = ({ level, onBack, language }: FlashcardModuleProps) => {
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [showWord, setShowWord] = useState(false);
-  const [isCompleted, setIsCompleted] = useState(isCompleted);
+  const [isCompleted, setIsCompleted] = useState(false);
   const [completionMessage, setCompletionMessage] = useState('');
   const [isReadingAll, setIsReadingAll] = useState(false);
   const stopReadingRef = useRef(false);
