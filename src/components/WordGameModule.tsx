@@ -74,7 +74,7 @@ const WordGameModule = ({ onBack, language }: WordGameModuleProps) => {
       title: "Taphoota Jechaa!",
       question: "Kun maali?",
       score: "Qabxii:",
-      correct: "Sirrrii! Gaarii hojjette!",
+      correct: "Sirrii! Gaarii hojjette!",
       incorrect: "Irra deebi'i! Ni dandeessa!",
       complete: "Ajaa'iba! Jechota hunda xumurte!",
       restart: "Deebi'ii Taphii",

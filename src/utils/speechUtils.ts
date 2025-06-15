@@ -13,6 +13,8 @@ export const speakText = (text: string, language: 'english' | 'oromo' = 'english
         // This replaces 'c' with 'ch', but uses a negative lookahead (?!h) 
         // to avoid altering a 'c' that's already part of a 'ch' digraph.
         processedText = text.replace(/c(?!h)/g, 'ch').replace(/C(?!h)/g, 'Ch');
+        // In Oromo, 'x' is pronounced like 't' in English.
+        processedText = processedText.replace(/x/g, 't').replace(/X/g, 'T');
       }
 
       const utterance = new SpeechSynthesisUtterance(processedText);

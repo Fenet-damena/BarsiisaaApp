@@ -20,8 +20,8 @@ const WelcomeScreen = ({ onStartLearning, onLanguageSelect, selectedLanguage }: 
     },
     oromo: {
       title: "BarsiisaApp",
-      subtitle: "Afaan Oromo fi Inglizii Barnoota",
-      description: "Daa'imman barnoota gammachiisaa!",
+      subtitle: "Barnoota Afaan Oromo fi Inglizii",
+      description: "Daa'immanif barnoota gammachiisaa!",
       chooseLanguage: "Afaan Kee Filadhu!",
       startLearning: "Barnoota Jalqabi!",
       oromo: "Afaan Oromo",
