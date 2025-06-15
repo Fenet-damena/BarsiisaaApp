@@ -159,8 +159,8 @@ const AlphabetModule = ({ onBack, language }: AlphabetModuleProps) => {
       }
       setCurrentIndex(i);
       const item = alphabetData[i];
-      // Speak the English phonetic sound
-      await speakText(item.phoneticSound, 'english');
+      // Speak the English letter name
+      await speakText(item.sound, 'english');
     }
 
     setIsReadingAll(false);
