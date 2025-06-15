@@ -71,7 +71,7 @@ const flashcardData: {
       { english: "Odaa Tree", oromo: "Odaa", emoji: "🌳", letter: "O", oromoLetterSound: "O", pronunciation: "O-daa" },
       { english: "Papaya", oromo: "Pappayaa", emoji: "🥭", letter: "P", oromoLetterSound: "Pah", pronunciation: "Pap-pa-yaa" },
       { english: "Alphabet", oromo: "Qubee", emoji: "🔤", letter: "Q", oromoLetterSound: "Qah", pronunciation: "Koo-bey" },
-      { english: "Frog", oromo: "Racha", emoji: "🐸", letter: "R", oromoLetterSound: "Rah" },
+      { english: "Frog", oromo: "Raacha", emoji: "🐸", letter: "R", oromoLetterSound: "Rah", pronunciation: "Raa-cha" },
       { english: "Dog", oromo: "Saree", emoji: "🐶", letter: "S", oromoLetterSound: "Sah" },
       { english: "One", oromo: "Tokko", emoji: "1️⃣", letter: "T", oromoLetterSound: "Tah", pronunciation: "Tok-ko" },
       { english: "Stick / Cane", oromo: "Ulee", emoji: "🦯", letter: "U", oromoLetterSound: "Oo", pronunciation: "Oo-leh" },
