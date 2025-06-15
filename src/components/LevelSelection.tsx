@@ -1,3 +1,4 @@
+
 import { Button } from '@/components/ui/button';
 
 interface LevelSelectionProps {
@@ -17,7 +18,8 @@ const levelsContent = {
     { level: 7, age: 7, title: "Letter Games", emoji: "🎮", color: "from-green-400 to-yellow-500", description: "Fill missing letters" },
     { level: 8, age: 7, title: "Body Parts", emoji: "👶", color: "from-orange-400 to-red-500", description: "Learn parts of the body" },
     { level: 9, age: 8, title: "Country Flags", emoji: "🏁", color: "from-blue-400 to-green-500", description: "Learn 100+ country flags" },
-    { level: 10, age: 8, title: "Math Fun", emoji: "🧮", color: "from-purple-400 to-blue-500", description: "Addition & subtraction with animations" },
+    { level: 10, age: 8, title: "Learn Math", emoji: "👨‍🏫", color: "from-purple-400 to-blue-500", description: "Learn addition & subtraction" },
+    { level: 11, age: 8, title: "Math Quiz", emoji: "🧮", color: "from-teal-400 to-cyan-500", description: "Test your math skills" },
   ],
   oromo: [
     { level: 1, age: 3, title: "Qubee fi Lakkoofsota", emoji: "🔤", color: "from-red-400 to-pink-500", description: "A-Z fi 1-10 baradhu" },
@@ -29,7 +31,8 @@ const levelsContent = {
     { level: 7, age: 7, title: "Taphoota Qubee", emoji: "🎮", color: "from-green-400 to-yellow-500", description: "Qubee dhiisan guuti" },
     { level: 8, age: 7, title: "Qaamni Namaa", emoji: "👶", color: "from-orange-400 to-red-500", description: "Qaamni namaa baradhu" },
     { level: 9, age: 8, title: "Alaabaa Biyyootaa", emoji: "🏁", color: "from-blue-400 to-green-500", description: "Alaabaa biyyoota 100+ baradhu" },
-    { level: 10, age: 8, title: "Herrega Baay'ee", emoji: "🧮", color: "from-purple-400 to-blue-500", description: "Ida'uu fi hir'isuu sochii waliin" },
+    { level: 10, age: 8, title: "Herrega Baradhu", emoji: "👨‍🏫", color: "from-purple-400 to-blue-500", description: "Ida'uu fi hir'isuu baradhu" },
+    { level: 11, age: 8, title: "Qormaata Herregaa", emoji: "🧮", color: "from-teal-400 to-cyan-500", description: "Dandeettii herregaa kee qori" },
   ]
 };
 

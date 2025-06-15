@@ -12,9 +12,10 @@ import LetterGameModule from '@/components/LetterGameModule';
 import BodyPartsModule from '@/components/BodyPartsModule';
 import FlagModule from '@/components/FlagModule';
 import MathModule from '@/components/MathModule';
+import MathTeachingModule from '@/components/MathTeachingModule';
 
 const Index = () => {
-  const [currentScreen, setCurrentScreen] = useState<'welcome' | 'levels' | 'alphabet' | 'flashcards' | 'words' | 'conversations' | 'lettergame' | 'animals' | 'calendar' | 'bodyparts' | 'flags' | 'math'>('welcome');
+  const [currentScreen, setCurrentScreen] = useState<'welcome' | 'levels' | 'alphabet' | 'flashcards' | 'words' | 'conversations' | 'lettergame' | 'animals' | 'calendar' | 'bodyparts' | 'flags' | 'math' | 'mathteaching'>('welcome');
   const [selectedLevel, setSelectedLevel] = useState<number>(1);
   const [selectedLanguage, setSelectedLanguage] = useState<'english' | 'oromo'>('english');
 
@@ -67,6 +68,9 @@ const Index = () => {
         setCurrentScreen('flags');
         break;
       case 10:
+        setCurrentScreen('mathteaching');
+        break;
+      case 11:
         setCurrentScreen('math');
         break;
       default:
@@ -156,6 +160,12 @@ const Index = () => {
       )}
       {currentScreen === 'math' && (
         <MathModule 
+          onBack={handleBackToLevels}
+          language={selectedLanguage}
+        />
+      )}
+      {currentScreen === 'mathteaching' && (
+        <MathTeachingModule 
           onBack={handleBackToLevels}
           language={selectedLanguage}
         />
