@@ -1,4 +1,3 @@
-
 import { Button } from '@/components/ui/button';
 
 interface LevelSelectionProps {
@@ -11,7 +10,7 @@ const levelsContent = {
   english: [
     { level: 1, age: 3, title: "Alphabet & Numbers", emoji: "🔤", color: "from-red-400 to-pink-500", description: "Learn A-Z & 1-10" },
     { level: 2, age: 4, title: "Letter Words", emoji: "🅰️", color: "from-yellow-400 to-orange-500", description: "A for Apple, B for Ball" },
-    { level: 3, age: 5, title: "Many Words", emoji: "📝", color: "from-green-400 to-blue-500", description: "100+ words daily" },
+    { level: 3, age: 5, title: "Many Words", emoji: "📝", color: "from-green-400 to-blue-500", description: "Learn words: fruits, animals, colors" },
     { level: 4, age: 6, title: "Days & Months", emoji: "🗓️", color: "from-blue-400 to-purple-500", description: "Learn 7 days and 12 months" },
     { level: 5, age: 6, title: "Greeting for Kids", emoji: "👋", color: "from-purple-400 to-pink-500", description: "How friends greet each other" },
     { level: 6, age: 7, title: "Word Games", emoji: "🎯", color: "from-pink-400 to-red-500", description: "Guess the word from emoji" },
@@ -26,7 +25,7 @@ const levelsContent = {
   oromo: [
     { level: 1, age: 3, title: "Qubee fi Lakkoofsota", emoji: "🔤", color: "from-red-400 to-pink-500", description: "A-Z fi 1-10 baradhu" },
     { level: 2, age: 4, title: "Jecha Qubee", emoji: "🅰️", color: "from-yellow-400 to-orange-500", description: "A Poomii, B Kubbaa" },
-    { level: 3, age: 5, title: "Jechoota Hedduu", emoji: "📝", color: "from-green-400 to-blue-500", description: "Jechoota 100+ guyyaa" },
+    { level: 3, age: 5, title: "Jechoota Hedduu", emoji: "📝", color: "from-green-400 to-blue-500", description: "Jechoota baradhu: fuduraa, bineensa, halluu" },
     { level: 4, age: 6, title: "Guyyoota & Ji'oota", emoji: "🗓️", color: "from-blue-400 to-purple-500", description: "Guyyoota 7 fi Ji'oota 12 baradhu" },
     { level: 5, age: 6, title: "Haasawa Daa'immanii", emoji: "👋", color: "from-purple-400 to-pink-500", description: "Akkaataa hiriyaan itti wal nagaa gaafatan" },
     { level: 6, age: 7, title: "Taphoota Jechaa", emoji: "🎯", color: "from-pink-400 to-red-500", description: "Emoji irraa jecha tilmaami" },

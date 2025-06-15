@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import WelcomeScreen from '@/components/WelcomeScreen';
 import LevelSelection from '@/components/LevelSelection';
@@ -16,6 +15,7 @@ import MathTeachingModule from '@/components/MathTeachingModule';
 import ColoringBookModule from '@/components/ColoringBookModule';
 import StoryModule from '@/components/StoryModule';
 import { Settings } from '@/components/Settings';
+import WordLearningModule from '@/components/WordLearningModule';
 
 const backgroundThemes = {
   default: 'from-blue-400 via-purple-500 to-pink-400',
@@ -25,7 +25,7 @@ const backgroundThemes = {
 };
 
 const Index = () => {
-  const [currentScreen, setCurrentScreen] = useState<'welcome' | 'levels' | 'alphabet' | 'flashcards' | 'words' | 'conversations' | 'lettergame' | 'animals' | 'calendar' | 'bodyparts' | 'flags' | 'math' | 'mathteaching' | 'coloringbook' | 'stories'>('welcome');
+  const [currentScreen, setCurrentScreen] = useState<'welcome' | 'levels' | 'alphabet' | 'flashcards' | 'words' | 'conversations' | 'lettergame' | 'animals' | 'calendar' | 'bodyparts' | 'flags' | 'math' | 'mathteaching' | 'coloringbook' | 'stories' | 'wordlearning'>('welcome');
   const [selectedLevel, setSelectedLevel] = useState<number>(1);
   const [selectedLanguage, setSelectedLanguage] = useState<'english' | 'oromo'>('english');
   const [backgroundTheme, setBackgroundTheme] = useState('default');
@@ -62,7 +62,7 @@ const Index = () => {
         setCurrentScreen('flashcards');
         break;
       case 3:
-        setCurrentScreen('words');
+        setCurrentScreen('wordlearning');
         break;
       case 4:
         setCurrentScreen('calendar');
@@ -141,6 +141,12 @@ const Index = () => {
       {currentScreen === 'flashcards' && (
         <FlashcardModule 
           level={selectedLevel}
+          onBack={handleBackToLevels}
+          language={selectedLanguage}
+        />
+      )}
+      {currentScreen === 'wordlearning' && (
+        <WordLearningModule 
           onBack={handleBackToLevels}
           language={selectedLanguage}
         />
