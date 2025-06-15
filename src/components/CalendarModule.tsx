@@ -1,4 +1,3 @@
-
 import { Button } from '@/components/ui/button';
 import { speakText } from '@/utils/speechUtils';
 
@@ -58,9 +57,9 @@ const uiContent = {
     back: "Gara Sadarkootatti",
     title: "Guyyoota & Ji'oota",
     daysHeader: "Guyyoota Torbanii",
-    daysHeaderPronunciation: "Guyyoota Torbanii",
+    daysHeaderPronunciation: "Goo-yo-ta Tor-ba-nii",
     monthsHeader: "Ji'oota Waggaa",
-    monthsHeaderPronunciation: "Jioota Waggaa",
+    monthsHeaderPronunciation: "Jee-o-ta Waggaa",
     listen: "Dhaggeeffadhu",
   }
 };
