@@ -15,9 +15,9 @@ const englishStories = [
 ];
 
 const oromoStories = [
-    { title: "Seenaa Booyyee Sadan", videoId: "Oay1yfT2_4A" },
-    { title: "Seenaa Leencaafi Hantuutaa", videoId: "GxcGVCEgjcU" },
-    { title: "Seenaa Qocaaafi Hilleettii", videoId: "p22_m5r2g2A" }
+    { title: "Hantuuta Badiyyaa fi Hantuuta Magaalaa", videoId: "u66aJ4M6VLs" },
+    { title: "Raachaa Illimaa Mootii Ta'e", videoId: "qmvwakg5pqk" },
+    { title: "Durbii fi Guchii", videoId: "re3BVHoJrXs" }
 ];
 
 const uiContent = {
