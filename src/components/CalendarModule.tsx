@@ -49,14 +49,18 @@ const uiContent = {
     back: "Back to Levels",
     title: "Days & Months",
     daysHeader: "Days of the Week",
+    daysHeaderPronunciation: "Days of the Week",
     monthsHeader: "Months of the Year",
+    monthsHeaderPronunciation: "Months of the Year",
     listen: "Listen",
   },
   oromo: {
     back: "Gara Sadarkootatti",
     title: "Guyyoota & Ji'oota",
     daysHeader: "Guyyoota Torbanii",
+    daysHeaderPronunciation: "Guyyoota Torbanii",
     monthsHeader: "Ji'oota Waggaa",
+    monthsHeaderPronunciation: "Jioota Waggaa",
     listen: "Dhaggeeffadhu",
   }
 };
@@ -84,7 +88,12 @@ const CalendarModule = ({ onBack, language }: CalendarModuleProps) => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
-            <h2 className="text-3xl font-bold text-white text-center mb-6">{ui.daysHeader}</h2>
+            <div className="flex items-center justify-center gap-4 mb-6">
+              <h2 className="text-3xl font-bold text-white">{ui.daysHeader}</h2>
+              <Button onClick={() => speakText(ui.daysHeaderPronunciation, language)} className="bg-white/20 hover:bg-white/30 text-white rounded-full p-2">
+                🔊 <span className="sr-only">{ui.listen}</span>
+              </Button>
+            </div>
             <div className="space-y-4">
               {days.map((day, index) => {
                 const dayName = typeof day === 'string' ? day : day.name;
@@ -105,7 +114,12 @@ const CalendarModule = ({ onBack, language }: CalendarModuleProps) => {
           </div>
 
           <div>
-            <h2 className="text-3xl font-bold text-white text-center mb-6">{ui.monthsHeader}</h2>
+            <div className="flex items-center justify-center gap-4 mb-6">
+              <h2 className="text-3xl font-bold text-white">{ui.monthsHeader}</h2>
+               <Button onClick={() => speakText(ui.monthsHeaderPronunciation, language)} className="bg-white/20 hover:bg-white/30 text-white rounded-full p-2">
+                🔊 <span className="sr-only">{ui.listen}</span>
+              </Button>
+            </div>
             <div className="space-y-4">
               {months.map((month, index) => {
                 const monthName = typeof month === 'string' ? month : month.name;
