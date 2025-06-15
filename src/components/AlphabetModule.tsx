@@ -1,3 +1,4 @@
+
 import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { speakText } from '@/utils/speechUtils';
@@ -13,6 +14,7 @@ type LetterData = {
   oromo: string;
   sound: string;
   oromoSound: string;
+  phoneticSound: string;
 };
 
 type NumberData = {
@@ -25,32 +27,32 @@ type NumberData = {
 };
 
 const alphabetData: LetterData[] = [
-  { letter: 'A', english: 'Apple', oromo: 'Arba', sound: 'ay', oromoSound: 'ah' },
-  { letter: 'B', english: 'Ball', oromo: 'Bishaan', sound: 'bee', oromoSound: 'bah' },
-  { letter: 'C', english: 'Cat', oromo: 'Callee', sound: 'see', oromoSound: 'chah' },
-  { letter: 'D', english: 'Dog', oromo: 'Dandii', sound: 'dee', oromoSound: 'dah' },
-  { letter: 'E', english: 'Elephant', oromo: 'Eelee', sound: 'ee', oromoSound: 'A' },
-  { letter: 'F', english: 'Fish', oromo: 'Farda', sound: 'ef', oromoSound: 'Fah' },
-  { letter: 'G', english: 'Giraffe', oromo: 'Gurraacha', sound: 'jee', oromoSound: 'gah' },
-  { letter: 'H', english: 'House', oromo: 'Harree', sound: 'aitch', oromoSound: 'hah' },
-  { letter: 'I', english: 'Ice cream', oromo: 'Ilkaan', sound: 'eye', oromoSound: 'e' },
-  { letter: 'J', english: 'Juice', oromo: 'Jaldeessa', sound: 'jay', oromoSound: 'Jah' },
-  { letter: 'K', english: 'Kite', oromo: 'Kitaaba', sound: 'kay', oromoSound: 'Kah' },
-  { letter: 'L', english: 'Lion', oromo: 'Loon', sound: 'el', oromoSound: 'Lah' },
-  { letter: 'M', english: 'Moon', oromo: 'Muka', sound: 'em', oromoSound: 'mah' },
-  { letter: 'N', english: 'Nest', oromo: 'Nama', sound: 'en', oromoSound: 'nah' },
-  { letter: 'O', english: 'Orange', oromo: 'Odaa', sound: 'oh', oromoSound: 'o' },
-  { letter: 'P', english: 'Pencil', oromo: 'Paarkii', sound: 'pee', oromoSound: 'pah' },
-  { letter: 'Q', english: 'Queen', oromo: 'Qamalee', sound: 'cue', oromoSound: 'Qah' },
-  { letter: 'R', english: 'Rainbow', oromo: 'Rooba', sound: 'ar', oromoSound: 'rah' },
-  { letter: 'S', english: 'Sun', oromo: 'Simbirroo', sound: 'ess', oromoSound: 'sah' },
-  { letter: 'T', english: 'Tree', oromo: 'Tokko', sound: 'tee', oromoSound: 'tah' },
-  { letter: 'U', english: 'Umbrella', oromo: 'Ulee', sound: 'you', oromoSound: 'oo' },
-  { letter: 'V', english: 'Violin', oromo: 'Viiyooliin', sound: 'vee', oromoSound: 'Vah' },
-  { letter: 'W', english: 'Water', oromo: 'Waraabessa', sound: 'double-you', oromoSound: 'wah' },
-  { letter: 'X', english: 'Xylophone', oromo: 'Xurree', sound: 'eks', oromoSound: 'Tah' },
-  { letter: 'Y', english: 'Yellow', oromo: 'Yeeyyii', sound: 'why', oromoSound: 'yah' },
-  { letter: 'Z', english: 'Zebra', oromo: 'Zeeroo', sound: 'zee', oromoSound: 'zah' },
+  { letter: 'A', english: 'Apple', oromo: 'Arba', sound: 'ay', oromoSound: 'ah', phoneticSound: 'a' },
+  { letter: 'B', english: 'Ball', oromo: 'Bishaan', sound: 'bee', oromoSound: 'bah', phoneticSound: 'buh' },
+  { letter: 'C', english: 'Cat', oromo: 'Callee', sound: 'see', oromoSound: 'chah', phoneticSound: 'kuh' },
+  { letter: 'D', english: 'Dog', oromo: 'Dandii', sound: 'dee', oromoSound: 'dah', phoneticSound: 'duh' },
+  { letter: 'E', english: 'Elephant', oromo: 'Eelee', sound: 'ee', oromoSound: 'A', phoneticSound: 'eh' },
+  { letter: 'F', english: 'Fish', oromo: 'Farda', sound: 'ef', oromoSound: 'Fah', phoneticSound: 'fuh' },
+  { letter: 'G', english: 'Giraffe', oromo: 'Gurraacha', sound: 'jee', oromoSound: 'gah', phoneticSound: 'guh' },
+  { letter: 'H', english: 'House', oromo: 'Harree', sound: 'aitch', oromoSound: 'hah', phoneticSound: 'huh' },
+  { letter: 'I', english: 'Ice cream', oromo: 'Ilkaan', sound: 'eye', oromoSound: 'e', phoneticSound: 'ih' },
+  { letter: 'J', english: 'Juice', oromo: 'Jaldeessa', sound: 'jay', oromoSound: 'Jah', phoneticSound: 'juh' },
+  { letter: 'K', english: 'Kite', oromo: 'Kitaaba', sound: 'kay', oromoSound: 'Kah', phoneticSound: 'kuh' },
+  { letter: 'L', english: 'Lion', oromo: 'Loon', sound: 'el', oromoSound: 'Lah', phoneticSound: 'luh' },
+  { letter: 'M', english: 'Moon', oromo: 'Muka', sound: 'em', oromoSound: 'mah', phoneticSound: 'muh' },
+  { letter: 'N', english: 'Nest', oromo: 'Nama', sound: 'en', oromoSound: 'nah', phoneticSound: 'nuh' },
+  { letter: 'O', english: 'Orange', oromo: 'Odaa', sound: 'oh', oromoSound: 'o', phoneticSound: 'ah' },
+  { letter: 'P', english: 'Pencil', oromo: 'Paarkii', sound: 'pee', oromoSound: 'pah', phoneticSound: 'puh' },
+  { letter: 'Q', english: 'Queen', oromo: 'Qamalee', sound: 'cue', oromoSound: 'Qah', phoneticSound: 'kwuh' },
+  { letter: 'R', english: 'Rainbow', oromo: 'Rooba', sound: 'ar', oromoSound: 'rah', phoneticSound: 'ruh' },
+  { letter: 'S', english: 'Sun', oromo: 'Simbirroo', sound: 'ess', oromoSound: 'sah', phoneticSound: 'sss' },
+  { letter: 'T', english: 'Tree', oromo: 'Tokko', sound: 'tee', oromoSound: 'tah', phoneticSound: 'tuh' },
+  { letter: 'U', english: 'Umbrella', oromo: 'Ulee', sound: 'you', oromoSound: 'oo', phoneticSound: 'uh' },
+  { letter: 'V', english: 'Violin', oromo: 'Viiyooliin', sound: 'vee', oromoSound: 'Vah', phoneticSound: 'vuh' },
+  { letter: 'W', english: 'Water', oromo: 'Waraabessa', sound: 'double-you', oromoSound: 'wah', phoneticSound: 'wuh' },
+  { letter: 'X', english: 'Xylophone', oromo: 'Xurree', sound: 'eks', oromoSound: 'Tah', phoneticSound: 'ks' },
+  { letter: 'Y', english: 'Yellow', oromo: 'Yeeyyii', sound: 'why', oromoSound: 'yah', phoneticSound: 'yuh' },
+  { letter: 'Z', english: 'Zebra', oromo: 'Zeeroo', sound: 'zee', oromoSound: 'zah', phoneticSound: 'zuh' },
 ];
 
 const numberData: NumberData[] = [
@@ -157,8 +159,8 @@ const AlphabetModule = ({ onBack, language }: AlphabetModuleProps) => {
       }
       setCurrentIndex(i);
       const item = alphabetData[i];
-      // Speak the English sound
-      await speakText(item.sound, 'english');
+      // Speak the English phonetic sound
+      await speakText(item.phoneticSound, 'english');
     }
 
     setIsReadingAll(false);
