@@ -1,3 +1,4 @@
+
 import { useState } from "react"
 import {
   Sheet,
@@ -22,11 +23,13 @@ interface SettingsProps {
 export function Settings({ onBackgroundChange, currentBackground }: SettingsProps) {
   const { toast } = useToast()
   const [feedback, setFeedback] = useState("")
+  const [rating, setRating] = useState(0)
 
-  const handleRateUs = () => {
+  const handleRating = (rate: number) => {
+    setRating(rate)
     toast({
-      title: "Thank you!",
-      description: "We appreciate your support.",
+      title: "Thank you for your rating!",
+      description: `You've rated us ${rate} out of 5 stars.`,
     })
   }
 
@@ -39,11 +42,14 @@ export function Settings({ onBackgroundChange, currentBackground }: SettingsProp
       })
       return
     }
-    console.log("Feedback submitted:", feedback)
+    
+    const mailtoLink = `mailto:fenetdamena74@gmail.com?subject=App Feedback&body=${encodeURIComponent(feedback)}`;
+    window.location.href = mailtoLink;
+    
     setFeedback("")
     toast({
-      title: "Feedback sent!",
-      description: "Thank you for helping us improve.",
+      title: "Thank you!",
+      description: "We're redirecting you to your email client to send your feedback.",
     })
   }
 
@@ -98,10 +104,17 @@ export function Settings({ onBackgroundChange, currentBackground }: SettingsProp
             <p className="text-sm text-muted-foreground mb-4">
               If you enjoy using our app, please take a moment to rate it.
             </p>
-            <Button onClick={handleRateUs} className="w-full">
-              <Star className="mr-2 h-4 w-4" />
-              Rate Now
-            </Button>
+            <div className="flex justify-center items-center space-x-1">
+              {[1, 2, 3, 4, 5].map((star) => (
+                <Star
+                  key={star}
+                  className={`h-8 w-8 cursor-pointer transition-colors ${
+                    rating >= star ? "text-yellow-400 fill-yellow-400" : "text-gray-300 hover:text-gray-400"
+                  }`}
+                  onClick={() => handleRating(star)}
+                />
+              ))}
+            </div>
           </div>
           <div className="rounded-lg border p-4">
             <div className="flex items-center gap-2 mb-2">
