@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { speakText } from '@/utils/speechUtils';
@@ -56,30 +55,30 @@ const flashcardData: {
     2: [
       { english: "Elephant", oromo: "Arba", emoji: "🐘", letter: "A", oromoLetterSound: "Ah" },
       { english: "Coffee", oromo: "Buna", emoji: "☕", letter: "B", oromoLetterSound: "Bah" },
-      { english: "Ice", oromo: "Cabbi", emoji: "🧊", letter: "C", oromoLetterSound: "Chah", pronunciation: "Chab-bi" },
-      { english: "Honey", oromo: "Damma", emoji: "🍯", letter: "D", oromoLetterSound: "Dah", pronunciation: "Dam-ma" },
-      { english: "Pan", oromo: "Eelee", emoji: "🍳", letter: "E", oromoLetterSound: "A", pronunciation: "Ee-lee" },
+      { english: "Ice", oromo: "Cabbi", emoji: "🧊", letter: "C", oromoLetterSound: "Chah", pronunciation: "Chabbi" },
+      { english: "Honey", oromo: "Damma", emoji: "🍯", letter: "D", oromoLetterSound: "Dah", pronunciation: "Damma" },
+      { english: "Pan", oromo: "Eelee", emoji: "🍳", letter: "E", oromoLetterSound: "A", pronunciation: "Eelee" },
       { english: "Horse", oromo: "Farda", emoji: "🐴", letter: "F", oromoLetterSound: "Fah" },
-      { english: "Black", oromo: "Gurraacha", emoji: "⚫", letter: "G", oromoLetterSound: "Gah", pronunciation: "Gur-raa-cha" },
-      { english: "Sheep", oromo: "Hoola", emoji: "🐑", letter: "H", oromoLetterSound: "Hah", pronunciation: "Hoo-laa" },
-      { english: "Tooth", oromo: "Ilkaan", emoji: "🦷", letter: "I", oromoLetterSound: "E", pronunciation: "Il-kaan" },
-      { english: "Monkey", oromo: "Jaldeessa", emoji: "🐒", letter: "J", oromoLetterSound: "Jah", pronunciation: "Jal-dees-sa" },
-      { english: "Book", oromo: "Kitaaba", emoji: "📚", letter: "K", oromoLetterSound: "Kah", pronunciation: "Ki-taa-ba" },
+      { english: "Black", oromo: "Gurraacha", emoji: "⚫", letter: "G", oromoLetterSound: "Gah", pronunciation: "Gurraacha" },
+      { english: "Sheep", oromo: "Hoola", emoji: "🐑", letter: "H", oromoLetterSound: "Hah", pronunciation: "Hoola" },
+      { english: "Tooth", oromo: "Ilkaan", emoji: "🦷", letter: "I", oromoLetterSound: "E", pronunciation: "Ilkaan" },
+      { english: "Monkey", oromo: "Jaldeessa", emoji: "🐒", letter: "J", oromoLetterSound: "Jah", pronunciation: "Jaldeessa" },
+      { english: "Book", oromo: "Kitaaba", emoji: "📚", letter: "K", oromoLetterSound: "Kah", pronunciation: "Kitaaba" },
       { english: "Cow", oromo: "Loon", emoji: "🐄", letter: "L", oromoLetterSound: "Lah", pronunciation: "Loon" },
       { english: "Tree", oromo: "Muka", emoji: "🌳", letter: "M", oromoLetterSound: "Mah" },
       { english: "Person", oromo: "Nama", emoji: "🧑", letter: "N", oromoLetterSound: "Nah" },
-      { english: "Odaa Tree", oromo: "Odaa", emoji: "🌳", letter: "O", oromoLetterSound: "O", pronunciation: "O-daa" },
-      { english: "Papaya", oromo: "Pappayaa", emoji: "🥭", letter: "P", oromoLetterSound: "Pah", pronunciation: "Pap-pa-yaa" },
+      { english: "Odaa Tree", oromo: "Odaa", emoji: "🌳", letter: "O", oromoLetterSound: "O", pronunciation: "Odaa" },
+      { english: "Papaya", oromo: "Pappayaa", emoji: "🥭", letter: "P", oromoLetterSound: "Pah", pronunciation: "Pappayaa" },
       { english: "Alphabet", oromo: "Qubee", emoji: "🔤", letter: "Q", oromoLetterSound: "Qah", pronunciation: "Koo-bey" },
-      { english: "Frog", oromo: "Raacha", emoji: "🐸", letter: "R", oromoLetterSound: "Rah", pronunciation: "Raa-cha" },
-      { english: "Dog", oromo: "Saree", emoji: "🐶", letter: "S", oromoLetterSound: "Sah" },
-      { english: "One", oromo: "Tokko", emoji: "1️⃣", letter: "T", oromoLetterSound: "Tah", pronunciation: "Tok-ko" },
-      { english: "Stick / Cane", oromo: "Ulee", emoji: "🦯", letter: "U", oromoLetterSound: "Oo", pronunciation: "Oo-leh" },
+      { english: "Frog", oromo: "Raacha", emoji: "🐸", letter: "R", oromoLetterSound: "Rah", pronunciation: "Raacha" },
+      { english: "Dog", oromo: "Saree", emoji: "🐶", letter: "S", oromoLetterSound: "Sah", pronunciation: "Saree" },
+      { english: "One", oromo: "Tokko", emoji: "1️⃣", letter: "T", oromoLetterSound: "Tah", pronunciation: "Tokko" },
+      { english: "Stick / Cane", oromo: "Ulee", emoji: "🦯", letter: "U", oromoLetterSound: "Oo", pronunciation: "Ooleh" },
       { english: "Violin", oromo: "Vayolinii", emoji: "🎻", letter: "V", oromoLetterSound: "Vah" },
-      { english: "Hyena", oromo: "Warabeessa", emoji: "🐺", letter: "W", oromoLetterSound: "Wah", pronunciation: "wa-ra-bassa" },
+      { english: "Hyena", oromo: "Warabeessa", emoji: "🐺", letter: "W", oromoLetterSound: "Wah", pronunciation: "Warabeessa" },
       { english: "Letter (mail)", oromo: "Xalayaa", emoji: "✉️", letter: "X", oromoLetterSound: "Tah", pronunciation: "Talaya" },
-      { english: "Wolf", oromo: "Yeeyyii", emoji: "🐺", letter: "Y", oromoLetterSound: "Yah", pronunciation: "Yey-yii" },
-      { english: "Zero", oromo: "Zeeroo", emoji: "0️⃣", letter: "Z", oromoLetterSound: "Zah", pronunciation: "Zee-roo" },
+      { english: "Wolf", oromo: "Yeeyyii", emoji: "🐺", letter: "Y", oromoLetterSound: "Yah", pronunciation: "Yeyyii" },
+      { english: "Zero", oromo: "Zeeroo", emoji: "0️⃣", letter: "Z", oromoLetterSound: "Zah", pronunciation: "Zeeroo" },
     ]
   }
 };
