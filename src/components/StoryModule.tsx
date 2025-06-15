@@ -1,4 +1,3 @@
-
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { BookOpen } from 'lucide-react';
@@ -70,9 +69,6 @@ const StoryModule = ({ onBack, language }: StoryModuleProps) => {
             </Card>
           ))}
         </div>
-        <p className="text-white text-center mt-8 text-sm">
-            I've used these videos as examples. Just give me the links you'd like to use, and I'll add them for you!
-        </p>
       </div>
     </div>
   );
