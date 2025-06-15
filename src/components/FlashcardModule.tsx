@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { speakText } from '@/utils/speechUtils';
@@ -121,7 +120,7 @@ const FlashcardModule = ({ level, onBack, language }: FlashcardModuleProps) => {
       back: "Gara Sadarkootatti",
       title: "Jechota Qubee",
       description: "Jechota qubee waliin baradhu!",
-      tapToFlip: "Garagaluuf dhiibi!",
+      tapToFlip: "garagalchuuf tuqi",
       listen: "Dhaggeeffadhu",
       previous: "Duraa",
       next: "Itti aansu",
