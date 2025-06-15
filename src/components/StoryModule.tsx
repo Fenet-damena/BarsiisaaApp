@@ -1,3 +1,4 @@
+
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { BookOpen } from 'lucide-react';
@@ -14,7 +15,7 @@ const englishStories = [
 ];
 
 const oromoStories = [
-    { title: "antutaa badiyaa fi antutaa magaala", videoId: "u66aJ4M6VLs" },
+    { title: "Hantuutaa fi Jaldeessa", videoId: "nvrIvnnQDqc" },
     { title: "Raachaa illimaa mootti tahee", videoId: "qmvwakg5pqk" },
     { title: "Raachaa illimaa mootti tahee", videoId: "re3BVHoJrXs" }
 ];
