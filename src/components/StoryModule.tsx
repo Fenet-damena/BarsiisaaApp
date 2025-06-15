@@ -17,7 +17,7 @@ const englishStories = [
 const oromoStories = [
     { title: "Hantuutaa fi Jaldeessa", videoId: "nvrIvnnQDqc" },
     { title: "Raachaa illimaa mootti tahee", videoId: "qmvwakg5pqk" },
-    { title: "Raachaa illimaa mootti tahee", videoId: "re3BVHoJrXs" }
+    { title: "Qocaa fi RIsaa", videoId: "QxRUnNDNRlg" }
 ];
 
 const uiContent = {
