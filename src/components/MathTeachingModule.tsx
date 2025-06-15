@@ -19,6 +19,7 @@ type MathProblem = {
 const MathTeachingModule = ({ onBack, language }: MathTeachingModuleProps) => {
   const [currentProblem, setCurrentProblem] = useState<MathProblem | null>(null);
   const [animatingEmojis, setAnimatingEmojis] = useState<string[]>([]);
+  const [additionState, setAdditionState] = useState<'separate' | 'combined'>('separate');
 
   const uiContent = {
     english: {
@@ -67,11 +68,23 @@ const MathTeachingModule = ({ onBack, language }: MathTeachingModuleProps) => {
     
     const totalEmojis = op === '+' ? num1 + num2 : num1;
     setAnimatingEmojis(Array(totalEmojis).fill(emoji));
+    if (op === '+') {
+      setAdditionState('separate');
+    }
   };
 
   useEffect(() => {
     generateProblem('+');
   }, []);
+
+  useEffect(() => {
+    if (currentProblem?.operation === '+' && additionState === 'separate') {
+      const timer = setTimeout(() => {
+        setAdditionState('combined');
+      }, 2500); // Combine after 2.5 seconds
+      return () => clearTimeout(timer);
+    }
+  }, [currentProblem, additionState]);
 
   const speakProblem = () => {
     if (!currentProblem) return;
@@ -86,29 +99,52 @@ const MathTeachingModule = ({ onBack, language }: MathTeachingModuleProps) => {
 
     if (currentProblem.operation === '+') {
       return (
-        <div className="flex flex-col items-center space-y-4">
-          <div className="flex flex-wrap justify-center gap-2">
-            {animatingEmojis.slice(0, currentProblem.num1).map((emoji, index) => (
-              <div 
-                key={`group1-${index}`} 
-                className="text-4xl animate-bounce"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                {emoji}
+        <div className="flex flex-col items-center justify-center space-y-4 min-h-[150px] relative">
+          {/* Groups to be added */}
+          <div className={`transition-opacity duration-500 ${additionState === 'separate' ? 'opacity-100' : 'opacity-0'}`}>
+            <div className="flex items-center justify-center space-x-6">
+              <div className="flex gap-2">
+                {animatingEmojis.slice(0, currentProblem.num1).map((emoji, index) => (
+                  <div 
+                    key={`group1-${index}`} 
+                    className="text-4xl animate-scale-in"
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
+                    {emoji}
+                  </div>
+                ))}
               </div>
-            ))}
+              <div className="text-6xl font-bold text-purple-600">+</div>
+              <div className="flex gap-2">
+                {animatingEmojis.slice(currentProblem.num1).map((emoji, index) => (
+                  <div 
+                    key={`group2-${index}`} 
+                    className="text-4xl animate-scale-in"
+                    style={{ animationDelay: `${(index + currentProblem.num1) * 0.1}s` }}
+                  >
+                    {emoji}
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
-          <div className="text-6xl font-bold text-purple-600">+</div>
-          <div className="flex flex-wrap justify-center gap-2">
-            {animatingEmojis.slice(currentProblem.num1).map((emoji, index) => (
-              <div 
-                key={`group2-${index}`} 
-                className="text-4xl animate-bounce"
-                style={{ animationDelay: `${(index + currentProblem.num1) * 0.1}s` }}
-              >
-                {emoji}
+          
+          {/* Combined Result */}
+          <div className={`absolute flex items-center justify-center transition-opacity duration-500 delay-500 ${additionState === 'combined' ? 'opacity-100' : 'opacity-0'}`}>
+            <div className="flex items-center justify-center space-x-6">
+              <div className="text-6xl font-bold text-green-500">=</div>
+              <div className="flex gap-2">
+                {animatingEmojis.map((emoji, index) => (
+                  <div 
+                    key={`result-emoji-${index}`} 
+                    className="text-4xl animate-scale-in"
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
+                    {emoji}
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </div>
       );
