@@ -5,7 +5,17 @@ export const speakText = (text: string, language: 'english' | 'oromo' = 'english
       // Cancel any ongoing speech
       speechSynthesis.cancel();
       
-      const utterance = new SpeechSynthesisUtterance(text);
+      let processedText = text;
+
+      // Language-specific text processing for better pronunciation approximation
+      if (language === 'oromo') {
+        // In Oromo, 'c' is pronounced like 'ch' in English.
+        // This replaces 'c' with 'ch', but uses a negative lookahead (?!h) 
+        // to avoid altering a 'c' that's already part of a 'ch' digraph.
+        processedText = text.replace(/c(?!h)/g, 'ch').replace(/C(?!h)/g, 'Ch');
+      }
+
+      const utterance = new SpeechSynthesisUtterance(processedText);
       
       // Set language-specific voice settings
       if (language === 'english') {
